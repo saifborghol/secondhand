@@ -1,13 +1,12 @@
 export const BASE_URL = 'http://localhost:4000';
 
 //web service for User
-export const CREATE_USER_URL = BASE_URL + '/user/addUserImage';
+export const CREATE_USER_URL = BASE_URL + '/user/addUser';
 export const DELETE_USER_URL = BASE_URL + '/user/deleteUser/';
 export const DELETEALL_USER_URL = BASE_URL + '/user/deleteAll';
 export const UPDATE_USER_URL = BASE_URL + '/user/updateUser/';
 export const GETALL_USER_URL = BASE_URL + '/user/getAll';
 export const GET_USER_URL = BASE_URL + '/user/getUser/';
-export const ADDUSERIMAGE_URL = BASE_URL + '/user/addUserImage';
 export const SENDMAIL_USER_URL = BASE_URL + '/user/sendMailUser';
 export const LOGIN_USER_URL = BASE_URL + '/user/login';
 export const LOGOUT_USER_URL = BASE_URL + '/user/logout';
@@ -43,7 +42,3 @@ export const GET_PRODUCT_URL = BASE_URL + '/product/getProduct/';
 export const GETALLL_PRODUCT_URL = BASE_URL + '/product/getAll';
 
 //web service for Order
-
-//web service for Customer
-
-//web service for Provider

@@ -7,32 +7,19 @@ const refreshTokens = [];
 const _ = require('lodash');
 
 module.exports = {
-	createUser: function (req, res) {
-		userModel.create(req.body, function (err, User) {
-			console.log('cest bon');
-			if (err) {
-				console.log(err);
-				res.json({
-					msg: 'err' + err,
-					statuts: 500,
-					data: null,
-				}); //500 erreur serveur
-			} else {
-				res.json({
-					msg: 'utilisateur ajouté',
-					statuts: 200,
-					data: User,
-				});
-			}
-		});
-	},
 
-	createUserImage: function (req, res) {
+	createUser: function (req, res) {
 		const newUser = {
 			name: req.body.name,
-			email: req.body.email,
+			surName: req.body.surName,
+			gender: req.body.gender,
 			birthDay: req.body.birthDay,
 			phone: req.body.phone,
+			adress: req.body.adress,
+			pays: req.body.pays,
+			ville: req.body.ville,
+			postalCode: req.body.postalCode,
+			email: req.body.email,
 			password: req.body.password,
 			image: req.file.filename,
 		};
@@ -45,7 +32,7 @@ module.exports = {
 				});
 			else
 				res.json({
-					message: 'Image created!',
+					message: 'User created!',
 					statut: 200,
 					data: user,
 				});
@@ -95,9 +82,15 @@ module.exports = {
 		req.body.password = bcrypt.hashSync(req.body.password, saltRounds);
 		const newUser = {
 			name: req.body.name,
-			email: req.body.email,
+			surName: req.body.surName,
+			gender: req.body.gender,
 			birthDay: req.body.birthDay,
 			phone: req.body.phone,
+			adress: req.body.adress,
+			pays: req.body.pays,
+			ville: req.body.ville,
+			postalCode: req.body.postalCode,
+			email: req.body.email,
 			password: req.body.password,
 			image: req.file.filename,
 		};

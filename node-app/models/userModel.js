@@ -17,18 +17,6 @@ const userSchema = Schema({
 		type: String,
 		required: true,
 	},
-	email: {
-		type: String,
-		unique: true,
-		required: true,
-		validate: {
-			validator: function ValidateEmail(v) {
-				return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-				//w{2,3} lazemha tkoun fila5er .org .com .tn ya3ni . w ba3édha 7aja tetkawén par 2 ou 3 caractéresZZZ
-			},
-			message: 'email is invalid',
-		},
-	},
 	gender: {
 		type: String,
 		enum: ['male', 'femelle'],
@@ -57,6 +45,18 @@ const userSchema = Schema({
 		type: Number,
 		required: true,
 	},
+	email: {
+		type: String,
+		unique: true,
+		required: true,
+		validate: {
+			validator: function ValidateEmail(v) {
+				return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+				//w{2,3} lazemha tkoun fila5er .org .com .tn ya3ni . w ba3édha 7aja tetkawén par 2 ou 3 caractéresZZZ
+			},
+			message: 'email is invalid',
+		},
+	},
 	password: {
 		type: String,
 		required: false,
@@ -74,6 +74,12 @@ const userSchema = Schema({
 	resetLink: {
 		type: String,
 	},
+	order_id:[
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'orderModel'
+        }
+    ]
 });
 
 userSchema.plugin(uniqueValidator);
