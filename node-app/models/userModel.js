@@ -29,6 +29,10 @@ const userSchema = Schema({
 			message: 'email is invalid',
 		},
 	},
+	gender: {
+		type: String,
+		enum: ['male', 'femelle'],
+	},
 	birthDay: {
 		type: Date,
 		required: true,
@@ -39,6 +43,18 @@ const userSchema = Schema({
 	},
 	adress: {
 		type: String,
+		required: true,
+	},
+	pays: {
+		type: String,
+		required: true,
+	},
+	ville: {
+		type: String,
+		required: true,
+	},
+	postalCode: {
+		type: Number,
 		required: true,
 	},
 	password: {
