@@ -91,8 +91,14 @@ module.exports = {
 	updateUser: function (req, res) {
 		const saltRounds = 10;
 		req.body.password = bcrypt.hashSync(req.body.password, saltRounds);
+		const newUser = {
+			name: req.body.name,
+			email: req.body.email,
+			password: req.body.password,
+			image: req.file.filename,
+		};
 		userModel
-			.findByIdAndUpdate({ _id: req.params.id }, req.body)
+			.findByIdAndUpdate({ _id: req.params.id }, newUser)
 			.exec(function (err, users) {
 				if (err) {
 					res.status(500),
@@ -238,11 +244,9 @@ module.exports = {
 					error: 'Email does not exist',
 				});
 			}
-			const token = jwt.sign(
-				{ _id: user._id },
-				req.app.get('secretKey'),
-				{ expiresIn: '20min' }
-			);
+			const token = jwt.sign({ _id: user._id }, req.app.get('secretKey'), {
+				expiresIn: '20min',
+			});
 			console.log(token);
 			var data = {
 				from: 'azizmdk@outlook.com',
@@ -330,10 +334,7 @@ module.exports = {
 		var id = req.body._id;
 		var refreshToken = req.body.refreshToken;
 		console.log('refresh', refreshToken in refreshTokens);
-		if (
-			refreshToken in refreshTokens &&
-			refreshTokens[refreshToken] == id
-		) {
+		if (refreshToken in refreshTokens && refreshTokens[refreshToken] == id) {
 			var user = { id: id };
 			var token = jwt.sign(user, req.app.get('secretKey'), {
 				expiresIn: '5h',

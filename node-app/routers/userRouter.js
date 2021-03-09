@@ -6,7 +6,7 @@ const middleware = require('../middleware/authentification');
 route.post('/addUser', userController.createUser);
 route.delete('/deleteUser/:id', userController.deleteUser);
 route.delete('/deleteAll', userController.deleteAll);
-route.post('/updateUser/:id', userController.updateUser);
+route.post('/updateUser/:id', multer.single('image'), userController.updateUser);
 route.get('/getUser/:id', userController.getUser);
 route.get('/getAll', userController.getAllUsers);
 route.post('/sendMailUser', userController.sendMailUser);

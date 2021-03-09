@@ -23,6 +23,7 @@ export default class UpdateUsers extends Component {
 			name: '',
 			email: '',
 			password: '',
+			image: null,
 			error: {},
 		};
 
@@ -90,24 +91,29 @@ export default class UpdateUsers extends Component {
 		);
 	}
 
+	handleChangeFile = evt => {
+		const file = evt.target.files[0];
+		console.log('fiiile', file);
+		this.setState({ image: file });
+	};
+
 	handleSubmit(event) {
 		event.preventDefault();
 		let err = this.validate();
-		let data = {
-			name: this.state.name,
-			email: this.state.email,
-			password: this.state.password,
-		};
-		if (!err) {
-			console.log('iiiiiiiiii', localStorage.getItem('idUser'));
-			this.UserController.updateUser(
-				localStorage.getItem('idUser'),
-				data
-			).then(res => {
-				console.log('response', res);
-			});
-			window.location.href = '/user/getAll';
-		}
+		const formData = new FormData();
+		formData.append('image', this.state.image);
+		formData.append('name', this.state.name);
+		formData.append('email', this.state.email);
+		formData.append('password', this.state.password);
+
+		console.log('iiiiiiiiii', localStorage.getItem('idUser'));
+		this.UserController.updateUser(
+			localStorage.getItem('idUser'),
+			formData,
+		).then(res => {
+			console.log('response', res);
+		});
+		window.location.href = '/user/getAll';
 	}
 
 	render() {
@@ -178,7 +184,11 @@ export default class UpdateUsers extends Component {
 											File
 										</Label>
 										<Col sm={10}>
-											<Input type="file" name="file" />
+											<Input
+												type="file"
+												name="file"
+												onChange={this.handleChangeFile}
+											/>
 											<FormText color="muted">
 												This is some placeholder
 												block-level help text for the
