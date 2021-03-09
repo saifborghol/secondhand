@@ -80,8 +80,7 @@ export default class ListUsers extends Component {
 															<th>Name</th>
 															<th>Email</th>
 															<th>Image</th>
-															<th>Update</th>
-															<th>Delete</th>
+															<th>Actions</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -128,8 +127,6 @@ export default class ListUsers extends Component {
 																					}
 																				/>
 																			</button>
-																		</td>
-																		<td>
 																			<button
 																				onClick={() =>
 																					this.deleteUser(
@@ -149,6 +146,7 @@ export default class ListUsers extends Component {
 																					}
 																				/>
 																			</button>
+																		
 																		</td>
 																	</tr>
 																);
