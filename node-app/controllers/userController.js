@@ -31,6 +31,8 @@ module.exports = {
 		const newUser = {
 			name: req.body.name,
 			email: req.body.email,
+			birthDay: req.body.birthDay,
+			phone: req.body.phone,
 			password: req.body.password,
 			image: req.file.filename,
 		};
@@ -94,6 +96,8 @@ module.exports = {
 		const newUser = {
 			name: req.body.name,
 			email: req.body.email,
+			birthDay: req.body.birthDay,
+			phone: req.body.phone,
 			password: req.body.password,
 			image: req.file.filename,
 		};

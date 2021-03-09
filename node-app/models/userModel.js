@@ -13,6 +13,10 @@ const userSchema = Schema({
 		type: String,
 		required: true,
 	},
+	surName: {
+		type: String,
+		required: true,
+	},
 	email: {
 		type: String,
 		unique: true,
@@ -24,6 +28,18 @@ const userSchema = Schema({
 			},
 			message: 'email is invalid',
 		},
+	},
+	birthDay: {
+		type: Date,
+		required: true,
+	},
+	phone: {
+		type: Number,
+		required: true,
+	},
+	adress: {
+		type: String,
+		required: true,
 	},
 	password: {
 		type: String,
