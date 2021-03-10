@@ -1,17 +1,15 @@
-import "../styles/app.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Form from "./Form";
-import Table from "./Table";
+////import "../styles/app.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './Home';
 
 function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Form}></Route>
-        <Route exact path="/table" component={Table}></Route>
-      </Switch>
-    </Router>
-  );
+	return (
+		<Router>
+			<Switch>
+				<Route exact path="/" component={Home}></Route>
+			</Switch>
+		</Router>
+	);
 }
 
 export default App;

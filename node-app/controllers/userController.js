@@ -7,16 +7,15 @@ const refreshTokens = [];
 const _ = require('lodash');
 
 module.exports = {
-
 	createUser: function (req, res) {
 		const newUser = {
+			userName: req.body.userName,
 			name: req.body.name,
 			surName: req.body.surName,
 			gender: req.body.gender,
 			birthDay: req.body.birthDay,
 			phone: req.body.phone,
 			adress: req.body.adress,
-			pays: req.body.pays,
 			ville: req.body.ville,
 			postalCode: req.body.postalCode,
 			email: req.body.email,
@@ -81,13 +80,13 @@ module.exports = {
 		const saltRounds = 10;
 		req.body.password = bcrypt.hashSync(req.body.password, saltRounds);
 		const newUser = {
+			userName: req.body.userName,
 			name: req.body.name,
 			surName: req.body.surName,
 			gender: req.body.gender,
 			birthDay: req.body.birthDay,
 			phone: req.body.phone,
 			adress: req.body.adress,
-			pays: req.body.pays,
 			ville: req.body.ville,
 			postalCode: req.body.postalCode,
 			email: req.body.email,
