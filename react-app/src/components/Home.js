@@ -55,7 +55,7 @@ export default class Home extends Component {
         <div className="modal-body p-0">
           <div className="row align-items-stretch">
             <div className="col-lg-6 p-lg-0">
-              <a className="product-view d-block h-100 bg-cover bg-center" style={{background: 'url(img/product-5.jpg)'}} href="img/product-5.jpg" data-lightbox="productview" title="Red digital smartwatch" /><a className="d-none" href="img/product-5-alt-1.jpg" title="Red digital smartwatch" data-lightbox="productview" /><a className="d-none" href="img/product-5-alt-2.jpg" title="Red digital smartwatch" data-lightbox="productview" />
+              <a className="product-view d-block h-100 bg-cover bg-center" style={{background: 'url(assets/img/product-5.jpg)'}} href="assets/img/product-5.jpg" data-lightbox="productview" title="Red digital smartwatch" /><a className="d-none" href="././assets/img/product-5-alt-1.jpg" title="Red digital smartwatch" data-lightbox="productview" /><a className="d-none" href="././assets/img/product-5-alt-2.jpg" title="Red digital smartwatch" data-lightbox="productview" />
             </div>
             <div className="col-lg-6">
               <button className="close p-4" type="button" data-dismiss="modal" aria-label="Close">
@@ -116,7 +116,7 @@ export default class Home extends Component {
   </div>
   {/* HERO SECTION*/}
   <div className="container">
-    <section className="hero pb-3 bg-cover bg-center d-flex align-items-center" style={{background: 'url(img/hero-banner-alt.jpg)'}}>
+    <section className="hero pb-3 bg-cover bg-center d-flex align-items-center" style={{background: 'url(././assets/img/hero-banner-alt.jpg)'}}>
       <div className="container py-5">
         <div className="row px-4 px-lg-5">
           <div className="col-lg-6">
@@ -139,13 +139,13 @@ export default class Home extends Component {
       </header>
       <div className="row">
         <div className="col-md-4 mb-4 mb-md-0">
-          <a className="category-item" href="shop.html"><img className="img-fluid" src="img/cat-img-1.jpg" alt /><strong className="category-item-title">Clothes</strong></a>
+          <a className="category-item" href="shop.html"><img className="img-fluid" src="././assets/img/cat-img-1.jpg" alt /><strong className="category-item-title">Clothes</strong></a>
         </div>
         <div className="col-md-4 mb-4 mb-md-0">
-          <a className="category-item mb-4" href="shop.html"><img className="img-fluid" src="img/cat-img-2.jpg" alt /><strong className="category-item-title">Shoes</strong></a><a className="category-item" href="shop.html"><img className="img-fluid" src="img/cat-img-3.jpg" alt /><strong className="category-item-title">Watches</strong></a>
+          <a className="category-item mb-4" href="shop.html"><img className="img-fluid" src="././assets/img/cat-img-2.jpg" alt /><strong className="category-item-title">Shoes</strong></a><a className="category-item" href="shop.html"><img className="img-fluid" src="././assets/img/cat-img-3.jpg" alt /><strong className="category-item-title">Watches</strong></a>
         </div>
         <div className="col-md-4">
-          <a className="category-item" href="shop.html"><img className="img-fluid" src="img/cat-img-4.jpg" alt /><strong className="category-item-title">Electronics</strong></a>
+          <a className="category-item" href="shop.html"><img className="img-fluid" src="././assets/img/cat-img-4.jpg" alt /><strong className="category-item-title">Electronics</strong></a>
         </div>
       </div>
     </section>
@@ -163,7 +163,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-" />
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-1.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-1.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
@@ -189,7 +189,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-primary">Sale</div>
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-2.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-2.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
@@ -215,7 +215,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-" />
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-3.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-3.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
@@ -241,7 +241,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-info">New</div>
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-4.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-4.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
@@ -267,7 +267,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-danger">Sold</div>
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-5.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-5.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
@@ -293,7 +293,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-" />
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-6.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-6.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
@@ -319,7 +319,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-" />
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-7.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-7.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
@@ -345,7 +345,7 @@ export default class Home extends Component {
           <div className="product text-center">
             <div className="position-relative mb-3">
               <div className="badge text-white badge-" />
-              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="img/product-8.jpg" alt="..." /></a>
+              <a className="d-block" href="detail.html"><img className="img-fluid w-100" src="././assets/img/product-8.jpg" alt="..." /></a>
               <div className="product-overlay">
                 <ul className="mb-0 list-inline">
                   <li className="list-inline-item m-0 p-0">
