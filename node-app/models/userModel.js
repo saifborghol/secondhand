@@ -75,7 +75,7 @@ const userSchema = Schema({
 			type: Schema.Types.ObjectId,
 			ref: 'orderModel',
 		},
-	],
+	]
 });
 
 userSchema.plugin(uniqueValidator);

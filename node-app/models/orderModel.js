@@ -4,11 +4,11 @@ const Schema = mongoose.Schema
 
 const orderSchema = Schema({
     date:{
-        type: String,
+        type: Date,
         required: true
     },
     price:{
-        type:  Number,
+        type: Number,
         required: true
     },
     prod_id:[
