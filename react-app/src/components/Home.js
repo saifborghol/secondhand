@@ -137,20 +137,20 @@ export default class Home extends Component {
 									<div className="col-lg-6 p-lg-0">
 										<a
 											className="product-view d-block h-100 bg-cover bg-center"
-											style={{ background: 'url(img/product-5.jpg)' }}
-											href="img/product-5.jpg"
+											style={{ background: 'url(./assets/img/product-5.jpg)' }}
+											href="./assets/img/product-5.jpg"
 											data-lightbox="productview"
 											title="Red digital smartwatch"
 										/>
 										<a
 											className="d-none"
-											href="img/product-5-alt-1.jpg"
+											href="./assets/img/product-5-alt-1.jpg"
 											title="Red digital smartwatch"
 											data-lightbox="productview"
 										/>
 										<a
 											className="d-none"
-											href="img/product-5-alt-2.jpg"
+											href="./assets/img/product-5-alt-2.jpg"
 											title="Red digital smartwatch"
 											data-lightbox="productview"
 										/>
@@ -236,7 +236,7 @@ export default class Home extends Component {
 				<div className="container">
 					<section
 						className="hero pb-3 bg-cover bg-center d-flex align-items-center"
-						style={{ background: 'url(img/hero-banner-alt.jpg)' }}
+						style={{ background: 'url(./assets/img/hero-banner-alt.jpg)' }}
 					>
 						<div className="container py-5">
 							<div className="row px-4 px-lg-5">
@@ -265,23 +265,23 @@ export default class Home extends Component {
 						<div className="row">
 							<div className="col-md-4 mb-4 mb-md-0">
 								<a className="category-item" href="shop.html">
-									<img className="img-fluid" src="img/cat-img-1.jpg" alt />
+									<img className="img-fluid" src="./assets/img/cat-img-1.jpg" alt />
 									<strong className="category-item-title">Clothes</strong>
 								</a>
 							</div>
 							<div className="col-md-4 mb-4 mb-md-0">
 								<a className="category-item mb-4" href="shop.html">
-									<img className="img-fluid" src="img/cat-img-2.jpg" alt />
+									<img className="img-fluid" src="./assets/img/cat-img-2.jpg" alt />
 									<strong className="category-item-title">Shoes</strong>
 								</a>
 								<a className="category-item" href="shop.html">
-									<img className="img-fluid" src="img/cat-img-3.jpg" alt />
+									<img className="img-fluid" src="./assets/img/cat-img-3.jpg" alt />
 									<strong className="category-item-title">Watches</strong>
 								</a>
 							</div>
 							<div className="col-md-4">
 								<a className="category-item" href="shop.html">
-									<img className="img-fluid" src="img/cat-img-4.jpg" alt />
+									<img className="img-fluid" src="./assets/img/cat-img-4.jpg" alt />
 									<strong className="category-item-title">Electronics</strong>
 								</a>
 							</div>
@@ -304,7 +304,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-1.jpg"
+												src="./assets/img/product-1.jpg"
 												alt="..."
 											/>
 										</a>
@@ -348,7 +348,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-2.jpg"
+												src="./assets/img/product-2.jpg"
 												alt="..."
 											/>
 										</a>
@@ -392,7 +392,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-3.jpg"
+												src="./assets/img/product-3.jpg"
 												alt="..."
 											/>
 										</a>
@@ -436,7 +436,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-4.jpg"
+												src="./assets/img/product-4.jpg"
 												alt="..."
 											/>
 										</a>
@@ -480,7 +480,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-5.jpg"
+												src="./assets/img/product-5.jpg"
 												alt="..."
 											/>
 										</a>
@@ -524,7 +524,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-6.jpg"
+												src="./assets/img/product-6.jpg"
 												alt="..."
 											/>
 										</a>
@@ -568,7 +568,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-7.jpg"
+												src="./assets/img/product-7.jpg"
 												alt="..."
 											/>
 										</a>
@@ -612,7 +612,7 @@ export default class Home extends Component {
 										<a className="d-block" href="detail.html">
 											<img
 												className="img-fluid w-100"
-												src="img/product-8.jpg"
+												src="./assets/img/product-8.jpg"
 												alt="..."
 											/>
 										</a>
