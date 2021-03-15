@@ -9,10 +9,6 @@ const saltRounds = 10;
 const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = Schema({
-	userName: {
-		type: String,
-		required: true,
-	},
 	name: {
 		type: String,
 		required: true,
@@ -26,7 +22,7 @@ const userSchema = Schema({
 		enum: ['male', 'femelle'],
 	},
 	birthDay: {
-		type: Date,
+		type: String,
 		required: true,
 	},
 	phone: {
@@ -75,7 +71,7 @@ const userSchema = Schema({
 			type: Schema.Types.ObjectId,
 			ref: 'orderModel',
 		},
-	]
+	],
 });
 
 userSchema.plugin(uniqueValidator);

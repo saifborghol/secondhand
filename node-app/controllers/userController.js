@@ -9,7 +9,6 @@ const _ = require('lodash');
 module.exports = {
 	createUser: function (req, res) {
 		const newUser = {
-			userName: req.body.userName,
 			name: req.body.name,
 			surName: req.body.surName,
 			gender: req.body.gender,
@@ -79,7 +78,6 @@ module.exports = {
 		const saltRounds = 10;
 		req.body.password = bcrypt.hashSync(req.body.password, saltRounds);
 		const newUser = {
-			userName: req.body.userName,
 			name: req.body.name,
 			surName: req.body.surName,
 			gender: req.body.gender,
