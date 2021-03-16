@@ -1,221 +1,188 @@
 import React, { Component } from 'react';
 import '../styles/sign.css';
+import Nav from './Nav';
+import PersonIcon from '@material-ui/icons/Person';
+import EmailIcon from '@material-ui/icons/Email';
 
 export default class Sign extends Component {
 	render() {
 		return (
-			<div>
-				{/* Navbar*/}
-				<header className="header">
-					<nav className="navbar navbar-expand-lg navbar-light py-3">
-						<div className="container">
-							{/* Navbar Brand */}
-							<a href="#" className="navbar-brand">
-								<img
-									src="https://res.cloudinary.com/mhmd/image/upload/v1571398888/Group_1514_tjekh3_zkts1c.svg"
-									alt="logo"
-									width={150}
-								/>
-							</a>
-						</div>
-					</nav>
-				</header>
-				<div className="container">
-					<div className="row py-5 mt-4 align-items-center">
-						{/* For Demo Purpose */}
-						<div className="col-md-5 pr-lg-5 mb-5 mb-md-0">
-							<img
-								src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg"
-								alt
-								className="img-fluid mb-3 d-none d-md-block"
-							/>
-							<h1>Create an Account</h1>
-							<p className="font-italic text-muted mb-0">
-								Create a minimal registeration page using Bootstrap 4 HTML form
-								elements.
-							</p>
-							<p className="font-italic text-muted">
-								Snippet By{' '}
-								<a href="https://bootstrapious.com" className="text-muted">
-									<u>Bootstrapious</u>
-								</a>
-							</p>
-						</div>
-						{/* Registeration Form */}
-						<div className="col-md-7 col-lg-6 ml-auto">
-							<form action="#">
-								<div className="row">
-									{/* First Name */}
-									<div className="input-group col-lg-6 mb-4">
-										<div className="input-group-prepend">
-											<span className="input-group-text bg-white px-4 border-md border-right-0">
-												<i className="fa fa-user text-muted" />
-											</span>
-										</div>
+			<div className="main">
+				<Nav />
+				{/* Sign up form */}
+				<section className="signup">
+					<div className="container">
+						<div className="signup-content">
+							<div className="signup-form">
+								<h2 className="form-title">Sign up</h2>
+								<form
+									method="POST"
+									className="register-form"
+									id="register-form"
+								>
+									<div className="form-group">
+										<label htmlFor="name">
+											<PersonIcon style={{ fontSize: 20 }}/>
+										</label>
+
 										<input
-											id="firstName"
 											type="text"
-											name="firstname"
-											placeholder="First Name"
-											className="form-control bg-white border-left-0 border-md"
+											name="name"
+											id="name"
+											placeholder="Your Name"
 										/>
 									</div>
-									{/* Last Name */}
-									<div className="input-group col-lg-6 mb-4">
-										<div className="input-group-prepend">
-											<span className="input-group-text bg-white px-4 border-md border-right-0">
-												<i className="fa fa-user text-muted" />
-											</span>
-										</div>
+									<div className="form-group">
+										<label htmlFor="email">
+											< EmailIcon style={{ fontSize: 20 }}/>
+										</label>
 										<input
-											id="lastName"
-											type="text"
-											name="lastname"
-											placeholder="Last Name"
-											className="form-control bg-white border-left-0 border-md"
-										/>
-									</div>
-									{/* Email Address */}
-									<div className="input-group col-lg-12 mb-4">
-										<div className="input-group-prepend">
-											<span className="input-group-text bg-white px-4 border-md border-right-0">
-												<i className="fa fa-envelope text-muted" />
-											</span>
-										</div>
-										<input
-											id="email"
 											type="email"
 											name="email"
-											placeholder="Email Address"
-											className="form-control bg-white border-left-0 border-md"
+											id="email"
+											placeholder="Your Email"
 										/>
 									</div>
-									{/* Phone Number */}
-									<div className="input-group col-lg-12 mb-4">
-										<div className="input-group-prepend">
-											<span className="input-group-text bg-white px-4 border-md border-right-0">
-												<i className="fa fa-phone-square text-muted" />
-											</span>
-										</div>
-										<select
-											id="countryCode"
-											name="countryCode"
-											style={{ maxWidth: 80 }}
-											className="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted"
-										>
-											<option value>+12</option>
-											<option value>+10</option>
-											<option value>+15</option>
-											<option value>+18</option>
-										</select>
+									<div className="form-group">
+										<label htmlFor="pass">
+											<i className="zmdi zmdi-lock" />
+										</label>
 										<input
-											id="phoneNumber"
-											type="tel"
-											name="phone"
-											placeholder="Phone Number"
-											className="form-control bg-white border-md border-left-0 pl-3"
-										/>
-									</div>
-									.{/* Job */}
-									<div className="input-group col-lg-12 mb-4">
-										<div className="input-group-prepend">
-											<span className="input-group-text bg-white px-4 border-md border-right-0">
-												<i className="fab fa-black-tie"></i>
-											</span>
-										</div>
-										<select
-											id="job"
-											name="jobtitle"
-											className="form-control custom-select bg-white border-left-0 border-md"
-										>
-											<option value>Choose your job</option>
-											<option value>Designer</option>
-											<option value>Developer</option>
-											<option value>Manager</option>
-											<option value>Accountant</option>
-										</select>
-									</div>
-									{/* Password */}
-									<div className="input-group col-lg-6 mb-4">
-										<div className="input-group-prepend">
-											<span className="input-group-text bg-white px-4 border-md border-right-0">
-												<i className="fa fa-lock text-muted" />
-											</span>
-										</div>
-										<input
-											id="password"
 											type="password"
-											name="password"
+											name="pass"
+											id="pass"
 											placeholder="Password"
-											className="form-control bg-white border-left-0 border-md"
 										/>
 									</div>
-									{/* Password Confirmation */}
-									<div className="input-group col-lg-6 mb-4">
-										<div className="input-group-prepend">
-											<span className="input-group-text bg-white px-4 border-md border-right-0">
-												<i className="fa fa-lock text-muted" />
-											</span>
-										</div>
+									<div className="form-group">
+										<label htmlFor="re-pass">
+											<i className="zmdi zmdi-lock-outline" />
+										</label>
 										<input
-											id="passwordConfirmation"
-											type="text"
-											name="passwordConfirmation"
-											placeholder="Confirm Password"
-											className="form-control bg-white border-left-0 border-md"
+											type="password"
+											name="re_pass"
+											id="re_pass"
+											placeholder="Repeat your password"
 										/>
 									</div>
-									{/* Submit Button */}
-									<div className="form-group col-lg-12 mx-auto mb-0">
-										<a href="#" className="btn btn-primary btn-block py-2">
-											<span className="font-weight-bold">
-												Create your account
+									<div className="form-group">
+										<input
+											type="checkbox"
+											name="agree-term"
+											id="agree-term"
+											className="agree-term"
+										/>
+										<label htmlFor="agree-term" className="label-agree-term">
+											<span>
+												<span />
 											</span>
-										</a>
-									</div>
-									{/* Divider Text */}
-									<div className="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-										<div className="border-bottom w-100 ml-5" />
-										<span className="px-2 small text-muted font-weight-bold text-muted">
-											OR
-										</span>
-										<div className="border-bottom w-100 mr-5" />
-									</div>
-									{/* Social Login */}
-									<div className="form-group col-lg-12 mx-auto">
-										<a
-											href="#"
-											className="btn btn-primary btn-block py-2 btn-facebook"
-										>
-											<i className="fa fa-facebook-f mr-2" />
-											<span className="font-weight-bold">
-												Continue with Facebook
-											</span>
-										</a>
-										<a
-											href="#"
-											className="btn btn-primary btn-block py-2 btn-twitter"
-										>
-											<i className="fa fa-twitter mr-2" />
-											<span className="font-weight-bold">
-												Continue with Twitter
-											</span>
-										</a>
-									</div>
-									{/* Already Registered */}
-									<div className="text-center w-100">
-										<p className="text-muted font-weight-bold">
-											Already Registered?{' '}
-											<a href="#" className="text-primary ml-2">
-												Login
+											I agree all statements in{' '}
+											<a href="#" className="term-service">
+												Terms of service
 											</a>
-										</p>
+										</label>
 									</div>
-								</div>
-							</form>
+									<div className="form-group form-button">
+										<input
+											type="submit"
+											name="signup"
+											id="signup"
+											className="form-submit"
+											defaultValue="Register"
+										/>
+									</div>
+								</form>
+							</div>
+							<div className="signup-image">
+								<a href="#" className="signup-image-link">
+									I am already member
+								</a>
+							</div>
 						</div>
 					</div>
-				</div>
+				</section>
+				{/* Sing in  Form */}
+				<section className="sign-in">
+					<div className="container">
+						<div className="signin-content">
+							<div className="signin-image">
+								<a href="#" className="signup-image-link">
+									Create an account
+								</a>
+							</div>
+							<div className="signin-form">
+								<h2 className="form-title">Sign up</h2>
+								<form method="POST" className="register-form" id="login-form">
+									<div className="form-group">
+										<label htmlFor="your_name">
+											<i className="zmdi zmdi-account material-icons-name" />
+										</label>
+										<input
+											type="text"
+											name="your_name"
+											id="your_name"
+											placeholder="Your Name"
+										/>
+									</div>
+									<div className="form-group">
+										<label htmlFor="your_pass">
+											<i className="zmdi zmdi-lock" />
+										</label>
+										<input
+											type="password"
+											name="your_pass"
+											id="your_pass"
+											placeholder="Password"
+										/>
+									</div>
+									<div className="form-group">
+										<input
+											type="checkbox"
+											name="remember-me"
+											id="remember-me"
+											className="agree-term"
+										/>
+										<label htmlFor="remember-me" className="label-agree-term">
+											<span>
+												<span />
+											</span>
+											Remember me
+										</label>
+									</div>
+									<div className="form-group form-button">
+										<input
+											type="submit"
+											name="signin"
+											id="signin"
+											className="form-submit"
+											defaultValue="Log in"
+										/>
+									</div>
+								</form>
+								<div className="social-login">
+									<span className="social-label">Or login with</span>
+									<ul className="socials">
+										<li>
+											<a href="#">
+												<i className="display-flex-center zmdi zmdi-facebook" />
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i className="display-flex-center zmdi zmdi-twitter" />
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i className="display-flex-center zmdi zmdi-google" />
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 			</div>
 		);
 	}

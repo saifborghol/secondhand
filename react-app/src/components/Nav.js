@@ -107,7 +107,7 @@ export default class Nav extends Component {
 									</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
+									<a className="nav-link" href="sign">
 										<i className="fas fa-user-alt mr-1 text-gray" />
 										Login
 									</a>
