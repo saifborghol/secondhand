@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './sign.css';
+import '../styles/sign.css';
 
 export default class Sign extends Component {
 	render() {
