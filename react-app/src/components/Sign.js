@@ -3,11 +3,15 @@ import '../styles/sign.css';
 import Nav from './Nav';
 import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
+import LockIcon from '@material-ui/icons/Lock';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default class Sign extends Component {
 	render() {
 		return (
-			<div className="main">
+			<div className="main" id="signup">
 				<Nav />
 				{/* Sign up form */}
 				<section className="signup">
@@ -22,9 +26,8 @@ export default class Sign extends Component {
 								>
 									<div className="form-group">
 										<label htmlFor="name">
-											<PersonIcon style={{ fontSize: 20 }}/>
+											<PersonIcon style={{ fontSize: 20 }} />
 										</label>
-
 										<input
 											type="text"
 											name="name"
@@ -34,7 +37,7 @@ export default class Sign extends Component {
 									</div>
 									<div className="form-group">
 										<label htmlFor="email">
-											< EmailIcon style={{ fontSize: 20 }}/>
+											<EmailIcon style={{ fontSize: 20 }} />
 										</label>
 										<input
 											type="email"
@@ -45,7 +48,7 @@ export default class Sign extends Component {
 									</div>
 									<div className="form-group">
 										<label htmlFor="pass">
-											<i className="zmdi zmdi-lock" />
+											<LockIcon style={{ fontSize: 20 }} />
 										</label>
 										<input
 											type="password"
@@ -56,7 +59,7 @@ export default class Sign extends Component {
 									</div>
 									<div className="form-group">
 										<label htmlFor="re-pass">
-											<i className="zmdi zmdi-lock-outline" />
+											<LockOutlinedIcon style={{ fontSize: 20 }} />
 										</label>
 										<input
 											type="password"
@@ -94,39 +97,51 @@ export default class Sign extends Component {
 								</form>
 							</div>
 							<div className="signup-image">
-								<a href="#" className="signup-image-link">
+								<figure>
+									<img
+										src="../assets/images/sign/signup-image.jpg"
+										alt="sing up image"
+									/>
+								</figure>
+								<a href="#login" className="signup-image-link">
 									I am already member
 								</a>
 							</div>
 						</div>
 					</div>
 				</section>
-				{/* Sing in  Form */}
-				<section className="sign-in">
+				{/* Sign in  Form */}
+				<section className="sign-in" id="login">
 					<div className="container">
 						<div className="signin-content">
 							<div className="signin-image">
-								<a href="#" className="signup-image-link">
+								<figure>
+									<img
+										src="../assets/images/sign/signin-image.jpg"
+										alt="sing up image"
+									/>
+								</figure>
+								<a href="#signup" className="signup-image-link">
 									Create an account
 								</a>
 							</div>
 							<div className="signin-form">
-								<h2 className="form-title">Sign up</h2>
+								<h2 className="form-title">Login</h2>
 								<form method="POST" className="register-form" id="login-form">
 									<div className="form-group">
 										<label htmlFor="your_name">
-											<i className="zmdi zmdi-account material-icons-name" />
+											<EmailIcon style={{ fontSize: 20 }} />
 										</label>
 										<input
 											type="text"
 											name="your_name"
 											id="your_name"
-											placeholder="Your Name"
+											placeholder="Your Email"
 										/>
 									</div>
 									<div className="form-group">
 										<label htmlFor="your_pass">
-											<i className="zmdi zmdi-lock" />
+											<LockIcon style={{ fontSize: 20 }} />
 										</label>
 										<input
 											type="password"
@@ -159,26 +174,7 @@ export default class Sign extends Component {
 										/>
 									</div>
 								</form>
-								<div className="social-login">
-									<span className="social-label">Or login with</span>
-									<ul className="socials">
-										<li>
-											<a href="#">
-												<i className="display-flex-center zmdi zmdi-facebook" />
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i className="display-flex-center zmdi zmdi-twitter" />
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i className="display-flex-center zmdi zmdi-google" />
-											</a>
-										</li>
-									</ul>
-								</div>
+								
 							</div>
 						</div>
 					</div>

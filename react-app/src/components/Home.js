@@ -5,7 +5,7 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div className="page-holder">
-				<Nav />
+				<Nav />	
 				{/*  Modal */}
 				<div
 					className="modal fade"

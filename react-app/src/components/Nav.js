@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
-
 export default class Nav extends Component {
 	render() {
 		return (
 			<header className="header bg-white">
-				<div className="container px-0 px-lg-3">
+				<div className="container px- px-lg-3">
 					<nav className="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
 						<a className="navbar-brand" href="index.html">
 							{' '}
@@ -29,75 +28,26 @@ export default class Nav extends Component {
 							<ul className="navbar-nav mr-auto">
 								<li className="nav-item">
 									{/* Link*/}
-									<a className="nav-link active" href="index.html">
+									<a className="nav-link active" href="/">
 										Home
 									</a>
 								</li>
 								<li className="nav-item">
 									{/* Link*/}
-									<a className="nav-link" href="shop.html">
+									<a className="nav-link" href="shop">
 										Shop
 									</a>
 								</li>
 								<li className="nav-item">
 									{/* Link*/}
-									<a className="nav-link" href="detail.html">
+									<a className="nav-link" href="detail">
 										Product detail
 									</a>
 								</li>
-								<li className="nav-item dropdown">
-									<a
-										className="nav-link dropdown-toggle"
-										id="pagesDropdown"
-										href="#"
-										data-toggle="dropdown"
-										aria-haspopup="true"
-										aria-expanded="false"
-									>
-										Pages
-									</a>
-									<div
-										className="dropdown-menu mt-3"
-										aria-labelledby="pagesDropdown"
-									>
-										<a
-											className="dropdown-item border-0 transition-link"
-											href="index.html"
-										>
-											Homepage
-										</a>
-										<a
-											className="dropdown-item border-0 transition-link"
-											href="shop.html"
-										>
-											Category
-										</a>
-										<a
-											className="dropdown-item border-0 transition-link"
-											href="detail.html"
-										>
-											Product detail
-										</a>
-										<a
-											className="dropdown-item border-0 transition-link"
-											href="cart.html"
-										>
-											Shopping cart
-										</a>
-										<a
-											className="dropdown-item border-0 transition-link"
-											href="checkout.html"
-										>
-											Checkout
-										</a>
-									</div>
-								</li>
-							</ul>
-							<ul className="navbar-nav ml-auto">
 								<li className="nav-item">
-									<a className="nav-link" href="cart.html">
+									<a className="nav-link" href="cart">
 										<i className="fas fa-dolly-flatbed mr-1 text-gray" />
-										Cart<small className="text-gray">(2)</small>
+										<small className="text-gray">(2)</small>
 									</a>
 								</li>
 								<li className="nav-item">
@@ -109,10 +59,11 @@ export default class Nav extends Component {
 								<li className="nav-item">
 									<a className="nav-link" href="sign">
 										<i className="fas fa-user-alt mr-1 text-gray" />
-										Login
+										Login/Register
 									</a>
 								</li>
 							</ul>
+							<ul className="navbar-nav ml-auto"></ul>
 						</div>
 					</nav>
 				</div>
