@@ -6,7 +6,7 @@ export default class Nav extends Component {
 			<header className="header bg-white">
 				<div className="container px- px-lg-3">
 					<nav className="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
-						<a className="navbar-brand" href="index.html">
+						<a className="navbar-brand" href="/">
 							{' '}
 							<img src={logo} />{' '}
 						</a>

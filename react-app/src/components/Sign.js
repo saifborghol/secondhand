@@ -5,14 +5,14 @@ import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-scroll';
 
 export default class Sign extends Component {
 	render() {
 		return (
 			<div className="main" id="signup">
 				<Nav />
+
 				{/* Sign up form */}
 				<section className="signup">
 					<div className="container">
@@ -104,7 +104,9 @@ export default class Sign extends Component {
 									/>
 								</figure>
 								<a href="#login" className="signup-image-link">
-									I am already member
+									<Link to="login" smooth={true}>
+										I am already member
+									</Link>
 								</a>
 							</div>
 						</div>
@@ -122,7 +124,9 @@ export default class Sign extends Component {
 									/>
 								</figure>
 								<a href="#signup" className="signup-image-link">
-									Create an account
+									<Link to="signup" smooth={true}>
+										Create an account
+									</Link>
 								</a>
 							</div>
 							<div className="signin-form">
@@ -174,7 +178,6 @@ export default class Sign extends Component {
 										/>
 									</div>
 								</form>
-								
 							</div>
 						</div>
 					</div>
