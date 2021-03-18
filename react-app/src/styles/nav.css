@@ -6,7 +6,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	transition: 1s;
+	transition: 0.5s;
 	padding: 30px 100px;
 	z-index: 100000;
 }
@@ -15,7 +15,7 @@
 	position: relative;
 	color: #fff;
 	text-decoration: none;
-	transition: 1s;
+	transition: 0.5s;
 }
 
 .sticky .logo {
@@ -45,6 +45,16 @@
 	transition: 0.5s;
 }
 
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+	color: #03b0b9;
+}
+
+.sticky ul li a:hover {
+	color: #fff;
+	font-weight: 650;
+}
+
 .sticky {
 	padding: 5px 100px;
 	background: #03b0b9;
@@ -57,3 +67,13 @@
 .sticky ul {
 	top: 8px;
 }
+/* 
+@media (min-width: 992px) {
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 8%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+} */

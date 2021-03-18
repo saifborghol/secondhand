@@ -51,6 +51,26 @@ export default class Nav extends Component {
 						<a href="#">Contact</a>
 					</li>
 				</ul>
+				<ul>
+				<li>
+						<a href="cart">
+							<i className="fas fa-shopping-cart"></i>
+							<small>(2)</small>
+						</a>
+					</li>
+					<li>
+						<a href="cart">
+							<i class="far fa-heart"></i>
+							<small>(0)</small>
+						</a>
+					</li>
+					<li>
+						<a href="cart">
+						<i class="fas fa-user"></i>
+						&nbsp;Login / Register
+						</a>
+					</li>
+				</ul>
 			</header>
 		);
 	}
