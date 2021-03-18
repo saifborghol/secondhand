@@ -8,6 +8,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'react-scroll';
 
 export default class Sign extends Component {
+	componentDidMount() {
+		window.scrollTo(0, 0);
+	}
+
 	render() {
 		return (
 			<div className="main" id="signup">
@@ -68,23 +72,21 @@ export default class Sign extends Component {
 											placeholder="Repeat your password"
 										/>
 									</div>
-									<div className="form-group">
+
+									<div className="custom-control custom-checkbox mb-1">
 										<input
+											className="custom-control-input"
+											id="customCheck1"
 											type="checkbox"
-											name="agree-term"
-											id="agree-term"
-											className="agree-term"
 										/>
-										<label htmlFor="agree-term" className="label-agree-term">
-											<span>
-												<span />
-											</span>
-											I agree all statements in{' '}
-											<a href="#" className="term-service">
-												Terms of service
-											</a>
+										<label
+											className="custom-control-label text-small"
+											htmlFor="customCheck1"
+										>
+											I agree to all terms
 										</label>
 									</div>
+
 									<div className="form-group form-button">
 										<input
 											type="submit"
@@ -154,20 +156,21 @@ export default class Sign extends Component {
 											placeholder="Password"
 										/>
 									</div>
-									<div className="form-group">
+
+									<div className="custom-control custom-checkbox mb-1">
 										<input
+											className="custom-control-input"
+											id="customCheck2"
 											type="checkbox"
-											name="remember-me"
-											id="remember-me"
-											className="agree-term"
 										/>
-										<label htmlFor="remember-me" className="label-agree-term">
-											<span>
-												<span />
-											</span>
+										<label
+											className="custom-control-label text-small"
+											htmlFor="customCheck2"
+										>
 											Remember me
 										</label>
 									</div>
+
 									<div className="form-group form-button">
 										<input
 											type="submit"
