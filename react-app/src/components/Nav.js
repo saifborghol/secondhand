@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../styles/nav.css';
+import { Link } from 'react-router-dom';
+
 export default class Nav extends Component {
 	listener = null;
 	state = {
@@ -9,9 +11,7 @@ export default class Nav extends Component {
 	componentDidMount() {
 		window.addEventListener('scroll', this.handleScroll);
 	}
-	componentWillUnmount() {
-		window.removeEventListener('scroll');
-	}
+
 	handleScroll = () => {
 		if (window.pageYOffset > 140) {
 			if (!this.state.nav) {
@@ -27,32 +27,39 @@ export default class Nav extends Component {
 	render() {
 		return (
 			<header className={`navbar ${this.state.nav && 'sticky'}`}>
-				<a href="/" class="logo">
-					{' '}
-					<img src={logo} />{' '}
-				</a>
+				<Link to="/">
+					<a class="logo">
+						<img src={logo} />
+					</a>
+				</Link>
+
 				<ul>
 					<li>
-						<a href="#">Home</a>
+						<Link to="/">
+							<a>Home</a>
+						</Link>
 					</li>
+
 					<li>
-						<a href="#">About</a>
+						<Link to="about">
+							<a>About</a>
+						</Link>
 					</li>
+
 					<li>
-						<a href="#">Services</a>
+						<Link to="services">
+							<a>Services</a>
+						</Link>
 					</li>
+
 					<li>
-						<a href="#">Portfolio</a>
-					</li>
-					<li>
-						<a href="#">Team</a>
-					</li>
-					<li>
-						<a href="#">Contact</a>
+						<Link to="contact">
+							<a>Contact</a>
+						</Link>
 					</li>
 				</ul>
 				<ul>
-				<li>
+					<li>
 						<a href="cart">
 							<i className="fas fa-shopping-cart"></i>
 							<small>(2)</small>
@@ -65,10 +72,12 @@ export default class Nav extends Component {
 						</a>
 					</li>
 					<li>
-						<a href="cart">
-						<i class="fas fa-user"></i>
-						&nbsp;Login / Register
-						</a>
+						<Link to="sign">
+							<a>
+								<i class="fas fa-user"></i>
+								&nbsp;Login / Register
+							</a>
+						</Link>
 					</li>
 				</ul>
 			</header>

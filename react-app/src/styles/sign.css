@@ -98,9 +98,10 @@ input[type='radio'] {
 	font-family: Poppins;
 	font-size: 36px; } */
 
-/* .main {
-	background: #f8f8f8;
-	padding: 150px 0; } */
+.main {
+	/* background: #f8f8f8; */
+	padding: 100px 0 0;
+}
 
 .clear {
 	clear: both;
@@ -407,6 +408,10 @@ label.valid:after {
 
 .material-icons-name {
 	font-size: 18px;
+}
+
+.sign-in {
+	padding-top: 20px;
 }
 
 .signin-content {
