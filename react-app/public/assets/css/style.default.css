@@ -37,33 +37,7 @@ button:active {
 * ==========================================
 *
 */
-.navbar {
-    position: sticky;
-    top: 0;
-    background-color: transparent;
-  }
-.navbar ul li a{
-    position: relative;
-    margin: 0 15 px;
-    text-decoration: none;
-    color: #fff;
-    letter-spacing: 2px;
-    transition: 0.6s;
-    left:15.2cm;
-}
-.navbar {
-    position: relative;
-    z-index: 100000;
-}
-@media (min-width: 992px) {
-    .navbar-brand {
-        position: absolute;
-        top: 50%;
-        left: 8%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
-}
+	
 /*
 *
 * ==========================================
