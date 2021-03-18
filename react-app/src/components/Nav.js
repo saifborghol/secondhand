@@ -13,7 +13,7 @@ export default class Nav extends Component {
 	}
 
 	handleScroll = () => {
-		if (window.pageYOffset > 140) {
+		if (window.pageYOffset > 0) {
 			if (!this.state.nav) {
 				this.setState({ nav: true });
 			}
