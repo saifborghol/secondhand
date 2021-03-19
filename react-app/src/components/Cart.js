@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from './Nav';
 
 export default class Cart extends Component {
@@ -125,7 +126,34 @@ export default class Cart extends Component {
 				</div>
 				<div className="container">
 					{/* HERO SECTION*/}
-					
+
+					<section className="py-5 bg-light">
+						<div className="container">
+							<div className="row px-4 px-lg-5 py-lg-4 align-items-center">
+								<div className="col-lg-6">
+									<h1 className="h2 text-uppercase mb-0">Cart</h1>
+								</div>
+								<div className="col-lg-6 text-lg-right">
+									<nav aria-label="breadcrumb">
+										<ol className="breadcrumb justify-content-lg-end mb-0 px-0">
+											<li className="breadcrumb-item">
+											<Link to = "/">
+												<a>Home</a>
+												</Link>
+											</li>
+											<li
+												className="breadcrumb-item active"
+												aria-current="page"
+											>
+												Cart
+											</li>
+										</ol>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</section>
+
 					<section className="py-5">
 						<h2 className="h5 text-uppercase mb-4">Shopping cart</h2>
 						<div className="row">
@@ -295,13 +323,12 @@ export default class Cart extends Component {
 											</a>
 										</div>
 										<div className="col-md-6 text-md-right">
-											<a
-												className="btn btn-outline-dark btn-sm"
-												href="checkout.html"
-											>
-												Procceed to checkout
-												<i className="fas fa-long-arrow-alt-right ml-2" />
-											</a>
+											<Link to="checkout">
+												<a className="btn btn-outline-dark btn-sm">
+													Procceed to checkout
+													<i className="fas fa-long-arrow-alt-right ml-2" />
+												</a>
+											</Link>
 										</div>
 									</div>
 								</div>
@@ -351,7 +378,6 @@ export default class Cart extends Component {
 						</div>
 					</section>
 				</div>
-				
 			</div>
 		);
 	}

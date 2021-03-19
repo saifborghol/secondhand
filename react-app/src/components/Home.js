@@ -83,7 +83,7 @@ export default class Home extends Component {
 												convallis.
 											</p>
 											<div className="row align-items-stretch mb-4">
-												<div className="col-sm-7 pr-sm-0">
+												{/* <div className="col-sm-7 pr-sm-0">
 													<div className="border d-flex align-items-center justify-content-between py-1 px-3">
 														<span className="small text-uppercase text-gray mr-4 no-select">
 															Quantity
@@ -102,7 +102,7 @@ export default class Home extends Component {
 															</button>
 														</div>
 													</div>
-												</div>
+												</div> */}
 												<div className="col-sm-5 pl-sm-0">
 													<a
 														className="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0"
@@ -123,6 +123,7 @@ export default class Home extends Component {
 						</div>
 					</div>
 				</div>
+				
 				<div className="container">
 					{/* HERO SECTION*/}
 					{/* <section className="py-5 bg-light">
@@ -156,7 +157,7 @@ export default class Home extends Component {
 								{/* SHOP SIDEBAR*/}
 								<div className="col-lg-3 order-2 order-lg-1">
 									<h5 className="text-uppercase mb-4">Categories</h5>
-									<div className="py-2 px-4 bg-dark text-white mb-3">
+									<div className="py-2 px-4 bg-gray-700 text-white mb-3">
 										<strong className="small text-uppercase font-weight-bold">
 											Fashion &amp; Acc
 										</strong>
