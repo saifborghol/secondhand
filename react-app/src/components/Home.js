@@ -106,7 +106,7 @@ export default class Home extends Component {
 												<div className="col-sm-5 pl-sm-0">
 													<a
 														className="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0"
-														href="cart.html"
+														href="/cart"
 													>
 														Add to cart
 													</a>
@@ -123,7 +123,7 @@ export default class Home extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="container">	
+				<div className="container">
 					{/* HERO SECTION*/}
 					{/* <section className="py-5 bg-light">
 						<div className="container">
@@ -481,10 +481,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -532,10 +529,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -585,10 +579,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -636,10 +627,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -689,10 +677,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -740,10 +725,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -791,10 +773,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -842,10 +821,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -895,10 +871,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -948,10 +921,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -999,10 +969,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -1050,10 +1017,7 @@ export default class Home extends Component {
 																</a>
 															</li>
 															<li className="list-inline-item m-0 p-0">
-																<a
-																	className="btn btn-sm btn-dark"
-																	href="cart.html"
-																>
+																<a className="btn btn-sm btn-dark" href="/cart">
 																	Add to cart
 																</a>
 															</li>
@@ -1114,110 +1078,6 @@ export default class Home extends Component {
 						</div>
 					</section>
 				</div>
-				<footer className="bg-dark text-white">
-					<div className="container py-4">
-						<div className="row py-5">
-							<div className="col-md-4 mb-3 mb-md-0">
-								<h6 className="text-uppercase mb-3">Customer services</h6>
-								<ul className="list-unstyled mb-0">
-									<li>
-										<a className="footer-link" href="#">
-											Help &amp; Contact Us
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Returns &amp; Refunds
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Online Stores
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Terms &amp; Conditions
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div className="col-md-4 mb-3 mb-md-0">
-								<h6 className="text-uppercase mb-3">Company</h6>
-								<ul className="list-unstyled mb-0">
-									<li>
-										<a className="footer-link" href="#">
-											What We Do
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Available Services
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Latest Posts
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											FAQs
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div className="col-md-4">
-								<h6 className="text-uppercase mb-3">Social media</h6>
-								<ul className="list-unstyled mb-0">
-									<li>
-										<a className="footer-link" href="#">
-											Twitter
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Instagram
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Tumblr
-										</a>
-									</li>
-									<li>
-										<a className="footer-link" href="#">
-											Pinterest
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div
-							className="border-top pt-4"
-							style={{ borderColor: '#1d1d1d !important' }}
-						>
-							<div className="row">
-								<div className="col-lg-6">
-									<p className="small text-muted mb-0">
-										© 2020 All rights reserved.
-									</p>
-								</div>
-								<div className="col-lg-6 text-lg-right">
-									<p className="small text-muted mb-0">
-										Template designed by{' '}
-										<a
-											className="text-white reset-anchor"
-											href="https://bootstraptemple.com/p/bootstrap-ecommerce"
-										>
-											Bootstrap Temple
-										</a>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</footer>
 			</div>
 		);
 	}

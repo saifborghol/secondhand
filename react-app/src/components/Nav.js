@@ -60,16 +60,20 @@ export default class Nav extends Component {
 				</ul>
 				<ul>
 					<li>
-						<a href="cart">
+						<Link to = "cart">
+						<a>
 							<i className="fas fa-shopping-cart"></i>
 							<small>(2)</small>
 						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="cart">
+						<Link to = "cart">
+						<a>
 							<i class="far fa-heart"></i>
 							<small>(0)</small>
 						</a>
+						</Link>
 					</li>
 					<li>
 						<Link to="sign">
