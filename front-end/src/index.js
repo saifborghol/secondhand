@@ -85,7 +85,7 @@ class Root extends React.Component {
 
 		return (
 			<Provider store={store}>
-				<IntlProvider translations={translations} locale="en">
+				<IntlProvider translations={translations} locale="fn">
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
 							<Switch>

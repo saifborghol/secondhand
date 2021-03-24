@@ -17,26 +17,6 @@ const userSchema = Schema({
 		type: String,
 		required: true,
 	},
-	gender: {
-		type: String,
-		enum: ['male', 'femelle'],
-	},
-	birthDay: {
-		type: String,
-		required: true,
-	},
-	phone: {
-		type: Number,
-		required: true,
-	},
-	adress: {
-		type: String,
-		required: true,
-	},
-	ville: {
-		type: String,
-		required: true,
-	},
 	email: {
 		type: String,
 		unique: true,

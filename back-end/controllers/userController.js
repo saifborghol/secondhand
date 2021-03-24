@@ -11,11 +11,6 @@ module.exports = {
 		const newUser = {
 			name: req.body.name,
 			surName: req.body.surName,
-			gender: req.body.gender,
-			birthDay: req.body.birthDay,
-			phone: req.body.phone,
-			adress: req.body.adress,
-			ville: req.body.ville,
 			email: req.body.email,
 			password: req.body.password,
 			image: req.file.filename,
@@ -80,11 +75,6 @@ module.exports = {
 		const newUser = {
 			name: req.body.name,
 			surName: req.body.surName,
-			gender: req.body.gender,
-			birthDay: req.body.birthDay,
-			phone: req.body.phone,
-			adress: req.body.adress,
-			ville: req.body.ville,
 			email: req.body.email,
 			password: req.body.password,
 			image: req.file.filename,
