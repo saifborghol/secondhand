@@ -93,7 +93,7 @@ class Root extends React.Component {
 									exact
 									path={`${process.env.PUBLIC_URL}/`}
 									component={Landing}
-								/>
+							/>
 								<Layout>
 									{/*Routes For Layouts*/}
 									<Route
