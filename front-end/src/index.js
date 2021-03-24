@@ -89,15 +89,11 @@ class Root extends React.Component {
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
 							<Switch>
-								<Route
-									exact
-									path={`${process.env.PUBLIC_URL}/`}
-									component={Landing}
-								/>
+								
 								<Layout>
 									{/*Routes For Layouts*/}
 									<Route
-										path={`${process.env.PUBLIC_URL}/fashion`}
+										exact path={`${process.env.PUBLIC_URL}/`}
 										component={Fashion}
 									/>
 
