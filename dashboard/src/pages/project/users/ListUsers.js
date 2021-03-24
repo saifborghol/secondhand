@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Page from 'components/Page';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserTimes, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+
 import UserController from '../../services/controllers/UserController';
 import { Button } from 'reactstrap';
+import { FaEdit } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
 
 const tableTypes = [''];
 
@@ -103,8 +104,12 @@ export default class ListUsers extends Component {
 																			<img
 																				alt="user image"
 																				src={`http://localhost:4000/user/userimage/${user.image}`}
-																				height="64px"
-																				width="64px"
+																				height="52px"
+																				width="52px"
+																				style={{
+																					borderRadius:
+																						'80%',
+																				}}
 																			/>
 																		</td>
 																		<td>
@@ -122,18 +127,23 @@ export default class ListUsers extends Component {
 																						'none',
 																				}}
 																			>
-																				<FontAwesomeIcon
-																					icon={
-																						faUserEdit
-																					}
+																				<FaEdit
+																					size="20px"
+																					color="#11943A"
 																				/>
 																			</button>
 																			<button
-																				onClick={() =>
-																					this.deleteUser(
-																						user._id,
-																					)
-																				}
+																				onClick={() => {
+																					if (
+																						window.confirm(
+																							'Are you sure you wish to delete this item?',
+																						)
+																					) {
+																						this.deleteUser(
+																							user._id,
+																						);
+																					}
+																				}}
 																				style={{
 																					backgroundColor:
 																						'transparent',
@@ -141,10 +151,9 @@ export default class ListUsers extends Component {
 																						'none',
 																				}}
 																			>
-																				<FontAwesomeIcon
-																					icon={
-																						faUserTimes
-																					}
+																				<MdDelete
+																					size="20px"
+																					color="#B90303"
 																				/>
 																			</button>
 																		</td>
@@ -154,7 +163,6 @@ export default class ListUsers extends Component {
 														)}
 													</tbody>
 												</Table>
-											
 											</Card>
 										</Col>
 									</Row>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Page from 'components/Page';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserTimes, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import CategoryController from '../../services/controllers/CategoryController';
 import { Button } from 'reactstrap';
+import { FaEdit } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
 
 const tableTypes = [''];
 
@@ -71,13 +71,14 @@ export default class ListCategories extends Component {
 										Add category
 									</Button>
 									&nbsp;&nbsp;&nbsp;
-									<Button 
-									onClick={() =>
-										this.addSubCategory(
-											'/subCategory/addSubCategory',
-										)
-									}
-									color="primary">
+									<Button
+										onClick={() =>
+											this.addSubCategory(
+												'/subCategory/addSubCategory',
+											)
+										}
+										color="primary"
+									>
 										Add sub category
 									</Button>
 									<br />
@@ -95,8 +96,7 @@ export default class ListCategories extends Component {
 														<tr>
 															<th>Title</th>
 															<th>Description</th>
-															<th>Update</th>
-															<th>Delete</th>
+															<th>Actions</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -128,14 +128,11 @@ export default class ListCategories extends Component {
 																						'none',
 																				}}
 																			>
-																				<FontAwesomeIcon
-																					icon={
-																						faUserEdit
-																					}
+																				<FaEdit
+																					size="20px"
+																					color="#11943A"
 																				/>
 																			</button>
-																		</td>
-																		<td>
 																			<button
 																				onClick={() =>
 																					this.deleteCategory(
@@ -149,10 +146,9 @@ export default class ListCategories extends Component {
 																						'none',
 																				}}
 																			>
-																				<FontAwesomeIcon
-																					icon={
-																						faUserTimes
-																					}
+																				<MdDelete
+																					size="20px"
+																					color="#B90303"
 																				/>
 																			</button>
 																		</td>
