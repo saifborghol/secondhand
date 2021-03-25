@@ -3,7 +3,7 @@
     <style>
       .cls-1 {
         font-size: 33px;
-        fill: #03b0b9;
+        fill: #fff;
         font-family: Comfortaa;
         font-weight: 700;
       }
