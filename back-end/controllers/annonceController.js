@@ -14,7 +14,7 @@ module.exports = {
 				}); //500 erreur serveur
 			} else {
 				res.json({
-					msg: 'Annonce added!',
+					msg: 'Announce added!',
 					statuts: 200,
 					data: annonce,
 				});

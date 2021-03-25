@@ -3,8 +3,7 @@ import Page from 'components/Page';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 
 import UserController from '../../services/controllers/UserController';
-import { Button } from 'reactstrap';
-import { FaEdit } from 'react-icons/fa';
+
 import { MdDelete } from 'react-icons/md';
 
 const tableTypes = [''];
@@ -58,16 +57,6 @@ export default class ListUsers extends Component {
 									{tableType || 'default'}
 								</CardHeader>
 								<CardBody>
-									<Button
-										onClick={() =>
-											this.nextPath('/user/addUser')
-										}
-										color="primary"
-									>
-										Add user
-									</Button>
-									<br />
-									<br />
 									<Row>
 										<Col>
 											<Card body>
@@ -114,25 +103,6 @@ export default class ListUsers extends Component {
 																		</td>
 																		<td>
 																			<button
-																				onClick={() =>
-																					this.updateUser(
-																						user._id,
-																						'user/updateUser',
-																					)
-																				}
-																				style={{
-																					backgroundColor:
-																						'transparent',
-																					border:
-																						'none',
-																				}}
-																			>
-																				<FaEdit
-																					size="20px"
-																					color="#11943A"
-																				/>
-																			</button>
-																			<button
 																				onClick={() => {
 																					if (
 																						window.confirm(
@@ -149,6 +119,8 @@ export default class ListUsers extends Component {
 																						'transparent',
 																					border:
 																						'none',
+																					paddingLeft:
+																						'20px',
 																				}}
 																			>
 																				<MdDelete

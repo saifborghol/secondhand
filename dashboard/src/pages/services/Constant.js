@@ -31,14 +31,12 @@ export const UPDATE_SUBCATEGORY_URL =
 	BASE_URL + '/subCategory/updateSubCategory/';
 export const GET_SUBCATEGORY_URL = BASE_URL + '/subCategory/getSubCategory/';
 export const GETALL_SUBCATEGORY_URL =
-	BASE_URL + '/subCategory/getAllSubCategorys';
+	BASE_URL + '/subCategory/getAll';
 
-//web service for Product
-export const CREATE_PRODUCT_URL = BASE_URL + '/product/addProduct';
-export const DELETE_PRODUCT_URL = BASE_URL + '/product/deleteProduct/';
-export const DELETEALL_PRODUCT_URL = BASE_URL + '/product/deleteAll';
-export const UPDATE_PRODUCT_URL = BASE_URL + '/product/updateProduct/';
-export const GET_PRODUCT_URL = BASE_URL + '/product/getProduct/';
-export const GETALLL_PRODUCT_URL = BASE_URL + '/product/getAll';
+//web service for Annonce
+export const CREATE_ANNONCE_URL = BASE_URL + '/annonce/addAnnonce';
+export const DELETE_ANNONCE_URL = BASE_URL + '/annonce/deleteAnnonce/';
+export const UPDATE_ANNONCE_URL = BASE_URL + '/annonce/updateAnnonce/';
+export const GETALL_ANNONCE_URL = BASE_URL + '/annonce/getAll';
 
 //web service for Order

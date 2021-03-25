@@ -41,11 +41,24 @@ export default class AddSubCategory extends Component {
 		return (
 			<Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
 				<Row>
-					<Col xl={6} lg={12} md={12}>
+					<Col xl={8} lg={12} md={12}>
 						<Card>
 							<CardHeader>Form Grid</CardHeader>
 							<CardBody>
 								<Form>
+								<FormGroup row>
+										<Label for="exampleName" sm={2}>
+											Catégorie
+										</Label>
+										<Col sm={10}>
+											<select
+												name="select"
+												className="form-control"
+											>
+												<option>1</option>
+											</select>
+										</Col>
+									</FormGroup>
 									<FormGroup row>
 										<Label for="exampleName" sm={2}>
 											Title

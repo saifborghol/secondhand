@@ -7,5 +7,6 @@ route.delete('/deleteAll',SubCategoryController.deleteAll)
 route.put('/updateSubCategory/:id',SubCategoryController.updateSubCategory)
 route.get('/getSubCategory/:id',SubCategoryController.getSubCategory)
 route.get('/getAll',SubCategoryController.getAllSubCategorys)
+route.put('/pushCat/:id',SubCategoryController.pushCat)
 
 module.exports = route

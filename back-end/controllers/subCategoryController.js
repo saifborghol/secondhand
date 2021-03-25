@@ -110,5 +110,22 @@ module.exports = {
                 })
             }
         })
+    },
+    pushCat: function (req, res) {
+        subCategoryModel.updateOne({_id:req.params.id},{$push:{cat_id:req.body.cat_id}},function (err, SubCategorys) {
+            if (err) {
+                res.status(500), json({
+                    msg: "erreur",
+                    status: 500,
+                    data: null
+                })
+            } else {
+                res.status(200).json({
+                    msg: "Get all SubCategorys",
+                    status: 200,
+                    data: SubCategorys
+                })
+            }
+        })
     }
 }

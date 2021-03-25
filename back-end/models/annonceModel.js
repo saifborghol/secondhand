@@ -31,7 +31,7 @@ const annonceSchema = Schema(
 			ref: 'userModel',
 		},
 
-		prod_id: [productSchema],
+		product: [productSchema],
 	},
 	{ timestamps: true }
 );
