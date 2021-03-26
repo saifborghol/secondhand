@@ -124,28 +124,35 @@ module.exports = {
 				}
 			});
 	},
+
 	pullSubCat: function (req, res) {
-		categoryModel
-			.updateOne({_id:req.params.id},{$pull:{subcat:req.body.subcat}},function (err, Categorys) {
+		console.log('test', req.params.id);
+		categoryModel.updateOne(
+			{ _id: req.params.id },
+			{ $pull: { subcat: req.body.subcat } },
+			function (err, subCat) {
 				if (err) {
-					res.status(500),
-						json({
-							msg: 'erreur',
-							status: 500,
-							data: null,
-						});
+					res.status(500).json({
+						msg: 'erreur',
+						status: 500,
+						data: null,
+					});
 				} else {
 					res.status(200).json({
-						msg: 'Get all Categorys',
+						msg: 'Pull sub category',
 						status: 200,
-						data: Categorys,
+						data: subCat,
 					});
 				}
-			});
+			}
+		);
 	},
+
 	pushSubCat: function (req, res) {
-		categoryModel
-			.updateOne({_id:req.params.id},{$push:{subcat:req.body.subcat}},function (err, Categorys) {
+		categoryModel.updateOne(
+			{ _id: req.params.id },
+			{ $push: { subcat: req.body.subcat } },
+			function (err, Categorys) {
 				if (err) {
 					res.status(500),
 						json({
@@ -155,13 +162,12 @@ module.exports = {
 						});
 				} else {
 					res.status(200).json({
-						msg: 'Get all Categorys',
+						msg: 'Push sub category',
 						status: 200,
 						data: Categorys,
 					});
 				}
-			});
+			}
+		);
 	},
-
-
 };

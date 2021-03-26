@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 import CategoryController from '../../services/controllers/CategoryController';
 import SubCategoryController from '../../services/controllers/SubCategoryController';
 import { Button } from 'reactstrap';
-import { FaEdit } from 'react-icons/fa';
+import { MdEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
 
 const tableTypes = [''];
@@ -55,6 +55,16 @@ export default class ListCategories extends Component {
 		console.log('id: ', id);
 		localStorage.setItem('idSubCategory', id);
 		window.location.href = '/subCategory/updateSubCategory';
+	}
+
+	pullSubCat(id, data) {
+		let data1 = { subcat: data };
+		console.log('RES: pullSubCategory', id);
+		console.log('DATA: pullSubCategory', data1)
+		this.CategoryController.pullSubCat(id, data1).then(res => {
+		console.log('ressssssssss',res);
+			this.deleteSubCategory(data);
+		});
 	}
 
 	deleteSubCategory(id) {
@@ -154,9 +164,11 @@ export default class ListCategories extends Component {
 																							'transparent',
 																						border:
 																							'none',
+																						outline:
+																							'none',
 																					}}
 																				>
-																					<FaEdit
+																					<MdEdit
 																						size="20px"
 																						color="#11943A"
 																					/>
@@ -171,6 +183,8 @@ export default class ListCategories extends Component {
 																						backgroundColor:
 																							'transparent',
 																						border:
+																							'none',
+																						outline:
 																							'none',
 																					}}
 																				>
@@ -211,23 +225,28 @@ export default class ListCategories extends Component {
 																											'transparent',
 																										border:
 																											'none',
+																										outline:
+																											'none',
 																									}}
 																								>
-																									<FaEdit
+																									<MdEdit
 																										size="20px"
 																										color="#11943A"
 																									/>
 																								</button>
 																								<button
-																									onClick={() =>
-																										this.deleteSubCategory(
+																									onClick={() => {
+																										this.pullSubCat(
+																											cat._id,
 																											subcat._id,
-																										)
-																									}
+																										);
+																									}}
 																									style={{
 																										backgroundColor:
 																											'transparent',
 																										border:
+																											'none',
+																										outline:
 																											'none',
 																									}}
 																								>

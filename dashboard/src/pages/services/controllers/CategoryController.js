@@ -67,4 +67,28 @@ export default class CategoryController {
 				return err;
 			});
 	}
+
+	pullSubCat(id, data) {
+		console.log('data from controler', data);
+
+		return axios
+			.put(Constant.PULLSUBCAT_URL + id, data)
+			.then(res => {
+				return res;
+			})
+			.catch(err => {
+				return err;
+			});
+	}
+
+	pushSubCat(id, data) {
+		return axios
+			.put(Constant.PUSHSUBCAT_URL + id, data)
+			.then(res => {
+				return res;
+			})
+			.catch(err => {
+				return err;
+			});
+	}
 }

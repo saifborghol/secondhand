@@ -15,7 +15,7 @@ export default class AnnonceController {
 
 	getAllAnnonce() {
 		return axios
-			.post(Constant.GETALL_ANNONCE_URL)
+			.get(Constant.GETALL_ANNONCE_URL)
 			.then(res => {
 				return res;
 			})
@@ -24,10 +24,9 @@ export default class AnnonceController {
 			});
 	}
 
-
 	deleteAnnonce(id) {
 		return axios
-			.post(Constant.DELETE_ANNONCE_URL + id)
+			.delete(Constant.DELETE_ANNONCE_URL + id)
 			.then(res => {
 				return res;
 			})
@@ -38,7 +37,7 @@ export default class AnnonceController {
 
 	updatelAnnonce(data, id) {
 		return axios
-			.post(Constant.UPDATE_ANNONCE_URL + id, data)
+			.put(Constant.UPDATE_ANNONCE_URL + id, data)
 			.then(res => {
 				return res;
 			})

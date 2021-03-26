@@ -21,6 +21,8 @@ export const DELETEALL_CATEGORY_URL = BASE_URL + '/category/deleteAll';
 export const UPDATE_CATEGORY_URL = BASE_URL + '/category/updateCategory/';
 export const GET_CATEGORY_URL = BASE_URL + '/category/getCategory/';
 export const GETALL_CATEGORY_URL = BASE_URL + '/category/getAll';
+export const PULLSUBCAT_URL = BASE_URL + '/category/pullSubCat/';
+export const PUSHSUBCAT_URL = BASE_URL + '/category/pushSubCat/';
 
 //web service for SubCategory
 export const CREATE_SUBCATEGORY_URL = BASE_URL + '/subCategory/addSubCategory';

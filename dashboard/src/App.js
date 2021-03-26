@@ -186,7 +186,7 @@ class App extends React.Component {
 								
 								<Route
 									exact
-									path="/product/getAll"
+									path="/annonce/getAll"
 									component={ListAnnonces}
 								/>
 								

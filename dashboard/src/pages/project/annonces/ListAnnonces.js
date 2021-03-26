@@ -3,7 +3,6 @@ import Page from 'components/Page';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 import AnnonceController from '../../services/controllers/AnnonceController';
 
-import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 
 const tableTypes = [''];
@@ -18,7 +17,7 @@ export default class ListAnnonces extends Component {
 	}
 
 	getAllAnnonces() {
-		this.AnnonceController.getAllAnnonces().then(res => {
+		this.AnnonceController.getAllAnnonce().then(res => {
 			this.setState({ Annonces: res.data.data });
 		});
 	}
@@ -29,6 +28,10 @@ export default class ListAnnonces extends Component {
 			console.log('resDeleteAnnonce', res);
 			this.getAllAnnonces();
 		});
+	}
+
+	componentDidMount() {
+		this.getAllAnnonces();
 	}
 
 	render() {
@@ -58,6 +61,7 @@ export default class ListAnnonces extends Component {
 															<th>Date</th>
 															<th>Produit</th>
 															<th>Prix</th>
+															<th>Action</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -72,7 +76,7 @@ export default class ListAnnonces extends Component {
 																		</td>
 																		<td>
 																			{
-																				ann.user
+																				ann.user_id.name
 																			}
 																		</td>
 																		<td>
@@ -82,12 +86,12 @@ export default class ListAnnonces extends Component {
 																		</td>
 																		<td>
 																			{
-																				ann.prod
+																				ann.product.name
 																			}
 																		</td>
 																		<td>
 																			{
-																				ann.price
+																				ann.product.price
 																			}
 																		</td>
 																		<td>
@@ -102,6 +106,8 @@ export default class ListAnnonces extends Component {
 																						'transparent',
 																					border:
 																						'none',
+																					outline:
+																						'none',
 																				}}
 																			>
 																				<MdDelete
@@ -114,7 +120,6 @@ export default class ListAnnonces extends Component {
 																);
 															},
 														)}
-														
 													</tbody>
 												</Table>
 											</Card>

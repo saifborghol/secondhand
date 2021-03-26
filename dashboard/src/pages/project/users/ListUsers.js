@@ -53,9 +53,7 @@ export default class ListUsers extends Component {
 					<Row key={index}>
 						<Col>
 							<Card className="mb-2">
-								<CardHeader>
-									{tableType || 'default'}
-								</CardHeader>
+								
 								<CardBody>
 									<Row>
 										<Col>
@@ -119,6 +117,7 @@ export default class ListUsers extends Component {
 																						'transparent',
 																					border:
 																						'none',
+																						outline: 'none',
 																					paddingLeft:
 																						'20px',
 																				}}
