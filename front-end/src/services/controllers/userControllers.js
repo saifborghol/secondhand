@@ -2,13 +2,15 @@ import axios from "axios";
 
 import * as constant from "../constant";
 
-export const creatUser = (data) =>{
+export default class userControllers{
+    createUser (data){
     try{
         
-        return axios.post(constant.creat_user_url, data).then((res)=>{
+        return axios.post(constant.create_user_url, data).then((res)=>{
             return res
         });
     }catch(error){
         return error;
     }
+}
 };

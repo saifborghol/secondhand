@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 import Breadcrumb from "../common/breadcrumb";
 
-import {creatUser} from '../../services/controllers/userControllers'
+import UserController from '../../services/controllers/userControllers'
+
 class Register extends Component {
 
     constructor () {
@@ -14,6 +15,7 @@ class Register extends Component {
             password:"",
             error:{},
         };
+        this.UserController = new UserController();
     }
     validate = () => {
         let isError = false;
@@ -26,8 +28,7 @@ class Register extends Component {
         const regex1 = /^[a-zA-Z._-]+$/;
         if (this.state.name === "" || !regex1.test(this.state.name)) {
           isError = true;
-          errors.NameErr = "Veuillez verifier votre nom";
-          document.getElementById("fname").value = "";
+          errors.NameErr = "Veuillez verifier votre prénom";
         }
 
 
@@ -35,7 +36,6 @@ class Register extends Component {
         if (this.state.surName === "" || !regex4.test(this.state.surName)) {
           isError = true;
           errors.surNameErr = "Veuillez verifier votre nom";
-          document.getElementById("lname").value = "";
         }
 
 
@@ -50,12 +50,11 @@ class Register extends Component {
         const regex2 = /^[A-Za-z]\w{7,14}$/;
         if (this.state.password === "" || !regex2.test(this.state.password)) {
           isError = true;
-          errors.passwordErr = "Veuillez verifier votre password";
-          document.getElementById("review").value = "";
+          errors.passwordErr = "Veuillez verifier votre mot de passe";
+    
         }
         this.setState({
-          ...isError,
-          ...errors,
+          error: errors,
         });
         return isError;
       };
@@ -63,13 +62,6 @@ class Register extends Component {
       handleSubmit = async (e) => {
         try {
           const err = this.validate();
-        //  const Data = new Data();
-         
-        //   Data.append("name", this.state.name);
-        //   Data.append("surName", this.state.surName);
-        //   Data.append("email", this.state.email);
-        //   Data.append("password", this.state.password);
-         
          
           const Data={
               name:this.state.name,
@@ -79,10 +71,22 @@ class Register extends Component {
           }
           
           if (!err) {
-            await creatUser(Data).then((res) => {
+            await this.UserController.createUser(Data).then((res) => {
               console.log(res);
-             
+              
+              if (res.data.statut === 200){
               this.props.history.push("/");
+              }
+              else if (res.data.statut === 500){
+              console.log("Email exists!")
+              this.setState({
+                error: {
+                      ...this.state.error,
+                      emailErr: 'Cette email existe déja'
+                }
+            })
+              console.log(this.state);
+              }
             });
             
            
@@ -118,7 +122,7 @@ class Register extends Component {
                                                            this.setState({name : e.target.value});
                                                        }}
                                                        />
-                                                       <div style={{fontSize:12,color:"red"}}>{this.state.NameErr}</div>
+                                                       <label style={{paddingBottom: "20px",fontSize:12,color:"red"}}>{this.state.error.NameErr}</label>
                                                        
                                             </div>
                                             <div className="col-md-6">
@@ -127,6 +131,7 @@ class Register extends Component {
                                                        placeholder="Last Name"  onChange={(e)=>{
                                                         this.setState({surName : e.target.value});
                                                     }}/>
+                                                    <label style={{paddingBottom: "20px",fontSize:12,color:"red", marginTop:-20}}>{this.state.error.surNameErr}</label>
                                             </div>
                                         </div>
                                         <div className="form-row">
@@ -136,16 +141,22 @@ class Register extends Component {
                                                        placeholder="Email"  onChange={(e)=>{
                                                         this.setState({email : e.target.value});
                                                     }}/>
+                                                    <label style={{paddingBottom: "20px",fontSize:12,color:"red"}}>{this.state.error.emailErr}</label>
+
                                             </div>
                                             <div className="col-md-6">
                                                 <label htmlFor="review">Password</label>
+
                                                 <input name="password" type="password" className="form-control" id="review"
                                                        placeholder="Enter your password"  
                                                        onChange={(e)=>{
                                                         this.setState({password : e.target.value});
                                                     }}/>
+                                                <label style={{paddingBottom: "20px",fontSize:12,color:"red"}}>{this.state.error.passwordErr}</label>
+
+
                                             </div>
-                                            <a href="/" className="btn btn-solid" onClick={e=>{this.handleSubmit("/");}}>
+                                            <a className="btn btn-solid" onClick={e=>{this.handleSubmit();}}>
                                                     create Account</a>
                                         </div>
                                     </form>

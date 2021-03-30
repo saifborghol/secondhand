@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual';
 import './index.scss';
@@ -14,12 +14,6 @@ import { getAllProducts } from './actions';
 
 // Layouts
 import Fashion from './components/layouts/fashion/main';
-
-
-
-
-
-
 
 // Product Pages
 
@@ -69,6 +63,7 @@ import GridCols from './components/features/portfolio/grid-cols';
 import MasonaryGridCols from './components/features/portfolio/masonary-grid-cols';
 
 class Root extends React.Component {
+	
 	render() {
 		store.dispatch(getAllProducts());
 
