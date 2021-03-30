@@ -41,9 +41,6 @@ export default class ListAnnonces extends Component {
 					<Row key={index}>
 						<Col>
 							<Card className="mb-2">
-								<CardHeader>
-									{tableType || 'default'}
-								</CardHeader>
 								<CardBody>
 									<Row>
 										<Col>
@@ -76,7 +73,9 @@ export default class ListAnnonces extends Component {
 																		</td>
 																		<td>
 																			{
-																				ann.user_id.name
+																				ann
+																					.user_id
+																					.name
 																			}
 																		</td>
 																		<td>
@@ -86,20 +85,25 @@ export default class ListAnnonces extends Component {
 																		</td>
 																		<td>
 																			{
-																				ann.product.name
+																				ann
+																					.product
+																					.name
 																			}
 																		</td>
 																		<td>
 																			{
-																				ann.product.price
+																				ann
+																					.product
+																					.price
 																			}
 																		</td>
 																		<td>
 																			<button
-																				onClick={() =>
+																				onClick={() => {
+																					if (window.confirm('Êtes vous sûr de supprimer cette annonce?'))
 																					this.deleteAnnonce(
 																						ann._id,
-																					)
+																					)}
 																				}
 																				style={{
 																					backgroundColor:

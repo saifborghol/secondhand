@@ -104,7 +104,7 @@ export default class ListUsers extends Component {
 																				onClick={() => {
 																					if (
 																						window.confirm(
-																							'Are you sure you wish to delete this item?',
+																							'Êtes vous sûr de supprimer cet utilisateur?',
 																						)
 																					) {
 																						this.deleteUser(

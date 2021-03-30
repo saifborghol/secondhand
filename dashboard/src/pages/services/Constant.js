@@ -1,5 +1,9 @@
 export const BASE_URL = 'http://localhost:4000';
 
+//web service for Admin
+export const LOGIN_ADMIN_URL = BASE_URL + '/admin/login';
+
+
 //web service for User
 export const CREATE_USER_URL = BASE_URL + '/user/addUser';
 export const DELETE_USER_URL = BASE_URL + '/user/deleteUser/';

@@ -59,6 +59,8 @@ const getBasename = () => {
 	return `/${process.env.PUBLIC_URL.split('/').pop()}`;
 };
 
+
+
 class App extends React.Component {
 	render() {
 		return (
@@ -67,26 +69,19 @@ class App extends React.Component {
 					<Switch>
 						<LayoutRoute
 							exact
-							path="/login"
+							path="/"
 							layout={EmptyLayout}
 							component={props => (
 								<AuthPage {...props} authState={STATE_LOGIN} />
 							)}
 						/>
-						<LayoutRoute
-							exact
-							path="/signup"
-							layout={EmptyLayout}
-							component={props => (
-								<AuthPage {...props} authState={STATE_SIGNUP} />
-							)}
-						/>
+						
 
 						<MainLayout breakpoint={this.props.breakpoint}>
 							<React.Suspense fallback={<PageSpinner />}>
 								<Route
 									exact
-									path="/"
+									path="/main"
 									component={DashboardPage}
 								/>
 								<Route

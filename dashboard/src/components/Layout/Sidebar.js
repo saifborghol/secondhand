@@ -60,10 +60,7 @@ const pageContents = [
 ];
 
 const navItems = [
-	{ to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
-	{ to: '/charts', name: 'charts', exact: false, Icon: MdInsertChart },
-	{ to: '/widgets', name: 'widgets', exact: false, Icon: MdWidgets },
-	{ to: '/test', name: 'Buttons', exact: false, Icon: MdWidgets },
+	// { to: '/main', name: 'dashboard', exact: true, Icon: MdDashboard },
 	{
 		to: '/category/getAll',
 		name: 'Categories',

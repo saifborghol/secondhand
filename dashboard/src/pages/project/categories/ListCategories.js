@@ -60,9 +60,9 @@ export default class ListCategories extends Component {
 	pullSubCat(id, data) {
 		let data1 = { subcat: data };
 		console.log('RES: pullSubCategory', id);
-		console.log('DATA: pullSubCategory', data1)
+		console.log('DATA: pullSubCategory', data1);
 		this.CategoryController.pullSubCat(id, data1).then(res => {
-		console.log('ressssssssss',res);
+			console.log('ressssssssss', res);
 			this.deleteSubCategory(data);
 		});
 	}
@@ -174,11 +174,16 @@ export default class ListCategories extends Component {
 																					/>
 																				</button>
 																				<button
-																					onClick={() =>
-																						this.deleteCategory(
-																							cat._id,
+																					onClick={() => {
+																						if (
+																							window.confirm(
+																								'Êtes vous sûr de supprimer cette catégorie?',
+																							)
 																						)
-																					}
+																							this.deleteCategory(
+																								cat._id,
+																							);
+																					}}
 																					style={{
 																						backgroundColor:
 																							'transparent',
@@ -236,10 +241,15 @@ export default class ListCategories extends Component {
 																								</button>
 																								<button
 																									onClick={() => {
-																										this.pullSubCat(
-																											cat._id,
-																											subcat._id,
-																										);
+																										if (
+																											window.confirm(
+																												'Êtes vous sûr de supprimer cette sous-catégorie?',
+																											)
+																										)
+																											this.pullSubCat(
+																												cat._id,
+																												subcat._id,
+																											);
 																									}}
 																									style={{
 																										backgroundColor:
