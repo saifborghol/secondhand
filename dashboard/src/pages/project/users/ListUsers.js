@@ -66,7 +66,7 @@ export default class ListUsers extends Component {
 												>
 													<thead>
 														<tr>
-															<th>Name</th>
+															<th>Nom</th>
 															<th>Email</th>
 															<th>Image</th>
 															<th>Actions</th>

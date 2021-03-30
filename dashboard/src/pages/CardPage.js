@@ -2,7 +2,7 @@ import bg11Image from 'assets/img/bg/background_1920-11.jpg';
 import bg18Image from 'assets/img/bg/background_1920-18.jpg';
 import bg1Image from 'assets/img/bg/background_640-1.jpg';
 import bg3Image from 'assets/img/bg/background_640-3.jpg';
-import user1Image from 'assets/img/users/100_1.jpg';
+
 import { UserCard } from 'components/Card';
 import Page from 'components/Page';
 import { bgCards, gradientCards, overlayCards } from 'demos/cardPage';
@@ -151,7 +151,7 @@ const CardPage = () => {
       <Row>
         <Col md={5}>
           <UserCard
-            avatar={user1Image}
+            
             title="Chris"
             subtitle="Project Lead"
             text="Give me a star!"

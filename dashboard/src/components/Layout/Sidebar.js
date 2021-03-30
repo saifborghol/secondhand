@@ -99,9 +99,7 @@ class Sidebar extends React.Component {
 				/>
 				<div className={bem.e('content')}>
 					<Navbar>
-						<SourceLink className="navbar-brand d-flex">
-							<img src={logo} alt="logo" />
-						</SourceLink>
+						<img src={logo} alt="logo" />
 					</Navbar>
 					<Nav vertical>
 						{navItems.map(({ to, name, exact, Icon }, index) => (

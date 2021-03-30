@@ -54,7 +54,7 @@ class AuthForm extends React.Component {
 			this.AdminController.login(data).then(res => {
 				console.log('resss', res);
 				if (res.data.status === 'Success') {
-					window.location.href = '/main';
+					window.location.href = '/category';
 				}
 			});
 		}

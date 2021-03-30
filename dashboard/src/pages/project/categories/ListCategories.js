@@ -102,7 +102,7 @@ export default class ListCategories extends Component {
 										}
 										color="primary"
 									>
-										Add category
+										Ajouter catégorie
 									</Button>
 									&nbsp;&nbsp;&nbsp;
 									<Button
@@ -113,7 +113,7 @@ export default class ListCategories extends Component {
 										}
 										color="primary"
 									>
-										Add sub category
+										Ajouter sous-catégorie
 									</Button>
 									<br />
 									<br />
@@ -123,7 +123,7 @@ export default class ListCategories extends Component {
 												<Table>
 													<thead>
 														<tr>
-															<th>Title</th>
+															<th>Titre</th>
 															<th>Actions</th>
 														</tr>
 													</thead>
