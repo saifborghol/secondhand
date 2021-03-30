@@ -14,7 +14,7 @@ module.exports = {
 				}); //500 erreur serveur
 			} else {
 				res.json({
-					msg: 'Annonce added!',
+					msg: 'Announce added!',
 					statuts: 200,
 					data: annonce,
 				});
@@ -23,7 +23,7 @@ module.exports = {
 	},
 
 	deleteAnnonce: function (req, res) {
-		categoryModel.findByIdAndRemove({ _id: req.params.id }, (err, Annonce) => {
+		annonceModel.findByIdAndRemove({ _id: req.params.id }, (err, Annonce) => {
 			if (err) {
 				res.status(500),
 					json({
@@ -85,7 +85,7 @@ module.exports = {
 	},
 
 	getAllAnnonce: function (req, res) {
-		annonceModel.find({}).exec(function (err, Annonce) {
+		annonceModel.find({}).populate('user_id').exec(function (err, Annonce) {
 			if (err) {
 				res.status(500),
 					json({

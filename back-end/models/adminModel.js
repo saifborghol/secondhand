@@ -9,20 +9,13 @@ const saltRounds = 10;
 const uniqueValidator = require('mongoose-unique-validator');
 
 const adminSchema = Schema({
-	userName: {
+	username: {
 		type: String,
 		required: true,
 	},
 	password: {
 		type: String,
 		required: false,
-		validate: {
-			validator: function password1(p) {
-				var phone = /^[A-Za-z]\w{7,14}$/;
-				return phone.test(p);
-			},
-			message: 'you must provide a valid password',
-		},
 	},
 });
 

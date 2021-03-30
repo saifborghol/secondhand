@@ -39,7 +39,7 @@ export default class UpdateCategory extends Component {
 		).then(res => {
 			console.log('response', res);
 		});
-		window.location.href = '/category/getAll';
+		window.location.href = '/category';
 	}
 
 	getOneCategory() {
@@ -58,7 +58,7 @@ export default class UpdateCategory extends Component {
 		return (
 			<Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
 				<Row>
-					<Col xl={6} lg={12} md={12}>
+					<Col xl={8} lg={12} md={12}>
 						<Card>
 							<CardHeader>Form Grid</CardHeader>
 							<CardBody>

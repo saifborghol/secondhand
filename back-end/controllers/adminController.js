@@ -8,7 +8,7 @@ const _ = require('lodash');
 module.exports = {
 	createAdmin: function (req, res) {
 		const newAdmin = {
-			userName: req.body.userName,
+			username: req.body.username,
 			password: req.body.password,
 		};
 		adminModel.create(newAdmin, function (err, admin) {
@@ -28,7 +28,7 @@ module.exports = {
 
 	authentificateAdmin: function (req, res, next) {
 		adminModel.findOne(
-			{ userName: req.body.userName },
+			{ username: req.body.username },
 			function (err, userInfo) {
 				if (err || !userInfo) {
 					next(err);

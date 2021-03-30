@@ -13,17 +13,17 @@ import {
 	Row,
 } from 'reactstrap';
 
-import CategoryController from '../../services/controllers/CategoryController';
+import SubCategoryController from '../../services/controllers/SubCategoryController';
 
-export default class UpdateCategory extends Component {
+export default class UpdateSubCategory extends Component {
 	constructor() {
 		super();
 		this.state = {
 			title: '',
 			description: '',
 		};
-		this.CategoryController = new CategoryController();
-		this.getOneCategory();
+		this.SubCategoryController = new SubCategoryController();
+		this.getOneSubCategory();
 	}
 
 	handleSubmit(event) {
@@ -32,19 +32,19 @@ export default class UpdateCategory extends Component {
 			title: this.state.title,
 			description: this.state.description,
 		};
-		console.log('iiiiiiiiii', localStorage.getItem('idCategory'));
-		this.CategoryController.updateCategory(
-			localStorage.getItem('idCategory'),
+		console.log('iiiiiiiiii', localStorage.getItem('idSubCategory'));
+		this.SubCategoryController.updateSubCategory(
+			localStorage.getItem('idSubCategory'),
 			data,
 		).then(res => {
 			console.log('response', res);
 		});
-		window.location.href = '/category/getAll';
+		window.location.href = '/category';
 	}
 
-	getOneCategory() {
-		this.CategoryController.getCategoryByID(
-			localStorage.getItem('idCategory'),
+	getOneSubCategory() {
+		this.SubCategoryController.getSubCategoryByID(
+			localStorage.getItem('idSubCategory'),
 		).then(res => {
 			console.log('responsetttttt', res);
 			this.setState({
@@ -58,7 +58,7 @@ export default class UpdateCategory extends Component {
 		return (
 			<Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
 				<Row>
-					<Col xl={6} lg={12} md={12}>
+					<Col xl={8} lg={12} md={12}>
 						<Card>
 							<CardHeader>Form Grid</CardHeader>
 							<CardBody>

@@ -106,7 +106,7 @@ const ButtonGroupPage = () => {
                 <Button>Right</Button>
               </ButtonGroup>
 
-              <CardText className="mt-3">Default</CardText>
+              <CardText className="mt-3"></CardText>
               <ButtonGroup>
                 <Button>Left</Button>
                 <Button>Middle</Button>

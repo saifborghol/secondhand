@@ -45,10 +45,10 @@ export default class AddUser extends Component {
 		}
 
 		//PRENOM
-		// if ((this.state.surname === '') || !regex1.test(this.state.surname)) {
-		//   isError = true;
-		//   errors.prenomErr = 'veuillez verifier votre prenom'
-		// }
+		if ((this.state.surname === '') || !regex1.test(this.state.surname)) {
+		  isError = true;
+		  errors.prenomErr = 'veuillez verifier votre prenom'
+		}
 
 		//EMAIL
 		const regex2 = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i;
@@ -91,7 +91,7 @@ export default class AddUser extends Component {
 				console.log('response', res);
 			});
 		}
-		window.location.href = '/user/getAll';
+		window.location.href = '/user';
 	}
 
 	render() {

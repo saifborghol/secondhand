@@ -53,9 +53,7 @@ export default class ListUsers extends Component {
 					<Row key={index}>
 						<Col>
 							<Card className="mb-2">
-								<CardHeader>
-									{tableType || 'default'}
-								</CardHeader>
+								
 								<CardBody>
 									<Row>
 										<Col>
@@ -68,7 +66,7 @@ export default class ListUsers extends Component {
 												>
 													<thead>
 														<tr>
-															<th>Name</th>
+															<th>Nom</th>
 															<th>Email</th>
 															<th>Image</th>
 															<th>Actions</th>
@@ -106,7 +104,7 @@ export default class ListUsers extends Component {
 																				onClick={() => {
 																					if (
 																						window.confirm(
-																							'Are you sure you wish to delete this item?',
+																							'Êtes vous sûr de supprimer cet utilisateur?',
 																						)
 																					) {
 																						this.deleteUser(
@@ -119,6 +117,10 @@ export default class ListUsers extends Component {
 																						'transparent',
 																					border:
 																						'none',
+<<<<<<< HEAD
+=======
+																						outline: 'none',
+>>>>>>> 68c05ed9772cd55293d52256a0581b9b6bc2841b
 																					paddingLeft:
 																						'20px',
 																				}}

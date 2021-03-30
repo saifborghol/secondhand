@@ -14,6 +14,7 @@ import {
 } from 'reactstrap';
 
 import SubCategoryController from '../../services/controllers/SubCategoryController';
+import CategoryController from '../../services/controllers/CategoryController';
 
 export default class AddSubCategory extends Component {
 	constructor() {
@@ -21,31 +22,78 @@ export default class AddSubCategory extends Component {
 		this.state = {
 			title: '',
 			description: '',
+			cat: '',
+			Categories: [],
 		};
 		this.SubCategoryController = new SubCategoryController();
+		this.CategoryController = new CategoryController();
+	}
+
+	getAllCategories() {
+		this.CategoryController.getAllCategory().then(res => {
+			this.setState({ Categories: res.data.data });
+		});
+	}
+
+	pushSubCat(id, data) {
+		let data1 = { subcat: data };
+		this.CategoryController.pushSubCat(id, data1).then(res => {
+			console.log('pushSubCategory', res);
+		});
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
 		let data = {
 			title: this.state.title,
-			description: this.state.description
+			description: this.state.description,
 		};
 		this.SubCategoryController.AddSubCategory(data).then(res => {
 			console.log('response', res);
+			this.pushSubCat(this.state.cat, res.data.data._id);
+			window.location.href = '/category';
 		});
-		window.location.href = '/subCategory/getAll';
+	}
+
+	componentDidMount() {
+		this.getAllCategories();
 	}
 
 	render() {
 		return (
 			<Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
 				<Row>
-					<Col xl={6} lg={12} md={12}>
+					<Col xl={8} lg={12} md={12}>
 						<Card>
-							<CardHeader>Form Grid</CardHeader>
 							<CardBody>
 								<Form>
+									<FormGroup row>
+										<Label for="exampleName" sm={2}>
+											Catégorie
+										</Label>
+										<Col sm={10}>
+											<select
+												name="select"
+												className="form-control"
+												onChange={e =>
+													this.setState({
+														cat: e.target.value,
+													})
+												}
+											>
+												<option>
+													Choisir une catégorie
+												</option>
+												{this.state.Categories.map(
+													cat => (
+														<option value={cat._id}>
+															{cat.title}
+														</option>
+													),
+												)}
+											</select>
+										</Col>
+									</FormGroup>
 									<FormGroup row>
 										<Label for="exampleName" sm={2}>
 											Title
