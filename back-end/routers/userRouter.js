@@ -3,14 +3,10 @@ const route = require('express').Router();
 const multer = require('../middleware/multer');
 const middleware = require('../middleware/authentification');
 
-route.post('/addUser', multer.single('image'), userController.createUser);
+route.post('/addUser',userController.createUser);
 route.delete('/deleteUser/:id', userController.deleteUser);
 route.delete('/deleteAll', userController.deleteAll);
-route.post(
-	'/updateUser/:id',
-	multer.single('image'),
-	userController.updateUser
-);
+route.post('/updateUser/:id',multer.single('image'),userController.updateUser);
 route.get('/getUser/:id', userController.getUser);
 route.get('/getAll', userController.getAllUsers);
 route.post('/sendMailUser', userController.sendMailUser);

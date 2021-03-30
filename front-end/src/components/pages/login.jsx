@@ -46,7 +46,7 @@ class Login extends Component {
                                     <p>Sign up for a free account at our store. Registration is quick and easy. It
                                         allows you to be able to order from our shop. To start shopping click
                                         register.</p>
-                                    <a href="#" className="btn btn-solid">Create an Account</a>
+                                    <a href="pages/register" className="btn btn-solid">Create an Account</a>
                                 </div>
                             </div>
                         </div>

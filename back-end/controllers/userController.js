@@ -11,16 +11,11 @@ module.exports = {
 		const newUser = {
 			name: req.body.name,
 			surName: req.body.surName,
-			gender: req.body.gender,
-			birthDay: req.body.birthDay,
-			phone: req.body.phone,
-			adress: req.body.adress,
-			ville: req.body.ville,
 			email: req.body.email,
 			password: req.body.password,
-			image: req.file.filename,
+			//image: req.file.filename,
 		};
-		console.log(req.file.filename);
+		console.log('nneww',newUser);
 		userModel.create(newUser, function (err, user) {
 			if (err)
 				res.json({
@@ -80,11 +75,6 @@ module.exports = {
 		const newUser = {
 			name: req.body.name,
 			surName: req.body.surName,
-			gender: req.body.gender,
-			birthDay: req.body.birthDay,
-			phone: req.body.phone,
-			adress: req.body.adress,
-			ville: req.body.ville,
 			email: req.body.email,
 			password: req.body.password,
 			image: req.file.filename,

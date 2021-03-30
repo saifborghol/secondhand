@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Page from 'components/Page';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserTimes, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import CategoryController from '../../services/controllers/CategoryController';
+import SubCategoryController from '../../services/controllers/SubCategoryController';
 import { Button } from 'reactstrap';
+import { FaEdit } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
 
 const tableTypes = [''];
 
@@ -13,15 +14,14 @@ export default class ListCategories extends Component {
 		super();
 		this.state = {
 			Categories: [],
+			SubCategories: [],
 		};
 		this.CategoryController = new CategoryController();
+		this.SubCategoryController = new SubCategoryController();
 	}
 
+	//CATEGORY
 	addCategory(path) {
-		this.props.history.push(path);
-	}
-
-	addSubCategory(path) {
 		this.props.history.push(path);
 	}
 
@@ -33,20 +33,47 @@ export default class ListCategories extends Component {
 
 	deleteCategory(id) {
 		console.log('id: ', id);
-		this.CategoryController.deleteCategory(id).then(res => {
+		this.CategoryController.deleteSubCategory(id).then(res => {
 			console.log('resDeleteCategory', res);
 			this.getAllCategories();
 		});
-	}
-
-	componentDidMount() {
-		this.getAllCategories();
 	}
 
 	getAllCategories() {
 		this.CategoryController.getAllCategory().then(res => {
 			this.setState({ Categories: res.data.data });
 		});
+	}
+
+	//SUBCATEGORY
+
+	addSubCategory(path) {
+		this.props.history.push(path);
+	}
+
+	updateSubCategory(id) {
+		console.log('id: ', id);
+		localStorage.setItem('idSubCategory', id);
+		window.location.href = '/subCategory/updateSubCategory';
+	}
+
+	deleteSubCategory(id) {
+		console.log('id: ', id);
+		this.SubCategoryController.deleteSubCategory(id).then(res => {
+			console.log('resDeleteCategory', res);
+			this.getAllSubCategories();
+		});
+	}
+
+	getAllSubCategories() {
+		this.SubCategoryController.getAllSubCategory().then(res => {
+			this.setState({ SubCategories: res.data.data });
+		});
+	}
+
+	componentDidMount() {
+		this.getAllCategories();
+		this.getAllSubCategories();
 	}
 
 	render() {
@@ -71,13 +98,14 @@ export default class ListCategories extends Component {
 										Add category
 									</Button>
 									&nbsp;&nbsp;&nbsp;
-									<Button 
-									onClick={() =>
-										this.addSubCategory(
-											'/subCategory/addSubCategory',
-										)
-									}
-									color="primary">
+									<Button
+										onClick={() =>
+											this.addSubCategory(
+												'/subCategory/addSubCategory',
+											)
+										}
+										color="primary"
+									>
 										Add sub category
 									</Button>
 									<br />
@@ -95,13 +123,12 @@ export default class ListCategories extends Component {
 														<tr>
 															<th>Title</th>
 															<th>Description</th>
-															<th>Update</th>
-															<th>Delete</th>
+															<th>Actions</th>
 														</tr>
 													</thead>
 													<tbody>
 														{this.state.Categories.map(
-															cat => {
+															index,cat => {
 																return (
 																	<tr>
 																		<td>
@@ -128,14 +155,11 @@ export default class ListCategories extends Component {
 																						'none',
 																				}}
 																			>
-																				<FontAwesomeIcon
-																					icon={
-																						faUserEdit
-																					}
+																				<FaEdit
+																					size="20px"
+																					color="#11943A"
 																				/>
 																			</button>
-																		</td>
-																		<td>
 																			<button
 																				onClick={() =>
 																					this.deleteCategory(
@@ -149,10 +173,69 @@ export default class ListCategories extends Component {
 																						'none',
 																				}}
 																			>
-																				<FontAwesomeIcon
-																					icon={
-																						faUserTimes
-																					}
+																				<MdDelete
+																					size="20px"
+																					color="#B90303"
+																				/>
+																			</button>
+																		</td>
+																	</tr>
+
+																);
+															},
+														)}
+														{this.state.SubCategories.map(
+															subcat => {
+																return (
+																	<tr>
+																		<td style={{
+																			paddingLeft:
+																				'60px',
+																		}}>
+																			{
+																				subcat.title
+																			}
+																		</td>
+																		<td>
+																			{
+																				subcat.description
+																			}
+																		</td>
+																		<td>
+																			<button
+																				onClick={() =>
+																					this.updateSubCategory(
+																						subcat._id,
+																					)
+																				}
+																				style={{
+																					backgroundColor:
+																						'transparent',
+																					border:
+																						'none',
+																				}}
+																			>
+																				<FaEdit
+																					size="20px"
+																					color="#11943A"
+																				/>
+																			</button>
+																			<button
+																				onClick={() =>
+																					this.deleteSubCategory(
+																						subcat._id,
+																					)
+																				}
+																				style={{
+																					backgroundColor:
+																						'transparent',
+																					border:
+																						'none',
+																				}}
+																			>
+																				<MdDelete
+																					size="20px"
+																					color="#B90303"
 																				/>
 																			</button>
 																		</td>

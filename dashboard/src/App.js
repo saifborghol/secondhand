@@ -31,14 +31,8 @@ const AddUser = React.lazy(() => import('pages/project/users/AddUser'));
 const ListUsers = React.lazy(() => import('pages/project/users/ListUsers'));
 const UpdateUsers = React.lazy(() => import('pages/project/users/UpdateUsers'));
 
-const AddProduct = React.lazy(() =>
-	import('pages/project/products/AddProduct'),
-);
-const ListProducts = React.lazy(() =>
-	import('pages/project/products/ListProducts'),
-);
-const UpdateProducts = React.lazy(() =>
-	import('pages/project/products/UpdateProducts'),
+const ListAnnonces = React.lazy(() =>
+	import('pages/project/annonces/ListAnnonces'),
 );
 
 const AddCategory = React.lazy(() =>
@@ -188,22 +182,14 @@ class App extends React.Component {
 									component={UpdateUsers}
 								/>
 
-								{/* product */}
-								<Route
-									exact
-									path="/product/addProduct"
-									component={AddProduct}
-								/>
+								{/* Annonce */}
+								
 								<Route
 									exact
 									path="/product/getAll"
-									component={ListProducts}
+									component={ListAnnonces}
 								/>
-								<Route
-									exact
-									path="/product/updateProduct"
-									component={UpdateProducts}
-								/>
+								
 
 								{/* Category */}
 								<Route
@@ -220,6 +206,23 @@ class App extends React.Component {
 									exact
 									path="/category/updateCategory"
 									component={UpdateCategory}
+								/>
+
+								{/* SubCategory */}
+								<Route
+									exact
+									path="/subcategory/addSubCategory"
+									component={AddSubCategory}
+								/>
+								<Route
+									exact
+									path="/subcategory/getAll"
+									component={ListSubCategories}
+								/>
+								<Route
+									exact
+									path="/subcategory/updateSubCategory"
+									component={UpdateSubCategory}
 								/>
 							</React.Suspense>
 						</MainLayout>

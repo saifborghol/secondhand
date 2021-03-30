@@ -10,29 +10,21 @@ import './index.scss';
 import store from './store';
 import translations from './constants/translations';
 import { getAllProducts } from './actions';
-import Landing from './components/landing';
+
 
 // Layouts
 import Fashion from './components/layouts/fashion/main';
 
-//Collection Pages
-import CollectionLeftSidebar from './components/collection/collection-left-sidebar';
-import CollectionNoSidebar from './components/collection/collection-no-sidebar';
-import CollectionRightSidebar from './components/collection/collection-right-sidebar';
-import CollectionFullWidth from './components/collection/collection-full-width';
-import CollectionMetro from './components/collection/collection-metro';
+
+
+
+
+
 
 // Product Pages
-import LeftSideBar from './components/products/left-sidebar';
-import RightSideBar from './components/products/right-sidebar';
+
 import NoSideBar from './components/products/no-sidebar';
-import LeftImage from './components/products/left-image';
-import RightImage from './components/products/right-image';
-import Accordian from './components/products/accordian';
-import ColumnLeft from './components/products/column-left';
-import ColumnRight from './components/products/column-right';
-import Column from './components/products/column';
-import Vertical from './components/products/vertical';
+
 
 // Features
 import Layout from './components/app';
@@ -55,10 +47,7 @@ import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
 
-// Blog Pages
-import RightSide from './components/blogs/right-sidebar';
-import Details from './components/blogs/details';
-import BlogPage from './components/blogs/blog-page';
+
 
 // Theme Element
 import ElementTitle from './components/features/theme/element-title';
@@ -85,7 +74,7 @@ class Root extends React.Component {
 
 		return (
 			<Provider store={store}>
-				<IntlProvider translations={translations} locale="en">
+				<IntlProvider translations={translations} locale="fn">
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
 							<Switch>
@@ -93,74 +82,24 @@ class Root extends React.Component {
 								<Layout>
 									{/*Routes For Layouts*/}
 									<Route
-										exact
-										path={`${process.env.PUBLIC_URL}/`}
+										exact path={`${process.env.PUBLIC_URL}/`}
 										component={Fashion}
 									/>
 
-									{/*Routes For Features (Product Collection) */}
-									<Route
-										path={`${process.env.PUBLIC_URL}/left-sidebar/collection`}
-										component={CollectionLeftSidebar}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/no-sidebar/collection`}
-										component={CollectionNoSidebar}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/right-sidebar/collection`}
-										component={CollectionRightSidebar}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/full-width/collection`}
-										component={CollectionFullWidth}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/metro/collection`}
-										component={CollectionMetro}
-									/>
+									
+									
+									
+									
+									
 
 									{/*Routes For Single Product*/}
-									<Route
-										path={`${process.env.PUBLIC_URL}/left-sidebar/product/:id`}
-										component={LeftSideBar}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/right-sidebar/product/:id`}
-										component={RightSideBar}
-									/>
+									
+									
 									<Route
 										path={`${process.env.PUBLIC_URL}/no-sidebar/product/:id`}
 										component={NoSideBar}
 									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/col-left/product/:id`}
-										component={ColumnLeft}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/col-right/product/:id`}
-										component={ColumnRight}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/accordian/product/:id`}
-										component={Accordian}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/column/product/:id`}
-										component={Column}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/left-image/product/:id`}
-										component={LeftImage}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/right-image/product/:id`}
-										component={RightImage}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/vertical/product/:id`}
-										component={Vertical}
-									/>
+									
 
 									{/*Routes For custom Features*/}
 									<Route
@@ -308,19 +247,8 @@ class Root extends React.Component {
 										component={MasonaryGridCols}
 									/>
 
-									{/*Blog Pages*/}
-									<Route
-										path={`${process.env.PUBLIC_URL}/blog/right-sidebar`}
-										component={RightSide}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/blog/details`}
-										component={Details}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/blog/blog-page`}
-										component={BlogPage}
-									/>
+									
+									
 
 									{/* <Route exact path="*" component={PageNotFound} /> */}
 								</Layout>

@@ -1,4 +1,4 @@
-import logo200Image from 'assets/img/logo/logo_200.png';
+import logo from 'assets/img/logo/logo.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
@@ -54,7 +54,7 @@ class AuthForm extends React.Component {
         {showLogo && (
           <div className="text-center pb-4">
             <img
-              src={logo200Image}
+              src={logo}
               className="rounded"
               style={{ width: 60, height: 60, cursor: 'pointer' }}
               alt="logo"

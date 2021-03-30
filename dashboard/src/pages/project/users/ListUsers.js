@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Page from 'components/Page';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserTimes, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+
 import UserController from '../../services/controllers/UserController';
-import { Button } from 'reactstrap';
-import {DeleteIcon} from '@material-ui/icons/Delete';
+
+import { MdDelete } from 'react-icons/md';
 
 const tableTypes = [''];
 
@@ -58,16 +57,6 @@ export default class ListUsers extends Component {
 									{tableType || 'default'}
 								</CardHeader>
 								<CardBody>
-									<Button
-										onClick={() =>
-											this.nextPath('/user/addUser')
-										}
-										color="primary"
-									>
-										Add user
-									</Button>
-									<br />
-									<br />
 									<Row>
 										<Col>
 											<Card body>
@@ -114,39 +103,30 @@ export default class ListUsers extends Component {
 																		</td>
 																		<td>
 																			<button
-																				onClick={() =>
-																					this.updateUser(
-																						user._id,
-																						'user/updateUser',
-																					)
-																				}
-																				style={{
-																					backgroundColor:
-																						'transparent',
-																					border:
-																						'none',
-																				}}
-																			>
-																				<FontAwesomeIcon
-																					icon={
-																						faUserEdit
+																				onClick={() => {
+																					if (
+																						window.confirm(
+																							'Are you sure you wish to delete this item?',
+																						)
+																					) {
+																						this.deleteUser(
+																							user._id,
+																						);
 																					}
-																				/>
-																			</button>
-																			<button
-																				onClick={() =>
-																					this.deleteUser(
-																						user._id,
-																					)
-																				}
+																				}}
 																				style={{
 																					backgroundColor:
 																						'transparent',
 																					border:
 																						'none',
+																					paddingLeft:
+																						'20px',
 																				}}
 																			>
-																				<DeleteIcon />
+																				<MdDelete
+																					size="20px"
+																					color="#B90303"
+																				/>
 																			</button>
 																		</td>
 																	</tr>

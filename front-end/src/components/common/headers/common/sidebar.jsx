@@ -87,7 +87,7 @@ class SideBar extends Component {
                     <ul id="sub-menu" className="sidebar-menu">
                         <li>
                             <Link to="#" onClick={(e) => this.handleMegaSubmenu(e)}>
-                                clothing
+                                Vetement
                                 <span className="sub-arrow"></span>
                             </Link>
                             <ul className="mega-menu clothing-menu">
