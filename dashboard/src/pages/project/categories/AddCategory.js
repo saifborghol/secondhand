@@ -34,7 +34,7 @@ export default class AddCategory extends Component {
 		this.CategoryController.AddCategory(data).then(res => {
 			console.log('response', res);
 		});
-		window.location.href = '/category/getAll';
+		window.location.href = '/category';
 	}
 
 	render() {

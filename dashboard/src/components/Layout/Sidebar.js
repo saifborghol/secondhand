@@ -37,7 +37,7 @@ const sidebarBackground = {
 
 const navContents = [
 	{
-		to: '/category/getAll',
+		to: '/category',
 		name: 'Categories list',
 		exact: false,
 		Icon: MdBorderAll,
@@ -62,13 +62,13 @@ const pageContents = [
 const navItems = [
 	// { to: '/main', name: 'dashboard', exact: true, Icon: MdDashboard },
 	{
-		to: '/category/getAll',
+		to: '/category',
 		name: 'Categories',
 		exact: false,
 		Icon: MdWidgets,
 	},
-	{ to: '/user/getAll', name: 'Utilisateurs', exact: false, Icon: MdWidgets },
-	{ to: '/annonce/getAll', name: 'Annonces', exact: false, Icon: MdWidgets },
+	{ to: '/user', name: 'Utilisateurs', exact: false, Icon: MdWidgets },
+	{ to: '/annonce', name: 'Annonces', exact: false, Icon: MdWidgets },
 ];
 
 const bem = bn.create('sidebar');

@@ -168,7 +168,7 @@ class App extends React.Component {
 								/>
 								<Route
 									exact
-									path="/user/getAll"
+									path="/user"
 									component={ListUsers}
 								/>
 								<Route
@@ -181,7 +181,7 @@ class App extends React.Component {
 								
 								<Route
 									exact
-									path="/annonce/getAll"
+									path="/annonce"
 									component={ListAnnonces}
 								/>
 								
@@ -194,7 +194,7 @@ class App extends React.Component {
 								/>
 								<Route
 									exact
-									path="/category/getAll"
+									path="/category"
 									component={ListCategories}
 								/>
 								<Route

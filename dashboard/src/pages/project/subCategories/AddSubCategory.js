@@ -51,7 +51,7 @@ export default class AddSubCategory extends Component {
 		this.SubCategoryController.AddSubCategory(data).then(res => {
 			console.log('response', res);
 			this.pushSubCat(this.state.cat, res.data.data._id);
-			window.location.href = '/category/getAll';
+			window.location.href = '/category';
 		});
 	}
 

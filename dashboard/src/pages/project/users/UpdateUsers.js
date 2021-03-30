@@ -113,7 +113,7 @@ export default class UpdateUsers extends Component {
 		).then(res => {
 			console.log('response', res);
 		});
-		window.location.href = '/user/getAll';
+		window.location.href = '/user';
 	}
 
 	render() {

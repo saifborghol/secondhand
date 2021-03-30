@@ -91,7 +91,7 @@ export default class AddUser extends Component {
 				console.log('response', res);
 			});
 		}
-		window.location.href = '/user/getAll';
+		window.location.href = '/user';
 	}
 
 	render() {

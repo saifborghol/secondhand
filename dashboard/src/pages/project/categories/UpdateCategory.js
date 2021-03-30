@@ -39,7 +39,7 @@ export default class UpdateCategory extends Component {
 		).then(res => {
 			console.log('response', res);
 		});
-		window.location.href = '/category/getAll';
+		window.location.href = '/category';
 	}
 
 	getOneCategory() {
