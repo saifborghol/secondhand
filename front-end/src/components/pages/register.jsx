@@ -59,7 +59,7 @@ class Register extends Component {
         return isError;
       };
 
-      handleSubmit = async (e) => {
+      handleSubmit = () => {
         try {
           const err = this.validate();
          
@@ -71,7 +71,7 @@ class Register extends Component {
           }
           
           if (!err) {
-            await this.UserController.createUser(Data).then((res) => {
+            this.UserController.createUser(Data).then((res) => {
               console.log(res);
               
               if (res.data.statut === 200){
@@ -156,7 +156,7 @@ class Register extends Component {
 
 
                                             </div>
-                                            <a className="btn btn-solid" onClick={e=>{this.handleSubmit();}}>
+                                            <a className="btn btn-solid" onClick={ () => this.handleSubmit()}>
                                                     create Account</a>
                                         </div>
                                     </form>
