@@ -53,7 +53,6 @@ export default class ListUsers extends Component {
 					<Row key={index}>
 						<Col>
 							<Card className="mb-2">
-								
 								<CardBody>
 									<Row>
 										<Col>
@@ -117,12 +116,8 @@ export default class ListUsers extends Component {
 																						'transparent',
 																					border:
 																						'none',
-<<<<<<< HEAD
-=======
-																						outline: 'none',
->>>>>>> 68c05ed9772cd55293d52256a0581b9b6bc2841b
-																					paddingLeft:
-																						'20px',
+																					outline:
+																						'none',
 																				}}
 																			>
 																				<MdDelete

@@ -41,7 +41,7 @@ const userSchema = Schema({
 		},
 	},
 	image: {
-		type: String,
+		type: String
 	},
 	resetLink: {
 		type: String,

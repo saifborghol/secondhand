@@ -57,8 +57,6 @@ export default class ListCategories extends Component {
 		window.location.href = '/subCategory/updateSubCategory';
 	}
 
-<<<<<<< HEAD
-=======
 	pullSubCat(id, data) {
 		let data1 = { subcat: data };
 		console.log('RES: pullSubCategory', id);
@@ -69,16 +67,11 @@ export default class ListCategories extends Component {
 		});
 	}
 
->>>>>>> 68c05ed9772cd55293d52256a0581b9b6bc2841b
 	deleteSubCategory(id) {
 		console.log('id: ', id);
 		this.SubCategoryController.deleteSubCategory(id).then(res => {
 			console.log('resDeleteCategory', res);
-<<<<<<< HEAD
-			this.getAllSubCategories();
-=======
 			this.getAllCategories();
->>>>>>> 68c05ed9772cd55293d52256a0581b9b6bc2841b
 		});
 	}
 
@@ -136,9 +129,6 @@ export default class ListCategories extends Component {
 													</thead>
 													<tbody>
 														{this.state.Categories.map(
-<<<<<<< HEAD
-															index,cat => {
-=======
 															(cat, index) => {
 																console.log(
 																	'vvvvvvvvv',
@@ -148,7 +138,6 @@ export default class ListCategories extends Component {
 																	],
 																);
 
->>>>>>> 68c05ed9772cd55293d52256a0581b9b6bc2841b
 																return (
 																	<React.Fragment>
 																		<tr>
@@ -164,75 +153,6 @@ export default class ListCategories extends Component {
 																						'120px',
 																				}}
 																			>
-<<<<<<< HEAD
-																				<MdDelete
-																					size="20px"
-																					color="#B90303"
-																				/>
-																			</button>
-																		</td>
-																	</tr>
-
-																);
-															},
-														)}
-														{this.state.SubCategories.map(
-															subcat => {
-																return (
-																	<tr>
-																		<td style={{
-																			paddingLeft:
-																				'60px',
-																		}}>
-																			{
-																				subcat.title
-																			}
-																		</td>
-																		<td>
-																			{
-																				subcat.description
-																			}
-																		</td>
-																		<td>
-																			<button
-																				onClick={() =>
-																					this.updateSubCategory(
-																						subcat._id,
-																					)
-																				}
-																				style={{
-																					backgroundColor:
-																						'transparent',
-																					border:
-																						'none',
-																				}}
-																			>
-																				<FaEdit
-																					size="20px"
-																					color="#11943A"
-																				/>
-																			</button>
-																			<button
-																				onClick={() =>
-																					this.deleteSubCategory(
-																						subcat._id,
-																					)
-																				}
-																				style={{
-																					backgroundColor:
-																						'transparent',
-																					border:
-																						'none',
-																				}}
-																			>
-																				<MdDelete
-																					size="20px"
-																					color="#B90303"
-																				/>
-																			</button>
-																		</td>
-																	</tr>
-=======
 																				<button
 																					onClick={() =>
 																						this.updateCategory(
@@ -352,7 +272,6 @@ export default class ListCategories extends Component {
 																			)}
 																		</tr>
 																	</React.Fragment>
->>>>>>> 68c05ed9772cd55293d52256a0581b9b6bc2841b
 																);
 															},
 														)}

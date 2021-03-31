@@ -42,8 +42,6 @@ class AuthForm extends React.Component {
 		return isError;
 	};
 
-
-
 	handleSubmit = event => {
 		const err = this.validate();
 		const data = {
@@ -55,7 +53,7 @@ class AuthForm extends React.Component {
 				console.log('resss', res);
 				if (res.data.status === 'Success') {
 					window.location.href = '/category';
-				}
+				} 
 			});
 		}
 	};
@@ -120,6 +118,7 @@ class AuthForm extends React.Component {
 				<FormGroup>
 					<Label for={passwordLabel}>{passwordLabel}</Label>
 					<Input
+						type="password"
 						onChange={e =>
 							this.setState({ password: e.target.value })
 						}
