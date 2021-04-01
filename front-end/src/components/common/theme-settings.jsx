@@ -256,7 +256,7 @@ class ThemeSettings extends Component {
                                                 <h4>left sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
                                                      aria-label="Basic example">
-                                                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}
+                                                    <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`}
                                                           className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>
@@ -333,7 +333,7 @@ class ThemeSettings extends Component {
                                                 <h4>left sidebar</h4>
                                                 <div className="btn-group demo-btn" role="group"
                                                      aria-label="Basic example">
-                                                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`}
+                                                    <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/1`}
                                                           className="btn new-tab-btn">Preview
                                                     </Link>
                                                 </div>

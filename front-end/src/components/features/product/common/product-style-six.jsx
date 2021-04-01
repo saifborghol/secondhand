@@ -22,7 +22,7 @@ class ProductStyleSix extends Component {
                         {(product.sale == true)? <span className="lable4">on sale</span> : ''}
                     </div>
                     <div className="front">
-                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
+                        <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`} ><img
                             src={product.variants?
                                 product.variants[0].images
                                 :product.pictures[0]}
@@ -53,7 +53,7 @@ class ProductStyleSix extends Component {
                         <div className="rating">
                             {RatingStars}
                         </div>
-                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}>
+                        <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`}>
                             <h6>{product.name}</h6>
                         </Link>
                         <h4>{symbol}{product.price-(product.price*product.discount/100)}</h4>

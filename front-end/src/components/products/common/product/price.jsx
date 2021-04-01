@@ -123,21 +123,7 @@ class Price extends Component {
                         </div>
                         <span>{this.state.stock}</span>
                         <h6 className="product-title">quantity</h6>
-                        <div className="qty-box">
-                            <div className="input-group">
-                                  <span className="input-group-prepend">
-                                    <button type="button" className="btn quantity-left-minus" onClick={this.minusQty} data-type="minus" data-field="">
-                                     <i className="fa fa-angle-left"></i>
-                                    </button>
-                                  </span>
-                                <input type="text" name="quantity" value={this.state.quantity} onChange={this.changeQty} className="form-control input-number" />
-                                <span className="input-group-prepend">
-                                <button type="button" className="btn quantity-right-plus" onClick={this.plusQty} data-type="plus" data-field="">
-                                <i className="fa fa-angle-right"></i>
-                                </button>
-                               </span>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div className="product-buttons" >
                         <a className="btn btn-solid" onClick={() => addToCartClicked(item, this.state.quantity)}>add to cart</a>

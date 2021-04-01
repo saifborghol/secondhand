@@ -465,7 +465,7 @@ class Landing extends Component {
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/1`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/1`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/product/6.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>left sidebar</h3>
@@ -520,7 +520,7 @@ class Landing extends Component {
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/shop/1.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>left sidebar</h3>
@@ -541,35 +541,35 @@ class Landing extends Component {
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/shop/4.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>sidebar popup</h3>
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/shop/5.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>infinite scroll</h3>
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/shop/7.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>3 grid</h3>
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/shop/8.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>6 grid</h3>
                                             </Link>
                                         </div>
                                         <div className="col-xl-3 col-sm-6 col-12 demo-box">
-                                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} target="_blank">
+                                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} target="_blank">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/landing-page/special features/shop/9.jpg`}
                                                     className="img-fluid lazyload" />
                                                 <h3>list view</h3>

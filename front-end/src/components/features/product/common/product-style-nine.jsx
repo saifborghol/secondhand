@@ -31,7 +31,7 @@ class ProductStyleNine extends Component {
             <div className="product-box">
                 <div className="img-wrapper">
                     <div className="front">
-                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
+                        <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`} ><img
                             src={product.variants?
                                 this.state.image?this.state.image:product.variants[0].images
                                 :product.pictures[0]}
@@ -39,7 +39,7 @@ class ProductStyleNine extends Component {
                             alt="" /></Link>
                     </div>
                     <div className="back">
-                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
+                        <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`} ><img
                             src={product.variants?
                                 this.state.image?this.state.image:product.variants[0].images
                                 :product.pictures[0]}
@@ -52,7 +52,7 @@ class ProductStyleNine extends Component {
                         <div className="rating">
                             {RatingStars}
                         </div>
-                        <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}>
+                        <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`}>
                             <h6>{product.name}</h6>
                         </Link>
                         <h4>{symbol}{product.price-(product.price*product.discount/100)}

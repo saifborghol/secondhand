@@ -31,8 +31,8 @@ class FooterOne extends Component {
                                 <div className="col-lg-6">
                                     <div className="subscribe">
                                         <div>
-                                            <h4>KNOW IT ALL FIRST!</h4>
-                                            <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter. </p>
+                                            <h4>CONNAISSEZ TOUT D'ABORD!</h4>
+                                            <p>Ne manquez rien de l'occasion en vous inscrivant à notre lettre d'information.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -90,10 +90,10 @@ class FooterOne extends Component {
                                     </div>
                                     <div className="footer-contant">
                                         <ul>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >womens</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >clothing</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >accessories</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >featured</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} >womens</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} >clothing</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} >accessories</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} >featured</Link></li>
                                         </ul>
                                     </div>
                                 </div>

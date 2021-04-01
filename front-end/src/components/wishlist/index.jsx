@@ -40,13 +40,13 @@ class wishList extends Component {
                                             <tbody key={index}>
                                             <tr>
                                                 <td>
-                                                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${item.id}`}>
                                                         <img src={item.variants?
                                                                     item.variants[0].images
                                                                     :item.pictures[0]} alt="" />
                                                     </Link>
                                                 </td>
-                                                <td><Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${item.id}`}>{item.name}</Link>
+                                                <td><Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${item.id}`}>{item.name}</Link>
                                                     <div className="mobile-cart-content row">
                                                         <div className="col-xs-3">
                                                             <p>in stock</p>
@@ -88,7 +88,7 @@ class wishList extends Component {
                         </div>
                         <div className="row wishlist-buttons">
                             <div className="col-12">
-                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">continue shopping</Link>
+                                <Link to={`${process.env.PUBLIC_URL}/no-sidebar/collection`} className="btn btn-solid">continue shopping</Link>
                                 <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid">check out</Link>
                             </div>
                         </div>

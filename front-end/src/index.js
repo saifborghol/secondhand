@@ -200,7 +200,7 @@ class Root extends React.Component {
 									<Route
 										path={`${
 											process.env.PUBLIC_URL
-										}/features/element-product-box`}
+										}/features/element-product-no-slider`}
 										component={ElementProductBox}
 									/>
 									<Route

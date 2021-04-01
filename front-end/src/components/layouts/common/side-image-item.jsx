@@ -27,7 +27,7 @@ class SideImageItem extends Component {
         return (
             <div className="product-box2">
                 <div className="media">
-                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
+                    <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`} ><img
                         src={`${
                             product.variants?
                                 this.state.image?this.state.image:product.variants[0].images
@@ -40,7 +40,7 @@ class SideImageItem extends Component {
                             <div className="rating">
                                 {RatingStars}
                             </div>
-                            <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}>
+                            <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`}>
                                 <h6>{product.name}</h6>
                             </Link>
                             <h4>{symbol}{product.price-(product.price*product.discount/100)}

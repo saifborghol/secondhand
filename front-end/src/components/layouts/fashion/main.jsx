@@ -41,7 +41,7 @@ class Fashion extends Component {
 													<Link
 														to={`${
 															process.env.PUBLIC_URL
-														}/left-sidebar/collection`}
+														}/no-sidebar/collection`}
 														className="btn btn-solid"
 													>
 														Commencer à vendre
