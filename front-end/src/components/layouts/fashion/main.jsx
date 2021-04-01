@@ -25,11 +25,7 @@ class Fashion extends Component {
 		return (
 			<div>
 				<Helmet>
-					<title>MultiKart | Fashion Store</title>
-					<meta
-						name="description"
-						content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses."
-					/>
+					<title>secondhand</title>
 				</Helmet>
 				{/*Home Slider*/}
 				<section className="p-0">
@@ -60,16 +56,6 @@ class Fashion extends Component {
 						
 					</Slider>
 				</section>
-				{/*Home Section End*/}
-
-				
-				{/*collection banner end*/}
-
-				<TopCollection type={'women'} />
-
-				
-				
-				{/*Parallax banner End*/}
 
 				<SpecialProducts />
 

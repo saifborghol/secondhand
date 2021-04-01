@@ -87,7 +87,7 @@ class HeaderOne extends Component {
 					{this.state.isLoading ? <Pace color="#27ae60" /> : null}
 					<div className="mobile-fix-option" />
 					{/*Top Header Component*/}
-					<TopBar />
+					{/* <TopBar /> */}
 
 					<div className="container">
 						<div className="row">
@@ -115,106 +115,29 @@ class HeaderOne extends Component {
 										{/*Top Navigation Bar Component*/}
 										<NavBar />
 
-										<div>
+										
 											<div className="icon-nav">
 												<ul>
-													<li className="onhover-div mobile-search">
-														<div>
-															<img
-																src={`${
-																	process.env.PUBLIC_URL
-																}/assets/images/icon/search.png`}
-																onClick={this.openSearch}
-																className="img-fluid"
-																alt=""
-															/>
-															<i
-																className="fa fa-search"
-																onClick={this.openSearch}
-															/>
-														</div>
-													</li>
-													<li className="onhover-div mobile-setting">
-														<div>
-															<img
-																src={`${
-																	process.env.PUBLIC_URL
-																}/assets/images/icon/setting.png`}
-																className="img-fluid"
-																alt=""
-															/>
-															<i className="fa fa-cog" />
-														</div>
-														<div className="show-div setting">
-															<h6>language</h6>
-															<ul>
-																<li>
-																	<a
-																		href={null}
-																		onClick={() => this.changeLanguage('en')}
-																	>
-																		English
-																	</a>{' '}
-																</li>
-																<li>
-																	<a
-																		href={null}
-																		onClick={() => this.changeLanguage('fn')}
-																	>
-																		French
-																	</a>{' '}
-																</li>
-															</ul>
-															<h6>currency</h6>
-															<ul className="list-inline">
-																<li>
-																	<a
-																		href={null}
-																		onClick={() =>
-																			this.props.changeCurrency('€')
-																		}
-																	>
-																		euro
-																	</a>{' '}
-																</li>
-																<li>
-																	<a
-																		href={null}
-																		onClick={() =>
-																			this.props.changeCurrency('₹')
-																		}
-																	>
-																		rupees
-																	</a>{' '}
-																</li>
-																<li>
-																	<a
-																		href={null}
-																		onClick={() =>
-																			this.props.changeCurrency('£')
-																		}
-																	>
-																		pound
-																	</a>{' '}
-																</li>
-																<li>
-																	<a
-																		href={null}
-																		onClick={() =>
-																			this.props.changeCurrency('$')
-																		}
-																	>
-																		doller
-																	</a>{' '}
-																</li>
-															</ul>
-														</div>
-													</li>
+													<Link to="/register">
+														<li
+															
+														>
+															<a>S'inscrire</a>
+														</li>
+													</Link>
+													<Link to="/login">
+														<li
+															
+														>
+															<a>Se connecter</a>
+														</li>
+													</Link>
 													{/*Header Cart Component */}
 													<CartContainer />
 												</ul>
+												<div className="col-lg-6 text-right" />
 											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>

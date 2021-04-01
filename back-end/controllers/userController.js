@@ -15,7 +15,7 @@ module.exports = {
 			password: req.body.password,
 			//image: req.file.filename,
 		};
-		console.log('nneww',newUser);
+		console.log('nneww', newUser);
 		userModel.create(newUser, function (err, user) {
 			if (err)
 				res.json({
@@ -164,38 +164,49 @@ module.exports = {
 	},
 
 	authentificateUser: function (req, res, next) {
-		userModel.findOne({ email: req.body.email }, function (err, userInfo) {
-			if (err || !userInfo) {
-				next(err);
-			} else {
-				if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-					const token = jwt.sign(
-						{
-							id: userInfo._id,
-						},
-						req.app.get('secretKey'),
-						{ expiresIn: '2h' }
-					);
-					var refreshToken = randtoken.uid(256);
-					refreshTokens[refreshToken] = userInfo._id;
-					res.json({
-						status: 'Success',
-						message: 'User found!',
-						data: {
-							user: userInfo,
-							token: token,
-							refreshtoken: refreshToken,
-						},
-					});
+		userModel
+			.findOne({
+				email: req.body.email,
+			})
+			.exec(function (err, userInfo) {
+				if (err) {
+					next(err);
 				} else {
-					res.json({
-						status: 'Error',
-						message: 'Invalid email/password!',
-						data: null,
-					});
+					if (userInfo != null) {
+						if (bcrypt.compareSync(req.body.password, userInfo.password)) {
+							const token = jwt.sign(
+								{
+									id: userInfo._id,
+								},
+								req.app.get('secretKey'),
+								{ expiresIn: '60m' }
+							);
+							var refreshToken = randtoken.uid(256);
+							refreshTokens[refreshToken] = userInfo._id;
+
+							res.json({
+								status: 'Success',
+								message: 'User found!',
+								data: {
+									user: userInfo,
+									token: token,
+									refreshtoken: refreshToken,
+								},
+							});
+						} else {
+							res.json({
+								status: 401,
+								message: 'Invalid password!',
+								data: null,
+							});
+						}
+					} else {
+						res
+						
+							.json({ status: 401, message: 'Invalid email!', data: null });
+					}
 				}
-			}
-		});
+			});
 	},
 
 	logoutUser: function logout(req, res, next) {

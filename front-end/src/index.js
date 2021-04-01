@@ -137,11 +137,11 @@ class Root extends React.Component {
 										component={lookbook}
 									/>
 									<Route
-										path={`${process.env.PUBLIC_URL}/pages/login`}
+										path={`${process.env.PUBLIC_URL}/login`}
 										component={Login}
 									/>
 									<Route
-										path={`${process.env.PUBLIC_URL}/pages/register`}
+										path={`${process.env.PUBLIC_URL}/register`}
 										component={Register}
 									/>
 									<Route
