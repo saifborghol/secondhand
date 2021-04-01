@@ -17,12 +17,12 @@ class ElementBanner extends Component {
                                 <a href="#">
                                     <div className="collection-banner p-right text-center">
                                         <div className="img-part">
-                                            <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner1.jpg`}
+                                            <img src={`${process.env.PUBLIC_URL}/assets/images/manfash.jpg`}
                                                  className="img-fluid blur-up lazyload bg-img" alt="" />
                                         </div>
                                         <div className="contain-banner">
                                             <div>
-                                                <h4>save 30%</h4>
+                                                
                                                 <h2>men</h2>
                                             </div>
                                         </div>
@@ -33,12 +33,12 @@ class ElementBanner extends Component {
                                 <a href="#">
                                     <div className="collection-banner p-right text-center">
                                         <div className="img-part">
-                                            <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner2.jpg`}
+                                            <img src={`${process.env.PUBLIC_URL}/assets/images/womfash.jpg`}
                                                  className="img-fluid blur-up lazyload bg-img" alt="" />
                                         </div>
                                         <div className="contain-banner">
                                             <div>
-                                                <h4>save 60%</h4>
+                                                
                                                 <h2>women</h2>
                                             </div>
                                         </div>
@@ -120,7 +120,7 @@ class ElementBanner extends Component {
                                         </div>
                                         <div className="contain-banner banner-4">
                                             <div>
-                                                <h4>save 30%</h4>
+                                                
                                                 <h2>men</h2>
                                             </div>
                                         </div>
@@ -136,7 +136,7 @@ class ElementBanner extends Component {
                                         </div>
                                         <div className="contain-banner banner-4">
                                             <div>
-                                                <h4>save 60%</h4>
+                                                
                                                 <h2>women</h2>
                                             </div>
                                         </div>
@@ -152,7 +152,7 @@ class ElementBanner extends Component {
                                         </div>
                                         <div className="contain-banner banner-4">
                                             <div>
-                                                <h4>save 60%</h4>
+                                                
                                                 <h2>women</h2>
                                             </div>
                                         </div>
@@ -168,7 +168,7 @@ class ElementBanner extends Component {
                                         </div>
                                         <div className="contain-banner banner-4">
                                             <div>
-                                                <h4>save 60%</h4>
+                                               
                                                 <h2>women</h2>
                                             </div>
                                         </div>

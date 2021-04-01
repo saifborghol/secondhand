@@ -203,7 +203,7 @@ class ElementCategory extends Component {
                                         <h6>on sale</h6>
                                         <a href="#">
                                             <h2>tucker bag</h2>
-                                        </a> <a href="#" className="btn btn-solid category-btn">save 30% off</a>
+                                        </a> <a href="#" className="btn btn-solid category-btn"></a>
                                         <a href="#">
                                             <h6><span>shop now</span></h6>
                                         </a>
