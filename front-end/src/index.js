@@ -19,6 +19,8 @@ import Fashion from './components/layouts/fashion/main';
 
 import NoSideBar from './components/products/no-sidebar';
 
+//For Search 
+import CollectionLeftSidebar from './components/collection/collection-left-sidebar';
 
 // Features
 import Layout from './components/app';
@@ -81,20 +83,17 @@ class Root extends React.Component {
 										component={Fashion}
 									/>
 
-									
-									
-									
-									
-									
-
 									{/*Routes For Single Product*/}
 									
-									
-									<Route
+																	<Route
 										path={`${process.env.PUBLIC_URL}/no-sidebar/product/:id`}
 										component={NoSideBar}
 									/>
 									
+									<Route
+										path={`${process.env.PUBLIC_URL}/collection`}
+										component={CollectionLeftSidebar}
+									/>
 
 									{/*Routes For custom Features*/}
 									<Route

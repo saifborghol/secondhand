@@ -116,28 +116,24 @@ class HeaderOne extends Component {
 										<NavBar />
 
 										
-											<div className="icon-nav">
-												<ul>
-													<Link to="/register">
-														<li
-															
-														>
-															<a>S'inscrire</a>
-														</li>
-													</Link>
-													<Link to="/login">
-														<li
-															
-														>
-															<a>Se connecter</a>
-														</li>
-													</Link>
-													{/*Header Cart Component */}
-													<CartContainer />
-												</ul>
-												<div className="col-lg-6 text-right" />
-											</div>
-										
+
+										<div className="icon-nav">
+											<ul>
+												<Link to="/register">
+													<li>
+														<a>S'inscrire</a>
+													</li>
+												</Link>
+												<Link to="/login">
+													<li>
+														<a>Se connecter</a>
+													</li>
+												</Link>
+												{/*Header Cart Component */}
+												<CartContainer />
+											</ul>
+											<div className="col-lg-6 text-right" />
+										</div>
 									</div>
 								</div>
 							</div>
@@ -145,38 +141,7 @@ class HeaderOne extends Component {
 					</div>
 				</header>
 
-				<div id="search-overlay" className="search-overlay">
-					<div>
-						<span
-							className="closebtn"
-							onClick={this.closeSearch}
-							title="Close Overlay"
-						>
-							×
-						</span>
-						<div className="overlay-content">
-							<div className="container">
-								<div className="row">
-									<div className="col-xl-12">
-										<form>
-											<div className="form-group">
-												<input
-													type="text"
-													className="form-control"
-													id="exampleInputPassword1"
-													placeholder="Search a Product"
-												/>
-											</div>
-											<button type="submit" className="btn btn-primary">
-												<i className="fa fa-search" />
-											</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		);
 	}
