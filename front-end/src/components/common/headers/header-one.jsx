@@ -110,6 +110,17 @@ class HeaderOne extends Component {
 										<div className="brand-logo">
 											<LogoImage logo={this.props.logoName} />
 										</div>
+
+									{/* search bar */}
+									<div class="wrap">
+										<div class="search">
+											<input type="text" className="searchTerm" placeholder="Que cherchez-vous?"/>
+											<button type="submit" className="searchButton">
+												<i class="fa fa-search"></i>
+											</button>
+										</div>
+									</div>
+
 									</div>
 									<div className="menu-right pull-right">
 										{/*Top Navigation Bar Component*/}

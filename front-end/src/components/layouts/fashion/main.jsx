@@ -25,7 +25,7 @@ class Fashion extends Component {
 		return (
 			<div>
 				<Helmet>
-					<title>secondhand</title>
+					<title>secondhand | Achat et vente en ligne</title>
 				</Helmet>
 				{/*Home Slider*/}
 				<section className="p-0">

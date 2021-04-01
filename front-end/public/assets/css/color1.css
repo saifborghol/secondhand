@@ -794,9 +794,13 @@ button.btn.btn-outline:active {
 /*=====================
     2.Header CSS start
 ==========================*/
+
+
 header {
   background-color: #ffffff;
 }
+
+
 
 .onhover-dropdown {
   position: relative;
