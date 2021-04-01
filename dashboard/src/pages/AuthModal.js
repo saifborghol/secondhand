@@ -34,6 +34,7 @@ class AuthModal extends React.Component {
           centered>
           <ModalBody>
             <AuthForm
+            
               authState={this.state.authState}
               onChangeAuthState={this.handleAuthState}
             />

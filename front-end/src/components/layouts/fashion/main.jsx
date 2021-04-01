@@ -25,11 +25,7 @@ class Fashion extends Component {
 		return (
 			<div>
 				<Helmet>
-					<title>MultiKart | Fashion Store</title>
-					<meta
-						name="description"
-						content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses."
-					/>
+					<title>secondhand</title>
 				</Helmet>
 				{/*Home Slider*/}
 				<section className="p-0">
@@ -84,74 +80,6 @@ class Fashion extends Component {
 						</div>
 					</Slider>
 				</section>
-				{/*Home Section End*/}
-
-				{/*collection banner*/}
-				<section className="pb-0">
-					<div className="container">
-						<div className="row partition2">
-							<div className="col-md-6">
-								<Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>
-									<div className="collection-banner p-right text-center">
-										<img
-											src={`${
-												process.env.PUBLIC_URL
-											}/assets/images/sub-banner1.jpg`}
-											className="img-fluid"
-											alt=""
-										/>
-										<div className="contain-banner">
-											<div>
-												<h4>save 30%</h4>
-												<h2>men</h2>
-											</div>
-										</div>
-									</div>
-								</Link>
-							</div>
-							<div className="col-md-6">
-								<Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>
-									<div className="collection-banner p-right text-center">
-										<img
-											src={`${
-												process.env.PUBLIC_URL
-											}/assets/images/sub-banner2.jpg`}
-											className="img-fluid"
-											alt=""
-										/>
-										<div className="contain-banner">
-											<div>
-												<h4>save 60%</h4>
-												<h2>women</h2>
-											</div>
-										</div>
-									</div>
-								</Link>
-							</div>
-						</div>
-					</div>
-				</section>
-				{/*collection banner end*/}
-
-				<TopCollection type={'women'} />
-
-				{/*Parallax banner*/}
-				<section className="p-0">
-					<div className="full-banner parallax-banner1 parallax text-center p-left">
-						<div className="container">
-							<div className="row">
-								<div className="col">
-									<div className="banner-contain">
-										<h2>2018</h2>
-										<h3>fashion trends</h3>
-										<h4>special offer</h4>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				{/*Parallax banner End*/}
 
 				<SpecialProducts />
 

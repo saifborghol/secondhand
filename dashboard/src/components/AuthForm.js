@@ -52,7 +52,7 @@ class AuthForm extends React.Component {
 			this.AdminController.login(data).then(res => {
 				console.log('resss', res);
 				if (res.data.status === 'Success') {
-					window.location.href = '/category';
+					this.props.history.push('/category');
 				} 
 			});
 		}
@@ -87,6 +87,7 @@ class AuthForm extends React.Component {
 	}
 
 	render() {
+		console.log(this.props);
 		const {
 			showLogo,
 			usernameLabel,
