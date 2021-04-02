@@ -450,9 +450,9 @@ header{
   .sidebar-overlay {
     visibility: hidden;
     opacity: 0;
-    background-color: #212331;
+    // background-color: #212331;
     position: fixed;
-    z-index: 6;
+    z-index: 4;
     top: 0;
     left: 0;
     width: 100%;

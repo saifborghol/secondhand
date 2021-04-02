@@ -258,6 +258,7 @@ del {
   color: red;
 }
 .sticky {
+  
   &.fixed {
     position: fixed;
     width: 100%;
@@ -287,8 +288,8 @@ del {
       display: none;
     }
     .cart-qty-cls {
-      top: 13%;
-      right: -11px;
+      top: -60%;
+      right: -15px;
     }
   }
 }
@@ -831,8 +832,7 @@ header {
 }
 .onhover-div {
   position: relative;
-  padding-top: 40px;
-  padding-bottom: 40px;
+ 
   font-family: $font_0, $font_1;
   img,
   i {
@@ -1152,9 +1152,10 @@ header {
   }
   /* Resize the wrap to see the search bar change! */
   .brand-logo {
+      padding-top: 15px;
+      padding-bottom: 15px;
     display: inline-block;
-    padding-top: 35px;
-    padding-bottom: 35px;
+
   }
   .menu-left {
     display: flex;
@@ -6536,8 +6537,8 @@ footer {
   font-size: 12px;
   line-height: 14px;
   font-weight: 600;
-  top: 20%;
-  right: -8px;
+  top: -60%;
+  right: -15px;
   padding: 3px;
 }
 /* =====================
