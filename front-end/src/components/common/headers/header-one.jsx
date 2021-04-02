@@ -124,7 +124,7 @@ class HeaderOne extends Component {
 									</div>
 									<div className="menu-right pull-right">
 										{/*Top Navigation Bar Component*/}
-										<NavBar />
+										{/* <NavBar /> */}
 
 										
 
