@@ -62,10 +62,7 @@ class ElementBanner extends Component {
                                                  className="img-fluid blur-up lazyload bg-img" alt="" />
                                         </div>
                                         <div className="contain-banner banner-3">
-                                            <div>
-                                                <h4>10% off</h4>
-                                                <h2>speaker</h2>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </a>
@@ -78,10 +75,7 @@ class ElementBanner extends Component {
                                                  className="img-fluid blur-up lazyload bg-img" alt="" />
                                         </div>
                                         <div className="contain-banner banner-3">
-                                            <div>
-                                                <h4>10% off</h4>
-                                                <h2>earplug</h2>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </a>
@@ -94,10 +88,7 @@ class ElementBanner extends Component {
                                                  className="img-fluid blur-up lazyload bg-img" alt="" />
                                         </div>
                                         <div className="contain-banner banner-3">
-                                            <div>
-                                                <h4>50% off</h4>
-                                                <h2>best deal</h2>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </a>

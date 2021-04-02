@@ -55,11 +55,7 @@ class ProductItem extends Component {
         return (
                 <div className="product-box">
                     <div className="img-wrapper">
-                        <div className="lable-block">
-                            {(product.new == true)? <span className="lable3">new</span> : ''}
-                            {(product.sale == true)? <span className="lable4">on sale</span> : ''}
-
-                        </div>
+                        
                         <div className="front">
                             <Link to={`${process.env.PUBLIC_URL}/no-sidebar/product/${product.id}`} ><img
                                 src={`${

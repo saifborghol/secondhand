@@ -70,8 +70,7 @@ class ElementRatio extends Component {
                                     </div>
                                     <div className="product-box">
                                         <div className="img-wrapper">
-                                            <div className="lable-block"><span className="lable3">new</span> <span
-                                                className="lable4">on sale</span></div>
+                                            
                                             <div className="front">
                                                 <a href="product-page(no-sidebar).html"><img
                                                     src={`${process.env.PUBLIC_URL}/assets/images/pro3/1.jpg`}
@@ -162,8 +161,7 @@ class ElementRatio extends Component {
                                     </div>
                                     <div className="product-box">
                                         <div className="img-wrapper">
-                                            <div className="lable-block"><span className="lable3">new</span> <span
-                                                className="lable4">on sale</span></div>
+                                            
                                             <div className="front">
                                                 <a href="product-page(no-sidebar).html"><img
                                                     src={`${process.env.PUBLIC_URL}/assets/images/pro3/35.jpg`}
@@ -491,10 +489,7 @@ class ElementRatio extends Component {
                                     </div>
                                     <div className="product-box">
                                         <div className="img-wrapper">
-                                            <div className="lable-block">
-                                                <span className="lable3">new</span>
-                                                <span className="lable4">on sale</span>
-                                            </div>
+                                            
                                             <div className="front">
                                                 <a href="product-page(no-sidebar).html"><img src={`${process.env.PUBLIC_URL}/assets/images/game/pro/12.jpg`}
                                                                                              className="bg-img img-fluid blur-up lazyload"
@@ -560,10 +555,7 @@ class ElementRatio extends Component {
                                     </div>
                                     <div className="product-box">
                                         <div className="img-wrapper">
-                                            <div className="lable-block">
-                                                <span className="lable3">new</span>
-                                                <span className="lable4">on sale</span>
-                                            </div>
+                                           
                                             <div className="front">
                                                 <a href="product-page(no-sidebar).html"><img src={`${process.env.PUBLIC_URL}/assets/images/game/pro/14.jpg`}
                                                                                              className="bg-img img-fluid blur-up lazyload"
@@ -595,10 +587,7 @@ class ElementRatio extends Component {
                                     </div>
                                     <div className="product-box">
                                         <div className="img-wrapper">
-                                            <div className="lable-block">
-                                                <span className="lable3">new</span>
-                                                <span className="lable4">on sale</span>
-                                            </div>
+                                            
                                             <div className="front">
                                                 <a href="product-page(no-sidebar).html"><img src={`${process.env.PUBLIC_URL}/assets/images/game/pro/15.jpg`}
                                                                                              className="bg-img img-fluid blur-up lazyload"

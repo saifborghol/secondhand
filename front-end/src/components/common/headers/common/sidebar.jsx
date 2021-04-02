@@ -98,27 +98,27 @@ class SideBar extends Component {
                                                 <h5>Mode Femme</h5>
                                                 <ul>
                                                     <li>
-                                                        <Link to="#">Robes</Link>
+                                                        <Link to="/collection">Robes</Link>
                                                     </li>
                                                     <li>
-                                                    <Link to="#">jupes</Link>
+                                                    <Link to="/collection">jupes</Link>
                                                     </li>
                                                     
                                                     
                                                     <li>
-                                                        <Link to="#">vêtement de sport</Link>
+                                                        <Link to="/collection">vêtement de sport</Link>
                                                     </li>
                                                 </ul>
                                                 <h5>Mode Homme</h5>
                                                 <ul>
                                                     <li>
-                                                        <Link to="#">vêtement de sport</Link>
+                                                        <Link to="/collection">vêtement de sport</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">vêtement chic</Link>
+                                                        <Link to="/collection">vêtement chic</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">sport chic</Link>
+                                                        <Link to="/collection">sport chic</Link>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -128,28 +128,28 @@ class SideBar extends Component {
                                                 <h5>accessories</h5>
                                                 <ul>
                                                     <li>
-                                                        <Link to="#">bijoux fantaisie</Link>
+                                                        <Link to="/collection">bijoux fantaisie</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">casquettes et chapeaux</Link>
+                                                        <Link to="/collection">casquettes et chapeaux</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">bijoux précieux</Link>
+                                                        <Link to="/collection">bijoux précieux</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">colliers</Link>
+                                                        <Link to="/collection">colliers</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">des boucles d'oreilles</Link>
+                                                        <Link to="/collection">des boucles d'oreilles</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">accessoires de poignet</Link>
+                                                        <Link to="/collection">accessoires de poignet</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">cravates</Link>
+                                                        <Link to="/collection">cravates</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">boutons de manchette</Link>
+                                                        <Link to="/collection">boutons de manchette</Link>
                                                     </li>
                                                     
                                                 </ul>
@@ -165,51 +165,51 @@ class SideBar extends Component {
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" onClick={(e) => this.handleSubmenu(e)}>
+                            <Link to="/collection" onClick={(e) => this.handleSubmenu(e)}>
                             Sacs
                                 <span className="sub-arrow"></span>
                             </Link>
                             <ul>
                                 
                                 <li>
-                                    <Link to="#">sacs pour ordinateur portable</Link>
+                                    <Link to="/collection">sacs pour ordinateur portable</Link>
                                 </li>
                                
                                 <li>
-                                    <Link to="#" onClick={(e) => this.handleSubTwoMenu(e)} >
+                                    <Link to="/collection" onClick={(e) => this.handleSubTwoMenu(e)} >
                                     sacs à main
                                         <span className="sub-arrow"></span>
                                     </Link>
                                     <ul>
                                         
                                         <li>
-                                            <Link to="#">portefeuilles</Link>
+                                            <Link to="/collection">portefeuilles</Link>
                                         </li>
                                         
                                         <li>
-                                            <Link to="#">cartables</Link>
+                                            <Link to="/collection">cartables</Link>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" onClick={(e) => this.handleSubmenu(e)}>
+                            <Link to="/collection" onClick={(e) => this.handleSubmenu(e)}>
                             chaussure
                                 <span className="sub-arrow"></span>
                             </Link>
                             <ul>
                                 <li>
-                                    <Link to="#">chaussures de sport</Link>
+                                    <Link to="/collection">chaussures de sport</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">chaussures formelles</Link>
+                                    <Link to="/collection">chaussures formelles</Link>
                                 </li>
                                 
                             </ul>
                         </li>
                         <li>
-                            <Link to="#" >
+                            <Link to="/collection" >
                             montres
                             </Link>
                         </li>
@@ -221,21 +221,21 @@ class SideBar extends Component {
                             </Link>
                             <ul>
                                 <li>
-                                    <Link to="#">makeup</Link>
+                                    <Link to="/collection">makeup</Link>
                                 </li>
                                 
                                 <li>
-                                    <Link to="#" onClick={(e) => this.handleSuTwobmenu(e)}>
+                                    <Link to="/collection" onClick={(e) => this.handleSuTwobmenu(e)}>
                                     Suite
                                         <span className="sub-arrow"></span>
                                     </Link>
                                     <ul>
                                         <li>
-                                            <Link to="#">parfums</Link>
+                                            <Link to="/collection">parfums</Link>
                                         </li>
                                         
                                         <li>
-                                            <Link to="#">outils et brosses</Link>
+                                            <Link to="/collection">outils et brosses</Link>
                                         </li>
                                     </ul>
                                 </li>
@@ -244,22 +244,22 @@ class SideBar extends Component {
 
 
                         <li>
-                            <Link to="#" onClick={(e) => this.handleSubmenu(e)}>
+                            <Link to="/collection" onClick={(e) => this.handleSubmenu(e)}>
                             décoration de maison
                                 <span className="sub-arrow"></span>
                             </Link>
                             <ul>
                                 <li>
-                                    <Link to="#">cuisine</Link>
+                                    <Link to="/collection">cuisine</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Salon</Link>
+                                    <Link to="/collection">Salon</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Chambre</Link>
+                                    <Link to="/collection">Chambre</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Jardin</Link>
+                                    <Link to="/collection">Jardin</Link>
                                 </li>
                                 
                             </ul>
