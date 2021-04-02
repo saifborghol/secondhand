@@ -97,7 +97,6 @@ class HeaderOne extends Component {
 										<div className="navbar">
 											<a href="javascript:void(0)" onClick={this.openNav}>
 												<div className="bar-style">
-													{' '}
 													<i
 														className="fa fa-bars sidebar-bar"
 														aria-hidden="true"
@@ -124,7 +123,7 @@ class HeaderOne extends Component {
 									</div>
 									<div className="menu-right pull-right">
 										{/*Top Navigation Bar Component*/}
-										<NavBar />
+										{/* <NavBar /> */}
 
 										
 
