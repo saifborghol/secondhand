@@ -138,12 +138,7 @@ class FooterOne extends Component {
                 <div className="sub-footer ">
                     <div className="container">
                         <div className="row">
-                            <div className="col-xl-6 col-md-6 col-sm-12">
-                                <div className="footer-end">
-                                    <p><i className="fa fa-copyright" aria-hidden="true"></i> 2018-19 themeforest
-                                        powered by pixelstrap</p>
-                                </div>
-                            </div>
+                            
                             <div className="col-xl-6 col-md-6 col-sm-12">
                                 <div className="payment-card-bottom">
                                     <ul>

@@ -10,14 +10,17 @@ import './index.scss';
 import store from './store';
 import translations from './constants/translations';
 import { getAllProducts } from './actions';
+//profile
 
-
+import profilleft from "./components/collection/profil-left";
 // Layouts
 import Fashion from './components/layouts/fashion/main';
 
 // Product Pages
 
 import NoSideBar from './components/products/no-sidebar';
+
+
 
 //For Search 
 import CollectionLeftSidebar from './components/collection/collection-left-sidebar';
@@ -93,6 +96,11 @@ class Root extends React.Component {
 									<Route
 										path={`${process.env.PUBLIC_URL}/collection`}
 										component={CollectionLeftSidebar}
+									/>
+
+									<Route
+										path={`${process.env.PUBLIC_URL}/Profil`}
+										component={profilleft}
 									/>
 
 									{/*Routes For custom Features*/}
