@@ -42,6 +42,7 @@ import Register from './components/pages/register';
 import Search from './components/pages/search';
 import Collection from './components/pages/collection';
 import ForgetPassword from './components/pages/forget-password';
+import ResetPassword from './components/pages/reset-password';
 import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
@@ -160,8 +161,12 @@ class Root extends React.Component {
 										component={Collection}
 									/>
 									<Route
-										path={`${process.env.PUBLIC_URL}/pages/forget-password`}
+										path={`${process.env.PUBLIC_URL}/forget-password`}
 										component={ForgetPassword}
+									/>
+									<Route
+										path={`${process.env.PUBLIC_URL}/reset-password/:id`}
+										component={ResetPassword}
 									/>
 									<Route
 										path={`${process.env.PUBLIC_URL}/pages/contact`}

@@ -14,6 +14,7 @@ let AxiosInstance = axios.create({
 AxiosInstance.interceptors.response.use((response) => {
 
   console.log("INTERCEPTOR_RESPONSE", response)
+
   return response;
 
 }, (error) => {
@@ -35,7 +36,9 @@ AxiosInstance.interceptors.response.use((response) => {
      const refresh = localStorage.getItem('refreshToken')
      const id = localStorage.getItem('userId')
      console.log('ref data',refresh,id);
-      return AxiosInstance.post('/refresh',{"id":id,"refreshToken":refresh})
+      
+     if  (localStorage.getItem('token')) {
+     return AxiosInstance.post('/refresh',{"id":id,"refreshToken":refresh})
           .then(token => {
              console.log('toooken',token);
               /*console.log("error INTERCEPTOR", AxiosInstance.defaults.headers.common) */
@@ -46,6 +49,7 @@ AxiosInstance.interceptors.response.use((response) => {
           })
           .catch(err => err)    
         }
+      }
 
   else {
       return error.response

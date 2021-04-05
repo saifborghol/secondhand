@@ -39,7 +39,7 @@ module.exports = {
 								id: userInfo._id,
 							},
 							req.app.get('secretKey'),
-							{ expiresIn: '1m' }
+							{ expiresIn: '60m' }
 						);
 						var refreshToken = randtoken.uid(256);
 						refreshTokens[refreshToken] = userInfo._id;

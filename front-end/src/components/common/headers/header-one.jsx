@@ -1,163 +1,236 @@
-import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { IntlActions } from 'react-redux-multilingual';
-import Pace from 'react-pace-progress';
+import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { IntlActions } from "react-redux-multilingual";
+import Pace from "react-pace-progress";
 
 // Import custom components
-import store from '../../../store';
-import NavBar from './common/navbar';
-import SideBar from './common/sidebar';
-import CartContainer from './../../../containers/CartContainer';
-import TopBar from './common/topbar';
-import LogoImage from './common/logo';
-import { changeCurrency } from '../../../actions';
-import { connect } from 'react-redux';
+import store from "../../../store";
+import NavBar from "./common/navbar";
+import SideBar from "./common/sidebar";
+import CartContainer from "./../../../containers/CartContainer";
+import TopBar from "./common/topbar";
+import LogoImage from "./common/logo";
+import { changeCurrency } from "../../../actions";
+import { connect } from "react-redux";
+
+import userController from "../../../services/controllers/userControllers";
 
 class HeaderOne extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			isLoading: false,
-		};
-	}
-	/*=====================
-         Pre loader
-         ==========================*/
-	componentDidMount() {
-		setTimeout(function() {
-			document.querySelector('.loader-wrapper').style = 'display: none';
-		}, 2000);
+    this.state = {
+      isLoading: false,
+    };
+    this.userController = new userController();
+  }
 
-		this.setState({ open: true });
-	}
+  componentDidMount() {
+    setTimeout(function() {
+      document.querySelector(".loader-wrapper").style = "display: none";
+    }, 2000);
 
-	componentWillMount() {
-		window.addEventListener('scroll', this.handleScroll);
-	}
-	componentWillUnmount() {
-		window.removeEventListener('scroll', this.handleScroll);
-	}
+    this.setState({ open: true });
+  }
 
-	handleScroll = () => {
-		let number =
-			window.pageXOffset ||
-			document.documentElement.scrollTop ||
-			document.body.scrollTop ||
-			0;
-		if (number >= 300) {
-			if (window.innerWidth < 576) {
-				document.getElementById('sticky').classList.remove('fixed');
-			} else document.getElementById('sticky').classList.add('fixed');
-		} else {
-			document.getElementById('sticky').classList.remove('fixed');
-		}
-	};
+  componentWillMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
 
-	changeLanguage(lang) {
-		store.dispatch(IntlActions.setLocale(lang));
-	}
+  handleScroll = () => {
+    let number =
+      window.pageXOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+    if (number >= 300) {
+      if (window.innerWidth < 576) {
+        document.getElementById("sticky").classList.remove("fixed");
+      } else document.getElementById("sticky").classList.add("fixed");
+    } else {
+      document.getElementById("sticky").classList.remove("fixed");
+    }
+  };
 
-	openNav() {
-		var openmyslide = document.getElementById('mySidenav');
-		if (openmyslide) {
-			openmyslide.classList.add('open-side');
-		}
-	}
-	openSearch() {
-		document.getElementById('search-overlay').style.display = 'block';
-	}
+  changeLanguage(lang) {
+    store.dispatch(IntlActions.setLocale(lang));
+  }
 
-	closeSearch() {
-		document.getElementById('search-overlay').style.display = 'none';
-	}
+  openNav() {
+    var openmyslide = document.getElementById("mySidenav");
+    if (openmyslide) {
+      openmyslide.classList.add("open-side");
+    }
+  }
+  openSearch() {
+    document.getElementById("search-overlay").style.display = "block";
+  }
 
-	load = () => {
-		this.setState({ isLoading: true });
-		fetch().then(() => {
-			// deal with data fetched
-			this.setState({ isLoading: false });
-		});
-	};
+  closeSearch() {
+    document.getElementById("search-overlay").style.display = "none";
+  }
 
-	render() {
-		return (
-			<div>
-				<header id="sticky" className="sticky">
-					{this.state.isLoading ? <Pace color="#27ae60" /> : null}
-					<div className="mobile-fix-option" />
-					{/*Top Header Component*/}
-					{/* <TopBar /> */}
+  load = () => {
+    this.setState({ isLoading: true });
+    fetch().then(() => {
+      // deal with data fetched
+      this.setState({ isLoading: false });
+    });
+  };
 
-					<div className="container">
-						<div className="row">
-							<div className="col-sm-12">
-								<div className="main-menu">
-									<div className="menu-left">
-										<div className="navbar">
-											<a href="javascript:void(0)" onClick={this.openNav}>
-												<div className="bar-style">
-													<i
-														className="fa fa-bars sidebar-bar"
-														aria-hidden="true"
-													/>
-												</div>
-											</a>
-											{/*SideBar Navigation Component*/}
-											<SideBar />
-										</div>
-										<div className="brand-logo">
-											<LogoImage logo={this.props.logoName} />
-										</div>
+  logout = (data) => {
+    this.userController.logoutUser(data).then(() => {
+      localStorage.clear();
+    })((window.location.href = "/login"));
+  };
 
-									{/* search bar */}
-									<div class="wrap">
-										<div class="search">
-											<input type="text" className="searchTerm" placeholder="Que cherchez-vous?"/>
-											<button type="submit" className="searchButton">
-												<i class="fa fa-search"></i>
-											</button>
-										</div>
-									</div>
+  render() {
+    let data = { refreshToken: localStorage.getItem("refreshToken") };
+    if (localStorage.getItem("token")) {
+      return (
+        <div>
+          <header id="sticky" className="sticky">
+            {this.state.isLoading ? <Pace color="#27ae60" /> : null}
+            <div className="mobile-fix-option" />
+            {/*Top Header Component*/}
+            {/* <TopBar /> */}
 
-									</div>
-									<div className="menu-right pull-right">
-										{/*Top Navigation Bar Component*/}
-										{/* <NavBar /> */}
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-12">
+                  <div className="main-menu">
+                    <div className="menu-left">
+                      <div className="navbar">
+                        <a href="javascript:void(0)" onClick={this.openNav}>
+                          <div className="bar-style">
+                            <i
+                              className="fa fa-bars sidebar-bar"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </a>
+                        {/*SideBar Navigation Component*/}
+                        <SideBar />
+                      </div>
+                      <div className="brand-logo">
+                        <LogoImage logo={this.props.logoName} />
+                      </div>
 
-										
+                      {/* search bar */}
+                      <div class="wrap">
+                        <div class="search">
+                          <input
+                            type="text"
+                            className="searchTerm"
+                            placeholder="Que cherchez-vous?"
+                          />
+                          <button type="submit" className="searchButton">
+                            <i class="fa fa-search" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="menu-right pull-right">
+                      {/*Top Navigation Bar Component*/}
+                      {/* <NavBar /> */}
 
-										<div className="icon-nav">
-											<ul>
-												<Link to="/register">
-													<li className="navitem">
-														<a>S'inscrire</a>
-													</li>
-												</Link>
-												<Link to="/login">
-													<li className="navitem">
-														<a>Se connecter</a>
-													</li>
-												</Link>
-												{/*Header Cart Component */}
-												<CartContainer />
-											</ul>
-											<div className="col-lg-6 text-right" />
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</header>
+                      <div className="icon-nav">
+                        <ul>
+                          <li className="navitem">
+                            <a style={{cursor: "pointer"}} onClick={() => this.logout(data)}>Se déconnecter</a>
+                          </li>
 
-				
-			</div>
-		);
-	}
+                          {/*Header Cart Component */}
+                          <CartContainer />
+                        </ul>
+                        <div className="col-lg-6 text-right" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <header id="sticky" className="sticky">
+            {this.state.isLoading ? <Pace color="#27ae60" /> : null}
+            <div className="mobile-fix-option" />
+            {/*Top Header Component*/}
+            {/* <TopBar /> */}
+
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-12">
+                  <div className="main-menu">
+                    <div className="menu-left">
+                      <div className="navbar">
+                        <a href="javascript:void(0)" onClick={this.openNav}>
+                          <div className="bar-style">
+                            <i
+                              className="fa fa-bars sidebar-bar"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </a>
+                        {/*SideBar Navigation Component*/}
+                        <SideBar />
+                      </div>
+                      <div className="brand-logo">
+                        <LogoImage logo={this.props.logoName} />
+                      </div>
+
+                      {/* search bar */}
+                      <div class="wrap">
+                        <div class="search">
+                          <input
+                            type="text"
+                            className="searchTerm"
+                            placeholder="Que cherchez-vous?"
+                          />
+                          <button type="submit" className="searchButton">
+                            <i class="fa fa-search" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="menu-right pull-right">
+                      {/*Top Navigation Bar Component*/}
+                      {/* <NavBar /> */}
+
+                      <div className="icon-nav">
+                        <ul>
+                          <Link to="/register">
+                            <li className="navitem">
+                              <a>S'inscrire</a>
+                            </li>
+                          </Link>
+                          <Link to="/login">
+                            <li className="navitem">
+                              <a>Se connecter</a>
+                            </li>
+                          </Link>
+                          {/*Header Cart Component */}
+                          <CartContainer />
+                        </ul>
+                        <div className="col-lg-6 text-right" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
+      );
+    }
+  }
 }
 
-export default connect(
-	null,
-	{ changeCurrency }
-)(HeaderOne);
+export default HeaderOne;

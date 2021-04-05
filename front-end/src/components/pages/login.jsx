@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import {Link} from 'react-router-dom'
+
 import Breadcrumb from '../common/breadcrumb';
 
 import UserController from '../../services/controllers/userControllers';
@@ -52,6 +54,12 @@ class Login extends Component {
 				this.UserController.loginUser(Data).then((res) => {
 					console.log('ressssss', res);
 					if (res.data.status === 'Success') {
+						localStorage.setItem('userId', res.data.data.user._id);
+					localStorage.setItem('token', res.data.data.token);
+					localStorage.setItem(
+						'refreshToken',
+						res.data.data.refreshtoken,
+					);
 						this.props.history.push('/');
 						console.log('resLogin', res);
 					} else if (res.data.status === 401) {
@@ -131,13 +139,21 @@ class Login extends Component {
 											className="btn btn-solid"
 											onClick={() => this.handleSubmit()}
 										>
-											Login
+											Se connecter
 										</a>
+										<Link to="/forget-password">
+										&nbsp;&nbsp;<a
+
+										>
+											Vous avez oublié votre mot de passe?
+										</a>
+										</Link>
+										
 									</form>
 								</div>
 							</div>
 							<div className="col-lg-6 right-login">
-								<h3>New Customer</h3>
+								<h3>Nouveau utilisateur</h3>
 								<div className="theme-card authentication-right">
 									<h6 className="title-font">Create A Account</h6>
 									<p>
@@ -146,7 +162,7 @@ class Login extends Component {
 										shop. To start shopping click register.
 									</p>
 									<a href="pages/register" className="btn btn-solid">
-										Create an Account
+										Créer un compte
 									</a>
 								</div>
 							</div>

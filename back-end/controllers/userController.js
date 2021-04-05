@@ -157,7 +157,8 @@ module.exports = {
 				return res.json({ err: 'error in email' });
 			} else {
 				return res.json({
-					message: 'email has been send:',
+					status: 'Success',
+					message: 'email has been send',
 				});
 			}
 		});
@@ -181,14 +182,8 @@ module.exports = {
 								req.app.get('secretKey'),
 								{ expiresIn: '60m' }
 							);
-
-							const refreshToken = jwt.sign(
-								{
-									id: userInfo._id,
-								},
-								req.app.get('secretkey'),
-								{ expiresIn: '60m' }
-							);
+							
+						var refreshToken = randtoken.uid(256);
 
 							refreshTokens[refreshToken] = userInfo._id;
 
@@ -240,7 +235,8 @@ module.exports = {
 		const Email = req.body.email;
 		userModel.findOne({ email: Email }, (err, user) => {
 			if (err || !user) {
-				return res.status(400).json({
+				return res.json({
+					status: "Email error",
 					error: 'Email does not exist',
 				});
 			}
@@ -252,7 +248,7 @@ module.exports = {
 				from: 'azizmdk@outlook.com',
 				to: Email,
 				subject: 'Reset Password',
-				text: `<p>http://localhost:3000/resetpassword/${token}</p>`,
+				text: `http://localhost:3000/reset-password/${token}`,
 				// text:  voila = {token}
 			};
 			return userModel.findOneAndUpdate(
@@ -272,6 +268,7 @@ module.exports = {
 							return res.json({ err: 'Error in email' });
 						} else {
 							return res.json({
+								status: 'Success',
 								message: 'Email has been send',
 							});
 						}
@@ -291,12 +288,14 @@ module.exports = {
 				function (err, decodeData) {
 					if (err) {
 						return res.json({
+							message: "invalid token",
 							error: 'Incorrect token or it is expired',
 						});
 					}
 					userModel.findOne({ resetLink: resetLink }, (err, user) => {
 						if (err || !user) {
 							return res.json({
+								message: "invalid token",
 								error: 'User with this token does not exist',
 							});
 						}
@@ -311,6 +310,7 @@ module.exports = {
 								});
 							} else {
 								return res.status(200).json({
+									status: "Success",
 									message: 'Password has been changed!',
 								});
 							}
