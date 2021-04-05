@@ -2,6 +2,7 @@ export const BASE_URL = 'http://localhost:4000';
 
 //web service for Admin
 export const LOGIN_ADMIN_URL = BASE_URL + '/admin/login';
+export const LOGOUT_ADMIN_URL = BASE_URL + '/admin/logout';
 
 
 //web service for User

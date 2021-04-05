@@ -1,9 +1,11 @@
 import axios from 'axios';
 import * as Constant from '../Constant';
+import AxiosInstance from '../axiosInterceptor'
+
 
 export default class CategoryController {
 	AddCategory(data) {
-		return axios
+		return AxiosInstance
 			.post(Constant.CREATE_CATEGORY_URL, data)
 			.then(res => {
 				return res;
@@ -14,7 +16,7 @@ export default class CategoryController {
 	}
 
 	getAllCategory() {
-		return axios
+		return AxiosInstance
 			.get(Constant.GETALL_CATEGORY_URL)
 			.then(res => {
 				return res;
@@ -25,7 +27,7 @@ export default class CategoryController {
 	}
 
 	getCategoryByID(id) {
-		return axios
+		return AxiosInstance
 			.get(Constant.GET_CATEGORY_URL + id)
 			.then(res => {
 				return res;
@@ -36,7 +38,7 @@ export default class CategoryController {
 	}
 
 	deleteCategory(id) {
-		return axios
+		return AxiosInstance
 			.delete(Constant.DELETE_CATEGORY_URL + id)
 			.then(res => {
 				return res;
@@ -47,7 +49,7 @@ export default class CategoryController {
 	}
 
 	deleteAllCategory() {
-		return axios
+		return AxiosInstance
 			.delete(Constant.DELETEALL_CATEGORY_URL)
 			.then(res => {
 				return res;
@@ -58,7 +60,7 @@ export default class CategoryController {
 	}
 
 	updateCategory(id, data) {
-		return axios
+		return AxiosInstance
 			.put(Constant.UPDATE_CATEGORY_URL + id, data)
 			.then(res => {
 				return res;
@@ -71,7 +73,7 @@ export default class CategoryController {
 	pullSubCat(id, data) {
 		console.log('data from controler', data);
 
-		return axios
+		return AxiosInstance
 			.put(Constant.PULLSUBCAT_URL + id, data)
 			.then(res => {
 				return res;
@@ -82,7 +84,7 @@ export default class CategoryController {
 	}
 
 	pushSubCat(id, data) {
-		return axios
+		return AxiosInstance
 			.put(Constant.PUSHSUBCAT_URL + id, data)
 			.then(res => {
 				return res;

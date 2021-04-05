@@ -181,7 +181,15 @@ module.exports = {
 								req.app.get('secretKey'),
 								{ expiresIn: '60m' }
 							);
-							var refreshToken = randtoken.uid(256);
+
+							const refreshToken = jwt.sign(
+								{
+									id: userInfo._id,
+								},
+								req.app.get('secretkey'),
+								{ expiresIn: '60m' }
+							);
+
 							refreshTokens[refreshToken] = userInfo._id;
 
 							res.json({
@@ -201,9 +209,7 @@ module.exports = {
 							});
 						}
 					} else {
-						res
-						
-							.json({ status: 401, message: 'Invalid email!', data: null });
+						res.json({ status: 401, message: 'Invalid email!', data: null });
 					}
 				}
 			});
@@ -214,6 +220,7 @@ module.exports = {
 		console.log('refreshTokens : ', refreshTokens);
 		if (refreshToken in refreshTokens) {
 			delete refreshTokens[refreshToken];
+			
 			console.log('refreshTokens : ', refreshTokens);
 			res.json({
 				status: 'success',

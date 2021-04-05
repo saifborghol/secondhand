@@ -68,7 +68,7 @@ class Root extends React.Component {
 	
 	render() {
 		store.dispatch(getAllProducts());
-
+		
 		return (
 			<Provider store={store}>
 				<IntlProvider translations={translations} locale="fn">

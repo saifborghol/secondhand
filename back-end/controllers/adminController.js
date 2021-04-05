@@ -39,7 +39,7 @@ module.exports = {
 								id: userInfo._id,
 							},
 							req.app.get('secretKey'),
-							{ expiresIn: '2h' }
+							{ expiresIn: '1m' }
 						);
 						var refreshToken = randtoken.uid(256);
 						refreshTokens[refreshToken] = userInfo._id;
@@ -81,6 +81,23 @@ module.exports = {
 				message: 'Logout Failed ',
 				data: null,
 			});
+		}
+	},
+
+	refreshToken: function (req, res) {
+		var id = req.body.id;
+		var refreshToken = req.body.refreshToken;
+		console.log('refresh', refreshToken in refreshTokens);
+		if (refreshToken in refreshTokens && refreshTokens[refreshToken] == id) {
+			var user = { id: id };
+			var token = jwt.sign(user, req.app.get('secretKey'), {
+				expiresIn: '1m',
+			});
+			res.json({
+				accesstoken: token,
+			});
+		} else {
+			res.sendStatus(401);
 		}
 	},
 };

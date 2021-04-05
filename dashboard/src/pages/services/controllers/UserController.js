@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as Constant from '../Constant';
+import AxiosInstance from '../axiosInterceptor';
 
 export default class UserController {
 	addUser(data) {
@@ -14,8 +15,7 @@ export default class UserController {
 	}
 
 	getAllUser() {
-		return axios
-			.get(Constant.GETALL_USER_URL)
+		return AxiosInstance.get(Constant.GETALL_USER_URL)
 			.then(res => {
 				return res;
 			})

@@ -1,9 +1,11 @@
 import axios from 'axios';
 import * as Constant from '../Constant';
+import AxiosInstance from '../axiosInterceptor'
+
 
 export default class AnnonceController {
 	AddAnnonce(data) {
-		return axios
+		return AxiosInstance
 			.post(Constant.CREATE_ANNONCE_URL, data)
 			.then(res => {
 				return res;
@@ -14,7 +16,7 @@ export default class AnnonceController {
 	}
 
 	getAllAnnonce() {
-		return axios
+		return AxiosInstance
 			.get(Constant.GETALL_ANNONCE_URL)
 			.then(res => {
 				return res;
@@ -25,7 +27,7 @@ export default class AnnonceController {
 	}
 
 	deleteAnnonce(id) {
-		return axios
+		return AxiosInstance
 			.delete(Constant.DELETE_ANNONCE_URL + id)
 			.then(res => {
 				return res;
@@ -36,7 +38,7 @@ export default class AnnonceController {
 	}
 
 	updatelAnnonce(data, id) {
-		return axios
+		return AxiosInstance
 			.put(Constant.UPDATE_ANNONCE_URL + id, data)
 			.then(res => {
 				return res;

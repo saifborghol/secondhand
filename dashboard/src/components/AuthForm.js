@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import AdminController from '../pages/services/controllers/AdminController';
+import AxiosInstance from '../pages/services/axiosInterceptor';
 
 class AuthForm extends React.Component {
 	constructor() {
@@ -51,9 +52,24 @@ class AuthForm extends React.Component {
 		if (!err) {
 			this.AdminController.login(data).then(res => {
 				console.log('resss', res);
+
 				if (res.data.status === 'Success') {
+					localStorage.setItem('userId', res.data.data.user._id);
+					localStorage.setItem('token', res.data.data.token);
+					localStorage.setItem(
+						'refreshToken',
+						res.data.data.refreshtoken,
+					);
 					this.props.history.push('/category');
-				} 
+				}
+				else{
+					this.setState({
+						error: {
+							...this.state.error,
+							passwordErr: 'Nom ou mot de passe incorrect',
+						},
+					});
+				}
 			});
 		}
 	};
@@ -87,7 +103,7 @@ class AuthForm extends React.Component {
 	}
 
 	render() {
-		console.log(this.props);
+
 		const {
 			showLogo,
 			usernameLabel,

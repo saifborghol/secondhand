@@ -5,6 +5,8 @@ import SearchInput from 'components/SearchInput';
 import { notificationsData } from 'demos/header';
 import withBadge from 'hocs/withBadge';
 import React from 'react';
+import AdminController from '../../pages/services/controllers/AdminController';
+
 import {
 	MdClearAll,
 	MdExitToApp,
@@ -46,11 +48,15 @@ const MdNotificationsActiveWithBadge = withBadge({
 })(MdNotificationsActive);
 
 class Header extends React.Component {
-	state = {
-		isOpenNotificationPopover: false,
-		isNotificationConfirmed: false,
-		isOpenUserCardPopover: false,
-	};
+	constructor() {
+		super();
+		this.state = {
+			isOpenNotificationPopover: false,
+			isNotificationConfirmed: false,
+			isOpenUserCardPopover: false,
+		};
+		this.AdminController = new AdminController();
+	}
 
 	toggleNotificationPopover = () => {
 		this.setState({
@@ -79,6 +85,7 @@ class Header extends React.Component {
 
 	render() {
 		const { isNotificationConfirmed } = this.state;
+		let data = { refreshToken: localStorage.getItem('refreshToken') };
 
 		return (
 			<Navbar light expand className={bem.b('bg-white')}>
@@ -146,15 +153,14 @@ class Header extends React.Component {
 									<ListGroup flush>
 										<ListGroupItem
 											tag="button"
-											action
-											className="border-light"
-										>
-											<MdPersonPin /> Profile
-										</ListGroupItem>
+											onClick={
+												() =>
+													this.AdminController.logout(
+														data,
+													).then(() => {
+														localStorage.clear();
+													})
 
-										<ListGroupItem
-											tag="button"
-											onClick={() =>
 												(window.location.href = '/')
 											}
 											action

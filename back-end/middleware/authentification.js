@@ -5,8 +5,8 @@ module.exports={
         jwt.verify(req.headers['x-access-token'],
          req.app.get('secretKey'), function(err, decoded) {
           if (err) {
-            res.json({
-                status:"error",
+            res.status(401).json({
+                status:401,
                 message: err.message,
                 data:null
             })
