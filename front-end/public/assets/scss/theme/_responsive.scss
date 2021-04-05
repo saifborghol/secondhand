@@ -2,6 +2,8 @@
     27.Responsive CSS start
 ==========================*/
 
+
+
 @media (min-width: 1430px) {
 	.container {
 		max-width: 1400px;
@@ -3702,6 +3704,15 @@
 }
 
 @media (max-width: 577px) {
+
+	.main-menu {
+
+	.navitem a{
+		
+			display: none;
+		
+	}
+	}
 	.portfolio-section {
 		.isotopeSelector {
 			margin-bottom: 15px;
@@ -4727,6 +4738,14 @@
 }
 
 @media (min-width: 577px) {
+	.main-menu {
+
+		.navitem2 a{
+			
+				display: none;
+			
+		}
+		}
 	.rtl {
 		.onhover-dropdown {
 			&:before {

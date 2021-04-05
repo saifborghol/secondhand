@@ -85,6 +85,21 @@ class SideBar extends Component {
                         </div>
                     </a>
                     <ul id="sub-menu" className="sidebar-menu">
+                        
+                                            <ul className="navitem2">
+												<Link to="/register">
+													<li className="navitem2">
+														<a>S'inscrire</a>
+													</li>
+												</Link>
+												<Link to="/login">
+													<li className="navitem2">
+														<a>Se connecter</a>
+													</li>
+												</Link>
+												
+											</ul>
+
                         <li>
                             <Link to="#" onClick={(e) => this.handleMegaSubmenu(e)}>
                                 Vetement

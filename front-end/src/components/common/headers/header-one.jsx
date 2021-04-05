@@ -130,12 +130,12 @@ class HeaderOne extends Component {
 										<div className="icon-nav">
 											<ul>
 												<Link to="/register">
-													<li>
+													<li className="navitem">
 														<a>S'inscrire</a>
 													</li>
 												</Link>
 												<Link to="/login">
-													<li>
+													<li className="navitem">
 														<a>Se connecter</a>
 													</li>
 												</Link>
