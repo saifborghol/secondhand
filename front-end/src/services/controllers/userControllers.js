@@ -14,7 +14,7 @@ export default class userControllers {
 	}
 	loginUser(data) {
 		try {
-			return axios.post(constant.login_user_url, data).then((res) => {
+			return AxiosInstance.post(constant.login_user_url, data).then((res) => {
 				return res;
 			});
 		} catch (error) {

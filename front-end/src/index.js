@@ -253,12 +253,14 @@ class Root extends React.Component {
 										}/features/portfolio-masonary/:columns`}
 										component={MasonaryGridCols}
 									/>
+									
 
 									
 									
 
 									{/* <Route exact path="*" component={PageNotFound} /> */}
 								</Layout>
+								<Route path="*" component={PageNotFound}></Route>
 							</Switch>
 						</ScrollContext>
 					</BrowserRouter>

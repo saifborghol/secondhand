@@ -81,11 +81,6 @@ class HeaderOne extends Component {
     });
   };
 
-  logout = (data) => {
-    this.userController.logoutUser(data).then(() => {
-      localStorage.clear();
-    })((window.location.href = "/login"));
-  };
 
   render() {
     let data = { refreshToken: localStorage.getItem("refreshToken") };
@@ -140,7 +135,16 @@ class HeaderOne extends Component {
                       <div className="icon-nav">
                         <ul>
                           <li className="navitem">
-                            <a style={{cursor: "pointer"}} onClick={() => this.logout(data)}>Se déconnecter</a>
+                            <a style={{cursor: "pointer"}} onClick={
+												() =>
+													this.userController.logoutUser(
+														data,
+													).then(() => {
+														localStorage.clear();
+													})
+
+												(window.location.href = '/')
+											}>Se déconnecter</a>
                           </li>
 
                           {/*Header Cart Component */}
