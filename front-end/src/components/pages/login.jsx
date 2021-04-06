@@ -61,7 +61,7 @@ class Login extends Component {
 						res.data.data.refreshtoken,
 					);
 						this.props.history.push('/');
-						console.log('resLogin', res);
+						
 					} else if (res.data.status === 401) {
 						this.setState({
 							error: {
