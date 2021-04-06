@@ -14,6 +14,9 @@ const productSchema = Schema({
 		type: Number,
 		required: true,
 	},
+	image: {
+		type: String
+	},
 	subCat_id: {
 		type: Schema.Types.ObjectId,
 		ref: 'subCategoryModel',

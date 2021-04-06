@@ -143,7 +143,7 @@ class HeaderOne extends Component {
 														localStorage.clear();
 													})
 
-												(window.location.href = '/')
+												// (window.location.href = '/')
 											}>Se déconnecter</a>
                           </li>
 
