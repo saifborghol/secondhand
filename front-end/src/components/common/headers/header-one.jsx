@@ -15,6 +15,12 @@ import LogoImage from "./common/logo";
 import { changeCurrency } from "../../../actions";
 import { connect } from "react-redux";
 
+import { Dropdown } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+
+import avatar from "../../../assets/images/default-avatar.png";
+import pic from "../../../assets/images/pic.jpg";
+
 import userController from "../../../services/controllers/userControllers";
 
 class HeaderOne extends Component {
@@ -48,7 +54,7 @@ class HeaderOne extends Component {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-    if (number >= 300) {
+    if (number >= 10) {
       if (window.innerWidth < 576) {
         document.getElementById("sticky").classList.remove("fixed");
       } else document.getElementById("sticky").classList.add("fixed");
@@ -87,9 +93,12 @@ class HeaderOne extends Component {
     let data = { refreshToken: localStorage.getItem("refreshToken") };
     const { history } = this.props;
 
-    this.userController.logoutUser(data);
-    localStorage.clear();
-    history.push("/login");
+    this.userController.logoutUser(data).then((res) => {
+      console.log("res", res);
+      localStorage.clear();
+    });
+
+    // history.push("/login")
   };
 
   render() {
@@ -145,12 +154,26 @@ class HeaderOne extends Component {
                       <div className="icon-nav">
                         <ul>
                           <li className="navitem">
-                            <a
-                              style={{ cursor: "pointer" }}
-                              onClick={(e) => this.logout(e)}
-                            >
-                              Se déconnecter
-                            </a>
+                            <img
+                              src={avatar}
+                              alt="avatar"
+                              width="32px"
+                              height="32px"
+                              style={{
+                                borderRadius: "50%",
+                                objectFit: "cover",
+                              }}
+                            />
+                            <Dropdown>
+                              <Dropdown.Menu>
+                                <Dropdown.Item text="Mon profile" />
+                                <Dropdown.Item
+                                  icon="logout"
+                                  text="Se déconnecter"
+                                  onClick={(e) => this.logout(e)}
+                                />
+                              </Dropdown.Menu>
+                            </Dropdown>
                           </li>
 
                           {/*Header Cart Component */}

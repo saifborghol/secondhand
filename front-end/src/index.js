@@ -81,6 +81,8 @@ class Root extends React.Component {
 							<Switch>
 								
 								<Layout>
+
+									<Switch>
 									{/*Routes For Layouts*/}
 									<Route
 										exact path={`${process.env.PUBLIC_URL}/`}
@@ -254,13 +256,11 @@ class Root extends React.Component {
 										component={MasonaryGridCols}
 									/>
 									
-
-									
-									
-
-									{/* <Route exact path="*" component={PageNotFound} /> */}
+									<Route path= '*' component={PageNotFound}></Route>
+								 </Switch>
+							
 								</Layout>
-								<Route path="*" component={PageNotFound}></Route>
+								
 							</Switch>
 						</ScrollContext>
 					</BrowserRouter>
