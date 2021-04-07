@@ -5,6 +5,7 @@ import Pace from 'react-pace-progress';
 
 import compose from 'recompose/compose';
 
+import { Button } from 'react-bootstrap';
 // Import custom components
 import store from '../../../store';
 import NavBar from './common/navbar';
@@ -163,6 +164,19 @@ class HeaderOne extends Component {
 										{localStorage.getItem('token') ? (
 											<div className="icon-nav">
 												<ul>
+													<Link to="/deposerannonce">
+														<li className="navitem">
+															<Button
+																style={{
+																	borderRadius: '3px',
+																}}
+																variant="outline-info"
+															>
+																creer une annonce
+															</Button>{' '}
+														</li>
+													</Link>
+
 													<li className="navitem">
 														{this.state.User.image !== null ? (
 															<img
@@ -209,6 +223,18 @@ class HeaderOne extends Component {
 										) : (
 											<div className="icon-nav">
 												<ul>
+													<Link to="/deposerannonce">
+														<li className="navitem">
+															<Button
+																style={{
+																	borderRadius: '3px',
+																}}
+																variant="outline-info"
+															>
+																creer une annonce
+															</Button>{' '}
+														</li>
+													</Link>
 													<Link to="/register">
 														<li className="navitem">
 															<a>S'inscrire</a>

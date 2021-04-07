@@ -14,6 +14,7 @@ import { getAllProducts } from './actions';
 //profile
 import Profile from './components/pages/profil';
 
+import Deposer from './components/pages/deposerannonce';
 
 import profilleft from "./components/collection/profil-left";
 // Layouts
@@ -97,6 +98,13 @@ class Root extends React.Component {
 										exact path={`${process.env.PUBLIC_URL}/profil`}
 										component={Profile}
 									/>
+
+									<Route
+										exact path={`${process.env.PUBLIC_URL}/deposerannonce`}
+										component={Deposer}
+									/>
+
+
 
 									{/*Routes For Single Product*/}
 									
