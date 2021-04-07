@@ -34,7 +34,7 @@ class Deposer extends Component {
 									<form className="theme-form">
 										<div className="form-row">
 											<div className="col-md-6">
-												<label>First Name</label>
+												<label>Titre</label>
 												<input
 													name="name"
 													type="text"
@@ -53,6 +53,8 @@ class Deposer extends Component {
 												
 												</label>
 											</div>
+											
+											
 											<div className="col-md-6">
 												<label htmlFor="review">Last Name</label>
 												<input
@@ -73,19 +75,17 @@ class Deposer extends Component {
 												>
 												
 												</label>
+											
+											
 											</div>
 										</div>
 										<div className="form-row">
 											<div className="col-md-6">
-												<label htmlFor="email">Description</label>
-												<input
-													name="email"
-													type="text"
-													className="form-control"
-													id="email"
-													placeholder="Email"
-													
-												/>
+												<label htmlFor="email">Description</label><br />
+
+												<textarea  name="story" rows="10" cols="93">
+														
+													</textarea>
 												<label
 													style={{
 														paddingBottom: '20px',
@@ -95,6 +95,8 @@ class Deposer extends Component {
 												>
 													
 												</label>
+											
+											
 											</div>
 											<div className="col-md-6">
 												<label htmlFor="review">Categorie</label>
@@ -124,9 +126,7 @@ class Deposer extends Component {
         												<label>Select multiple images:</label>
         												<input type="file" name="multiple_images" multiple />
     												</div>
-    												<div>
-        												<input type="submit" name="btn_upload_multiple_images" value="Upload" />
-    												</div>
+    												
 												</form>
 											</div>
 											
