@@ -12,11 +12,11 @@ import translations from './constants/translations';
 import { getAllProducts } from './actions';
 
 //profile
-import Profile from './components/pages/profil';
 
 import Deposer from './components/pages/deposerannonce';
 
-import profilleft from "./components/collection/profil-left";
+import Profile from "./components/collection/profil-left";
+
 // Layouts
 import Fashion from './components/layouts/fashion/main';
 
@@ -118,10 +118,7 @@ class Root extends React.Component {
 										component={CollectionLeftSidebar}
 									/>
 
-									<Route
-										path={`${process.env.PUBLIC_URL}/Profil`}
-										component={profilleft}
-									/>
+									
 
 									{/*Routes For custom Features*/}
 									<Route
