@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IntlActions } from "react-redux-multilingual";
 import Pace from "react-pace-progress";
-
+import { Button } from 'react-bootstrap';
 // Import custom components
 import store from "../../../store";
 import NavBar from "./common/navbar";
@@ -112,12 +112,16 @@ class HeaderOne extends Component {
                             />
                           </div>
                         </a>
+
                         {/*SideBar Navigation Component*/}
                         <SideBar />
                       </div>
                       <div className="brand-logo">
                         <LogoImage logo={this.props.logoName} />
                       </div>
+
+                     
+                      
 
                       {/* search bar */}
                       <div class="wrap">
@@ -139,6 +143,7 @@ class HeaderOne extends Component {
 
                       <div className="icon-nav">
                         <ul>
+                          
                           <li className="navitem">
                             <a style={{cursor: "pointer"}} onClick={() => this.logout(data)}>Se déconnecter</a>
                           </li>
@@ -206,11 +211,24 @@ class HeaderOne extends Component {
 
                       <div className="icon-nav">
                         <ul>
+
+                          <Link to="/deposerannonce">
+                          <li className="navitem">
+                          <Button style={{
+                              
+                              borderRadius: "3px",
+                              
+                            }} 
+                            variant="outline-info"  >creer une annonce</Button>{' '}
+                          </li>
+                          </Link>
+
                           <Link to="/register">
                             <li className="navitem">
                               <a>S'inscrire</a>
                             </li>
                           </Link>
+                          
                           <Link to="/login">
                             <li className="navitem">
                               <a>Se connecter</a>

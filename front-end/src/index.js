@@ -34,6 +34,7 @@ import checkOut from './components/checkout';
 import orderSuccess from './components/checkout/success-page';
 
 // Extra Pages
+import Deposer from './components/pages/deposerannonce';
 import aboutUs from './components/pages/about-us';
 import PageNotFound from './components/pages/404';
 import lookbook from './components/pages/lookbook';
@@ -151,6 +152,10 @@ class Root extends React.Component {
 									<Route
 										path={`${process.env.PUBLIC_URL}/register`}
 										component={Register}
+									/>
+									<Route
+										path={`${process.env.PUBLIC_URL}/deposerannonce`}
+										component={Deposer}
 									/>
 									<Route
 										path={`${process.env.PUBLIC_URL}/pages/search`}

@@ -100,6 +100,7 @@ h5 {
   letter-spacing: 0.05em;
 }
 
+
 h6 {
   font-size: 14px;
   font-weight: 400;
@@ -1326,6 +1327,7 @@ r .top-header .header-dropdown li:nth-child(2) {
   .checkout {
   float: right;
 }
+.icon-nav 
 .main-menu .menu-right .icon-nav .onhover-div .show-div.setting {
   padding: 15px 20px 20px;
   min-width: 175px;
