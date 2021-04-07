@@ -336,7 +336,7 @@ module.exports = {
 		if (refreshToken in refreshTokens && refreshTokens[refreshToken] == id) {
 			var user = { id: id };
 			var token = jwt.sign(user, req.app.get('secretKey'), {
-				expiresIn: '5h',
+				expiresIn: '15m',
 			});
 			res.json({
 				accesstoken: token,

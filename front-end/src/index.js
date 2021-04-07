@@ -10,7 +10,10 @@ import './index.scss';
 import store from './store';
 import translations from './constants/translations';
 import { getAllProducts } from './actions';
+
 //profile
+import Profile from './components/pages/profil';
+
 
 import profilleft from "./components/collection/profil-left";
 // Layouts
@@ -87,6 +90,12 @@ class Root extends React.Component {
 									<Route
 										exact path={`${process.env.PUBLIC_URL}/`}
 										component={Fashion}
+									/>
+
+									{/*Profil*/}
+									<Route
+										exact path={`${process.env.PUBLIC_URL}/profil`}
+										component={Profile}
 									/>
 
 									{/*Routes For Single Product*/}
