@@ -56,7 +56,7 @@ class Deposer extends Component {
 											
 											
 											<div className="col-md-6">
-												<label htmlFor="review">Last Name</label>
+												<label htmlFor="review">Prix</label>
 												<input
 													name="surName"
 													type="text"
@@ -83,9 +83,9 @@ class Deposer extends Component {
 											<div className="col-md-6">
 												<label htmlFor="email">Description</label><br />
 
-												<textarea  name="story" rows="10" cols="93">
-														
-													</textarea>
+												<textarea className="form-control" style={{resize:"none"}}  name="Description" rows="5" cols="93">
+												</textarea>
+												
 												<label
 													style={{
 														paddingBottom: '20px',
@@ -99,16 +99,18 @@ class Deposer extends Component {
 											
 											</div>
 											<div className="col-md-6">
-												<label htmlFor="review">Categorie</label>
+												<label htmlFor="review">Categorie</label><br />
 
-												<input
-													name="password"
-													type="password"
-													className="form-control"
-													id="review"
-													placeholder="Enter your password"
-													
-												/>
+												<select name="pets" id="pet-select"  className="form-control">
+													<option value="">--choisire categorie--</option>
+    												<option value="dog">vetement</option>
+    												<option value="cat">cuisine</option>
+    												<option value="hamster">jardin</option>
+    												<option value="parrot">accessoires</option>
+    												<option value="spider">Montres</option>
+    												<option value="goldfish">chaussure</option>
+												</select>
+
 												<label
 													style={{
 														paddingBottom: '20px',
@@ -118,12 +120,12 @@ class Deposer extends Component {
 												>
 													
 												</label>
-												
-												<label for="avatar">Choose a profile picture:</label>
+												<br/> <br/>
+												<label for="avatar">selectionner vos images</label>
 
 												<form method="POST" action="/upload-multiple-images" enctype="multipart/form-data">
    													<div>
-        												<label>Select multiple images:</label>
+        												<label>selectionner plusieure images:</label>
         												<input type="file" name="multiple_images" multiple />
     												</div>
     												
