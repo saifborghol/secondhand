@@ -12,6 +12,16 @@ export default class userControllers {
 			return error;
 		}
 	}
+	getUser(id) {
+		return axios
+			.get(constant.get_user_url + id)
+			.then(res => {
+				return res;
+			})
+			.catch(err => {
+				return err;
+			});
+	}
 	loginUser(data) {
 		try {
 			return AxiosInstance.post(constant.login_user_url, data).then((res) => {

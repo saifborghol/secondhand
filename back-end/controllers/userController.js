@@ -102,8 +102,7 @@ module.exports = {
 	getUser: function (req, res) {
 		userModel.findById({ _id: req.params.id }).exec(function (err, users) {
 			if (err) {
-				res.status(500),
-					json({
+				res.status(500).json({
 						msg: 'erreur',
 						status: 500,
 						data: null,

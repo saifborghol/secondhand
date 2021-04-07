@@ -29,6 +29,7 @@ class HeaderOne extends Component {
 
     this.state = {
       isLoading: false,
+      User: {},
     };
     this.userController = new userController();
   }
@@ -37,6 +38,9 @@ class HeaderOne extends Component {
     setTimeout(function() {
       document.querySelector(".loader-wrapper").style = "display: none";
     }, 2000);
+    if (localStorage.getItem("userId")) {
+      this.getUser(localStorage.getItem("userId"));
+    }
 
     this.setState({ open: true });
   }
@@ -88,6 +92,13 @@ class HeaderOne extends Component {
       this.setState({ isLoading: false });
     });
   };
+
+  getUser(id) {
+    this.userController.getUser(id).then((res) => {
+      console.log(res);
+      this.setState({ User: res.data.data });
+    });
+  }
 
   logout = (e) => {
     let data = { refreshToken: localStorage.getItem("refreshToken") };
@@ -154,17 +165,32 @@ class HeaderOne extends Component {
                       <div className="icon-nav">
                         <ul>
                           <li className="navitem">
-                            <img
-                              src={avatar}
-                              alt="avatar"
-                              width="32px"
-                              height="32px"
-                              style={{
-                                borderRadius: "50%",
-                                objectFit: "cover",
-                              }}
-                            />
-                            <Dropdown>
+                            {this.state.User.image !== null ? (
+                              <img
+                                src={`http://localhost:4000/user/userimage/${
+                                  this.state.User.image
+                                }`}
+                                alt="avatar"
+                                width="32px"
+                                height="32px"
+                                style={{
+                                  borderRadius: "50%",
+                                  objectFit: "cover",
+                                }}
+                              />
+                            ) : (
+                              <img
+                                src={avatar}
+                                alt="avatar"
+                                width="32px"
+                                height="32px"
+                                style={{
+                                  borderRadius: "50%",
+                                  objectFit: "cover",
+                                }}
+                              />
+                            )}
+                            <Dropdown text={this.state.User.name}>
                               <Dropdown.Menu>
                                 <Dropdown.Item text="Mon profile" />
                                 <Dropdown.Item
