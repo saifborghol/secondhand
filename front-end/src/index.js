@@ -11,11 +11,14 @@ import store from './store';
 import translations from './constants/translations';
 import { getAllProducts } from './actions';
 
+import ProtectedRoute from './components/ProtectedRoute';
+import LoggedRoute from './components/LoggedRoute';
+
 //profile
 
 import Deposer from './components/pages/deposerannonce';
 
-import Profile from "./components/collection/profil-left";
+import Profile from './components/collection/profil-left';
 
 // Layouts
 import Fashion from './components/layouts/fashion/main';
@@ -24,9 +27,7 @@ import Fashion from './components/layouts/fashion/main';
 
 import NoSideBar from './components/products/no-sidebar';
 
-
-
-//For Search 
+//For Search
 import CollectionLeftSidebar from './components/collection/collection-left-sidebar';
 
 // Features
@@ -51,8 +52,6 @@ import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
 
-
-
 // Theme Element
 import ElementTitle from './components/features/theme/element-title';
 import ElementBanner from './components/features/theme/element-banner';
@@ -73,208 +72,206 @@ import GridCols from './components/features/portfolio/grid-cols';
 import MasonaryGridCols from './components/features/portfolio/masonary-grid-cols';
 
 class Root extends React.Component {
-	
 	render() {
 		store.dispatch(getAllProducts());
-		
+
 		return (
 			<Provider store={store}>
 				<IntlProvider translations={translations} locale="fn">
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
 							<Switch>
-								
 								<Layout>
-
 									<Switch>
-									{/*Routes For Layouts*/}
-									<Route
-										exact path={`${process.env.PUBLIC_URL}/`}
-										component={Fashion}
-									/>
+										{/*Routes For Layouts*/}
+										<Route
+											exact
+											path={`${process.env.PUBLIC_URL}/`}
+											component={Fashion}
+										/>
 
-									{/*Profil*/}
-									<Route
-										exact path={`${process.env.PUBLIC_URL}/profil`}
-										component={Profile}
-									/>
+										{/*Profil*/}
+										<ProtectedRoute
+											exact
+											path={`${process.env.PUBLIC_URL}/profil`}
+											component={Profile}
+										/>
 
-									<Route
-										exact path={`${process.env.PUBLIC_URL}/deposerannonce`}
-										component={Deposer}
-									/>
+										<ProtectedRoute
+											exact
+											path={`${process.env.PUBLIC_URL}/create`}
+											component={Deposer}
+										/>
 
+										{/*Routes For Single Product*/}
 
+										<Route
+											path={`${process.env.PUBLIC_URL}/no-sidebar/product/:id`}
+											component={NoSideBar}
+										/>
 
-									{/*Routes For Single Product*/}
-									
-																	<Route
-										path={`${process.env.PUBLIC_URL}/no-sidebar/product/:id`}
-										component={NoSideBar}
-									/>
-									
-									<Route
-										path={`${process.env.PUBLIC_URL}/collection`}
-										component={CollectionLeftSidebar}
-									/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/collection`}
+											component={CollectionLeftSidebar}
+										/>
 
-									
+										{/*Routes For custom Features*/}
+										<Route
+											path={`${process.env.PUBLIC_URL}/cart`}
+											component={Cart}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/wishlist`}
+											component={wishList}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/compare`}
+											component={Compare}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/checkout`}
+											component={checkOut}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/order-success`}
+											component={orderSuccess}
+										/>
 
-									{/*Routes For custom Features*/}
-									<Route
-										path={`${process.env.PUBLIC_URL}/cart`}
-										component={Cart}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/wishlist`}
-										component={wishList}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/compare`}
-										component={Compare}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/checkout`}
-										component={checkOut}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/order-success`}
-										component={orderSuccess}
-									/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/sales/orders`}
+											component={aboutUs}
+										/>
 
-									<Route
-										path={`${process.env.PUBLIC_URL}/sales/orders`}
-										component={aboutUs}
-									/>
+										{/*Routes For Extra Pages*/}
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/about-us`}
+											component={aboutUs}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/404`}
+											component={PageNotFound}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/lookbook`}
+											component={lookbook}
+										/>
+										<LoggedRoute
+											path={`${process.env.PUBLIC_URL}/login`}
+											component={Login}
+										/>
+										<LoggedRoute
+											path={`${process.env.PUBLIC_URL}/register`}
+											component={Register}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/search`}
+											component={Search}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/collection`}
+											component={Collection}
+										/>
+										<LoggedRoute
+											path={`${process.env.PUBLIC_URL}/forget-password`}
+											component={ForgetPassword}
+										/>
+										<LoggedRoute
+											path={`${process.env.PUBLIC_URL}/reset-password/:id`}
+											component={ResetPassword}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/contact`}
+											component={Contact}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/dashboard`}
+											component={Dashboard}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/faq`}
+											component={Faq}
+										/>
 
-									{/*Routes For Extra Pages*/}
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/about-us`}
-										component={aboutUs}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/404`}
-										component={PageNotFound}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/lookbook`}
-										component={lookbook}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/login`}
-										component={Login}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/register`}
-										component={Register}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/search`}
-										component={Search}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/collection`}
-										component={Collection}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/forget-password`}
-										component={ForgetPassword}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/reset-password/:id`}
-										component={ResetPassword}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/contact`}
-										component={Contact}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/dashboard`}
-										component={Dashboard}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/pages/faq`}
-										component={Faq}
-									/>
+										{/*Features*/}
+										{/*Theme Elements*/}
+										<Route
+											path={`${process.env.PUBLIC_URL}/features/element-title`}
+											component={ElementTitle}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/features/element-banner`}
+											component={ElementBanner}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/features/element-slider`}
+											component={ElementSlider}
+										/>
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/element-category`}
+											component={ElementCategory}
+										/>
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/element-service`}
+											component={ElementService}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/features/element-ratio`}
+											component={ElementRatio}
+										/>
 
-									{/*Features*/}
-									{/*Theme Elements*/}
-									<Route
-										path={`${process.env.PUBLIC_URL}/features/element-title`}
-										component={ElementTitle}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/features/element-banner`}
-										component={ElementBanner}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/features/element-slider`}
-										component={ElementSlider}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/features/element-category`}
-										component={ElementCategory}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/features/element-service`}
-										component={ElementService}
-									/>
-									<Route
-										path={`${process.env.PUBLIC_URL}/features/element-ratio`}
-										component={ElementRatio}
-									/>
+										{/*Product Elements*/}
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/element-product-no-slider`}
+											component={ElementProductBox}
+										/>
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/element-product-slider`}
+											component={ElementProductSlider}
+										/>
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/element-product-no-slider`}
+											component={ElementProductNoSlider}
+										/>
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/element-product-multiple-slider`}
+											component={ElementMultipleSlider}
+										/>
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/element-product-tab`}
+											component={ElementProductTab}
+										/>
 
-									{/*Product Elements*/}
-									<Route
-										path={`${
-											process.env.PUBLIC_URL
-										}/features/element-product-no-slider`}
-										component={ElementProductBox}
-									/>
-									<Route
-										path={`${
-											process.env.PUBLIC_URL
-										}/features/element-product-slider`}
-										component={ElementProductSlider}
-									/>
-									<Route
-										path={`${
-											process.env.PUBLIC_URL
-										}/features/element-product-no-slider`}
-										component={ElementProductNoSlider}
-									/>
-									<Route
-										path={`${
-											process.env.PUBLIC_URL
-										}/features/element-product-multiple-slider`}
-										component={ElementMultipleSlider}
-									/>
-									<Route
-										path={`${
-											process.env.PUBLIC_URL
-										}/features/element-product-tab`}
-										component={ElementProductTab}
-									/>
+										{/*Portfolios*/}
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/portfolio-grid/:columns`}
+											component={GridCols}
+										/>
+										<Route
+											path={`${
+												process.env.PUBLIC_URL
+											}/features/portfolio-masonary/:columns`}
+											component={MasonaryGridCols}
+										/>
 
-									{/*Portfolios*/}
-									<Route
-										path={`${
-											process.env.PUBLIC_URL
-										}/features/portfolio-grid/:columns`}
-										component={GridCols}
-									/>
-									<Route
-										path={`${
-											process.env.PUBLIC_URL
-										}/features/portfolio-masonary/:columns`}
-										component={MasonaryGridCols}
-									/>
-									
-									<Route path= '*' component={PageNotFound}></Route>
-								 </Switch>
-							
+										<Route path="*" component={PageNotFound} />
+									</Switch>
 								</Layout>
-								
 							</Switch>
 						</ScrollContext>
 					</BrowserRouter>

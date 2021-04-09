@@ -13,7 +13,7 @@ module.exports = {
 			surName: req.body.surName,
 			email: req.body.email,
 			password: req.body.password,
-			//image: req.file.filename,
+			image: "",
 		};
 		console.log('nneww', newUser);
 		userModel.create(newUser, function (err, user) {
@@ -103,10 +103,10 @@ module.exports = {
 		userModel.findById({ _id: req.params.id }).exec(function (err, users) {
 			if (err) {
 				res.status(500).json({
-						msg: 'erreur',
-						status: 500,
-						data: null,
-					});
+					msg: 'erreur',
+					status: 500,
+					data: null,
+				});
 			} else {
 				res.status(200).json({
 					msg: 'Get user',
@@ -181,8 +181,8 @@ module.exports = {
 								req.app.get('secretKey'),
 								{ expiresIn: '60m' }
 							);
-							
-						var refreshToken = randtoken.uid(256);
+
+							var refreshToken = randtoken.uid(256);
 
 							refreshTokens[refreshToken] = userInfo._id;
 
@@ -214,7 +214,7 @@ module.exports = {
 		console.log('refreshTokens : ', refreshTokens);
 		if (refreshToken in refreshTokens) {
 			delete refreshTokens[refreshToken];
-			
+
 			console.log('refreshTokens : ', refreshTokens);
 			res.json({
 				status: 'success',
@@ -235,7 +235,7 @@ module.exports = {
 		userModel.findOne({ email: Email }, (err, user) => {
 			if (err || !user) {
 				return res.json({
-					status: "Email error",
+					status: 'Email error',
 					error: 'Email does not exist',
 				});
 			}
@@ -287,14 +287,14 @@ module.exports = {
 				function (err, decodeData) {
 					if (err) {
 						return res.json({
-							message: "invalid token",
+							message: 'invalid token',
 							error: 'Incorrect token or it is expired',
 						});
 					}
 					userModel.findOne({ resetLink: resetLink }, (err, user) => {
 						if (err || !user) {
 							return res.json({
-								message: "invalid token",
+								message: 'invalid token',
 								error: 'User with this token does not exist',
 							});
 						}
@@ -309,7 +309,7 @@ module.exports = {
 								});
 							} else {
 								return res.status(200).json({
-									status: "Success",
+									status: 'Success',
 									message: 'Password has been changed!',
 								});
 							}

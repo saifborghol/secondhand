@@ -8,10 +8,9 @@ import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 
-import ProtectedRoute from "./components/ProtectedRoute"
+import ProtectedRoute from './components/ProtectedRoute';
 
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
-
 
 const Test = React.lazy(() => import('pages/Test'));
 
@@ -47,8 +46,6 @@ const getBasename = () => {
 	return `/${process.env.PUBLIC_URL.split('/').pop()}`;
 };
 
-
-
 class App extends React.Component {
 	render() {
 		return (
@@ -63,19 +60,18 @@ class App extends React.Component {
 								<AuthPage {...props} authState={STATE_LOGIN} />
 							)}
 						/>
-						
 
 						<MainLayout breakpoint={this.props.breakpoint}>
 							<React.Suspense fallback={<PageSpinner />}>
-								<Route
+								<ProtectedRoute
 									exact
 									path="/main"
 									component={DashboardPage}
 								/>
-								
+
 								<Route exact path="/test" component={Test} />
 								{/* user */}
-								<Route
+								<ProtectedRoute
 									exact
 									path="/user/addUser"
 									component={AddUser}
@@ -92,13 +88,12 @@ class App extends React.Component {
 								/>
 
 								{/* Annonce */}
-								
+
 								<ProtectedRoute
 									exact
 									path="/annonce"
 									component={ListAnnonces}
 								/>
-								
 
 								{/* Category */}
 								<ProtectedRoute
@@ -135,7 +130,6 @@ class App extends React.Component {
 								/>
 							</React.Suspense>
 						</MainLayout>
-						<Redirect to="/" />
 					</Switch>
 				</GAListener>
 			</BrowserRouter>

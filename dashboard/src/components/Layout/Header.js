@@ -5,6 +5,8 @@ import SearchInput from 'components/SearchInput';
 import { notificationsData } from 'demos/header';
 import withBadge from 'hocs/withBadge';
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import compose from 'recompose/compose';
 import AdminController from '../../pages/services/controllers/AdminController';
 
 import {
@@ -83,10 +85,16 @@ class Header extends React.Component {
 			.classList.toggle('cr-sidebar--open');
 	};
 
+	logout = e => {
+		let data = { refreshToken: localStorage.getItem('refreshToken') };
+		const { history } = this.props;
+		this.AdminController.logout(data);
+		localStorage.clear();
+		history.push('/');
+	};
+
 	render() {
 		const { isNotificationConfirmed } = this.state;
-		let data = { refreshToken: localStorage.getItem('refreshToken') };
-
 		return (
 			<Navbar light expand className={bem.b('bg-white')}>
 				<Nav navbar className="mr-2">
@@ -153,16 +161,7 @@ class Header extends React.Component {
 									<ListGroup flush>
 										<ListGroupItem
 											tag="button"
-											onClick={
-												() =>
-													this.AdminController.logout(
-														data,
-													).then(() => {
-														localStorage.clear();
-													})
-
-												(window.location.href = '/')
-											}
+											onClick={e => this.logout(e)}
 											action
 											className="border-light"
 										>
@@ -179,4 +178,4 @@ class Header extends React.Component {
 	}
 }
 
-export default Header;
+export default compose(withRouter)(Header);

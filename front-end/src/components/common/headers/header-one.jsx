@@ -20,7 +20,6 @@ import { Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 import avatar from '../../../assets/images/default-avatar.png';
-import pic from '../../../assets/images/pic.jpg';
 
 import userController from '../../../services/controllers/userControllers';
 
@@ -39,16 +38,17 @@ class HeaderOne extends Component {
 		setTimeout(function() {
 			document.querySelector('.loader-wrapper').style = 'display: none';
 		}, 2000);
+
 		if (localStorage.getItem('userId')) {
+			console.log('user id:', localStorage.getItem('userId'));
 			this.getUser(localStorage.getItem('userId'));
 		}
-
-		this.setState({ open: true });
 	}
 
 	componentWillMount() {
 		window.addEventListener('scroll', this.handleScroll);
 	}
+
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.handleScroll);
 	}
@@ -101,15 +101,17 @@ class HeaderOne extends Component {
 		});
 	}
 
+	profil = () => {
+		const { history } = this.props;
+		history.push('/profil');
+	};
+
 	logout = (e) => {
 		let data = { refreshToken: localStorage.getItem('refreshToken') };
 		const { history } = this.props;
-
-		this.userController.logoutUser(data).then((res) => {
-			console.log('res', res);
-			localStorage.clear();
-			history.push('/login');
-		});
+		this.userController.logoutUser(data);
+		localStorage.clear();
+		history.push('/login');
 	};
 
 	render() {
@@ -164,48 +166,57 @@ class HeaderOne extends Component {
 										{localStorage.getItem('token') ? (
 											<div className="icon-nav">
 												<ul>
-													<Link to="/deposerannonce">
+													<Link to="/create">
 														<li className="navitem">
-															<Button
-																style={{
-																	borderRadius: '3px',
-																}}
-																variant="outline-info"
-															>
-																creer une annonce
-															</Button>{' '}
+															<button className="buttoon2">
+																Créer une annonce
+															</button>
 														</li>
 													</Link>
 
 													<li className="navitem">
-														{this.state.User.image !== null ? (
+														{this.state.User.image ? (
 															<img
 																src={`http://localhost:4000/user/userimage/${
 																	this.state.User.image
 																}`}
+																onClick={() => this.profil()}
 																alt="avatar"
 																width="32px"
 																height="32px"
 																style={{
+																	cursor: 'pointer',
 																	borderRadius: '50%',
 																	objectFit: 'cover',
+																	marginRight: '5px',
 																}}
 															/>
 														) : (
 															<img
 																src={avatar}
+																onClick={() => this.profil()}
 																alt="avatar"
 																width="32px"
 																height="32px"
 																style={{
+																	cursor: 'pointer',
 																	borderRadius: '50%',
 																	objectFit: 'cover',
+																	marginRight: '5px',
 																}}
 															/>
 														)}
-														<Dropdown text={this.state.User.name}>
-															<Dropdown.Menu>
-																<Dropdown.Item text="Mon profile" />
+														<Dropdown>
+															<Dropdown.Menu
+																style={{
+																	marginTop: '25px',
+																	marginLeft: '-120px',
+																}}
+															>
+																<Dropdown.Item
+																	text="Mon profile"
+																	onClick={() => this.profil()}
+																/>
 																<Dropdown.Item
 																	icon="logout"
 																	text="Se déconnecter"
@@ -223,16 +234,11 @@ class HeaderOne extends Component {
 										) : (
 											<div className="icon-nav">
 												<ul>
-													<Link to="/deposerannonce">
+													<Link to="/create">
 														<li className="navitem">
-															<Button
-																style={{
-																	borderRadius: '3px',
-																}}
-																variant="outline-info"
-															>
-																creer une annonce
-															</Button>{' '}
+															<button className="buttoon2">
+																Créer une annonce
+															</button>
 														</li>
 													</Link>
 													<Link to="/register">

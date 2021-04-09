@@ -24,14 +24,14 @@ class Register extends Component {
 			emailErr: '',
 			passwordErr: '',
 		};
-		const regex1 = /^[a-zA-Z._-]+$/;
-		if (this.state.name === '' || !regex1.test(this.state.name)) {
+
+		if (this.state.name === '' || !isNaN(this.state.name)) {
 			isError = true;
 			errors.NameErr = 'Veuillez vérifier votre prénom';
 		}
 
-		const regex4 = /^[a-zA-Z._-]+$/;
-		if (this.state.surName === '' || !regex4.test(this.state.surName)) {
+
+		if (this.state.surName === '' || !isNaN(this.state.surName)) {
 			isError = true;
 			errors.surNameErr = 'Veuillez vérifier votre nom';
 		}
@@ -103,7 +103,7 @@ class Register extends Component {
 									<form className="theme-form">
 										<div className="form-row">
 											<div className="col-md-6">
-												<label>First Name</label>
+												<label>Nom</label>
 												<input
 													name="name"
 													type="text"
@@ -125,7 +125,7 @@ class Register extends Component {
 												</label>
 											</div>
 											<div className="col-md-6">
-												<label htmlFor="review">Last Name</label>
+												<label htmlFor="review">Prénom</label>
 												<input
 													name="surName"
 													type="text"
@@ -150,7 +150,7 @@ class Register extends Component {
 										</div>
 										<div className="form-row">
 											<div className="col-md-6">
-												<label htmlFor="email">email</label>
+												<label htmlFor="email">Email</label>
 												<input
 													name="email"
 													type="text"
@@ -172,7 +172,7 @@ class Register extends Component {
 												</label>
 											</div>
 											<div className="col-md-6">
-												<label htmlFor="review">Password</label>
+												<label htmlFor="review">Mot de passe</label>
 
 												<input
 													name="password"

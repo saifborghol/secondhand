@@ -60,9 +60,8 @@ class AuthForm extends React.Component {
 						'refreshToken',
 						res.data.data.refreshtoken,
 					);
-					this.props.history.push('/category');
-				}
-				else{
+					window.location.href = '/category';
+				} else {
 					this.setState({
 						error: {
 							...this.state.error,
@@ -103,7 +102,6 @@ class AuthForm extends React.Component {
 	}
 
 	render() {
-
 		const {
 			showLogo,
 			usernameLabel,

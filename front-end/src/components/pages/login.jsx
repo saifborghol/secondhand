@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import Breadcrumb from '../common/breadcrumb';
 
@@ -30,8 +30,7 @@ class Login extends Component {
 			errors.emailErr = 'Veuillez vérifier votre email';
 		}
 
-		const regex2 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,14}$/
-		;
+		const regex2 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,14}$/;
 		if (this.state.password === '' || !regex2.test(this.state.password)) {
 			isError = true;
 			errors.passwordErr = 'Veuillez vérifier votre mot de passe';
@@ -55,13 +54,9 @@ class Login extends Component {
 					console.log('ressssss', res);
 					if (res.data.status === 'Success') {
 						localStorage.setItem('userId', res.data.data.user._id);
-					localStorage.setItem('token', res.data.data.token);
-					localStorage.setItem(
-						'refreshToken',
-						res.data.data.refreshtoken,
-					);
-						this.props.history.push('/');
-						
+						localStorage.setItem('token', res.data.data.token);
+						localStorage.setItem('refreshToken', res.data.data.refreshtoken);
+						window.location.href = '/';
 					} else if (res.data.status === 401) {
 						this.setState({
 							error: {
@@ -142,13 +137,8 @@ class Login extends Component {
 											Se connecter
 										</a>
 										<Link to="/forget-password">
-										&nbsp;&nbsp;<a
-
-										>
-											Vous avez oublié votre mot de passe?
-										</a>
+											&nbsp;&nbsp;<a>Vous avez oublié votre mot de passe?</a>
 										</Link>
-										
 									</form>
 								</div>
 							</div>
@@ -161,9 +151,9 @@ class Login extends Component {
 										quick and easy. It allows you to be able to order from our
 										shop. To start shopping click register.
 									</p>
-									<a href="pages/register" className="btn btn-solid">
-										Créer un compte
-									</a>
+									<Link to="/register">
+										<a className="btn btn-solid">Créer un compte</a>
+									</Link>
 								</div>
 							</div>
 						</div>
