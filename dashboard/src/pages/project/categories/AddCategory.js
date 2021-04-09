@@ -20,7 +20,7 @@ export default class AddCategory extends Component {
 		super();
 		this.state = {
 			title: '',
-			description: '',
+			// description: '',
 		};
 		this.CategoryController = new CategoryController();
 	}
@@ -29,7 +29,7 @@ export default class AddCategory extends Component {
 		event.preventDefault();
 		let data = {
 			title: this.state.title,
-			description: this.state.description
+			// description: this.state.description
 		};
 		this.CategoryController.AddCategory(data).then(res => {
 			console.log('response', res);

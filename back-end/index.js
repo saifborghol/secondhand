@@ -37,10 +37,10 @@ app.use(bodyParser.json());
 
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
-app.use('/category', middleware.validateUser,categoryRouter);
+app.use('/category',categoryRouter);
 app.use('/subcategory', subCategoryRouter);
 app.use('/order', orderRouter);
-app.use('/annonce', middleware.validateUser,annonceRouter);
+app.use('/annonce',annonceRouter);
 
 app.get('/home', function (req, res) {
 	res.send('Hello home!');

@@ -8,7 +8,7 @@ route.delete('/deleteUser/:id', userController.deleteUser);
 route.delete('/deleteAll', userController.deleteAll);
 route.post('/updateUser/:id',multer.single('image'),userController.updateUser);
 route.get('/getUser/:id', userController.getUser);
-route.get('/getAll', middleware.validateUser, userController.getAllUsers);
+route.get('/getAll', userController.getAllUsers);
 route.post('/sendMailUser', userController.sendMailUser);
 route.post('/login', userController.authentificateUser);
 route.post('/logout', middleware.validateUser, userController.logoutUser);

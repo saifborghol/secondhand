@@ -1,19 +1,45 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 
 import Breadcrumb from '../common/breadcrumb';
 
 import ImageUploader from 'react-images-upload';
 
 import UserController from '../../services/controllers/userControllers';
+import CategoryController from '../../services/controllers/CategoryController';
+import SubCategoryController from '../../services/controllers/SubCategoryController';
 
 class Deposer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			Categories: [],
+			SubCategories: [],
 			pictures: [],
 		};
 		this.UserController = new UserController();
+		this.CategoryController = new CategoryController();
+		this.SubCategoryController = new SubCategoryController();
+
 		this.onDrop = this.onDrop.bind(this);
+	}
+
+	componentDidMount() {
+		this.getAllCategories();
+		this.getAllSubCategories();
+
+	}
+
+	getAllCategories() {
+		this.CategoryController.getAllCategory().then((res) => {
+			this.setState({ Categories: res.data.data });
+		});
+	}
+
+	getAllSubCategories() {
+		this.SubCategoryController.getAllSubCategory().then(res => {
+			this.setState({ SubCategories: res.data.data });
+		});
 	}
 
 	onDrop(pictureFiles, pictureDataURLs) {
@@ -27,14 +53,14 @@ class Deposer extends Component {
 	render() {
 		return (
 			<div>
-				<Breadcrumb title={'Deposer votre Annonce'} />
+				<Breadcrumb title={'Annonce'} />
 
 				{/*Regsiter section*/}
 				<section className="register-page section-b-space">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-12">
-								<h3>create account</h3>
+								<h3>Déposer votre annonce</h3>
 								<div className="theme-card">
 									<form className="theme-form">
 										<div className="form-row">
@@ -77,7 +103,7 @@ class Deposer extends Component {
 										</div>
 										<div className="form-row">
 											<div className="col-md-6">
-												<label htmlFor="email">Description</label>
+												<label htmlFor="email">Description (optionnelle)</label>
 												<br />
 
 												<textarea
@@ -97,20 +123,23 @@ class Deposer extends Component {
 												/>
 											</div>
 											<div className="col-md-6">
-												<label htmlFor="review">Categorie</label>
+												<label htmlFor="review">Catégorie</label>
 												<br />
+												<Select
+    options={this.state.Categories}
+    // formatGroupLabel={formatGroupLabel}
+  />
+
+
 												<select
 													name="pets"
 													id="pet-select"
 													className="form-control"
 												>
-													<option value="">--choisire categorie--</option>
-													<option value="dog">vetement</option>
-													<option value="cat">cuisine</option>
-													<option value="hamster">jardin</option>
-													<option value="parrot">accessoires</option>
-													<option value="spider">Montres</option>
-													<option value="goldfish">chaussure</option>
+													<option value="">Choisir une catégorie</option>
+													{this.state.SubCategories.map((cat) => (
+														<option value={cat._id}>{cat.title}</option>
+													))}
 												</select>
 												<label
 													style={{
@@ -145,7 +174,7 @@ class Deposer extends Component {
 												imgExtension={['.jpg', '.gif', '.png', '.gif']}
 												maxFileSize={5242880}
 												withLabel={false}
-												fileSizeError='La taille des fichiers est trop large'
+												fileSizeError="La taille des fichiers est trop large"
 												fileTypeError="Le type de fichiers n'est pas supporté"
 											/>
 

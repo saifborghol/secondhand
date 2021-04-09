@@ -24,7 +24,7 @@ class FooterOne extends Component {
 
         return (
             <footer className="footer-light">
-                <div className="light-layout">
+                {/* <div className="light-layout">
                     <div className="container">
                         <section className="small-section border-section border-top-0">
                             <div className="row">
@@ -49,6 +49,7 @@ class FooterOne extends Component {
                         </section>
                     </div>
                 </div>
+                 */}
                 <section className="section-b-space light-layout">
                     <div className="container">
                         <div className="row footer-theme partition-f">

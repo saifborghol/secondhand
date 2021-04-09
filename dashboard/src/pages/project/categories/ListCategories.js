@@ -33,7 +33,7 @@ export default class ListCategories extends Component {
 
 	deleteCategory(id) {
 		console.log('id: ', id);
-		this.CategoryController.deleteSubCategory(id).then(res => {
+		this.CategoryController.deleteCategory(id).then(res => {
 			console.log('resDeleteCategory', res);
 			this.getAllCategories();
 		});
@@ -130,13 +130,7 @@ export default class ListCategories extends Component {
 													<tbody>
 														{this.state.Categories.map(
 															(cat, index) => {
-																console.log(
-																	'vvvvvvvvv',
-																	this.state
-																		.Categories[
-																		index
-																	],
-																);
+																console.log('vvvvvvvvv',this.state.Categories[index]);
 
 																return (
 																	<React.Fragment>

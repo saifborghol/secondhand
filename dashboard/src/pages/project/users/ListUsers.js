@@ -83,7 +83,7 @@ export default class ListUsers extends Component {
 																		</td>
 																		<td>
 																			{
-																				user.image
+																				user.email
 																			}
 																		</td>
 																		<td>

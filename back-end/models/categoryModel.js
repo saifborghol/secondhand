@@ -8,7 +8,6 @@ const categorySchema = Schema({
 	},
 	description: {
 		type: String,
-		required: true,
 	},
 	subcat: [
 		{

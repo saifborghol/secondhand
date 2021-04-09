@@ -8,7 +8,6 @@ const subCategorySchema = Schema({
     },
     description:{
         type: String,
-        required: true
     },
     cat_id:{
         type: Schema.Types.ObjectId,
