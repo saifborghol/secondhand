@@ -13,3 +13,10 @@ export const resetpwd_user_url = BASE_URL + '/user/resetpassword';
 
 export const GETALL_CATEGORY_URL = BASE_URL + '/category/getAll';
 export const GETALL_SUBCATEGORY_URL = BASE_URL + '/subCategory/getAll';
+
+//////////////////////////annonce/////////////////////////////
+
+export const GET_ANNONCE_URL = BASE_URL + '/annonce/getAnnonce/:id';
+export const ADD_ANNONCE_URL = BASE_URL + '/annonce/addAnnonce';
+export const UPDATE_ANNONCE_URL = BASE_URL + '/annonce/updateAnnonce/:id';
+export const GETALL_ANNONCE_URL = BASE_URL + '/annonce/getAll';

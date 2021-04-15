@@ -57,6 +57,8 @@ class Fashion extends Component {
 					</Slider>
 				</section>
 
+				{/* MAP FOR PRODUCTS */}
+
 				<SpecialProducts />
 
 				{/*service layout*/}
@@ -109,7 +111,7 @@ class Fashion extends Component {
 				</section>
 				{/*Blog Section End*/}
 
-				<Instagram />
+				{/* <Instagram /> */}
 
 				{/*logo section*/}
 				<LogoBlock />

@@ -1,73 +1,74 @@
-import React, { Component } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {connect} from 'react-redux'
-
-import {getBestSeller, getMensWear, getWomensWear} from '../../../services/index'
-import {addToCart, addToWishlist, addToCompare} from "../../../actions/index";
-import ProductItem from './product-item';
+import React, { Component } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
+import CardDeck from "react-bootstrap/CardDeck";
+import axios from "axios";
+import annonceControllers from "../../../services/controllers/annonceController";
 
 class SpecialProducts extends Component {
-    render (){
+  constructor() {
+    super();
+    this.state = {
+      PROD: [],
+    };
+    this.annonceControllers = new annonceControllers();
+  }
 
-        const {bestSeller,mensWear,womensWear, symbol, addToCart, addToWishlist, addToCompare} = this.props
-        return (
-            <div>
-                <div className="title1 section-t-space">
-                    <h4>exclusive products</h4>
-                    <h2 className="title-inner1">special products</h2>
-                </div>
-                <section className="section-b-space p-t-0">
-                    <div className="container">
-                        <Tabs className="theme-tab">
-                            <TabList className="tabs tab-title">
-                                <Tab>New Products</Tab>
-                                <Tab>Mens Wear</Tab>
-                                <Tab>Womens Wear</Tab>
-                            </TabList>
+  componentDidMount() {
+    this.annonceControllers.getAll().then((res) => {
+      this.setState({ PROD: res.data.data });
+      console.log("PRODUCT_DATA", this.state.PROD);
+    });
+  }
+  render() {
+    return (
+      <div>
+        <CardDeck>
+        {this.state.PROD.map((annonce) => {
+            return (
+          <Card>
+            <Card.Img variant="top" src={`http://localhost:4000/annonce/annonceimage/${
+																	annonce.product.image
+																}`} />
+            <Card.Body>
+              <Card.Title>{annonce.title}</Card.Title>
+              <Card.Text>
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">{annonce.date}</small>
+            </Card.Footer>
+          </Card>
+          );
+        })}
+        </CardDeck>
 
-                            <TabPanel>
-                                <div className="no-slider row">
-                                    { bestSeller.map((product, index ) =>
-                                        <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
-                                    }
-                                </div>
-                            </TabPanel>
-                            <TabPanel>
-                                <div className="no-slider row">
-                                    { mensWear.map((product, index ) =>
-                                        <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
-                                    }
-                                </div>
-                            </TabPanel>
-                            <TabPanel>
-                                <div className=" no-slider row">
-                                    { womensWear.map((product, index ) =>
-                                        <ProductItem product={product} symbol={symbol}
-                                                     onAddToCompareClicked={() => addToCompare(product)}
-                                                     onAddToWishlistClicked={() => addToWishlist(product)}
-                                                     onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
-                                    }
-                                </div>
-                            </TabPanel>
-                        </Tabs>
-                    </div>
-                </section>
-            </div>
-        )
-    }
+        <CardGroup style={{ display: "flex", flexWrap: "wrap" }}>
+          {this.state.PROD.map((annonce) => {
+            return (
+              <Card style={{ width: "18rem", margin: "20px" }}>
+                <Card.Img
+                  variant="top"
+                  src={`http://localhost:4000/annonce/${annonce.product.image}`}
+                />
+                <Card.Body>
+                  <Card.Title>Card Title</Card.Title>
+                  <Card.Text>
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardGroup>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = (state) => ({
-    bestSeller: getBestSeller(state.data.products),
-    mensWear: getMensWear(state.data.products),
-    womensWear: getWomensWear(state.data.products),
-    symbol: state.data.symbol
-})
-
-export default connect(mapStateToProps, {addToCart, addToWishlist, addToCompare}) (SpecialProducts);
+export default SpecialProducts;

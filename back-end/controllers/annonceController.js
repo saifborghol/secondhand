@@ -102,4 +102,8 @@ module.exports = {
 			}
 		});
 	},
+	getImageAnnonce: function (req, res) {
+		image = req.params.image;
+		res.sendFile(__dirname + '/imagesUploads/' + image);
+	},
 };
