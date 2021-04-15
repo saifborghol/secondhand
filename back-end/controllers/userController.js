@@ -13,7 +13,6 @@ module.exports = {
 			surName: req.body.surName,
 			email: req.body.email,
 			password: req.body.password,
-			image: "",
 		};
 		console.log('nneww', newUser);
 		userModel.create(newUser, function (err, user) {
@@ -69,14 +68,81 @@ module.exports = {
 		});
 	},
 
+	verifierExistanceNumTelUser: function (req, res) {
+		try {
+			userModel.findOne({ tel: req.body.tel }).then((user) => {
+				if (!user) {
+					res.json({
+						message: "ce numéro n'existe pas encore",
+						statut: 500,
+						data: user,
+					});
+				} else {
+					res.json({
+						message: 'ce numéro existe déja',
+						statut: 200,
+						data: user,
+					});
+				}
+			});
+		} catch (error) {
+			console.log('il y avait un error');
+		}
+	},
+
 	updateUser: function (req, res) {
+		userModel
+			.findByIdAndUpdate(
+				{ _id: req.params.id },
+
+				req.body
+			)
+			.exec(function (err, users) {
+				if (err) {
+					res.json({
+						msg: 'erreur' + err,
+						status: 500,
+						data: null,
+					});
+				} else {
+					res.status(200).json({
+						msg: 'User updated!',
+						status: 200,
+						data: users,
+					});
+				}
+			});
+	},
+
+	updateUserPass: async function (req, res) {
 		const saltRounds = 10;
-		req.body.password = bcrypt.hashSync(req.body.password, saltRounds);
+		const _id = req.params.id;
+		const oldpassword = req.body.oldpassword;
+		const newpassword = bcrypt.hashSync(req.body.newpassword, saltRounds);
+		const user = await userModel.findById(_id);
+		if (!user) {
+			res.json({ message: 'id not correct', status: 500 });
+		} else {
+			if (bcrypt.compareSync(oldpassword, user.password)) {
+				const updateUser = {
+					password: newpassword,
+				};
+				await userModel.findByIdAndUpdate(_id, updateUser);
+				res.json({
+					statut: 200,
+					message: 'password changed ! ',
+				});
+			} else {
+				res.json({
+					statut: 500,
+					message: 'current password is not correct !',
+				});
+			}
+		}
+	},
+
+	updateUserImage: function (req, res) {
 		const newUser = {
-			name: req.body.name,
-			surName: req.body.surName,
-			email: req.body.email,
-			password: req.body.password,
 			image: req.file.filename,
 		};
 		userModel

@@ -12,13 +12,58 @@ export default class userControllers {
 			return error;
 		}
 	}
+
+	updateUser(id, data) {
+		return axios
+			.post(constant.update_user_url + id, data)
+			.then((res) => {
+				return res;
+			})
+			.catch((err) => {
+				return err;
+			});
+	}
+	
+	verifTel(data) {
+		return axios
+			.post(constant.verifTel_user_url,  data)
+			.then((res) => {
+				return res;
+			})
+			.catch((err) => {
+				return err;
+			});
+	}
+
+	updateUserPass(id, data) {
+		return axios
+			.post(constant.update_userpass_url + id, data)
+			.then((res) => {
+				return res;
+			})
+			.catch((err) => {
+				return err;
+			});
+	}
+
+	updateUserImage(id, data) {
+		return axios
+			.post(constant.update_userimage_url + id, data)
+			.then((res) => {
+				return res;
+			})
+			.catch((err) => {
+				return err;
+			});
+	}
+
 	getUser(id) {
 		return axios
 			.get(constant.get_user_url + id)
-			.then(res => {
+			.then((res) => {
 				return res;
 			})
-			.catch(err => {
+			.catch((err) => {
 				return err;
 			});
 	}

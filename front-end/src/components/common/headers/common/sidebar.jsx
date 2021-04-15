@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import CategoryController from '../../../../services/controllers/CategoryController';
+
 class SideBar extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			Categories: [],
+			pictures: [],
+		};
+
+		this.CategoryController = new CategoryController();
+	}
+
+	componentDidMount() {
+		this.getAllCategories();
+	}
+
+	getAllCategories() {
+		this.CategoryController.getAllCategory().then((res) => {
+			this.setState({ Categories: res.data.data });
+		});
+	}
 	closeNav() {
 		var closemyslide = document.getElementById('mySidenav');
 		if (closemyslide) closemyslide.classList.remove('open-side');
@@ -102,189 +123,23 @@ class SideBar extends Component {
 								</React.Fragment>
 							)}
 						</ul>
-
-						<li>
-							<Link to="#" onClick={(e) => this.handleMegaSubmenu(e)}>
-								Vetement
-								<span className="sub-arrow" />
-							</Link>
-							<ul className="mega-menu clothing-menu">
+						{this.state.Categories.map((cat, index) => {
+							return (
 								<li>
-									<div className="row m-0">
-										<div className="col-xl-4">
-											<div className="link-section">
-												<h5>Mode Femme</h5>
-												<ul>
-													<li>
-														<Link to="/collection">Robes</Link>
-													</li>
-													<li>
-														<Link to="/collection">jupes</Link>
-													</li>
-
-													<li>
-														<Link to="/collection">vêtement de sport</Link>
-													</li>
-												</ul>
-												<h5>Mode Homme</h5>
-												<ul>
-													<li>
-														<Link to="/collection">vêtement de sport</Link>
-													</li>
-													<li>
-														<Link to="/collection">vêtement chic</Link>
-													</li>
-													<li>
-														<Link to="/collection">sport chic</Link>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="col-xl-4">
-											<div className="link-section">
-												<h5>accessories</h5>
-												<ul>
-													<li>
-														<Link to="/collection">bijoux fantaisie</Link>
-													</li>
-													<li>
-														<Link to="/collection">casquettes et chapeaux</Link>
-													</li>
-													<li>
-														<Link to="/collection">bijoux précieux</Link>
-													</li>
-													<li>
-														<Link to="/collection">colliers</Link>
-													</li>
-													<li>
-														<Link to="/collection">des boucles d'oreilles</Link>
-													</li>
-													<li>
-														<Link to="/collection">accessoires de poignet</Link>
-													</li>
-													<li>
-														<Link to="/collection">cravates</Link>
-													</li>
-													<li>
-														<Link to="/collection">boutons de manchette</Link>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="col-xl-4">
-											<a href="#" className="mega-menu-banner">
-												<img
-													src={`${
-														process.env.PUBLIC_URL
-													}/assets/images/mega-menu/accnav.jpg`}
-													alt=""
-													className="img-fluid"
-												/>
-											</a>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<Link to="/collection" onClick={(e) => this.handleSubmenu(e)}>
-								Sacs
-								<span className="sub-arrow" />
-							</Link>
-							<ul>
-								<li>
-									<Link to="/collection">sacs pour ordinateur portable</Link>
-								</li>
-
-								<li>
-									<Link
-										to="/collection"
-										onClick={(e) => this.handleSubTwoMenu(e)}
-									>
-										sacs à main
+									<Link onClick={(e) => this.handleSubmenu(e)}>
+										{cat.title}
 										<span className="sub-arrow" />
 									</Link>
 									<ul>
-										<li>
-											<Link to="/collection">portefeuilles</Link>
-										</li>
-
-										<li>
-											<Link to="/collection">cartables</Link>
-										</li>
+										{this.state.Categories[index].subcat.map((subcat) => (
+											<li>
+												<Link to="/">{subcat.title}</Link>
+											</li>
+										))}
 									</ul>
 								</li>
-							</ul>
-						</li>
-						<li>
-							<Link to="/collection" onClick={(e) => this.handleSubmenu(e)}>
-								chaussure
-								<span className="sub-arrow" />
-							</Link>
-							<ul>
-								<li>
-									<Link to="/collection">chaussures de sport</Link>
-								</li>
-								<li>
-									<Link to="/collection">chaussures formelles</Link>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<Link to="/collection">montres</Link>
-						</li>
-
-						<li>
-							<Link to="#" onClick={(e) => this.handleSubmenu(e)}>
-								beauté et soins personnels
-								<span className="sub-arrow" />
-							</Link>
-							<ul>
-								<li>
-									<Link to="/collection">makeup</Link>
-								</li>
-
-								<li>
-									<Link
-										to="/collection"
-										onClick={(e) => this.handleSuTwobmenu(e)}
-									>
-										Suite
-										<span className="sub-arrow" />
-									</Link>
-									<ul>
-										<li>
-											<Link to="/collection">parfums</Link>
-										</li>
-
-										<li>
-											<Link to="/collection">outils et brosses</Link>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<Link to="/collection" onClick={(e) => this.handleSubmenu(e)}>
-								décoration de maison
-								<span className="sub-arrow" />
-							</Link>
-							<ul>
-								<li>
-									<Link to="/collection">cuisine</Link>
-								</li>
-								<li>
-									<Link to="/collection">Salon</Link>
-								</li>
-								<li>
-									<Link to="/collection">Chambre</Link>
-								</li>
-								<li>
-									<Link to="/collection">Jardin</Link>
-								</li>
-							</ul>
-						</li>
+							);
+						})}
 					</ul>
 				</nav>
 			</div>

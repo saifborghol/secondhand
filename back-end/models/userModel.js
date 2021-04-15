@@ -40,6 +40,10 @@ const userSchema = Schema({
 			message: 'you must provide a valid password',
 		},
 	},
+	tel: {
+		type: Number,
+		// unique: true,
+	},
 	image: {
 		type: String,
 	},

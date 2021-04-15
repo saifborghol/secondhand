@@ -103,7 +103,7 @@ class HeaderOne extends Component {
 
 	profil = () => {
 		const { history } = this.props;
-		history.push('/profil');
+		history.push('/profile');
 	};
 
 	logout = (e) => {

@@ -8,26 +8,24 @@ import ImageUploader from 'react-images-upload';
 
 import UserController from '../../services/controllers/userControllers';
 import CategoryController from '../../services/controllers/CategoryController';
-import SubCategoryController from '../../services/controllers/SubCategoryController';
+// import SubCategoryController from '../../services/controllers/SubCategoryController';
 
 class Deposer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			Categories: [],
-			SubCategories: [],
 			pictures: [],
 		};
 		this.UserController = new UserController();
 		this.CategoryController = new CategoryController();
-		this.SubCategoryController = new SubCategoryController();
+		// this.SubCategoryController = new SubCategoryController();
 
 		this.onDrop = this.onDrop.bind(this);
 	}
 
 	componentDidMount() {
 		this.getAllCategories();
-		this.getAllSubCategories();
 	}
 
 	getAllCategories() {
@@ -36,11 +34,11 @@ class Deposer extends Component {
 		});
 	}
 
-	getAllSubCategories() {
-		this.SubCategoryController.getAllSubCategory().then((res) => {
-			this.setState({ SubCategories: res.data.data });
-		});
-	}
+	// getAllSubCategories() {
+	// 	this.SubCategoryController.getAllSubCategory().then((res) => {
+	// 		this.setState({ SubCategories: res.data.data });
+	// 	});
+	// }
 
 	onDrop(pictureFiles, pictureDataURLs) {
 		this.setState({

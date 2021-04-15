@@ -18,7 +18,9 @@ import LoggedRoute from './components/LoggedRoute';
 
 import Deposer from './components/pages/deposerannonce';
 
-import Profile from './components/collection/profil-left';
+import Profile from './components/pages/profil';
+import editProfile from './components/pages/editProfile';
+
 
 // Layouts
 import Fashion from './components/layouts/fashion/main';
@@ -93,8 +95,15 @@ class Root extends React.Component {
 										{/*Profil*/}
 										<ProtectedRoute
 											exact
-											path={`${process.env.PUBLIC_URL}/profil`}
+											path={`${process.env.PUBLIC_URL}/profile`}
 											component={Profile}
+										/>
+
+										{/*Edit Profil*/}
+										<ProtectedRoute
+											exact
+											path={`${process.env.PUBLIC_URL}/editprofile`}
+											component={editProfile}
 										/>
 
 										<ProtectedRoute
