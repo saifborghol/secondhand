@@ -94,7 +94,7 @@ module.exports = {
 		userModel
 			.findByIdAndUpdate(
 				{ _id: req.params.id },
-
+				
 				req.body
 			)
 			.exec(function (err, users) {

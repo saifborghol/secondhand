@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { array } = require('../middleware/multer');
 const Schema = mongoose.Schema;
 
 const productSchema = Schema({
@@ -15,7 +16,7 @@ const productSchema = Schema({
 		required: true,
 	},
 	image: {
-		type: String
+		type: Array
 	},
 	subCat_id: {
 		type: Schema.Types.ObjectId,

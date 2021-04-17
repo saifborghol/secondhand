@@ -3,7 +3,28 @@ const route = require('express').Router();
 
 module.exports = {
 	createAnnonce: function (req, res) {
-		annonceModel.create(req.body, function (err, annonce) {
+		image_list = [];
+		for (i = 0; i < req.files.length; i++) {
+			console.log(req.files[i]);
+			detail_image = {
+				// unique_id:i,
+				name: req.files[i].originalname,
+			};
+			image_list.push(detail_image);
+		}
+		const newAnnonce = {
+			title: req.body.title,
+			user_id: req.body.user_id,
+			product: {
+				name: req.body.name,
+				description: req.body.description,
+				price: req.body.price,
+				image: image_list,
+				subCat_id: req.body.subCat_id
+			},
+		};
+
+		annonceModel.create(newAnnonce, function (err, annonce) {
 			console.log('cest bon');
 			if (err) {
 				console.log(err);
@@ -85,22 +106,25 @@ module.exports = {
 	},
 
 	getAllAnnonce: function (req, res) {
-		annonceModel.find({}).populate('user_id').exec(function (err, Annonce) {
-			if (err) {
-				res.status(500),
-					json({
-						msg: 'erreur',
-						status: 500,
-						data: null,
+		annonceModel
+			.find({})
+			.populate('user_id')
+			.exec(function (err, Annonce) {
+				if (err) {
+					res.status(500),
+						json({
+							msg: 'erreur',
+							status: 500,
+							data: null,
+						});
+				} else {
+					res.status(200).json({
+						msg: 'Get all Annonces',
+						status: 200,
+						data: Annonce,
 					});
-			} else {
-				res.status(200).json({
-					msg: 'Get all Annonces',
-					status: 200,
-					data: Annonce,
-				});
-			}
-		});
+				}
+			});
 	},
 	getImageAnnonce: function (req, res) {
 		image = req.params.image;

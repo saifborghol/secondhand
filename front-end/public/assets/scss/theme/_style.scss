@@ -48,6 +48,21 @@
 /*=====================
     1.General CSS start
 ==========================*/
+
+#card-container {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+
+@media screen and (max-width: 768px) {
+	flex-flow: column;
+}
+}
+
+
 body {
 	font-family: $font_0, $font_1;
 	position: relative;

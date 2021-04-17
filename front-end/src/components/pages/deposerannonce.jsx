@@ -14,6 +14,10 @@ class Deposer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			title: '',
+			description: '',
+			price: '',
+			subCat_id: '',
 			Categories: [],
 			pictures: [],
 		};
@@ -34,19 +38,35 @@ class Deposer extends Component {
 		});
 	}
 
-	// getAllSubCategories() {
-	// 	this.SubCategoryController.getAllSubCategory().then((res) => {
-	// 		this.setState({ SubCategories: res.data.data });
-	// 	});
-	// }
-
 	onDrop(pictureFiles, pictureDataURLs) {
 		this.setState({
 			pictures: pictureFiles,
 		});
 	}
 
-	handleSubmit = () => {};
+	handleSubmit(event) {
+		event.preventDefault();
+		let err = this.validate();
+		const formData = new FormData();
+		var productDetails = JSON.stringify(
+			{ description: this.state.description },
+			{ image: this.state.pictures },
+			{ price: this.state.price },
+			{ subCat_id: this.state.subCat_id }
+		);
+
+		// formData.append('name', this.state.name);
+		formData.append('product', productDetails);
+		formData.append('password', this.state.password);
+
+		if (!err) {
+			this.UserController.addUser(formData).then((res) => {
+				console.log('response', res);
+			});
+		}
+		// // window.location.href = '/';
+
+	}
 
 	render() {
 		return (
@@ -70,6 +90,9 @@ class Deposer extends Component {
 													className="form-control"
 													id="fname"
 													placeholder="Titre"
+													onChange={(e) => {
+														this.setState({ title: e.target.value });
+													}}
 												/>
 												<label
 													style={{
@@ -88,6 +111,9 @@ class Deposer extends Component {
 													className="form-control"
 													id="lname"
 													placeholder="Prix"
+													onChange={(e) => {
+														this.setState({ price: e.target.value });
+													}}
 												/>
 												<label
 													style={{
@@ -110,6 +136,9 @@ class Deposer extends Component {
 													name="Description"
 													rows="5"
 													cols="93"
+													onChange={(e) => {
+														this.setState({ description: e.target.value });
+													}}
 												/>
 
 												<label
@@ -123,14 +152,21 @@ class Deposer extends Component {
 											<div className="col-md-6">
 												<label htmlFor="review">Catégorie</label>
 												<br />
-												<Select native>
+												<Select
+													native
+													onChange={(e) =>
+														this.setState({
+															subCat_id: e.target.value,
+														})
+													}
+												>
 													<option
 														aria-label="None"
 														value="Choisir une catégorie"
 													/>
 													{this.state.Categories.map((cat, index) => {
 														return (
-															<React.Fragment>
+															<>
 																<optgroup label={cat.title}>
 																	{this.state.Categories[index].subcat.map(
 																		(subcat) => (
@@ -140,7 +176,7 @@ class Deposer extends Component {
 																		)
 																	)}
 																</optgroup>
-															</React.Fragment>
+															</>
 														);
 													})}
 												</Select>

@@ -64,7 +64,7 @@ class editProfile extends Component {
 			errors.surNameErr = 'Veuillez vérifier votre nom';
 		}
 
-		if (this.state.tel === '' || this.state.tel.length < 8 || this.state.tel.length > 8) {
+		if (this.state.tel.length < 8 || this.state.tel.length > 8) {
 			isError = true;
 			errors.telErr = 'Veuillez vérifier votre numéro';
 		}
