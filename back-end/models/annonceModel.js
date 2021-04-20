@@ -12,9 +12,6 @@ const productSchema = Schema({
 		type: Number,
 		required: true,
 	},
-	image: {
-		type: Array
-	},
 	subCat_id: {
 		type: Schema.Types.ObjectId,
 		ref: 'subCategoryModel',
@@ -25,6 +22,10 @@ const annonceSchema = Schema({
 	title: {
 		type: String,
 		required: true,
+	},
+
+	image: {
+		type: Array
 	},
 
 	user_id: {
