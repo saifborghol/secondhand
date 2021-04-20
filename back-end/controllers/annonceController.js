@@ -16,7 +16,6 @@ module.exports = {
 			title: req.body.title,
 			user_id: req.body.user_id,
 			product: {
-				name: req.body.name,
 				description: req.body.description,
 				price: req.body.price,
 				image: image_list,

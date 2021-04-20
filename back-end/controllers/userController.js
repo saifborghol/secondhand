@@ -94,7 +94,7 @@ module.exports = {
 		userModel
 			.findByIdAndUpdate(
 				{ _id: req.params.id },
-				
+				// {runValidators: true, upsert: true, setDefaultsOnInsert: true, new: true},
 				req.body
 			)
 			.exec(function (err, users) {

@@ -16,7 +16,9 @@ export const GETALL_SUBCATEGORY_URL = BASE_URL + '/subCategory/getAll';
 
 //////////////////////////annonce/////////////////////////////
 
-export const GET_ANNONCE_URL = BASE_URL + '/annonce/getAnnonce/:id';
 export const ADD_ANNONCE_URL = BASE_URL + '/annonce/addAnnonce';
-export const UPDATE_ANNONCE_URL = BASE_URL + '/annonce/updateAnnonce/:id';
+
+export const GET_ANNONCE_URL = BASE_URL + '/annonce/getAnnonce/';
 export const GETALL_ANNONCE_URL = BASE_URL + '/annonce/getAll';
+
+export const UPDATE_ANNONCE_URL = BASE_URL + '/annonce/updateAnnonce/';

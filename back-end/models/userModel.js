@@ -42,7 +42,7 @@ const userSchema = Schema({
 	},
 	tel: {
 		type: Number,
-		// unique: true,
+		unique: true,
 	},
 	image: {
 		type: String,
