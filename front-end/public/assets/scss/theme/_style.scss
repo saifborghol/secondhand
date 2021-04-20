@@ -50,11 +50,11 @@
 ==========================*/
 
 #card-container {
+	margin: 20px ;
 	display: flex;
 	flex-flow: wrap;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
 	box-sizing: border-box;
 
 @media screen and (max-width: 768px) {
