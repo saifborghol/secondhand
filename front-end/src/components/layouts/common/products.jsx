@@ -1,34 +1,33 @@
-import React, { Component } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {ProductCard} from 'react-ui-cards';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import CardGroup from 'react-bootstrap/CardGroup';
-import CardDeck from 'react-bootstrap/CardDeck';
-import axios from 'axios';
-import annonceControllers from '../../../services/controllers/annonceController';
+import React, { Component } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { ProductCard } from "react-ui-cards";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import CardGroup from "react-bootstrap/CardGroup";
+import CardDeck from "react-bootstrap/CardDeck";
+import axios from "axios";
+import AnnonceController from "../../../services/controllers/AnnonceController";
 
 export default class SpecialProducts extends Component {
-	constructor() {
-		super();
-		this.state = {
-			PROD: [],
-		};
-		this.annonceControllers = new annonceControllers();
-	}
+  constructor() {
+    super();
+    this.state = {
+      PROD: [],
+    };
+    this.AnnonceController = new AnnonceController();
+  }
 
-	componentDidMount() {
-		this.annonceControllers.getAll().then((res) => {
-			this.setState({ PROD: res.data.data });
-			console.log('PRODUCT_DATA', this.state.PROD);
-		});
-	}
-	render() {
-		const tab = ['https://i.imgur.com/im6SfJP.png']
-		return (
-			<div>
-				
-				{/* <CardDeck>
+  componentDidMount() {
+    this.AnnonceController.getAll().then((res) => {
+      this.setState({ PROD: res.data.data });
+      console.log("PRODUCT_DATA", this.state.PROD);
+    });
+  }
+  render() {
+    const tab = ["https://i.imgur.com/im6SfJP.png"];
+    return (
+      <div>
+        {/* <CardDeck>
 					{this.state.PROD.map((annonce) => {
 						return (
 							<Card>
@@ -73,39 +72,28 @@ export default class SpecialProducts extends Component {
 						);
 					})}
 				</CardGroup> */}
-			<div id="card-container">
-				
-<Card style={{ width: '18rem', padding: '5px', margin: '20px'}}>
-  <Card.Img variant="top" src="https://i.imgur.com/jRVDeI8.jpg" />
-  <Card.Body>
-    <Card.Title>Produit 1</Card.Title>
-    <Card.Title>250 DT</Card.Title>
-    <Card.Text>
-      Publié par: Aziz Msaddek
-    </Card.Text>
-    <Card.Text>
-      20/04/2020
-    </Card.Text>
-  </Card.Body>
-</Card>
+        <div id="card-container">
+          <Card style={{ width: "18rem", padding: "5px", margin: "20px" }}>
+            <Card.Img variant="top" src="https://i.imgur.com/jRVDeI8.jpg" />
+            <Card.Body>
+              <Card.Title>Produit 1</Card.Title>
+              <Card.Title>250 DT</Card.Title>
+              <Card.Text>Publié par: Aziz Msaddek</Card.Text>
+              <Card.Text>20/04/2020</Card.Text>
+            </Card.Body>
+          </Card>
 
-<Card style={{ width: '18rem', padding: '5px', margin: '20px'}}>
-  <Card.Img variant="top" src="https://i.imgur.com/jRVDeI8.jpg" />
-  <Card.Body>
-    <Card.Title>Pack 2113 </Card.Title>
-    <Card.Title>250 DT</Card.Title>
-    <Card.Text>
-      Publié par: Aziz Msaddek
-    </Card.Text>
-    <Card.Text>
-      20/04/2020
-    </Card.Text>
-  </Card.Body>
-</Card>
-
-				
-			</div>
-			</div>
-		);
-	}
+          <Card style={{ width: "18rem", padding: "5px", margin: "20px" }}>
+            <Card.Img variant="top" src="https://i.imgur.com/jRVDeI8.jpg" />
+            <Card.Body>
+              <Card.Title>Pack 2113 </Card.Title>
+              <Card.Title>250 DT</Card.Title>
+              <Card.Text>Publié par: Aziz Msaddek</Card.Text>
+              <Card.Text>20/04/2020</Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 }

@@ -24,11 +24,11 @@ class Deposer extends Component {
       user_id: "",
       Categories: [],
       pictures: [],
+      error: {},
     };
     this.UserController = new UserController();
     this.CategoryController = new CategoryController();
     this.AnnonceController = new AnnonceController();
-    // this.SubCategoryController = new SubCategoryController();
 
     this.onDrop = this.onDrop.bind(this);
   }
@@ -60,8 +60,46 @@ class Deposer extends Component {
     });
   }
 
+  validate = () => {
+    let isError = false;
+    const errors = {
+      titleErr: "",
+      priceErr: "",
+      telErr: "",
+      catErr: "",
+      picErr: "",
+    };
+
+    if (this.state.title === "") {
+      isError = true;
+      errors.titleErr = "Veuillez vérifier le titre";
+    }
+    if (this.state.price === "") {
+      isError = true;
+      errors.priceErr = "Veuillez entrer le prix";
+    }
+    if (this.state.tel.length < 8 || this.state.tel.length > 8) {
+      isError = true;
+      errors.telErr = "Veuillez vérifier votre numéro";
+    }
+    if (this.state.subCat_id === "") {
+      isError = true;
+      errors.catErr = "Veuillez séléctionner la catgéorie";
+    }
+    if (this.state.pictures.length === 0) {
+      isError = true;
+      errors.picErr = "Veuillez ajouter au moins une image";
+    }
+
+    this.setState({
+      error: errors,
+    });
+    return isError;
+  };
+
   handleSubmit(event) {
-    // let err = this.validate();
+    console.log(this.state.pictures);
+    let err = this.validate();
     const formData = new FormData();
     var productDetails = JSON.stringify(
       { description: this.state.description },
@@ -75,11 +113,11 @@ class Deposer extends Component {
     formData.append("user_id", this.state.user_id);
     formData.append("product", productDetails);
 
-    // if (!err) {
-    this.AnnonceController.addAnnonce(formData).then((res) => {
-      console.log("response", res);
-    });
-    // }
+    if (!err) {
+      // this.AnnonceController.addAnnonce(formData).then((res) => {
+      //   console.log("response", res);
+      // });
+    }
 
     // // window.location.href = '/';
   }
@@ -103,9 +141,9 @@ class Deposer extends Component {
                         <input
                           name="name"
                           type="text"
+                          maxLength="20"
                           className="form-control"
                           id="fname"
-                          placeholder="Titre"
                           onChange={(e) => {
                             this.setState({ title: e.target.value });
                           }}
@@ -116,17 +154,18 @@ class Deposer extends Component {
                             fontSize: 12,
                             color: "red",
                           }}
-                        />
+                        >
+                          {this.state.error.titleErr}
+                        </label>
                       </div>
 
                       <div className="col-md-6">
                         <label htmlFor="review">Prix</label>
                         <input
                           name="price"
-                          type="text"
+                          type="number"
                           className="form-control"
                           id="lname"
-                          placeholder="Prix"
                           onChange={(e) => {
                             this.setState({ price: e.target.value });
                           }}
@@ -138,14 +177,15 @@ class Deposer extends Component {
                             color: "red",
                             marginTop: -20,
                           }}
-                        />
+                        >
+                          {this.state.error.priceErr}
+                        </label>
                       </div>
                     </div>
                     <div className="form-row">
                       <div className="col-md-6">
                         <label htmlFor="email">Description (optionnelle)</label>
                         <br />
-
                         <textarea
                           className="form-control"
                           style={{ resize: "none" }}
@@ -170,12 +210,13 @@ class Deposer extends Component {
                         <input
                           defaultValue={this.state.tel}
                           name="tel"
-                          type="text"
+                          maxLength={8}
+                          type="tel"
                           className="form-control"
                           id="lname"
                           placeholder="Votre numéro"
                           onChange={(e) => {
-                            this.setState({ tel: e.target.tel });
+                            this.setState({ tel: e.target.value });
                           }}
                         />
                         <label
@@ -185,7 +226,9 @@ class Deposer extends Component {
                             color: "red",
                             marginTop: -20,
                           }}
-                        />
+                        >
+                          {this.state.error.telErr}
+                        </label>
                       </div>
                       <div className="col-md-6">
                         <label htmlFor="review">Catégorie</label>
@@ -218,13 +261,17 @@ class Deposer extends Component {
                             );
                           })}
                         </Select>
+                        <br />
+                        <br />
                         <label
                           style={{
                             paddingBottom: "20px",
                             fontSize: 12,
                             color: "red",
                           }}
-                        />
+                        >
+                          {this.state.error.catErr}
+                        </label>
                         <br /> <br /> <br />
                         <br />
                       </div>
@@ -241,6 +288,15 @@ class Deposer extends Component {
                           fileSizeError="La taille des fichiers est trop large"
                           fileTypeError="Le type de fichiers n'est pas supporté"
                         />
+                        <label
+                          style={{
+                            paddingBottom: "20px",
+                            fontSize: 12,
+                            color: "red",
+                          }}
+                        >
+                          {this.state.error.picErr}
+                        </label>
                       </div>
                     </div>
                     <a

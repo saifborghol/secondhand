@@ -350,7 +350,8 @@ class editProfile extends Component {
 											<input
 												defaultValue={this.state.tel}
 												name="tel"
-												type="tel"
+												maxLength='8'
+												type="number"
 												className="form-control"
 												id="review"
 												placeholder="Ajouter un numéro de téléphone"
