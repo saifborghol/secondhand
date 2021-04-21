@@ -3,10 +3,8 @@ const { array } = require('../middleware/multer');
 const Schema = mongoose.Schema;
 
 const productSchema = Schema({
-
 	description: {
 		type: String,
-		required: true,
 	},
 	price: {
 		type: Number,

@@ -14,11 +14,11 @@ module.exports = {
 		}
 		const newAnnonce = {
 			title: req.body.title,
+			image: image_list,
 			user_id: req.body.user_id,
 			product: {
 				description: req.body.description,
 				price: req.body.price,
-				image: image_list,
 				subCat_id: req.body.subCat_id
 			},
 		};

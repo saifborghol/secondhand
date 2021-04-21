@@ -98,25 +98,27 @@ class Deposer extends Component {
   };
 
   handleSubmit(event) {
-    console.log(this.state.pictures);
     let err = this.validate();
     const formData = new FormData();
-    var productDetails = JSON.stringify(
-      { description: this.state.description },
-      { image: this.state.pictures },
-      { price: this.state.price },
-      { subCat_id: this.state.subCat_id }
-    );
 
-    // formData.append('name', this.state.name);
+    // var productDetails = JSON.stringify(
+    //   { description: this.state.description },
+    //   { image: this.state.pictures },
+    //   { price: this.state.price },
+    //   { subCat_id: this.state.subCat_id }
+    // );
+
     formData.append("title", this.state.title);
+    formData.append("image", this.state.pictures);
     formData.append("user_id", this.state.user_id);
-    formData.append("product", productDetails);
+    formData.append("product[description]", this.state.description);
+    formData.append("product[price]", this.state.price);
+    formData.append("product[subCat_id]", this.state.subCat_id);
 
     if (!err) {
-      // this.AnnonceController.addAnnonce(formData).then((res) => {
-      //   console.log("response", res);
-      // });
+      this.AnnonceController.addAnnonce(formData).then((res) => {
+        console.log("response", res);
+      });
     }
 
     // // window.location.href = '/';
