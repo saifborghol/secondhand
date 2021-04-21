@@ -20,4 +20,7 @@ route.post('/resetpassword', userController.resetPassword);
 route.get('/userimage/:image', userController.getImageUser);
 route.post('/refresh', middleware.validateUser, userController.refreshToken);
 
+route.put('/pullAnnonce/:id', userController.pullAnnonce);
+route.put('/pushAnnonce/:id', userController.pushAnnonce);
+
 module.exports = route;

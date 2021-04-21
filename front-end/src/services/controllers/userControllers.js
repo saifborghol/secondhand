@@ -103,4 +103,28 @@ export default class userControllers {
 			return error;
 		}
 	}
+
+	pullAnnonce(id, data) {
+		console.log('data from controler', data);
+
+		return axios
+			.put(constant.PULLANNONCE_URL + id, data)
+			.then(res => {
+				return res;
+			})
+			.catch(err => {
+				return err;
+			});
+	}
+
+	pushAnnonce(id, data) {
+		return axios
+			.put(constant.PUSHANNONCE_URL + id, data)
+			.then(res => {
+				return res;
+			})
+			.catch(err => {
+				return err;
+			});
+	}
 }

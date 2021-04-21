@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 const { array } = require('../middleware/multer');
 const Schema = mongoose.Schema;
 
-const productSchema = Schema({
+const annonceSchema = Schema({
+	title: {
+		type: String,
+		required: true,
+	},
+
 	description: {
 		type: String,
 	},
@@ -10,20 +15,14 @@ const productSchema = Schema({
 		type: Number,
 		required: true,
 	},
+
+	image: {
+		type: Array,
+	},
+
 	subCat_id: {
 		type: Schema.Types.ObjectId,
 		ref: 'subCategoryModel',
-	},
-});
-
-const annonceSchema = Schema({
-	title: {
-		type: String,
-		required: true,
-	},
-
-	image: {
-		type: Array
 	},
 
 	user_id: {
@@ -32,8 +31,6 @@ const annonceSchema = Schema({
 	},
 
 	date: { type: String, default: new Date().toLocaleDateString() },
-
-	product: productSchema,
 });
 
 module.exports = mongoose.model('annonceModel', annonceSchema);

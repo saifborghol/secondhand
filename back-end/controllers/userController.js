@@ -166,7 +166,7 @@ module.exports = {
 	},
 
 	getUser: function (req, res) {
-		userModel.findById({ _id: req.params.id }).exec(function (err, users) {
+		userModel.findById({ _id: req.params.id }).populate('annonce').exec(function (err, users) {
 			if (err) {
 				res.status(500).json({
 					msg: 'erreur',
@@ -184,7 +184,7 @@ module.exports = {
 	},
 
 	getAllUsers: function (req, res) {
-		userModel.find({}).exec(function (err, users) {
+		userModel.find({}).populate('annonce').exec(function (err, users) {
 			if (err) {
 				res.status(500),
 					json({
@@ -410,5 +410,51 @@ module.exports = {
 		} else {
 			res.sendStatus(401);
 		}
+	},
+
+	pushAnnonce: function (req, res) {
+		userModel.updateOne(
+			{ _id: req.params.id },
+			{ $push: { annonce: req.body.annonce } },
+			function (err, annonce) {
+				if (err) {
+					res.status(500),
+						json({
+							msg: 'erreur',
+							status: 500,
+							data: null,
+						});
+				} else {
+					res.status(200).json({
+						msg: 'Push annonce',
+						status: 200,
+						data: annonce,
+					});
+				}
+			}
+		);
+	},
+
+	pullAnnonce: function (req, res) {
+		userModel.updateOne(
+			{ _id: req.params.id },
+			{ $pull: { annonce: req.body.annonce } },
+			function (err, annonce) {
+				if (err) {
+					res.status(500),
+						json({
+							msg: 'erreur',
+							status: 500,
+							data: null,
+						});
+				} else {
+					res.status(200).json({
+						msg: 'Pull annonce',
+						status: 200,
+						data: annonce,
+					});
+				}
+			}
+		);
 	},
 };

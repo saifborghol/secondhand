@@ -16,11 +16,9 @@ module.exports = {
 			title: req.body.title,
 			image: image_list,
 			user_id: req.body.user_id,
-			product: {
-				description: req.body.description,
-				price: req.body.price,
-				subCat_id: req.body.subCat_id
-			},
+			description: req.body.description,
+			price: req.body.price,
+			subCat_id: req.body.subCat_id,
 		};
 
 		annonceModel.create(newAnnonce, function (err, annonce) {
@@ -129,4 +127,6 @@ module.exports = {
 		image = req.params.image;
 		res.sendFile(__dirname + '/imagesUploads/' + image);
 	},
+
+	
 };

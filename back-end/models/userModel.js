@@ -50,6 +50,12 @@ const userSchema = Schema({
 	resetLink: {
 		type: String,
 	},
+	annonce: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'annonceModel',
+		},
+	],
 	order_id: [
 		{
 			type: Schema.Types.ObjectId,

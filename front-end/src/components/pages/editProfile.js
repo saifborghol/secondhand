@@ -163,8 +163,6 @@ class editProfile extends Component {
 			};
 
 			if (!err) {
-				// this.UserController.verifTel(tel).then((res) => {
-				
 				this.UserController.updateUser(id, Data).then((res) => {
 					console.log('res:', res);
 					if (res.data.status === 500) {

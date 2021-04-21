@@ -50,18 +50,24 @@
 ==========================*/
 
 #card-container {
-	margin: 20px ;
+	margin: 20px;
 	display: flex;
 	flex-flow: wrap;
 	justify-content: center;
 	align-items: center;
 	box-sizing: border-box;
 
-@media screen and (max-width: 768px) {
-	flex-flow: column;
-}
+	@media screen and (max-width: 768px) {
+		flex-flow: column;
+	}
 }
 
+#card-style {
+	cursor: pointer;
+	width: '18rem';
+	padding: 5px;
+	margin: 30px;
+}
 
 body {
 	font-family: $font_0, $font_1;
@@ -1146,10 +1152,8 @@ header {
 	border-radius: 5px;
 	background-color: #03b0b9;
 	color: white;
-
 	border: 2px solid white;
 }
-
 .buttoon2:hover {
 	background-color: #00858b;
 }
@@ -5095,8 +5099,7 @@ footer {
 			// .lable-nav {
 			// top:0;
 			// background: #373B44;  /* fallback for old browsers */
-			// background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */ // background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ // &:before {
-			// border-top: 5px solid #4286f4; // } // }
+			// background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */ // background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ // &:before { // border-top: 5px solid #4286f4; // } // }
 		}
 	}
 	.onhover-div {
@@ -7567,7 +7570,6 @@ footer {
 }
 .top-banner-wrapper {
 	margin-top: 70px;
-    
 	.top-banner-content {
 		h4 {
 			font-weight: 600;
