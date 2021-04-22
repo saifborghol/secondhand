@@ -43,7 +43,7 @@ module.exports = {
 	deleteAnnonce: function (req, res) {
 		annonceModel.findByIdAndRemove({ _id: req.params.id }, (err, Annonce) => {
 			if (err) {
-				res.status(500),
+				res.status(500).
 					json({
 						msg: 'erreur',
 						status: 500,
@@ -64,7 +64,7 @@ module.exports = {
 			.findByIdAndUpdate({ _id: req.params.id }, req.body)
 			.exec(function (err, Annonce) {
 				if (err) {
-					res.status(500),
+					res.status(500).
 						json({
 							msg: 'erreur',
 							status: 500,
@@ -86,7 +86,7 @@ module.exports = {
 			.populate('user_id')
 			.exec(function (err, Annonce) {
 				if (err) {
-					res.status(500),
+					res.status(500).
 						json({
 							msg: 'erreur',
 							status: 500,
@@ -108,7 +108,7 @@ module.exports = {
 			.populate('user_id')
 			.exec(function (err, Annonce) {
 				if (err) {
-					res.status(500),
+					res.status(500).
 						json({
 							msg: 'erreur',
 							status: 500,

@@ -24,9 +24,9 @@ class AnnonceController extends Component {
 		}
 	}
 
-	getAnnonce(data) {
+	getAnnonce(id) {
 		try {
-			return axios.get(constant.GET_ANNONCE_URL, data).then((res) => {
+			return axios.get(constant.GET_ANNONCE_URL + id).then((res) => {
 				return res;
 			});
 		} catch (error) {
