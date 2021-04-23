@@ -49,6 +49,224 @@
     1.General CSS start
 ==========================*/
 
+.teeesst img {
+	max-width: 100%;
+	border-radius: 4px;
+  }
+  .teeesst h2 {
+	color: #222222;
+  }
+  .teeesst h4 {
+	color: #222222;
+	font-size: 18px;
+  }
+  .teeesst p {
+	color: #222222;
+  }
+  
+  .teeesst .user {
+	margin: 10px 0;
+	display: flex;
+	align-items: center;
+  }
+  .teeesst .user img {
+	cursor: pointer;
+  }
+  .teeesst .user span {
+	cursor: pointer;
+	font-weight: 700;
+	font-size: 17px;
+  }
+  .teeesst .price {
+	margin: 20px 0;
+  }
+  
+  .teeesst .preview {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+  }
+  @media screen and (max-width: 996px) {
+	.preview {
+	  margin-bottom: 20px;
+	}
+  }
+  
+  .teeesst .preview-pic {
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+  }
+  
+  .teeesst .preview-thumbnail.nav-tabs {
+	border: none;
+	margin-top: 15px;
+  }
+  .preview-thumbnail.nav-tabs li {
+	width: 18%;
+	margin-right: 2.5%;
+  }
+  .preview-thumbnail.nav-tabs li img {
+	cursor: pointer;
+	max-width: 100%;
+	/* height: 100px;
+	width: 200px; */
+	display: block;
+  }
+  .preview-thumbnail.nav-tabs li a {
+	padding: 0;
+	margin: 0;
+  }
+  .preview-thumbnail.nav-tabs li:last-of-type {
+	margin-right: 0;
+  }
+  
+  .teeesst .tab-content {
+	overflow: hidden;
+  }
+  .tab-content img {
+	height: 560px;
+	width: 1000px;
+	cursor: pointer;
+	/* width: 70%; */
+	-webkit-animation-name: opacity;
+	animation-name: opacity;
+	-webkit-animation-duration: 0.7s;
+	animation-duration: 0.7s;
+  }
+  
+  .teeesst .card {
+	margin-top: 50px;
+	/* background: #eee; */
+	border: none;
+	padding: 3em;
+	line-height: 1.5em;
+  }
+  
+  @media screen and (min-width: 997px) {
+	.wrapper {
+	  display: -webkit-box;
+	  display: -webkit-flex;
+	  display: -ms-flexbox;
+	  display: flex;
+	}
+  }
+  
+  .teeesst .details {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+  }
+  
+  .teeesst .colors {
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+  }
+  
+  .teeesst .product-title,
+  .price,
+  .sizes,
+  .colors {
+	text-transform: UPPERCASE;
+	font-weight: bold;
+  }
+  
+  .teeesst .product-title,
+  .rating,
+  .product-description,
+  .price,
+  .vote,
+  .sizes {
+	margin-bottom: 15px;
+  }
+  
+  .teeesst .product-title {
+	margin-top: 0;
+  }
+  
+  .teeesst .size {
+	margin-right: 10px;
+  }
+  .size:first-of-type {
+	margin-left: 40px;
+  }
+  
+  .teeesst .color {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	height: 2em;
+	width: 2em;
+	border-radius: 2px;
+  }
+  .color:first-of-type {
+	margin-left: 20px;
+  }
+  
+  .teeesst .add-to-cart,
+  .like {
+	background: #03b0b9;
+	padding: 1.2em 1.5em;
+	border: none;
+	text-transform: UPPERCASE;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: background 0.3s ease;
+	transition: background 0.3s ease;
+  }
+  .teeesst .add-to-cart:hover,
+  .like:hover {
+	background: #00858b;
+	color: #fff;
+  }
+  
+  .teeesst .not-available {
+	text-align: center;
+	line-height: 2em;
+  }
+  .not-available:before {
+	font-family: fontawesome;
+	content: "\f00d";
+	color: #fff;
+  }
+  
+  .teeesst .tooltip-inner {
+	padding: 1.3em;
+  }
+  
+  @-webkit-keyframes opacity {
+	0% {
+	  opacity: 0;
+	}
+	100% {
+	  opacity: 1;
+	}
+  }
+  
+  @keyframes opacity {
+	0% {
+	  opacity: 0;
+	}
+	100% {
+	  opacity: 1;
+	}
+  }
+
 #card-container {
 	margin: 20px;
 	display: flex;

@@ -73,6 +73,9 @@ import ElementProductTab from './components/features/product/element-product-tab
 import GridCols from './components/features/portfolio/grid-cols';
 import MasonaryGridCols from './components/features/portfolio/masonary-grid-cols';
 
+import test from './components/pages/test';
+
+
 class Root extends React.Component {
 	render() {
 		store.dispatch(getAllProducts());
@@ -113,6 +116,13 @@ class Root extends React.Component {
 										/>
 
 										{/*Routes For Single Product*/}
+
+										{/* TEST */}
+
+										<Route
+											path={`${process.env.PUBLIC_URL}/test`}
+											component={test}
+										/>
 
 										<Route
 											path={`${process.env.PUBLIC_URL}/product/:id`}

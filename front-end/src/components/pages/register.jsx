@@ -91,7 +91,7 @@ class Register extends Component {
 		console.log(this.props);
 		return (
 			<div>
-				<Breadcrumb title={'create account'} />
+				<Breadcrumb title={'Créer un compte'} />
 
 				{/*Regsiter section*/}
 				<section className="register-page section-b-space">

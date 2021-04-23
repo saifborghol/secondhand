@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-import Slider from "react-slick";
 import "../common/index.scss";
 import { connect } from "react-redux";
 
-// import custom Components
-import RelatedProduct from "../common/related-product";
+import SimpleImageSlider from "react-simple-image-slider";
+import AliceCarousel from "react-alice-carousel";
+
+import "react-alice-carousel/lib/alice-carousel.css";
+import avatar from "../../assets/images/default-avatar.png";
 import Breadcrumb from "../common/breadcrumb";
-import DetailsWithPrice from "./common/product/details-price";
-import DetailsTopTabs from "./common/details-top-tabs";
+
+// import custom Components
+
 import { addToCart, addToCartUnsafe, addToWishlist } from "../../actions";
-import ImageZoom from "./common/product/image-zoom";
-import SmallImages from "./common/product/small-image";
 
 import AnnonceController from "../../services/controllers/AnnonceController";
 
-class NoSideBar extends Component {
+export default class NoSideBar extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,6 +23,7 @@ class NoSideBar extends Component {
       nav1: null,
       nav2: null,
     };
+
     this.AnnonceController = new AnnonceController();
   }
 
@@ -39,109 +41,88 @@ class NoSideBar extends Component {
   }
 
   render() {
-    const {
-      symbol,
-      item,
-      addToCart,
-      addToCartUnsafe,
-      addToWishlist,
-    } = this.props;
-    var products = {
-      fade: true,
-    };
-
-    var productsnav = {
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      swipeToSlide: true,
-      draggable: true,
-      focusOnSelect: true,
-    };
-
     if (!this.state.Annonce.image) {
-      return <span>Loading...</span>;
+      return <span />;
     }
 
     return (
       <div>
-        {/* <Breadcrumb title={" Product / " + item.name} /> */}
-
-        <img
-          src={`http://localhost:4000/annonce/annonceImage/${
-            this.state.Annonce.image[0].name
-          }`}
-        />
-        {/*Section Start*/}
-
-        {item ? (
-          <section>
-            <div className="collection-wrapper">
-              <div className="container">
-                <div className="row">
-                  <div className="col-lg-6 product-thumbnail">
-                    <Slider
-                      {...products}
-                      asNavFor={this.state.nav2}
-                      ref={(slider) => (this.slider1 = slider)}
-                      className="product-slick"
+        <Breadcrumb title={" Produit / " + this.state.Annonce.title} />
+        <div className="teeesst ">
+          <div className="card">
+            <div className="container-fliud">
+              <div className="wrapper row">
+                <div className="preview col-md-6">
+                  <div className="preview-pic tab-content">
+                    <AliceCarousel
+                      animationType="fadeout"
+                      keyboardNavigation
+                      autoPlay={true}
+                      infinite
+                      autoPlayInterval={3000}
+                      fadeOutAnimation={true}
+                      autoPlayStrategy="default"
                     >
-                      {item.variants.map((vari, index) => (
-                        <div key={index}>
-                          <ImageZoom
-                            image={vari.images}
-                            className="img-fluid image_zoom_cls-0"
+                      {this.state.Annonce.image.map((img) => {
+                        return (
+                          <img
+                            src={`http://localhost:4000/annonce/annonceImage/${
+                              img.name
+                            }`}
                           />
-                        </div>
-                      ))}
-                    </Slider>
-                    <SmallImages
-                      item={item}
-                      settings={productsnav}
-                      navOne={this.state.nav1}
-                    />
+                        );
+                      })}
+                    </AliceCarousel>
                   </div>
-                  <DetailsWithPrice
-                    symbol={symbol}
-                    item={item}
-                    navOne={this.state.nav1}
-                    addToCartClicked={addToCart}
-                    BuynowClicked={addToCartUnsafe}
-                    addToWishlistClicked={addToWishlist}
-                  />
+                </div>
+
+                <div className="details col-md-6">
+                  <h2 className="product-title">{this.state.Annonce.title}</h2>
+
+                  <p className="product-description">
+                    {this.state.Annonce.description}
+                  </p>
+
+                  <div className="user">
+                    <img
+                      src={avatar}
+                      alt="avatar"
+                      width="64px"
+                      height="64px"
+                      style={{
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        marginRight: "5px",
+                      }}
+                    />
+
+                    <span>
+                      {" "}
+                      {this.state.Annonce.user_id.name}{" "}
+                      {this.state.Annonce.user_id.surName}
+                    </span>
+                  </div>
+                  <h4 className="price">
+                    PRIX: <span>{this.state.Annonce.price} DT</span>
+                  </h4>
+
+                  <div className="action">
+                    <button
+                      className="add-to-cart btn btn-default"
+                      type="button"
+                    >
+                      Ajouter au panier
+                    </button>
+                    <button className="like btn btn-default" type="button">
+                      <span className="fa fa-heart" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </section>
-        ) : (
-          ""
-        )}
-        {/*Section End*/}
-
-        <section className="tab-product m-0">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12 col-lg-12">
-                <DetailsTopTabs item={item} />
-              </div>
-            </div>
           </div>
-        </section>
-
-        <RelatedProduct />
+        </div>
       </div>
     );
   }
 }
-
-const mapStateToProps = (state, ownProps) => {
-  let productId = ownProps.match.params.id;
-  return {
-    item: state.data.products.find((el) => el.id == productId),
-    symbol: state.data.symbol,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { addToCart, addToCartUnsafe, addToWishlist }
-)(NoSideBar);

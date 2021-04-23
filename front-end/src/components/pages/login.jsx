@@ -76,7 +76,7 @@ class Login extends Component {
 	render() {
 		return (
 			<div>
-				<Breadcrumb title={'Login'} />
+				<Breadcrumb title={'Se connecter'} />
 
 				{/*Login section*/}
 				<section className="login-page section-b-space">
