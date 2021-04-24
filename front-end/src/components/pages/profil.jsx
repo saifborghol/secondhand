@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import compose from "recompose/compose";
+
 import { Helmet } from "react-helmet";
 import Breadcrumb from "../common/breadcrumb";
 import NewProduct from "../common/new-product";
@@ -21,7 +24,6 @@ class Profil extends Component {
     this.state = {
       layoutColumns: 3,
       User: {},
-      Annonce: [],
     };
     this.userController = new userController();
   }
@@ -51,7 +53,7 @@ class Profil extends Component {
   getUser(id) {
     this.userController.getUser(id).then((res) => {
       this.setState({ User: res.data.data });
-      this.setState({ Annonce: res.data.data.annonce });
+      // this.setState({ Annonce: res.data.data.annonce });
     });
   }
 
@@ -60,7 +62,15 @@ class Profil extends Component {
     history.push("/editprofile");
   };
 
+  annonceClick = (id) => {
+    const { history } = this.props;
+    history.push(`/product/${id}`);
+  };
+
   render() {
+    if (!this.state.User.annonce) {
+      return <span />;
+    }
     return (
       <div>
         {/*SEO Support*/}
@@ -144,9 +154,14 @@ class Profil extends Component {
                             </div>
 
                             <div id="card-container">
-                              {this.state.Annonce.map((annonce) => {
+                              {this.state.User.annonce.map((annonce) => {
                                 return (
-                                  <Card id="card-style">
+                                  <Card
+                                    id="card-style"
+                                    onClick={() =>
+                                      this.annonceClick(annonce._id)
+                                    }
+                                  >
                                     <Card.Img
                                       style={{
                                         width: "240px",
@@ -189,4 +204,4 @@ class Profil extends Component {
   }
 }
 
-export default Profil;
+export default compose(withRouter)(Profil);

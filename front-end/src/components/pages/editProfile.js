@@ -351,7 +351,7 @@ class editProfile extends Component {
 												maxLength='8'
 												type="number"
 												className="form-control"
-												id="review"
+												id="tel"
 												placeholder="Ajouter un numéro de téléphone"
 												onChange={(e) => {
 													this.setState({ tel: e.target.value });
@@ -392,7 +392,7 @@ class editProfile extends Component {
 												name="oldPass"
 												type="password"
 												className="form-control"
-												id="fname"
+												id="oldpass"
 												placeholder="Votre ancien mot de passe"
 												onChange={(e) => {
 													this.setState({ oldpassword: e.target.value });
@@ -415,7 +415,7 @@ class editProfile extends Component {
 												name="newPass"
 												type="password"
 												className="form-control"
-												id="password"
+												id="newpass"
 												placeholder="Votre nouveau password"
 												onChange={(e) => {
 													this.setState({ newpassword: e.target.value });
@@ -430,10 +430,10 @@ class editProfile extends Component {
 												valider le nouveau mot de passe
 											</label>
 											<input
-												name="newPass"
+												name="newPass2"
 												type="password"
 												className="form-control"
-												id="password"
+												id="newpass2"
 												placeholder="Votre nouveau mot de passe"
 												onChange={(e) => {
 													this.setState({ confirmnewpassword: e.target.value });

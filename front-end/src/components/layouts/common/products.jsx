@@ -33,12 +33,14 @@ class SpecialProducts extends Component {
       <div>
         <div id="card-container">
           {this.state.PROD.map((annonce) => {
-            let annId = annonce._id;
             return (
               // <Link
               //   to={`${process.env.PUBLIC_URL}/product/${annonce._id}`}
               // >
-              <Card id="card-style" onClick={() => this.annonceClick(annId)}>
+              <Card
+                id="card-style"
+                onClick={() => this.annonceClick(annonce._id)}
+              >
                 <Card.Img
                   style={{ width: "240px", height: "135px" }}
                   variant="top"
