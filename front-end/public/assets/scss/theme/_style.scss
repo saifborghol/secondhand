@@ -49,6 +49,15 @@
     1.General CSS start
 ==========================*/
 
+p.alice-carousel__next-btn-item, p.alice-carousel__prev-btn-item{
+  font-weight: 700;
+  font-size: 30px;
+}
+
+p.alice-carousel__next-btn-item:hover, p.alice-carousel__prev-btn-item:hover{
+  color: #6e7ebc;
+}
+
 .teeesst img {
   max-width: 100%;
   border-radius: 4px;

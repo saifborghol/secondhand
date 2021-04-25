@@ -53,6 +53,7 @@ import ResetPassword from './components/pages/reset-password';
 import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
+import test from './components/pages/SimpleSlider';
 
 // Theme Element
 import ElementTitle from './components/features/theme/element-title';
@@ -73,7 +74,6 @@ import ElementProductTab from './components/features/product/element-product-tab
 import GridCols from './components/features/portfolio/grid-cols';
 import MasonaryGridCols from './components/features/portfolio/masonary-grid-cols';
 
-import test from './components/pages/test';
 
 
 class Root extends React.Component {

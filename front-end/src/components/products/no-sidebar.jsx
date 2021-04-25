@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../common/index.scss";
-import { connect } from "react-redux";
 
 import SimpleImageSlider from "react-simple-image-slider";
 import AliceCarousel from "react-alice-carousel";
@@ -126,3 +125,9 @@ export default class NoSideBar extends Component {
     );
   }
 }
+
+const cssstyle = `
+.slick-next:before, .slick-prev:before {
+    color: #000;
+}
+`;
