@@ -213,7 +213,7 @@ module.exports = {
 			service: 'outlook',
 			auth: {
 				user: 'azizmdk@outlook.com',
-				pass: 'Alahouakbar94',
+				pass: 'pass',
 			},
 		});
 		transporter.sendMail(data, function (error, info) {
@@ -324,7 +324,7 @@ module.exports = {
 						service: 'outlook',
 						auth: {
 							user: 'azizmdk@outlook.com',
-							pass: 'Alahouakbar94',
+							pass: 'pass',
 						},
 					});
 					transporter4.sendMail(data, function (error, info) {
