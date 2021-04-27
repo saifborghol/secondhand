@@ -84,8 +84,11 @@ module.exports = {
 
 	getSubCategory: function (req, res) {
 		subCategoryModel
-			.findById({ _id: req.params.id })
-			.populate('cat_id')
+			.findOne({ title: req.params.title })
+			.populate({
+				path: 'annonce',
+				populate: { path: 'user_id' }
+			 })
 			.exec(function (err, SubCategorys) {
 				if (err) {
 					res.status(500),
@@ -107,7 +110,10 @@ module.exports = {
 	getAllSubCategorys: function (req, res) {
 		subCategoryModel
 			.find({})
-			.populate('cat_id')
+			.populate({
+				path: 'annonce',
+				populate: { path: 'user_id' }
+			 })
 			.exec(function (err, SubCategorys) {
 				if (err) {
 					res.status(500),
@@ -124,5 +130,50 @@ module.exports = {
 					});
 				}
 			});
+	},
+	pushAnnonce: function (req, res) {
+		subCategoryModel.updateOne(
+			{ _id: req.params.id },
+			{ $push: { annonce: req.body.annonce } },
+			function (err, annonce) {
+				if (err) {
+					res.status(500),
+						json({
+							msg: 'erreur',
+							status: 500,
+							data: null,
+						});
+				} else {
+					res.status(200).json({
+						msg: 'Push annonce',
+						status: 200,
+						data: annonce,
+					});
+				}
+			}
+		);
+	},
+
+	pullAnnonce: function (req, res) {
+		subCategoryModel.updateOne(
+			{ _id: req.params.id },
+			{ $pull: { annonce: req.body.annonce } },
+			function (err, annonce) {
+				if (err) {
+					res.status(500),
+						json({
+							msg: 'erreur',
+							status: 500,
+							data: null,
+						});
+				} else {
+					res.status(200).json({
+						msg: 'Pull annonce',
+						status: 200,
+						data: annonce,
+					});
+				}
+			}
+		);
 	},
 };

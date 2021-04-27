@@ -5,16 +5,12 @@ import Pace from 'react-pace-progress';
 
 import compose from 'recompose/compose';
 
-import { Button } from 'react-bootstrap';
 // Import custom components
 import store from '../../../store';
-import NavBar from './common/navbar';
 import SideBar from './common/sidebar';
 import CartContainer from './../../../containers/CartContainer';
-import TopBar from './common/topbar';
 import LogoImage from './common/logo';
-import { changeCurrency } from '../../../actions';
-import { connect } from 'react-redux';
+
 
 import { Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
@@ -93,6 +89,8 @@ class HeaderOne extends Component {
 			this.setState({ isLoading: false });
 		});
 	};
+
+	
 
 	getUser(id) {
 		this.userController.getUser(id).then((res) => {

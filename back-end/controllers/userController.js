@@ -166,40 +166,46 @@ module.exports = {
 	},
 
 	getUser: function (req, res) {
-		userModel.findById({ _id: req.params.id }).populate('annonce').exec(function (err, users) {
-			if (err) {
-				res.status(500).json({
-					msg: 'erreur',
-					status: 500,
-					data: null,
-				});
-			} else {
-				res.status(200).json({
-					msg: 'Get user',
-					status: 200,
-					data: users,
-				});
-			}
-		});
-	},
-
-	getAllUsers: function (req, res) {
-		userModel.find({}).populate('annonce').exec(function (err, users) {
-			if (err) {
-				res.status(500),
-					json({
+		userModel
+			.findById({ _id: req.params.id })
+			.populate('annonce')
+			.exec(function (err, users) {
+				if (err) {
+					res.status(500).json({
 						msg: 'erreur',
 						status: 500,
 						data: null,
 					});
-			} else {
-				res.status(200).json({
-					msg: 'Get all users',
-					status: 200,
-					data: users,
-				});
-			}
-		});
+				} else {
+					res.status(200).json({
+						msg: 'Get user',
+						status: 200,
+						data: users,
+					});
+				}
+			});
+	},
+
+	getAllUsers: function (req, res) {
+		userModel
+			.find({})
+			.populate('annonce')
+			.exec(function (err, users) {
+				if (err) {
+					res.status(500),
+						json({
+							msg: 'erreur',
+							status: 500,
+							data: null,
+						});
+				} else {
+					res.status(200).json({
+						msg: 'Get all users',
+						status: 200,
+						data: users,
+					});
+				}
+			});
 	},
 
 	sendMailUser: function (req, res) {

@@ -12,7 +12,13 @@ const subCategorySchema = Schema({
     cat_id:{
         type: Schema.Types.ObjectId,
         ref: 'categoryModel'
-    }
+    },
+    annonce: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'annonceModel',
+		},
+	],
 })
 
 module.exports = mongoose.model('subCategoryModel',subCategorySchema)

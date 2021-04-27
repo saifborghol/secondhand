@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import compose from 'recompose/compose';
 
 import CategoryController from '../../../../services/controllers/CategoryController';
 
@@ -87,6 +88,11 @@ class SideBar extends Component {
 		}
 	};
 
+	categoryClick = (title) => {
+		const { history } = this.props;
+		history.push(`/category/${title}`);
+	};
+
 	render() {
 		return (
 			<div id="mySidenav" className="sidenav">
@@ -132,8 +138,8 @@ class SideBar extends Component {
 									</Link>
 									<ul>
 										{this.state.Categories[index].subcat.map((subcat) => (
-											<li>
-												<Link to="/">{subcat.title}</Link>
+											<li onClick={() => this.categoryClick(subcat.title)}>
+												<Link>{subcat.title}</Link>
 											</li>
 										))}
 									</ul>
@@ -147,4 +153,4 @@ class SideBar extends Component {
 	}
 }
 
-export default SideBar;
+export default compose(withRouter)(SideBar);

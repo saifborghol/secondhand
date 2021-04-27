@@ -14,8 +14,14 @@ export const resetpwd_user_url = BASE_URL + '/user/resetpassword';
 export const PUSHANNONCE_URL = BASE_URL + '/user/pushAnnonce/';
 export const PULLANNONCE_URL = BASE_URL + '/user/pullAnnonce/';
 
+//////////////////////////cat + subcat/////////////////////////////
+
 export const GETALL_CATEGORY_URL = BASE_URL + '/category/getAll';
 export const GETALL_SUBCATEGORY_URL = BASE_URL + '/subCategory/getAll';
+export const GET_SUBCATEGORY_URL = BASE_URL + '/subCategory/getSubCategory/';
+
+export const PUSHANNONCESUBCAT_URL = BASE_URL + '/subcategory/pushAnnonce/';
+export const PULLANNONCESUBCAT_URL = BASE_URL + '/subcategory/pullAnnonce/';
 
 //////////////////////////annonce/////////////////////////////
 
@@ -25,5 +31,7 @@ export const GET_ANNONCE_URL = BASE_URL + '/annonce/getAnnonce/';
 export const GETALL_ANNONCE_URL = BASE_URL + '/annonce/getAll';
 
 export const UPDATE_ANNONCE_URL = BASE_URL + '/annonce/updateAnnonce/';
+
+
 
 

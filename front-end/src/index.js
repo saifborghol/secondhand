@@ -21,7 +21,6 @@ import Deposer from './components/pages/deposerannonce';
 import Profile from './components/pages/profil';
 import editProfile from './components/pages/editProfile';
 
-
 // Layouts
 import Fashion from './components/layouts/fashion/main';
 
@@ -53,7 +52,6 @@ import ResetPassword from './components/pages/reset-password';
 import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
-import test from './components/pages/SimpleSlider';
 
 // Theme Element
 import ElementTitle from './components/features/theme/element-title';
@@ -73,8 +71,6 @@ import ElementProductTab from './components/features/product/element-product-tab
 // Portfolio Features
 import GridCols from './components/features/portfolio/grid-cols';
 import MasonaryGridCols from './components/features/portfolio/masonary-grid-cols';
-
-
 
 class Root extends React.Component {
 	render() {
@@ -117,20 +113,13 @@ class Root extends React.Component {
 
 										{/*Routes For Single Product*/}
 
-										{/* TEST */}
-
-										<Route
-											path={`${process.env.PUBLIC_URL}/test`}
-											component={test}
-										/>
-
 										<Route
 											path={`${process.env.PUBLIC_URL}/product/:id`}
 											component={NoSideBar}
 										/>
 
 										<Route
-											path={`${process.env.PUBLIC_URL}/collection`}
+											path={`${process.env.PUBLIC_URL}/category/:title`}
 											component={CollectionLeftSidebar}
 										/>
 

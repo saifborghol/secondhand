@@ -10,6 +10,7 @@ import ImageUploader from 'react-images-upload';
 
 import UserController from '../../services/controllers/userControllers';
 import CategoryController from '../../services/controllers/CategoryController';
+import SubCategoryController from '../../services/controllers/SubCategoryController';
 import AnnonceController from '../../services/controllers/AnnonceController';
 
 // import SubCategoryController from '../../services/controllers/SubCategoryController';
@@ -30,6 +31,7 @@ class Deposer extends Component {
 		};
 		this.UserController = new UserController();
 		this.CategoryController = new CategoryController();
+		this.SubCategoryController = new SubCategoryController();
 		this.AnnonceController = new AnnonceController();
 
 		this.onDrop = this.onDrop.bind(this);
@@ -44,9 +46,16 @@ class Deposer extends Component {
 		this.getAllCategories();
 	}
 
-	pushSubCat(id, data) {
+	pushAnnonceUser(id, data) {
 		let data1 = { annonce: data };
 		this.UserController.pushAnnonce(id, data1).then((res) => {
+			console.log('pushAnnonce', res);
+		});
+	}
+
+	pushAnnonceSubCat(id, data) {
+		let data1 = { annonce: data };
+		this.SubCategoryController.pushAnnonce(id, data1).then((res) => {
 			console.log('pushAnnonce', res);
 		});
 	}
@@ -103,6 +112,10 @@ class Deposer extends Component {
 			isError = true;
 			errors.picErr = 'Veuillez ajouter au moins une image';
 		}
+		if (this.state.pictures.length > 5) {
+			isError = true;
+			errors.picErr = 'Veuillez ajouter 5 images au maximum';
+		}
 
 		this.setState({
 			error: errors,
@@ -132,7 +145,8 @@ class Deposer extends Component {
 		if (!err) {
 			this.AnnonceController.addAnnonce(formData).then((res) => {
 				console.log('response', res);
-				this.pushSubCat(this.state.user_id, res.data.data._id);
+				this.pushAnnonceUser(this.state.user_id, res.data.data._id);
+				this.pushAnnonceSubCat(this.state.subCat_id, res.data.data._id);
 				this.props.history.push('/');
 				toast.success('Annonce créée');
 			});
@@ -299,7 +313,7 @@ class Deposer extends Component {
 												<ImageUploader
 													withIcon={true}
 													withPreview
-													buttonText="Choisir vos images"
+													buttonText="Choisir vos images (5 maximum)"
 													onChange={this.onDrop}
 													imgExtension={['.jpg', '.gif', '.png', '.gif']}
 													maxFileSize={5242880}
