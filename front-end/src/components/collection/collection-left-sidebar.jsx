@@ -11,6 +11,8 @@ import ProductListing from './common/product-listing';
 import StickyBox from 'react-sticky-box';
 import avatar from '../../assets/images/default-avatar.png';
 
+import SpecialProducts from '../layouts/common/products';
+
 import Card from 'react-bootstrap/Card';
 
 import SubCategoryController from '../../services/controllers/SubCategoryController';
@@ -149,7 +151,9 @@ class CollectionLeftSidebar extends Component {
 															colSize={this.state.layoutColumns}
 														/> */}
 
-														<div id="card-container">
+														<SpecialProducts />
+
+														{/* <div id="card-container">
 															{this.state.SubCat.annonce.map((annonce) => {
 																return (
 																	<Card id="card-style">
@@ -215,11 +219,12 @@ class CollectionLeftSidebar extends Component {
 																				this.annonceClick(annonce._id)
 																			}
 																		>
-																			<Card.Title
-																				style={{
+																			<Card.Title 																				style={{
 																					fontWeight: '700',
 																					fontSize: '16px',
-																					marginTop: '-5px',
+																					left: '-20px',
+																					marginTop: '-10px',
+																					
 																				}}
 																			>
 																				{annonce.title}
@@ -227,7 +232,7 @@ class CollectionLeftSidebar extends Component {
 																			<Card.Title
 																				style={{
 																					fontSize: '14px',
-																					marginTop: '-10px',
+																					marginTop: '-5px',
 																				}}
 																			>
 																				{annonce.price} DT
@@ -236,7 +241,16 @@ class CollectionLeftSidebar extends Component {
 																			<Card.Text
 																				style={{
 																					fontSize: '14px',
-																					marginTop: '-5px',
+																					// marginTop: '-7px',
+																				}}
+																			>
+																				wuuuj
+																			</Card.Text>
+
+																			<Card.Text
+																				style={{
+																					fontSize: '14px',
+																					marginTop: '-7px',
 																				}}
 																			>
 																				{annonce.date}
@@ -245,7 +259,7 @@ class CollectionLeftSidebar extends Component {
 																	</Card>
 																);
 															})}
-														</div>
+														</div> */}
 													</div>
 												</div>
 											</div>

@@ -5,6 +5,9 @@ import AliceCarousel from 'react-alice-carousel';
 
 import avatar from '../../assets/images/default-avatar.png';
 import Breadcrumb from '../common/breadcrumb';
+import { HiLocationMarker } from 'react-icons/hi';
+import { BiEdit } from 'react-icons/bi';
+import { AiTwotoneDelete } from 'react-icons/ai';
 
 import AnnonceController from '../../services/controllers/AnnonceController';
 
@@ -70,7 +73,31 @@ export default class NoSideBar extends Component {
 								</div>
 
 								<div className="details col-md-6">
-									<h4 className="product-title">{this.state.Annonce.title}</h4>
+									<div
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+										}}
+									>
+										<h4 className="product-title">
+											{this.state.Annonce.title}
+										</h4>
+										{this.state.Annonce.user_id._id ===
+										localStorage.getItem('userId') ? (
+											<div
+												style={{
+													display: 'flex',
+													alignItems: 'center',
+													justifyContent: 'right',
+												}}
+											>
+												<BiEdit size="24px" />
+												<AiTwotoneDelete size="24px" />
+											</div>
+										) : (
+											<></>
+										)}
+									</div>
 
 									<p className="product-description">
 										{this.state.Annonce.description}
@@ -114,6 +141,20 @@ export default class NoSideBar extends Component {
 									<h4 className="price">
 										Prix: <span>{this.state.Annonce.price} DT</span>
 									</h4>
+
+									<div
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											// marginTop: '-7px',
+											marginBottom: '20px',
+										}}
+									>
+										<HiLocationMarker size="24px" />
+										<p style={{ fontSize: '20px', marginLeft: '5px' }}>
+											{this.state.Annonce.location}
+										</p>
+									</div>
 
 									<div className="action">
 										<button

@@ -179,10 +179,7 @@ class Profil extends Component {
                                       <Card.Title>
                                         {annonce.price} DT
                                       </Card.Title>
-                                      <Card.Text>
-                                        Publié par: {annonce.user_id.name}{" "}
-                                        {annonce.user_id.surName}
-                                      </Card.Text>
+                                      <Card.Text>{annonce.location}</Card.Text>
                                       <Card.Text>{annonce.date}</Card.Text>
                                     </Card.Body>
                                   </Card>

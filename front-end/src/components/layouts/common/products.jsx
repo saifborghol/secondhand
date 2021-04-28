@@ -7,6 +7,8 @@ import Card from 'react-bootstrap/Card';
 
 import avatar from '../../../assets/images/default-avatar.png';
 
+import { HiLocationMarker } from 'react-icons/hi';
+
 import AnnonceController from '../../../services/controllers/AnnonceController';
 
 class SpecialProducts extends Component {
@@ -36,10 +38,7 @@ class SpecialProducts extends Component {
 				<div id="card-container">
 					{this.state.PROD.map((annonce) => {
 						return (
-							<Card
-								id="card-style"
-								
-							>
+							<Card id="card-style">
 								<div
 									style={{
 										display: 'flex',
@@ -96,21 +95,34 @@ class SpecialProducts extends Component {
 										style={{
 											fontWeight: '700',
 											fontSize: '16px',
-											marginTop: '-5px',
+											marginTop: '-10px',
 										}}
 									>
 										{annonce.title}
 									</Card.Title>
-									<Card.Title style={{ fontSize: '14px', marginTop: '-10px' }}>
+									<Card.Title style={{ fontSize: '14px', marginTop: '-5px' }}>
 										{annonce.price} DT
 									</Card.Title>
 
-									<Card.Text style={{ fontSize: '14px', marginTop: '-5px' }}>
+									<div
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											marginTop: '-7px',
+											marginBottom: '10px',
+										}}
+									>
+										<HiLocationMarker size="16px" />
+										<Card.Text style={{ fontSize: '14px', color:'#222222', marginLeft: '2px'}}>
+											{annonce.location}
+										</Card.Text>
+									</div>
+
+									<Card.Text style={{ fontSize: '14px', marginTop: '-10px' }}>
 										{annonce.date}
 									</Card.Text>
 								</Card.Body>
 							</Card>
-							
 						);
 					})}
 				</div>

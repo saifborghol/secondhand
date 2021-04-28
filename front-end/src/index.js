@@ -123,6 +123,11 @@ class Root extends React.Component {
 											component={CollectionLeftSidebar}
 										/>
 
+										<Route
+											path={`${process.env.PUBLIC_URL}/search/:text`}
+											component={CollectionLeftSidebar}
+										/>
+
 										{/*Routes For custom Features*/}
 										<Route
 											path={`${process.env.PUBLIC_URL}/cart`}

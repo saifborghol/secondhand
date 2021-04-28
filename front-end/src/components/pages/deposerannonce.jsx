@@ -22,6 +22,7 @@ class Deposer extends Component {
 			title: '',
 			description: '',
 			price: '',
+			location: '',
 			tel: '',
 			subCat_id: '',
 			user_id: '',
@@ -84,6 +85,7 @@ class Deposer extends Component {
 			titleErr: '',
 			priceErr: '',
 			telErr: '',
+			locErr: '',
 			catErr: '',
 			picErr: '',
 		};
@@ -91,6 +93,10 @@ class Deposer extends Component {
 		if (this.state.title === '') {
 			isError = true;
 			errors.titleErr = 'Veuillez vérifier le titre';
+		}
+		if (this.state.location === '') {
+			isError = true;
+			errors.locErr = "Veuillez vérifier l'emplacement";
 		}
 		if (this.state.price === '') {
 			isError = true;
@@ -140,6 +146,7 @@ class Deposer extends Component {
 		formData.append('user_id', this.state.user_id);
 		formData.append('description', this.state.description);
 		formData.append('price', this.state.price);
+		formData.append('location', this.state.location);
 		formData.append('subCat_id', this.state.subCat_id);
 
 		if (!err) {
@@ -263,7 +270,84 @@ class Deposer extends Component {
 													{this.state.error.telErr}
 												</label>
 											</div>
+										</div>
+
+										<div className="form-row">
+											
+											<div className="col-md-6" style={{ textAlign: 'center' }}>
+												<ImageUploader
+													withIcon={true}
+													withPreview
+													buttonText="Choisir vos images (5 maximum)"
+													onChange={this.onDrop}
+													imgExtension={['.jpg', '.gif', '.png', '.gif']}
+													maxFileSize={5242880}
+													withLabel={false}
+													fileSizeError="La taille des fichiers est trop large"
+													fileTypeError="Le type de fichiers n'est pas supporté"
+												/>
+												<label
+													style={{
+														paddingBottom: '20px',
+														fontSize: 12,
+														color: 'red',
+													}}
+												>
+													{this.state.error.picErr}
+												</label>
+											</div>
 											<div className="col-md-6">
+												<label htmlFor="review">Emplacement</label>
+												<br />
+												<Select
+													native
+													onChange={(e) =>
+														this.setState({
+															location: e.target.value,
+														})
+													}
+												>
+													<option
+														aria-label="None"
+														value="Choisir l'emplacement"
+													/>
+													<option >Ariana</option>
+													<option >Ben arous</option>
+													<option >Bizerte</option>
+													<option >Béja</option>
+													<option >Gabès</option>
+													<option >Gafsa</option>
+													<option >Jendouba</option>
+													<option >Kairouan</option>
+													<option >Kasserine</option>
+													<option >Kébili</option>
+													<option >La manouba</option>
+													<option >Le kef</option>
+													<option >Mahdia</option>
+													<option >Monastir</option>
+													<option >Médenine</option>
+													<option >Nabeul</option>
+													<option >Sfax</option>
+													<option >Sidi bouzid</option>
+													<option >Siliana</option>
+													<option >Sousse</option>
+													<option >Tataouine</option>
+													<option >Tozeur</option>
+													<option >Tunis</option>
+													<option >Zaghouan</option>
+												</Select>
+												<br />
+												<br />
+												<label
+													style={{
+														paddingBottom: '20px',
+														fontSize: 12,
+														color: 'red',
+													}}
+												>
+													{this.state.error.locErr}
+												</label>
+												<br/>
 												<label htmlFor="review">Catégorie</label>
 												<br />
 												<Select
@@ -309,28 +393,6 @@ class Deposer extends Component {
 												<br />
 											</div>
 
-											<div className="col-md-6">
-												<ImageUploader
-													withIcon={true}
-													withPreview
-													buttonText="Choisir vos images (5 maximum)"
-													onChange={this.onDrop}
-													imgExtension={['.jpg', '.gif', '.png', '.gif']}
-													maxFileSize={5242880}
-													withLabel={false}
-													fileSizeError="La taille des fichiers est trop large"
-													fileTypeError="Le type de fichiers n'est pas supporté"
-												/>
-												<label
-													style={{
-														paddingBottom: '20px',
-														fontSize: 12,
-														color: 'red',
-													}}
-												>
-													{this.state.error.picErr}
-												</label>
-											</div>
 										</div>
 										<a
 											className="btn btn-solid"
