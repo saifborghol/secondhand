@@ -78,7 +78,7 @@ class Root extends React.Component {
 		store.dispatch(getAllProducts());
 
 		return (
-		
+			<Provider store={store}>
 				<IntlProvider translations={translations} locale="fn">
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
@@ -290,7 +290,7 @@ class Root extends React.Component {
 						</ScrollContext>
 					</BrowserRouter>
 				</IntlProvider>
-			
+			</Provider>
 		);
 	}
 }
