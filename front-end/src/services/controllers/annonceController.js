@@ -34,9 +34,9 @@ class AnnonceController extends Component {
 		}
 	}
 
-	getAll(data) {
+	getAll() {
 		try {
-			return axios.get(constant.GETALL_ANNONCE_URL, data).then((res) => {
+			return axios.get(constant.GETALL_ANNONCE_URL).then((res) => {
 				return res;
 			});
 		} catch (error) {

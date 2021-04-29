@@ -109,19 +109,19 @@ class SideBar extends Component {
 					</a>
 					<ul id="sub-menu" className="sidebar-menu">
 						<ul className="navitem2">
-							<Link to="/create">
+							<Link to="/create" onClick={this.closeNav}>
 								<li>
 									<a>Déposer une annonce</a>
 								</li>
 							</Link>
 							{localStorage.getItem('token') ? null : (
 								<React.Fragment>
-									<Link to="/register">
+									<Link to="/register" onClick={this.closeNav}>
 										<li>
 											<a>S'inscrire</a>
 										</li>
 									</Link>
-									<Link to="/login">
+									<Link to="/login" onClick={this.closeNav}>
 										<li>
 											<a>Se connecter</a>
 										</li>
@@ -138,7 +138,12 @@ class SideBar extends Component {
 									</Link>
 									<ul>
 										{this.state.Categories[index].subcat.map((subcat) => (
-											<li onClick={() => this.categoryClick(subcat.title)}>
+											<li
+												onClick={() => {
+													this.categoryClick(subcat.title);
+													this.closeNav();
+												}}
+											>
 												<Link>{subcat.title}</Link>
 											</li>
 										))}

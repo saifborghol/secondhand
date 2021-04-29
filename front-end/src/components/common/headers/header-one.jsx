@@ -11,7 +11,6 @@ import SideBar from './common/sidebar';
 import CartContainer from './../../../containers/CartContainer';
 import LogoImage from './common/logo';
 
-
 import { Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -26,6 +25,7 @@ class HeaderOne extends Component {
 		this.state = {
 			isLoading: false,
 			User: {},
+			searchText:''
 		};
 		this.userController = new userController();
 	}
@@ -90,8 +90,6 @@ class HeaderOne extends Component {
 		});
 	};
 
-	
-
 	getUser(id) {
 		this.userController.getUser(id).then((res) => {
 			console.log(res);
@@ -110,6 +108,11 @@ class HeaderOne extends Component {
 		this.userController.logoutUser(data);
 		localStorage.clear();
 		history.push('/login');
+	};
+
+	searchClick = (text) => {
+		const { history } = this.props;
+		window.location.href=`/search/${text}`;
 	};
 
 	render() {
@@ -149,8 +152,17 @@ class HeaderOne extends Component {
 													type="text"
 													className="searchTerm"
 													placeholder="Que cherchez-vous?"
+													value={localStorage.getItem('searchText')}
+													onChange={(e) => {
+														this.setState({searchText: e.target.value})
+														localStorage.setItem('searchText', e.target.value)
+													}}
 												/>
-												<button type="submit" className="searchButton">
+												<button
+													type="submit"
+													className="searchButton"
+													onClick={() => this.searchClick(localStorage.getItem('searchText'))}
+												>
 													<i class="fa fa-search" />
 												</button>
 											</div>

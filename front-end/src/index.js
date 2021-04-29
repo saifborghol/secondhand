@@ -30,6 +30,7 @@ import NoSideBar from './components/products/no-sidebar';
 
 //For Search
 import CollectionLeftSidebar from './components/collection/collection-left-sidebar';
+import searchPage from './components/collection/searchPage';
 
 // Features
 import Layout from './components/app';
@@ -77,7 +78,7 @@ class Root extends React.Component {
 		store.dispatch(getAllProducts());
 
 		return (
-			<Provider store={store}>
+		
 				<IntlProvider translations={translations} locale="fn">
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
@@ -125,7 +126,7 @@ class Root extends React.Component {
 
 										<Route
 											path={`${process.env.PUBLIC_URL}/search/:text`}
-											component={CollectionLeftSidebar}
+											component={searchPage}
 										/>
 
 										{/*Routes For custom Features*/}
@@ -289,7 +290,7 @@ class Root extends React.Component {
 						</ScrollContext>
 					</BrowserRouter>
 				</IntlProvider>
-			</Provider>
+			
 		);
 	}
 }

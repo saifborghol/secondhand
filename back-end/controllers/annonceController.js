@@ -44,12 +44,11 @@ module.exports = {
 	deleteAnnonce: function (req, res) {
 		annonceModel.findByIdAndRemove({ _id: req.params.id }, (err, Annonce) => {
 			if (err) {
-				res.status(500).
-					json({
-						msg: 'erreur',
-						status: 500,
-						data: null,
-					});
+				res.status(500).json({
+					msg: 'erreur',
+					status: 500,
+					data: null,
+				});
 			} else {
 				res.status(200).json({
 					msg: 'Annonce deleted!',
@@ -65,12 +64,11 @@ module.exports = {
 			.findByIdAndUpdate({ _id: req.params.id }, req.body)
 			.exec(function (err, Annonce) {
 				if (err) {
-					res.status(500).
-						json({
-							msg: 'erreur',
-							status: 500,
-							data: null,
-						});
+					res.status(500).json({
+						msg: 'erreur',
+						status: 500,
+						data: null,
+					});
 				} else {
 					res.status(200).json({
 						msg: 'Category updated!',
@@ -87,12 +85,11 @@ module.exports = {
 			.populate('user_id')
 			.exec(function (err, Annonce) {
 				if (err) {
-					res.status(500).
-						json({
-							msg: 'erreur',
-							status: 500,
-							data: null,
-						});
+					res.status(500).json({
+						msg: 'erreur',
+						status: 500,
+						data: null,
+					});
 				} else {
 					res.status(200).json({
 						msg: 'Get Annonce',
@@ -109,12 +106,11 @@ module.exports = {
 			.populate('user_id')
 			.exec(function (err, Annonce) {
 				if (err) {
-					res.status(500).
-						json({
-							msg: 'erreur',
-							status: 500,
-							data: null,
-						});
+					res.status(500).json({
+						msg: 'erreur',
+						status: 500,
+						data: null,
+					});
 				} else {
 					res.status(200).json({
 						msg: 'Get all Annonces',
@@ -128,6 +124,4 @@ module.exports = {
 		image = req.params.image;
 		res.sendFile(__dirname + '/imagesUploads/' + image);
 	},
-
-	
 };

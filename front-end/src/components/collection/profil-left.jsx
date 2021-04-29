@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import compose from 'recompose/compose';
-
 import { Helmet } from 'react-helmet';
 import Breadcrumb from '../common/breadcrumb';
 import NewProduct from '../common/new-product';
-import Filter from '../collection/common/filter';
-import FilterBar from '../collection/common/filter-bar';
-import ProductListing from '../collection/common/product-listing';
+import Filter from './common/filter';
+import FilterBar from './common/filter-bar';
+import ProductListing from './common/product-listing';
 import StickyBox from 'react-sticky-box';
-import Card from 'react-bootstrap/Card';
-
-import { FaEdit } from 'react-icons/fa';
 
 import avatar from '../../assets/images/default-avatar.png';
 
 import userController from '../../services/controllers/userControllers';
 
-class Profil extends Component {
+class Profilleft extends Component {
 	constructor(props) {
 		super(props);
 
@@ -30,12 +24,7 @@ class Profil extends Component {
 
 	componentDidMount() {
 		if (localStorage.getItem('userId')) {
-			this.getUser(localStorage.getItem('userId'));
-		}
-	}
-
-	componentDidUpdate() {
-		if (localStorage.getItem('userId')) {
+			console.log('user id:', localStorage.getItem('userId'));
 			this.getUser(localStorage.getItem('userId'));
 		}
 	}
@@ -52,25 +41,12 @@ class Profil extends Component {
 
 	getUser(id) {
 		this.userController.getUser(id).then((res) => {
+			console.log(res);
 			this.setState({ User: res.data.data });
-			// this.setState({ Annonce: res.data.data.annonce });
 		});
 	}
 
-	editProfil = () => {
-		const { history } = this.props;
-		history.push('/editprofile');
-	};
-
-	annonceClick = (id) => {
-		const { history } = this.props;
-		history.push(`/product/${id}`);
-	};
-
 	render() {
-		if (!this.state.User.annonce) {
-			return <span />;
-		}
 		return (
 			<div>
 				{/*SEO Support*/}
@@ -91,6 +67,15 @@ class Profil extends Component {
 											<div className="row">
 												<div className="col-sm-12">
 													<div className="top-banner-wrapper">
+														{/* <a href="#">
+															<img
+																src={`${
+																	process.env.PUBLIC_URL
+																}/assets/images/mega-menu/2.jpg`}
+																className="img-fluid"
+																alt=""
+															/>
+														</a> */}
 														<div className="profil-page">
 															{this.state.User.image ? (
 																<img
@@ -111,14 +96,6 @@ class Profil extends Component {
 																{this.state.User.name +
 																	' ' +
 																	this.state.User.surName}
-																<FaEdit
-																	size="20"
-																	style={{
-																		cursor: 'pointer',
-																		marginLeft: '10px',
-																	}}
-																	onClick={() => this.editProfil()}
-																/>
 															</h3>
 														</div>
 													</div>
@@ -152,42 +129,11 @@ class Profil extends Component {
 																</div>
 															</div>
 														</div>
-														<h2 style={{ fontWeight: '700' }}>
-															Annonces ({this.state.User.annonce.length})
-														</h2>
-														<div id="card-container">
-															{this.state.User.annonce.map((annonce) => {
-																return (
-																	<Card
-																		id="card-style"
-																		onClick={() =>
-																			this.annonceClick(annonce._id)
-																		}
-																	>
-																		<Card.Img
-																			style={{
-																				width: '240px',
-																				height: '135px',
-																			}}
-																			variant="top"
-																			src={`http://localhost:4000/annonce/annonceImage/${
-																				annonce.image[0].name
-																			}`}
-																		/>
-																		<Card.Body>
-																			<Card.Title style={{ fontWeight: '700' }}>
-																				{annonce.title}
-																			</Card.Title>
-																			<Card.Title>
-																				{annonce.price} DT
-																			</Card.Title>
-																			<Card.Text>{annonce.location}</Card.Text>
-																			<Card.Text>{annonce.date}</Card.Text>
-																		</Card.Body>
-																	</Card>
-																);
-															})}
-														</div>
+
+														{/*Products Listing Component*/}
+														<ProductListing
+															colSize={this.state.layoutColumns}
+														/>
 													</div>
 												</div>
 											</div>
@@ -203,4 +149,4 @@ class Profil extends Component {
 	}
 }
 
-export default compose(withRouter)(Profil);
+export default Profilleft;

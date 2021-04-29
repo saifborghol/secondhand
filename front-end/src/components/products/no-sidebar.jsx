@@ -8,6 +8,7 @@ import Breadcrumb from '../common/breadcrumb';
 import { HiLocationMarker } from 'react-icons/hi';
 import { BiEdit } from 'react-icons/bi';
 import { AiTwotoneDelete } from 'react-icons/ai';
+import { RiDeleteBin2Line } from 'react-icons/ri';
 
 import AnnonceController from '../../services/controllers/AnnonceController';
 
@@ -77,6 +78,8 @@ export default class NoSideBar extends Component {
 										style={{
 											display: 'flex',
 											alignItems: 'center',
+											marginBottom: '15px',
+											justifyContent: 'space-between',
 										}}
 									>
 										<h4 className="product-title">
@@ -88,11 +91,20 @@ export default class NoSideBar extends Component {
 												style={{
 													display: 'flex',
 													alignItems: 'center',
-													justifyContent: 'right',
 												}}
 											>
-												<BiEdit size="24px" />
-												<AiTwotoneDelete size="24px" />
+												<BiEdit
+													size="24px"
+													title="Modifier l'annonce"
+													style={{ cursor: 'pointer' }}
+												/>
+
+												<RiDeleteBin2Line
+													title="Suppriemr l'annonce"
+													size="24px"
+													color="#E70000"
+													style={{ marginLeft: '20px', cursor: 'pointer' }}
+												/>
 											</div>
 										) : (
 											<></>
@@ -155,6 +167,8 @@ export default class NoSideBar extends Component {
 											{this.state.Annonce.location}
 										</p>
 									</div>
+
+									<p style={{color:'grey'}}>Publié le: {this.state.Annonce.date}</p>
 
 									<div className="action">
 										<button
