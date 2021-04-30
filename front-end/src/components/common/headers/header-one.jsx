@@ -99,7 +99,7 @@ class HeaderOne extends Component {
 
 	profil = () => {
 		const { history } = this.props;
-		history.push('/profile');
+		history.push(`/user/${this.state.User._id}`);
 	};
 
 	logout = (e) => {

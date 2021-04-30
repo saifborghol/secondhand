@@ -96,14 +96,14 @@ class Root extends React.Component {
 										{/*Profil*/}
 										<ProtectedRoute
 											exact
-											path={`${process.env.PUBLIC_URL}/profile`}
+											path={`${process.env.PUBLIC_URL}/user/:id`}
 											component={Profile}
 										/>
 
 										{/*Edit Profil*/}
 										<ProtectedRoute
 											exact
-											path={`${process.env.PUBLIC_URL}/editprofile`}
+											path={`${process.env.PUBLIC_URL}/useredit/:id`}
 											component={editProfile}
 										/>
 

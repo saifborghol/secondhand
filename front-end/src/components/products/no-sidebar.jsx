@@ -64,6 +64,11 @@ export default class NoSideBar extends Component {
     });
   }
 
+  userClick = (id) => {
+    // const { history } = this.props;
+    this.props.history.push(`/user/${id}`);
+  };
+
   render() {
     if (!this.state.Annonce.image) {
       return <span />;
@@ -121,9 +126,11 @@ export default class NoSideBar extends Component {
                         }}
                       >
                         <BiEdit
-                         onClick={() => 
-                          this.props.history.push((`/productedit/${this.state.Annonce._id}`))                    
-                        }
+                          onClick={() =>
+                            this.props.history.push(
+                              `/productedit/${this.state.Annonce._id}`
+                            )
+                          }
                           size="24px"
                           title="Modifier l'annonce"
                           style={{ cursor: "pointer" }}
@@ -137,8 +144,14 @@ export default class NoSideBar extends Component {
                               )
                             ) {
                               this.deleteAnnonce(this.state.Annonce._id);
-                              this.pullAnnonceUser(this.state.Annonce.user_id._id,this.state.Annonce._id);
-                              this.pullAnnonceSubCat(this.state.Annonce.subCat_id._id,this.state.Annonce._id);
+                              this.pullAnnonceUser(
+                                this.state.Annonce.user_id._id,
+                                this.state.Annonce._id
+                              );
+                              this.pullAnnonceSubCat(
+                                this.state.Annonce.subCat_id._id,
+                                this.state.Annonce._id
+                              );
                               this.props.history.push("/");
                               toast.error("Annonce supprimée");
                             }
@@ -161,6 +174,9 @@ export default class NoSideBar extends Component {
                   <div className="user">
                     {this.state.Annonce.user_id.image ? (
                       <img
+                      onClick={() => 
+                        this.userClick(this.state.Annonce.user_id._id)                    
+                      }
                         src={`http://localhost:4000/user/userimage/${
                           this.state.Annonce.user_id.image
                         }`}
@@ -175,6 +191,9 @@ export default class NoSideBar extends Component {
                       />
                     ) : (
                       <img
+                      onClick={() => 
+                        this.userClick(this.state.Annonce.user_id._id)                    
+                      }
                         src={avatar}
                         alt="avatar"
                         width="64px"
@@ -187,13 +206,14 @@ export default class NoSideBar extends Component {
                       />
                     )}
 
-                    <span>
-                      {" "}
+                    <span onClick={() => 
+                          this.userClick(this.state.Annonce.user_id._id)                    
+                        }>
+                      
                       {this.state.Annonce.user_id.name}{" "}
                       {this.state.Annonce.user_id.surName}
                     </span>
                   </div>
-                        
 
                   <h4 className="price">
                     Prix: <span>{this.state.Annonce.price} DT</span>
@@ -206,28 +226,25 @@ export default class NoSideBar extends Component {
                       marginBottom: "20px",
                     }}
                   >
-                    <HiLocationMarker  />
+                    <HiLocationMarker />
                     <p style={{ marginLeft: "5px" }}>
                       {this.state.Annonce.location}
                     </p>
                   </div>
 
                   <div className="date">
-                  <AiFillTag />
-                  <p style={{ marginLeft: '5px' }}>
-                    {this.state.Annonce.subCat_id.title}
-                  </p>
+                    <AiFillTag />
+                    <p style={{ marginLeft: "5px" }}>
+                      {this.state.Annonce.subCat_id.title}
+                    </p>
                   </div>
 
                   <div className="date">
-                  <IoMdTime />
-                  <p style={{ color: "grey", marginLeft: '5px' }}>
-                    Publié le: {this.state.Annonce.date}
-                  </p>
+                    <IoMdTime />
+                    <p style={{ color: "grey", marginLeft: "5px" }}>
+                      Publié le: {this.state.Annonce.date}
+                    </p>
                   </div>
-                 
-
-                  
 
                   <div className="action">
                     <button

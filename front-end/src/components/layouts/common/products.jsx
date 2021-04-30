@@ -8,6 +8,7 @@ import Card from "react-bootstrap/Card";
 import avatar from "../../../assets/images/default-avatar.png";
 
 import { HiLocationMarker } from "react-icons/hi";
+import { IoMdTime } from "react-icons/io";
 
 import AnnonceController from "../../../services/controllers/AnnonceController";
 
@@ -27,6 +28,11 @@ class SpecialProducts extends Component {
     });
   }
 
+  userClick = (id) => {
+    const { history } = this.props;
+    history.push(`/user/${id}`);
+  };
+
   annonceClick = (id) => {
     const { history } = this.props;
     history.push(`/product/${id}`);
@@ -44,6 +50,7 @@ class SpecialProducts extends Component {
                   alignItems: "center",
                   marginBottom: "10px",
                 }}
+                onClick={() => this.userClick(annonce.user_id._id)}
               >
                 {annonce.user_id.image ? (
                   <img
@@ -77,7 +84,7 @@ class SpecialProducts extends Component {
                   />
                 )}
 
-                <Card.Text style={{ fontSize: "14px" }}>
+                <Card.Text style={{ color: "#222222", fontSize: "14px" }}>
                   {annonce.user_id.name} {annonce.user_id.surName}
                 </Card.Text>
               </div>
@@ -89,7 +96,10 @@ class SpecialProducts extends Component {
                 }`}
                 onClick={() => this.annonceClick(annonce._id)}
               />
-              <Card.Body style={{padding: '16px 0px'}} onClick={() => this.annonceClick(annonce._id)}>
+              <Card.Body
+                style={{ padding: "16px 0px" }}
+                onClick={() => this.annonceClick(annonce._id)}
+              >
                 <Card.Title
                   style={{
                     fontWeight: "700",
@@ -123,12 +133,21 @@ class SpecialProducts extends Component {
                   </Card.Text>
                 </div>
 
-                <Card.Text style={{ fontSize: "14px", marginTop: "-10px" }}>
-                  {annonce.date}
-                </Card.Text>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginTop: "-7px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <IoMdTime />
+                  <Card.Text style={{ fontSize: "14px", marginLeft: "2px" }}>
+                    {annonce.date}
+                  </Card.Text>
+                </div>
               </Card.Body>
             </Card>
-          
           );
         })}
       </div>
