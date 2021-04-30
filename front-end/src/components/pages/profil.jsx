@@ -181,7 +181,6 @@ class Profil extends Component {
 																			<Card.Title>
 																				{annonce.price} DT
 																			</Card.Title>
-																			<Card.Text>{annonce.location}</Card.Text>
 																			<Card.Text>{annonce.date}</Card.Text>
 																		</Card.Body>
 																	</Card>

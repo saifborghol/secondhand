@@ -152,7 +152,7 @@ class HeaderOne extends Component {
 													type="text"
 													className="searchTerm"
 													placeholder="Que cherchez-vous?"
-													value={localStorage.getItem('searchText')}
+													// value={localStorage.getItem('searchText')}
 													onChange={(e) => {
 														this.setState({searchText: e.target.value})
 														localStorage.setItem('searchText', e.target.value)

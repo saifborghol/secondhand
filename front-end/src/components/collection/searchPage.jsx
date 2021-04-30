@@ -41,7 +41,6 @@ class searchPage extends Component {
 		console.log('filtered', this.state.filteredData);
 	}
 
-	componentDidUpdate() {}
 
 	filterAnnonces() {
 		let arr = [...this.state.annonce];

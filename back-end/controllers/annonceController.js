@@ -71,7 +71,7 @@ module.exports = {
 					});
 				} else {
 					res.status(200).json({
-						msg: 'Category updated!',
+						msg: 'Annonce updated!',
 						status: 200,
 						data: Annonce,
 					});
@@ -82,7 +82,7 @@ module.exports = {
 	getAnnonce: function (req, res) {
 		annonceModel
 			.findById({ _id: req.params.id })
-			.populate('user_id')
+			.populate('user_id').populate('subCat_id')
 			.exec(function (err, Annonce) {
 				if (err) {
 					res.status(500).json({
@@ -103,7 +103,7 @@ module.exports = {
 	getAllAnnonce: function (req, res) {
 		annonceModel
 			.find({})
-			.populate('user_id')
+			.populate('user_id').populate('subCat_id')
 			.exec(function (err, Annonce) {
 				if (err) {
 					res.status(500).json({

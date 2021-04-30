@@ -24,6 +24,16 @@ class AnnonceController extends Component {
 		}
 	}
 
+	deleteAnnonce(id) {
+		try {
+			return axios.delete(constant.DELETE_ANNONCE_URL + id).then((res) => {
+				return res;
+			});
+		} catch (error) {
+			return error;
+		}
+	}
+
 	getAnnonce(id) {
 		try {
 			return axios.get(constant.GET_ANNONCE_URL + id).then((res) => {
