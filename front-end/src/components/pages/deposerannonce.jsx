@@ -130,11 +130,7 @@ class Deposer extends Component {
     return isError;
   };
 
-  getFormData(object) {
-    const formData = new FormData();
-    Object.keys(object).forEach((key) => formData.append(key, object[key]));
-    return formData;
-  }
+  
 
   handleSubmit(event) {
     let err = this.validate();

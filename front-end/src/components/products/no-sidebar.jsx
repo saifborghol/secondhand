@@ -10,6 +10,8 @@ import { HiLocationMarker } from "react-icons/hi";
 import { BiEdit } from "react-icons/bi";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { IoMdTime } from "react-icons/io";
+import { AiFillTag } from "react-icons/ai";
 
 import AnnonceController from "../../services/controllers/AnnonceController";
 import UserController from "../../services/controllers/userControllers";
@@ -119,6 +121,9 @@ export default class NoSideBar extends Component {
                         }}
                       >
                         <BiEdit
+                         onClick={() => 
+                          this.props.history.push((`/productedit/${this.state.Annonce._id}`))                    
+                        }
                           size="24px"
                           title="Modifier l'annonce"
                           style={{ cursor: "pointer" }}
@@ -188,6 +193,8 @@ export default class NoSideBar extends Component {
                       {this.state.Annonce.user_id.surName}
                     </span>
                   </div>
+                        
+
                   <h4 className="price">
                     Prix: <span>{this.state.Annonce.price} DT</span>
                   </h4>
@@ -196,19 +203,31 @@ export default class NoSideBar extends Component {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      // marginTop: '-7px',
                       marginBottom: "20px",
                     }}
                   >
-                    <HiLocationMarker size="24px" />
-                    <p style={{ fontSize: "20px", marginLeft: "5px" }}>
+                    <HiLocationMarker  />
+                    <p style={{ marginLeft: "5px" }}>
                       {this.state.Annonce.location}
                     </p>
                   </div>
 
-                  <p style={{ color: "grey" }}>
+                  <div className="date">
+                  <AiFillTag />
+                  <p style={{ marginLeft: '5px' }}>
+                    {this.state.Annonce.subCat_id.title}
+                  </p>
+                  </div>
+
+                  <div className="date">
+                  <IoMdTime />
+                  <p style={{ color: "grey", marginLeft: '5px' }}>
                     Publié le: {this.state.Annonce.date}
                   </p>
+                  </div>
+                 
+
+                  
 
                   <div className="action">
                     <button

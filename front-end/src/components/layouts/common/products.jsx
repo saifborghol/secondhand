@@ -27,13 +27,6 @@ class SpecialProducts extends Component {
     });
   }
 
-  componentDidUpdate() {
-    this.AnnonceController.getAll().then((res) => {
-      this.setState({ PROD: res.data.data });
-      console.log("PRODUCT_DATA", this.state.PROD);
-    });
-  }
-
   annonceClick = (id) => {
     const { history } = this.props;
     history.push(`/product/${id}`);
@@ -59,8 +52,8 @@ class SpecialProducts extends Component {
                     }`}
                     // onClick={() => this.profil()}
                     alt="avatar"
-                    width="32px"
-                    height="32px"
+                    width="26px"
+                    height="26px"
                     style={{
                       cursor: "pointer",
                       borderRadius: "50%",
@@ -73,8 +66,8 @@ class SpecialProducts extends Component {
                     src={avatar}
                     // onClick={() => this.profil()}
                     alt="avatar"
-                    width="32px"
-                    height="32px"
+                    width="24px"
+                    height="24px"
                     style={{
                       cursor: "pointer",
                       borderRadius: "50%",
@@ -96,7 +89,7 @@ class SpecialProducts extends Component {
                 }`}
                 onClick={() => this.annonceClick(annonce._id)}
               />
-              <Card.Body onClick={() => this.annonceClick(annonce._id)}>
+              <Card.Body style={{padding: '16px 0px'}} onClick={() => this.annonceClick(annonce._id)}>
                 <Card.Title
                   style={{
                     fontWeight: "700",
@@ -135,6 +128,7 @@ class SpecialProducts extends Component {
                 </Card.Text>
               </Card.Body>
             </Card>
+          
           );
         })}
       </div>

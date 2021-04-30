@@ -76,10 +76,17 @@ p.alice-carousel__prev-btn-item:hover {
 }
 
 .teeesst .user {
-  margin: 10px 0;
+  margin: 20px 0;
   display: flex;
   align-items: center;
 }
+
+.teeesst .date {
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+}
+
 .teeesst .user img {
   cursor: pointer;
 }
@@ -89,7 +96,7 @@ p.alice-carousel__prev-btn-item:hover {
   font-size: 17px;
 }
 .teeesst .price {
-  margin: 20px 0;
+  margin: 0 0 20px 0;
 }
 
 .teeesst .preview {
@@ -1382,9 +1389,7 @@ header {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-
   font-size: 16px;
-
   transition-duration: 0.2s;
   cursor: pointer;
   border-radius: 5px;
@@ -1392,7 +1397,6 @@ header {
   color: white;
   border: 2px solid white;
 }
-
 .buttoon2:hover {
   background-color: #00858b;
 }

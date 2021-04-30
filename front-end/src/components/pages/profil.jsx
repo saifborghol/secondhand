@@ -158,32 +158,37 @@ class Profil extends Component {
 														<div id="card-container">
 															{this.state.User.annonce.map((annonce) => {
 																return (
-																	<Card
-																		id="card-style"
-																		onClick={() =>
-																			this.annonceClick(annonce._id)
-																		}
-																	>
-																		<Card.Img
-																			style={{
-																				width: '240px',
-																				height: '135px',
-																			}}
-																			variant="top"
-																			src={`http://localhost:4000/annonce/annonceImage/${
-																				annonce.image[0].name
-																			}`}
-																		/>
-																		<Card.Body>
-																			<Card.Title style={{ fontWeight: '700' }}>
-																				{annonce.title}
-																			</Card.Title>
-																			<Card.Title>
-																				{annonce.price} DT
-																			</Card.Title>
-																			<Card.Text>{annonce.date}</Card.Text>
-																		</Card.Body>
-																	</Card>
+																	<Card id="card-style">
+																	
+																	<Card.Img
+																	  style={{ width: "235px", height: "355px" }}
+																	  variant="bottom"
+																	  src={`http://localhost:4000/annonce/annonceImage/${
+																		annonce.image[0].name
+																	  }`}
+																	  onClick={() => this.annonceClick(annonce._id)}
+																	/>
+																	<Card.Body style={{padding: '16px 0px'}} onClick={() => this.annonceClick(annonce._id)}>
+																	  <Card.Title
+																		style={{
+																		  fontWeight: "700",
+																		  fontSize: "16px",
+																		  marginTop: "-10px",
+																		}}
+																	  >
+																		{annonce.title}
+																	  </Card.Title>
+																	  <Card.Title style={{ fontSize: "14px", marginTop: "-5px" }}>
+																		{annonce.price} DT
+																	  </Card.Title>
+													  
+																	 
+																	  <Card.Text style={{ fontSize: "14px", marginTop: "-10px" }}>
+																		{annonce.date}
+																	  </Card.Text>
+																	</Card.Body>
+																  </Card>
+																
 																);
 															})}
 														</div>

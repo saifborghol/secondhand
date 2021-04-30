@@ -17,6 +17,7 @@ import LoggedRoute from './components/LoggedRoute';
 //profile
 
 import Deposer from './components/pages/deposerannonce';
+import EditAnnonce from './components/pages/editAnnonce';
 
 import Profile from './components/pages/profil';
 import editProfile from './components/pages/editProfile';
@@ -117,6 +118,11 @@ class Root extends React.Component {
 										<Route
 											path={`${process.env.PUBLIC_URL}/product/:id`}
 											component={NoSideBar}
+										/>
+
+										<Route											
+											path={`${process.env.PUBLIC_URL}/productedit/:id`}
+											component={EditAnnonce}
 										/>
 
 										<Route
