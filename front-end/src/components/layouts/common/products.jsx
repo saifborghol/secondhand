@@ -39,6 +39,7 @@ class SpecialProducts extends Component {
   };
 
   render() {
+    
     return (
       <div id="card-container">
         {this.state.PROD.map((annonce) => {

@@ -128,7 +128,7 @@ class editProfile extends Component {
 					console.log(res);
 
 					if (res.data.statut === 200) {
-						this.props.history.push('/profile');
+						this.props.history.push(`/user/${this.state.User._id}`);
 					} else if (res.data.statut === 500) {
 						console.log('mot de passe incorrect!');
 						this.setState({
@@ -173,7 +173,7 @@ class editProfile extends Component {
 							},
 						});
 					} else {
-						this.props.history.push('/profile');
+						this.props.history.push(`/user/${this.state.User._id}`);
 					}
 				});
 			}
@@ -190,7 +190,7 @@ class editProfile extends Component {
 			const formData = new FormData();
 			formData.append('image', this.state.image);
 			this.UserController.updateUserImage(id, formData);
-			this.props.history.push('/profile');
+			this.props.history.push(`/user/${this.state.User._id}`);
 		} catch (error) {
 			console.log('il y a un problème', error);
 			return error;

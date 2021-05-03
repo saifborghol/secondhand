@@ -116,6 +116,7 @@ class HeaderOne extends Component {
 	};
 
 	render() {
+	
 		return (
 			<div>
 				<header id="sticky" className="sticky">

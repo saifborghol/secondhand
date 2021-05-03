@@ -25,6 +25,8 @@ class CollectionLeftSidebar extends Component {
 		super();
 		this.state = {
 			SubCat: {},
+			filteredData: [],
+			filterValue:'',
 			layoutColumns: 3,
 		};
 		this.SubCategoryController = new SubCategoryController();
@@ -67,6 +69,25 @@ class CollectionLeftSidebar extends Component {
 		history.push(`/product/${id}`);
 	};
 
+	sortperpricead(){
+		
+	}
+
+	// filterAnnonces() {
+	// 	let arr = [...this.state.SubCat.annonce];
+	// 	if (this.state.filterValue === 'HighToLow') {
+	// 	let arraa = arr.sort(
+	// 		(annonce) => )
+	// 	);
+	// }
+	// 	this.setState({
+	// 		SubCat: {
+	// 			...this.state.SubCat,
+	// 			annonce: arraa,
+	// 		},
+	// 	});
+	// }
+
 	render() {
 		if (!this.state.SubCat.annonce) {
 			return <span />;
@@ -85,15 +106,16 @@ class CollectionLeftSidebar extends Component {
 					<div className="collection-wrapper">
 						<div className="container">
 							<div className="row">
-								<div className="col-sm-3 collection-filter">
+								{/* <div className="col-sm-3 collection-filter">
 									<StickyBox offsetTop={20} offsetBottom={20}>
 										<div>
 											<Filter />
-											{/* <NewProduct/> */}
+											{/* <NewProduct/> }
 										</div>
 									</StickyBox>
-									{/*side-bar banner end here*/}
+									{/*side-bar banner end here}
 								</div>
+								 */}
 								<div className="collection-content col">
 									<div className="page-main-content ">
 										<div className="">
@@ -101,7 +123,7 @@ class CollectionLeftSidebar extends Component {
 												<div className="col-sm-12">
 													{/* <div className="top-banner-wrapper"> */}
 													{/* <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/mega-menu/2.jpg`} className="img-fluid" alt=""/></a> */}
-													<div className="top-banner-content small-section">
+													{/* <div className="top-banner-content small-section">
 														<h4>{this.state.SubCat.title}</h4>
 														<h5>
 															Lorem Ipsum is simply dummy text of the printing
@@ -122,36 +144,34 @@ class CollectionLeftSidebar extends Component {
 															like Aldus PageMaker including versions of Lorem
 															Ipsum.{' '}
 														</p>
-													</div>
+													</div> */}
 													{/* </div> */}
 													<div className="collection-product-wrapper">
-														<div className="product-top-filter">
-															<div className="container-fluid p-0">
-																<div className="row">
-																	<div className="col-xl-12">
-																		<div className="filter-main-btn">
-																			<span
-																				onClick={this.openFilter}
-																				className="filter-btn btn btn-theme"
-																			>
-																				<i
-																					className="fa fa-filter"
-																					aria-hidden="true"
-																				/>{' '}
-																				Filter
-																			</span>
-																		</div>
-																	</div>
-																</div>
-																<div className="row">
-																	<div className="col-12">
-																		<FilterBar
-																			onLayoutViewClicked={(colmuns) =>
-																				this.LayoutViewClicked(colmuns)
-																			}
-																		/>
-																	</div>
-																</div>
+														<div className="product-filter-content">
+															<div className="product-page-filter">
+																<select
+																	onChange={(e) =>
+																		this.setState({filterValue: e.target.value})
+																	}
+																>
+																	<option value="">Tri des articles</option>
+																	
+																	<option value="HighToLow">
+																		Prix: décroissant
+																	</option>
+																	<option value="LowToHigh">
+																		Prix: croissant
+																	</option>
+																	<option value="Newest">
+																		Articles les plus récents
+																	</option>
+																	<option value="AscOrder">
+																		Trier par Nom: A à Z
+																	</option>
+																	<option value="DescOrder">
+																		Trier par Nom: Z à A
+																	</option>
+																</select>
 															</div>
 														</div>
 
