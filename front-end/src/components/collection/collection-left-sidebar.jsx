@@ -11,6 +11,9 @@ import ProductListing from './common/product-listing';
 import StickyBox from 'react-sticky-box';
 import avatar from '../../assets/images/default-avatar.png';
 
+import { HiLocationMarker } from 'react-icons/hi';
+import { IoMdTime } from 'react-icons/io';
+
 import SpecialProducts from '../layouts/common/products';
 
 import Card from 'react-bootstrap/Card';
@@ -28,6 +31,7 @@ class CollectionLeftSidebar extends Component {
 	}
 
 	componentDidMount() {
+		console.log('title', this.props.match.params.title);
 		this.SubCategoryController.getSubCategory(
 			this.props.match.params.title
 		).then((res) => {
@@ -51,6 +55,11 @@ class CollectionLeftSidebar extends Component {
 
 	openFilter = () => {
 		document.querySelector('.collection-filter').style = 'left: -15px';
+	};
+
+	userClick = (id) => {
+		const { history } = this.props;
+		history.push(`/user/${id}`);
 	};
 
 	annonceClick = (id) => {
@@ -151,9 +160,7 @@ class CollectionLeftSidebar extends Component {
 															colSize={this.state.layoutColumns}
 														/> */}
 
-														<SpecialProducts />
-
-														{/* <div id="card-container">
+														<div id="card-container">
 															{this.state.SubCat.annonce.map((annonce) => {
 																return (
 																	<Card id="card-style">
@@ -163,6 +170,9 @@ class CollectionLeftSidebar extends Component {
 																				alignItems: 'center',
 																				marginBottom: '10px',
 																			}}
+																			onClick={() =>
+																				this.userClick(annonce.user_id._id)
+																			}
 																		>
 																			{annonce.user_id.image ? (
 																				<img
@@ -171,8 +181,8 @@ class CollectionLeftSidebar extends Component {
 																					}`}
 																					// onClick={() => this.profil()}
 																					alt="avatar"
-																					width="32px"
-																					height="32px"
+																					width="26px"
+																					height="26px"
 																					style={{
 																						cursor: 'pointer',
 																						borderRadius: '50%',
@@ -185,8 +195,8 @@ class CollectionLeftSidebar extends Component {
 																					src={avatar}
 																					// onClick={() => this.profil()}
 																					alt="avatar"
-																					width="32px"
-																					height="32px"
+																					width="24px"
+																					height="24px"
 																					style={{
 																						cursor: 'pointer',
 																						borderRadius: '50%',
@@ -196,7 +206,12 @@ class CollectionLeftSidebar extends Component {
 																				/>
 																			)}
 
-																			<Card.Text style={{ fontSize: '14px' }}>
+																			<Card.Text
+																				style={{
+																					color: '#222222',
+																					fontSize: '14px',
+																				}}
+																			>
 																				{annonce.user_id.name}{' '}
 																				{annonce.user_id.surName}
 																			</Card.Text>
@@ -215,16 +230,16 @@ class CollectionLeftSidebar extends Component {
 																			}
 																		/>
 																		<Card.Body
+																			style={{ padding: '16px 0px' }}
 																			onClick={() =>
 																				this.annonceClick(annonce._id)
 																			}
 																		>
-																			<Card.Title 																				style={{
+																			<Card.Title
+																				style={{
 																					fontWeight: '700',
 																					fontSize: '16px',
-																					left: '-20px',
 																					marginTop: '-10px',
-																					
 																				}}
 																			>
 																				{annonce.title}
@@ -238,28 +253,49 @@ class CollectionLeftSidebar extends Component {
 																				{annonce.price} DT
 																			</Card.Title>
 
-																			<Card.Text
+																			<div
 																				style={{
-																					fontSize: '14px',
-																					// marginTop: '-7px',
-																				}}
-																			>
-																				wuuuj
-																			</Card.Text>
-
-																			<Card.Text
-																				style={{
-																					fontSize: '14px',
+																					display: 'flex',
+																					alignItems: 'center',
 																					marginTop: '-7px',
+																					marginBottom: '10px',
 																				}}
 																			>
-																				{annonce.date}
-																			</Card.Text>
+																				<HiLocationMarker size="16px" />
+																				<Card.Text
+																					style={{
+																						fontSize: '14px',
+																						color: '#222222',
+																						marginLeft: '2px',
+																					}}
+																				>
+																					{annonce.location}
+																				</Card.Text>
+																			</div>
+
+																			<div
+																				style={{
+																					display: 'flex',
+																					alignItems: 'center',
+																					marginTop: '-7px',
+																					marginBottom: '10px',
+																				}}
+																			>
+																				<IoMdTime />
+																				<Card.Text
+																					style={{
+																						fontSize: '14px',
+																						marginLeft: '2px',
+																					}}
+																				>
+																					{annonce.date}
+																				</Card.Text>
+																			</div>
 																		</Card.Body>
 																	</Card>
 																);
 															})}
-														</div> */}
+														</div>
 													</div>
 												</div>
 											</div>
