@@ -15,7 +15,7 @@ import SpecialProducts from '../layouts/common/products';
 
 import Card from 'react-bootstrap/Card';
 
-import AnnonceController from '../../services/controllers/AnnonceController';
+import AnnonceController from '../../services/controllers/annonceController';
 
 class searchPage extends Component {
 	constructor() {

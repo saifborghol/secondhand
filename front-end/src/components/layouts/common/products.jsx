@@ -10,7 +10,7 @@ import avatar from "../../../assets/images/default-avatar.png";
 import { HiLocationMarker } from "react-icons/hi";
 import { IoMdTime } from "react-icons/io";
 
-import AnnonceController from "../../../services/controllers/AnnonceController";
+import AnnonceController from "../../../services/controllers/annonceController";
 
 class SpecialProducts extends Component {
   constructor() {

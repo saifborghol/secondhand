@@ -13,7 +13,7 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import { IoMdTime } from "react-icons/io";
 import { AiFillTag } from "react-icons/ai";
 
-import AnnonceController from "../../services/controllers/AnnonceController";
+import AnnonceController from "../../services/controllers/annonceController";
 import UserController from "../../services/controllers/userControllers";
 import SubCategoryController from "../../services/controllers/SubCategoryController";
 

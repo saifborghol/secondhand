@@ -11,7 +11,7 @@ import ImageUploader from "react-images-upload";
 import UserController from "../../services/controllers/userControllers";
 import CategoryController from "../../services/controllers/CategoryController";
 import SubCategoryController from "../../services/controllers/SubCategoryController";
-import AnnonceController from "../../services/controllers/AnnonceController";
+import AnnonceController from "../../services/controllers/annonceController";
 
 class editAnnonce extends Component {
   constructor(props) {

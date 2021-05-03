@@ -53,8 +53,6 @@ class AnnonceController extends Component {
 			return error;
 		}
 	}
-
-	
 }
 
 export default AnnonceController;
