@@ -5,6 +5,7 @@ import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 import UserController from '../../services/controllers/UserController';
 
 import { MdDelete } from 'react-icons/md';
+import avatar from '../../../assets/img/default-avatar.png';
 
 const tableTypes = [''];
 
@@ -87,6 +88,7 @@ export default class ListUsers extends Component {
 																			}
 																		</td>
 																		<td>
+																		{user.image ? (
 																			<img
 																				alt="user image"
 																				src={`http://localhost:4000/user/userimage/${user.image}`}
@@ -95,8 +97,22 @@ export default class ListUsers extends Component {
 																				style={{
 																					borderRadius:
 																						'80%',
+																						objectFit: 'cover',
 																				}}
 																			/>
+																		) : (
+																			<img
+																				alt="user image"
+																				src={avatar}
+																				height="52px"
+																				width="52px"
+																				style={{
+																					borderRadius:
+																						'80%',
+																						objectFit: 'cover',
+																				}}
+																			/>
+																		)}
 																		</td>
 																		<td>
 																			<button

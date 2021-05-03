@@ -53,10 +53,10 @@ export default class ListAnnonces extends Component {
 												>
 													<thead>
 														<tr>
-															<th>Titre</th>
+															<th>Annonce</th>
 															<th>Publié par</th>
 															<th>Date</th>
-															<th>Produit</th>
+															{/* <th>Produit</th> */}
 															<th>Prix</th>
 															<th>Action</th>
 														</tr>
@@ -83,17 +83,17 @@ export default class ListAnnonces extends Component {
 																				ann.date
 																			}
 																		</td>
-																		<td>
+																		{/* <td>
 																			{
 																				ann
 																					.product
 																					.name
 																			}
-																		</td>
+																		</td> */}
 																		<td>
 																			{
 																				ann
-																					.product
+																					
 																					.price
 																			}
 																		</td>
