@@ -15,7 +15,9 @@ class wishList extends Component {
 
     render (){
 
-        const {Items, symbol} = this.props;
+        // const {Items, symbol} = this.props;
+        const Items = [];
+        const symbol = 0;
 
         return (
             <div>
@@ -122,7 +124,4 @@ const mapStateToProps = (state) => ({
     symbol: state.data.symbol,
 })
 
-export default connect(
-    mapStateToProps,
-    {addToCartAndRemoveWishlist, removeFromWishlist}
-)(wishList)
+export default wishList

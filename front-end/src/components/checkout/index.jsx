@@ -54,36 +54,39 @@ class checkOut extends Component {
         })
     }
 
-    StripeClick = () => {
+    // StripeClick = () => {
 
-        if (this.validator.allValid()) {
-            alert('You submitted the form and stuff!');
+    //     if (this.validator.allValid()) {
+    //         alert('You submitted the form and stuff!');
 
-            var handler = (window).StripeCheckout.configure({
-                key: 'pk_test_glxk17KhP7poKIawsaSgKtsL',
-                locale: 'auto',
-                token: (token: any) => {
-                    console.log(token)
-                      this.props.history.push({
-                          pathname: '/order-success',
-                              state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
-                      })
-                }
-              });
-              handler.open({
-                name: 'Multikart',
-                description: 'Online Fashion Store',
-                amount: this.amount * 100
-              })
-        } else {
-          this.validator.showMessages();
-          // rerender to show messages for the first time
-          this.forceUpdate();
-        }
-    }
+    //         var handler = (window).StripeCheckout.configure({
+    //             key: 'pk_test_glxk17KhP7poKIawsaSgKtsL',
+    //             locale: 'auto',
+    //             token: (token: any) => {
+    //                 console.log(token)
+    //                   this.props.history.push({
+    //                       pathname: '/order-success',
+    //                           state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
+    //                   })
+    //             }
+    //           });
+    //           handler.open({
+    //             name: 'Multikart',
+    //             description: 'Online Fashion Store',
+    //             amount: this.amount * 100
+    //           })
+    //     } else {
+    //       this.validator.showMessages();
+    //       // rerender to show messages for the first time
+    //       this.forceUpdate();
+    //     }
+    // }
 
     render (){
-        const {cartItems, symbol, total} = this.props;
+        // const {cartItems, symbol, total} = this.props;
+        const cartItems= [];
+        const symbol= 0;
+        const total= 0;
 
         // Paypal Integration
         const onSuccess = (payment) => {
@@ -238,12 +241,12 @@ class checkOut extends Component {
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    {(total !== 0)?
+                                                    {/* {(total !== 0)?
                                                     <div className="text-right">
                                                         {(this.state.payment === 'stripe')? <button type="button" className="btn-solid btn" onClick={() => this.StripeClick()} >Place Order</button>:
                                                          <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
                                                     </div>
-                                                    : ''}
+                                                    : ''} */}
                                                 </div>
                                             </div>
                                         </div>
@@ -313,7 +316,4 @@ const mapStateToProps = (state) => ({
     total: getCartTotal(state.cartList.cart)
 })
 
-export default connect(
-    mapStateToProps,
-    {removeFromWishlist}
-)(checkOut)
+export default checkOut
