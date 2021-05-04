@@ -5,9 +5,6 @@ import compose from 'recompose/compose';
 import { Helmet } from 'react-helmet';
 import Breadcrumb from '../common/breadcrumb';
 import NewProduct from '../common/new-product';
-import Filter from './common/filter';
-import FilterBar from './common/filter-bar';
-import ProductListing from './common/product-listing';
 import StickyBox from 'react-sticky-box';
 import avatar from '../../assets/images/default-avatar.png';
 

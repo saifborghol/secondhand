@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumb from '../common/breadcrumb';
 import NewProduct from '../common/new-product';
-import Filter from './common/filter';
-import FilterBar from './common/filter-bar';
-import ProductListing from './common/product-listing';
+
 import StickyBox from 'react-sticky-box';
 
 import avatar from '../../assets/images/default-avatar.png';
@@ -35,9 +33,7 @@ class Profilleft extends Component {
 		});
 	}
 
-	openFilter = () => {
-		document.querySelector('.collection-filter').style = 'left: -15px';
-	};
+	
 
 	getUser(id) {
 		this.userController.getUser(id).then((res) => {
@@ -99,42 +95,7 @@ class Profilleft extends Component {
 															</h3>
 														</div>
 													</div>
-													<div className="collection-product-wrapper">
-														<div className="product-top-filter">
-															<div className="container-fluid p-0">
-																<div className="row">
-																	<div className="col-xl-12">
-																		<div className="filter-main-btn">
-																			<span
-																				onClick={this.openFilter}
-																				className="filter-btn btn btn-theme"
-																			>
-																				<i
-																					className="fa fa-filter"
-																					aria-hidden="true"
-																				/>{' '}
-																				Filter
-																			</span>
-																		</div>
-																	</div>
-																</div>
-																<div className="row">
-																	<div className="col-12">
-																		<FilterBar
-																			onLayoutViewClicked={(colmuns) =>
-																				this.LayoutViewClicked(colmuns)
-																			}
-																		/>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														{/*Products Listing Component*/}
-														<ProductListing
-															colSize={this.state.layoutColumns}
-														/>
-													</div>
+													
 												</div>
 											</div>
 										</div>

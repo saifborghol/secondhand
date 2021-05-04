@@ -5,9 +5,7 @@ import compose from "recompose/compose";
 import { Helmet } from "react-helmet";
 import Breadcrumb from "../common/breadcrumb";
 import NewProduct from "../common/new-product";
-import Filter from "../collection/common/filter";
-import FilterBar from "../collection/common/filter-bar";
-import ProductListing from "../collection/common/product-listing";
+
 import StickyBox from "react-sticky-box";
 import Card from "react-bootstrap/Card";
 
@@ -46,9 +44,7 @@ class Profil extends Component {
     });
   }
 
-  openFilter = () => {
-    document.querySelector(".collection-filter").style = "left: -15px";
-  };
+
 
   getUser(id) {
     this.userController.getUser(id).then((res) => {
@@ -129,35 +125,7 @@ class Profil extends Component {
                             </div>
                           </div>
                           <div className="collection-product-wrapper">
-                            <div className="product-top-filter">
-                              <div className="container-fluid p-0">
-                                <div className="row">
-                                  <div className="col-xl-12">
-                                    <div className="filter-main-btn">
-                                      <span
-                                        onClick={this.openFilter}
-                                        className="filter-btn btn btn-theme"
-                                      >
-                                        <i
-                                          className="fa fa-filter"
-                                          aria-hidden="true"
-                                        />{" "}
-                                        Filter
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="row">
-                                  <div className="col-12">
-                                    <FilterBar
-                                      onLayoutViewClicked={(colmuns) =>
-                                        this.LayoutViewClicked(colmuns)
-                                      }
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            
                             <h2 style={{ fontWeight: "700" }}>
                               Annonces ({this.state.User.annonce.length})
                             </h2>
