@@ -162,7 +162,9 @@ class HeaderOne extends Component {
 												<button
 													type="submit"
 													className="searchButton"
-													onClick={() => this.searchClick(localStorage.getItem('searchText'))}
+													onClick={() => {
+														if (this.state.searchText !== '') {this.searchClick(localStorage.getItem('searchText'))}}
+													}
 												>
 													<i class="fa fa-search" />
 												</button>
