@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import compose from 'recompose/compose';
 import { Helmet } from 'react-helmet';
+import Select from '@material-ui/core/Select';
 import Breadcrumb from '../common/breadcrumb';
 import NewProduct from '../common/new-product';
 import StickyBox from 'react-sticky-box';
@@ -22,8 +23,6 @@ class CollectionLeftSidebar extends Component {
 		super();
 		this.state = {
 			SubCat: {},
-			filteredData: [],
-			filterValue:'',
 			layoutColumns: 3,
 		};
 		this.SubCategoryController = new SubCategoryController();
@@ -35,6 +34,7 @@ class CollectionLeftSidebar extends Component {
 			this.props.match.params.title
 		).then((res) => {
 			this.setState({ SubCat: res.data.data });
+			console.log('inital tab:', res.data.data.annonce);
 		});
 	}
 
@@ -66,24 +66,37 @@ class CollectionLeftSidebar extends Component {
 		history.push(`/product/${id}`);
 	};
 
-	sortperpricead(){
-		
+	sort(type) {
+		if (type === 'AscOrder') {
+			this.sortAsc(this.state.SubCat.annonce, 'title');
+		} else if (type === 'DescOrder') {
+			this.sortDesc(this.state.SubCat.annonce, 'title');
+		}
 	}
 
-	// filterAnnonces() {
-	// 	let arr = [...this.state.SubCat.annonce];
-	// 	if (this.state.filterValue === 'HighToLow') {
-	// 	let arraa = arr.sort(
-	// 		(annonce) => )
-	// 	);
-	// }
-	// 	this.setState({
-	// 		SubCat: {
-	// 			...this.state.SubCat,
-	// 			annonce: arraa,
-	// 		},
-	// 	});
-	// }
+	sortAsc(arr, field) {
+		return arr.sort(function(a, b) {
+			if (a[field] > b[field]) {
+				return 1;
+			}
+			if (b[field] > a[field]) {
+				return -1;
+			}
+			return 0;
+		});
+	}
+
+	sortDesc(arr, field) {
+		return arr.sort(function(a, b) {
+			if (a[field] > b[field]) {
+				return -1;
+			}
+			if (b[field] > a[field]) {
+				return 1;
+			}
+			return 0;
+		});
+	}
 
 	render() {
 		if (!this.state.SubCat.annonce) {
@@ -144,33 +157,34 @@ class CollectionLeftSidebar extends Component {
 													</div> */}
 													{/* </div> */}
 													<div className="collection-product-wrapper">
-														<div className="product-filter-content">
-															<div className="product-page-filter">
-																<select
-																	onChange={(e) =>
-																		this.setState({filterValue: e.target.value})
-																	}
-																>
-																	<option value="">Tri des articles</option>
-																	
-																	<option value="HighToLow">
-																		Prix: décroissant
-																	</option>
-																	<option value="LowToHigh">
-																		Prix: croissant
-																	</option>
-																	<option value="Newest">
-																		Articles les plus récents
-																	</option>
-																	<option value="AscOrder">
-																		Trier par Nom: A à Z
-																	</option>
-																	<option value="DescOrder">
-																		Trier par Nom: Z à A
-																	</option>
-																</select>
-															</div>
-														</div>
+														{/* <div className="product-filter-content"> */}
+
+														<Select
+															native
+															onChange={(e) => {
+																this.sort(this.state.SubCat.annonce,e.target.value)
+																console.log('sorted', this.state.SubCat.annonce)
+															}
+															}
+														>
+															<option value="">Tri des articles</option>
+
+															<option value="HighToLow">
+																Prix: décroissant
+															</option>
+															<option value="LowToHigh">Prix: croissant</option>
+															<option value="Newest">
+																Articles les plus récents
+															</option>
+															<option value="AscOrder">
+																Trier par Nom: A à Z
+															</option>
+															<option value="DescOrder">
+																Trier par Nom: Z à A
+															</option>
+														</Select>
+
+														{/* </div> */}
 
 														{/*Products Listing Component*/}
 														{/* <ProductListing
