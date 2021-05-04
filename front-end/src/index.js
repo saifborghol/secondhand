@@ -7,7 +7,6 @@ import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual';
 import './index.scss';
 
 // Import custom components
-import store from './store';
 import translations from './constants/translations';
 import { getAllProducts } from './actions';
 
@@ -21,7 +20,6 @@ import EditAnnonce from './components/pages/editAnnonce';
 
 import Profile from './components/pages/profil';
 import editProfile from './components/pages/editProfile';
-
 // Layouts
 import Fashion from './components/layouts/fashion/main';
 
@@ -55,32 +53,17 @@ import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
 
-// Theme Element
-import ElementTitle from './components/features/theme/element-title';
-import ElementBanner from './components/features/theme/element-banner';
-import ElementSlider from './components/features/theme/element-slider';
-import ElementCategory from './components/features/theme/element-category';
-import ElementService from './components/features/theme/element-service';
-import ElementRatio from './components/features/theme/element-ratio';
 
-// Product Elements
-import ElementProductBox from './components/features/product/element-product-box';
-import ElementProductSlider from './components/features/product/element-product-slider';
-import ElementProductNoSlider from './components/features/product/element-product-no-slider';
-import ElementMultipleSlider from './components/features/product/element-multiple-slider';
-import ElementProductTab from './components/features/product/element-product-tab';
 
-// Portfolio Features
-import GridCols from './components/features/portfolio/grid-cols';
-import MasonaryGridCols from './components/features/portfolio/masonary-grid-cols';
+
+
 
 class Root extends React.Component {
 	render() {
-		store.dispatch(getAllProducts());
+		
 
 		return (
-			<Provider store={store}>
-				<IntlProvider translations={translations} locale="fn">
+				// <IntlProvider translations={translations} locale="fn">
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
 							<Switch>
@@ -211,92 +194,13 @@ class Root extends React.Component {
 											path={`${process.env.PUBLIC_URL}/pages/faq`}
 											component={Faq}
 										/>
-
-										{/*Features*/}
-										{/*Theme Elements*/}
-										<Route
-											path={`${process.env.PUBLIC_URL}/features/element-title`}
-											component={ElementTitle}
-										/>
-										<Route
-											path={`${process.env.PUBLIC_URL}/features/element-banner`}
-											component={ElementBanner}
-										/>
-										<Route
-											path={`${process.env.PUBLIC_URL}/features/element-slider`}
-											component={ElementSlider}
-										/>
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/element-category`}
-											component={ElementCategory}
-										/>
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/element-service`}
-											component={ElementService}
-										/>
-										<Route
-											path={`${process.env.PUBLIC_URL}/features/element-ratio`}
-											component={ElementRatio}
-										/>
-
-										{/*Product Elements*/}
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/element-product-no-slider`}
-											component={ElementProductBox}
-										/>
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/element-product-slider`}
-											component={ElementProductSlider}
-										/>
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/element-product-no-slider`}
-											component={ElementProductNoSlider}
-										/>
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/element-product-multiple-slider`}
-											component={ElementMultipleSlider}
-										/>
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/element-product-tab`}
-											component={ElementProductTab}
-										/>
-
-										{/*Portfolios*/}
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/portfolio-grid/:columns`}
-											component={GridCols}
-										/>
-										<Route
-											path={`${
-												process.env.PUBLIC_URL
-											}/features/portfolio-masonary/:columns`}
-											component={MasonaryGridCols}
-										/>
-
 										<Route path="*" component={PageNotFound} />
 									</Switch>
 								</Layout>
 							</Switch>
 						</ScrollContext>
 					</BrowserRouter>
-				</IntlProvider>
-			</Provider>
+				// </IntlProvider>
 		);
 	}
 }

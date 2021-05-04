@@ -4,8 +4,6 @@ import {Link} from 'react-router-dom'
 
 
 import Breadcrumb from '../common/breadcrumb';
-import {addToCartAndRemoveWishlist, removeFromWishlist} from '../../actions'
-
 class wishList extends Component {
 
 
@@ -119,9 +117,4 @@ class wishList extends Component {
         )
     }
 }
-const mapStateToProps = (state) => ({
-    Items: state.wishlist.list,
-    symbol: state.data.symbol,
-})
-
 export default wishList
