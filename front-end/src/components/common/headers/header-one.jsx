@@ -6,7 +6,6 @@ import Pace from 'react-pace-progress';
 import compose from 'recompose/compose';
 
 // Import custom components
-import store from '../../../store';
 import SideBar from './common/sidebar';
 import CartContainer from './../../../containers/CartContainer';
 import LogoImage from './common/logo';
@@ -64,10 +63,7 @@ class HeaderOne extends Component {
 		}
 	};
 
-	changeLanguage(lang) {
-		store.dispatch(IntlActions.setLocale(lang));
-	}
-
+	
 	openNav() {
 		var openmyslide = document.getElementById('mySidenav');
 		if (openmyslide) {
