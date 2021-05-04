@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
-
 import CartPage from '../components/common/headers/common/cart-header'
+import { selectProducts } from '../Features/cart/cartSlice';
 const cartList=[];
 const total = 0;
 const symbol = 0 ;
 const removeFromCart = 0 ;
-const CartContainer = () => (
-     <li  className="onhover-div mobile-cart"><div className="cart-qty-cls">{cartList.length}</div>
+
+function  CartContainer(){
+
+    const products = useSelector(selectProducts)
+    
+    return(
+
+        <li  className="onhover-div mobile-cart"><div className="cart-qty-cls">{products.length}</div>
         <Link to={`${process.env.PUBLIC_URL}/cart`}><img src={`${process.env.PUBLIC_URL}/assets/images/icon/cart.png`} className="img-fluid" alt=""/>
             <i className="fa fa-shopping-cart"></i></Link>
         <ul className="show-div shopping-cart">
@@ -32,9 +39,7 @@ const CartContainer = () => (
         </ul>
 
     </li>
-)
-
-
-
+    )
+}
 
 export default CartContainer;

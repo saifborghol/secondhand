@@ -18,6 +18,7 @@ import avatar from '../../../assets/images/default-avatar.png';
 import userController from '../../../services/controllers/userControllers';
 
 class HeaderOne extends Component {
+	
 	constructor(props) {
 		super(props);
 

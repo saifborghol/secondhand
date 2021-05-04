@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual';
@@ -52,11 +52,8 @@ import ResetPassword from './components/pages/reset-password';
 import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
-
-
-
-
-
+import {Provider} from 'react-redux'
+import {store} from './app/store'
 
 class Root extends React.Component {
 	render() {
@@ -64,6 +61,7 @@ class Root extends React.Component {
 
 		return (
 				// <IntlProvider translations={translations} locale="fn">
+				<Provider store={store}>
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
 							<Switch>
@@ -200,6 +198,7 @@ class Root extends React.Component {
 							</Switch>
 						</ScrollContext>
 					</BrowserRouter>
+					</Provider>
 				// </IntlProvider>
 		);
 	}
