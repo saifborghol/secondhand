@@ -52,16 +52,20 @@ import ResetPassword from './components/pages/reset-password';
 import Contact from './components/pages/contact';
 import Dashboard from './components/pages/dashboard';
 import Faq from './components/pages/faq';
-import {Provider} from 'react-redux'
-import {store} from './app/store'
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+let persistor = persistStore(store);
 
 class Root extends React.Component {
 	render() {
-		
-
 		return (
-				// <IntlProvider translations={translations} locale="fn">
-				<Provider store={store}>
+			// <IntlProvider translations={translations} locale="fn">
+			<Provider store={store}>
+				<PersistGate loading={null} persistor={persistor}>
+					{/* <ToastContainer /> */}
 					<BrowserRouter basename={'/'}>
 						<ScrollContext>
 							<Switch>
@@ -101,7 +105,7 @@ class Root extends React.Component {
 											component={NoSideBar}
 										/>
 
-										<Route											
+										<Route
 											path={`${process.env.PUBLIC_URL}/productedit/:id`}
 											component={EditAnnonce}
 										/>
@@ -198,8 +202,9 @@ class Root extends React.Component {
 							</Switch>
 						</ScrollContext>
 					</BrowserRouter>
-					</Provider>
-				// </IntlProvider>
+				</PersistGate>
+			</Provider>
+			// </IntlProvider>
 		);
 	}
 }

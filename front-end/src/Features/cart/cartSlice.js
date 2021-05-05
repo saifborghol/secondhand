@@ -1,43 +1,22 @@
-import {createAsyncThunk , createSlice} from '@reduxjs/toolkit'
-
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    products : [
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200},
-        {name : "p1",price : 200}
-    ]
-    
-}
-
+	products: [],
+};
 
 const cartSlice = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: { 
-        
-    
-        addproducttocart : (state,action) => {
-            state.products.push(action.payload)
-        }
+	name: 'cart',
+	initialState,
+	reducers: {
+		addproducttocart: (state, action) => {
+			state.products.push(action.payload);
+		},
+	},
+	extraReducers: {},
+});
 
-    },
-    extraReducers : {
-        
-    }
-  })
+export const { addproducttocart } = cartSlice.actions;
 
+export const selectProducts = (state) => state.cart.products;
 
-  export const {addtocart} = cartSlice.actions;
-
-  export const selectProducts = (state) => state.cart.products
-  
-
-  export default cartSlice.reducer
+export default cartSlice.reducer;

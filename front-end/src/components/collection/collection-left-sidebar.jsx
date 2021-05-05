@@ -68,7 +68,10 @@ class CollectionLeftSidebar extends Component {
 
 	sort(type) {
 		if (type === 'AscOrder') {
-			this.sortAsc(this.state.SubCat.annonce, 'title');
+			this.state.SubCat.annonce.map((annonce) => {
+				
+			})
+			// this.sortAsc(this.state.SubCat.annonce, 'title');
 		} else if (type === 'DescOrder') {
 			this.sortDesc(this.state.SubCat.annonce, 'title');
 		}
