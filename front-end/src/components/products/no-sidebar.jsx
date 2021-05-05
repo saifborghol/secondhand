@@ -4,17 +4,18 @@ import { useDispatch } from 'react-redux';
 
 import '../common/index.scss';
 
-import AliceCarousel from 'react-alice-carousel';
-import { toast } from 'react-toastify';
+import AliceCarousel from "react-alice-carousel";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
-import avatar from '../../assets/images/default-avatar.png';
-import Breadcrumb from '../common/breadcrumb';
-import { HiLocationMarker } from 'react-icons/hi';
-import { BiEdit } from 'react-icons/bi';
-import { AiTwotoneDelete } from 'react-icons/ai';
-import { RiDeleteBin2Line } from 'react-icons/ri';
-import { IoMdTime } from 'react-icons/io';
-import { AiFillTag } from 'react-icons/ai';
+import avatar from "../../assets/images/default-avatar.png";
+import Breadcrumb from "../common/breadcrumb";
+import { HiLocationMarker } from "react-icons/hi";
+import { BiEdit } from "react-icons/bi";
+import { AiTwotoneDelete } from "react-icons/ai";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { IoMdTime } from "react-icons/io";
+import { AiFillTag } from "react-icons/ai";
 
 import AnnonceController from '../../services/controllers/annonceController';
 import UserController from '../../services/controllers/userControllers';

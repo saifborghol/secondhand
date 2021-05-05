@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import Select from "@material-ui/core/Select";
 
