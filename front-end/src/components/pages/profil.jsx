@@ -126,7 +126,7 @@ class Profil extends Component {
                           </div>
                           <div className="collection-product-wrapper">
                             
-                            <h2 style={{ fontWeight: "700" }}>
+                            <h2 style={{ fontWeight: "700", marginTop: '80px'}}>
                               Annonces ({this.state.User.annonce.length})
                             </h2>
                             <div id="card-container">
