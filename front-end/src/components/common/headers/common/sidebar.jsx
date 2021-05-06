@@ -104,7 +104,7 @@ class SideBar extends Component {
 				<nav>
 					<a onClick={this.closeNav}>
 						<div className="sidebar-back text-left">
-							<i className="fa fa-angle-left pr-2" aria-hidden="true" /> Back
+							<i className="fa fa-angle-left pr-2" aria-hidden="true" /> Retour
 						</div>
 					</a>
 					<ul id="sub-menu" className="sidebar-menu">

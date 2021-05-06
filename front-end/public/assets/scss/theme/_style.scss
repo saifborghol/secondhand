@@ -1110,6 +1110,8 @@ header {
 }
 .onhover-div {
   position: relative;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-family: $font_0, $font_1;
   img,
   i {
@@ -1512,7 +1514,7 @@ header {
           &.shopping-cart {
             padding: 15px 15px;
             min-width: 270px;
-            top: 42px;
+            top: 55px;
             left: unset;
             right: 0;
             max-height: 250px;
@@ -6832,8 +6834,8 @@ footer {
   font-size: 12px;
   line-height: 14px;
   font-weight: 600;
-  top: -60%;
-  right: -15px;
+  top: 10%;
+  right: -18px;
   padding: 3px 2px 3px 3px;
 }
 /* =====================
