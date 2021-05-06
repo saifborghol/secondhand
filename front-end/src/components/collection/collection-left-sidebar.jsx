@@ -23,9 +23,12 @@ class CollectionLeftSidebar extends Component {
 		super();
 		this.state = {
 			SubCat: {},
+			filteredData: [],
 			layoutColumns: 3,
 		};
 		this.SubCategoryController = new SubCategoryController();
+		this.filterGov = this.filterGov.bind(this);
+		this.sort = this.sort.bind(this);
 	}
 
 	componentDidMount() {
@@ -33,8 +36,13 @@ class CollectionLeftSidebar extends Component {
 		this.SubCategoryController.getSubCategory(
 			this.props.match.params.title
 		).then((res) => {
-			this.setState({ SubCat: res.data.data });
-			console.log('inital tab:', res.data.data.annonce);
+			this.setState({
+				SubCat: res.data.data,
+				filteredData: res.data.data.annonce,
+			});
+
+			// console.log('inital tab:', res.data.data.annonce);
+			console.log('filtered:', this.state.filteredData);
 		});
 	}
 
@@ -66,15 +74,31 @@ class CollectionLeftSidebar extends Component {
 		history.push(`/product/${id}`);
 	};
 
+	filterGov(gov) {
+		if (gov === 'all') {
+			this.setState({ filteredData: this.state.SubCat.annonce });
+		} else {
+			let arr = [...this.state.SubCat.annonce];
+			let arraa = arr.filter((annonce) => annonce.location === gov);
+			this.setState({
+				filteredData: arraa,
+			});
+		}
+	}
+
+	
+
 	sort(type) {
 		if (type === 'AscOrder') {
-			this.state.SubCat.annonce.map((annonce) => {
-				
-			})
-			// this.sortAsc(this.state.SubCat.annonce, 'title');
+			this.sortAsc(this.state.filteredData, this.state.SubCat.annonce.title);
 		} else if (type === 'DescOrder') {
-			this.sortDesc(this.state.SubCat.annonce, 'title');
+			this.sortDesc(this.state.filteredData, this.state.SubCat.annonce.title);
 		}
+		console.log(
+			'sorted',
+			this.state.filteredData
+		);
+		
 	}
 
 	sortAsc(arr, field) {
@@ -102,7 +126,7 @@ class CollectionLeftSidebar extends Component {
 	}
 
 	render() {
-		if (!this.state.SubCat.annonce) {
+		if (!this.state.filteredData) {
 			return <span />;
 		}
 		return (
@@ -160,34 +184,71 @@ class CollectionLeftSidebar extends Component {
 													</div> */}
 													{/* </div> */}
 													<div className="collection-product-wrapper">
-														{/* <div className="product-filter-content"> */}
-
-														<Select
-															native
-															onChange={(e) => {
-																this.sort(this.state.SubCat.annonce,e.target.value)
-																console.log('sorted', this.state.SubCat.annonce)
-															}
-															}
+														<div
+															style={{ float: 'right', marginBottom: '50px' }}
 														>
-															<option value="">Tri des articles</option>
+															<Select
+																native
+																onChange={(e) => {
+																	this.sort(e.target.value);
+																	
+																}}
+															>
+																<option value="">Tri des articles</option>
 
-															<option value="HighToLow">
-																Prix: décroissant
-															</option>
-															<option value="LowToHigh">Prix: croissant</option>
-															<option value="Newest">
-																Articles les plus récents
-															</option>
-															<option value="AscOrder">
-																Trier par Nom: A à Z
-															</option>
-															<option value="DescOrder">
-																Trier par Nom: Z à A
-															</option>
-														</Select>
+																<option value="HighToLow">
+																	Prix: décroissant
+																</option>
+																<option value="LowToHigh">
+																	Prix: croissant
+																</option>
+																<option value="Newest">
+																	Articles les plus récents
+																</option>
+																<option value="AscOrder">
+																	Trier par Nom: A à Z
+																</option>
+																<option value="DescOrder">
+																	Trier par Nom: Z à A
+																</option>
+															</Select>
 
-														{/* </div> */}
+															<Select
+																defaultValue="all"
+																native
+																onChange={(e) => {
+																	this.filterGov(e.target.value);
+																}}
+															>
+																<option disabled>Filtre par gouvernorat</option>
+
+																<option value="all">Tout</option>
+																<option>Ariana</option>
+																<option>Ben arous</option>
+																<option>Bizerte</option>
+																<option>Béja</option>
+																<option>Gabès</option>
+																<option>Gafsa</option>
+																<option>Jendouba</option>
+																<option>Kairouan</option>
+																<option>Kasserine</option>
+																<option>Kébili</option>
+																<option>La manouba</option>
+																<option>Le kef</option>
+																<option>Mahdia</option>
+																<option>Monastir</option>
+																<option>Médenine</option>
+																<option>Nabeul</option>
+																<option>Sfax</option>
+																<option>Sidi bouzid</option>
+																<option>Siliana</option>
+																<option>Sousse</option>
+																<option>Tataouine</option>
+																<option>Tozeur</option>
+																<option>Tunis</option>
+																<option>Zaghouan</option>
+															</Select>
+														</div>
 
 														{/*Products Listing Component*/}
 														{/* <ProductListing
@@ -195,7 +256,7 @@ class CollectionLeftSidebar extends Component {
 														/> */}
 
 														<div id="card-container">
-															{this.state.SubCat.annonce.map((annonce) => {
+															{this.state.filteredData.map((annonce) => {
 																return (
 																	<Card id="card-style">
 																		<div

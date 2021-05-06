@@ -69,6 +69,8 @@ export default function NoSideBar() {
 	const addToCart = () => {
 		console.log('teeest');
 		dispatch(addproducttocart(Annonce));
+		toast.success('Article ajouté au panier');
+
 	};
 
 	return (

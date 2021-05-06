@@ -740,7 +740,7 @@ button {
 .btn {
   line-height: 20px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   border-radius: 0;
   transition: 0.3s ease-in-out;
@@ -1512,7 +1512,7 @@ header {
           &.shopping-cart {
             padding: 15px 15px;
             min-width: 270px;
-            top: 70px;
+            top: 42px;
             left: unset;
             right: 0;
             max-height: 250px;
@@ -7872,7 +7872,7 @@ footer {
   }
 }
 .collection-product-wrapper {
-  margin-top: 50px;
+  // margin-top: 20px;
   .product-top-filter {
     border-bottom: 1px solid lighten($black, 86.5%);
     border-top: 1px solid lighten($black, 86.5%);

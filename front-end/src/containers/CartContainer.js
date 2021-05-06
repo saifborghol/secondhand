@@ -1,11 +1,18 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
 import { Link } from 'react-router-dom';
 import CartPage from '../components/common/headers/common/cart-header';
 import { selectProducts } from '../Features/cart/cartSlice';
 
+import { removeByIDfromcart } from '../Features/cart/cartSlice';
+
 function CartContainer() {
 	const products = useSelector(selectProducts);
+	const dispatch = useDispatch();
 
 	const [Total, setTotal] = useState(0);
 
@@ -36,7 +43,10 @@ function CartContainer() {
 						key={index}
 						item={item}
 						total={item.price}
-						// removeFromCart={() => removeFromCart(item)}
+						removeFromCart={() => {
+							dispatch(removeByIDfromcart(item._id));
+							toast.warn('Article supprimé du panier');
+						}}
 					/>
 				))}
 				{products.length > 0 ? (
@@ -60,7 +70,7 @@ function CartContainer() {
 									to={`${process.env.PUBLIC_URL}/checkout`}
 									className="checkout"
 								>
-									checkout
+									Commande
 								</Link>
 							</div>
 						</li>

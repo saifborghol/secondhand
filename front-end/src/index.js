@@ -133,18 +133,13 @@ class Root extends React.Component {
 											path={`${process.env.PUBLIC_URL}/compare`}
 											component={Compare}
 										/>
-										<Route
+										<ProtectedRoute
 											path={`${process.env.PUBLIC_URL}/checkout`}
 											component={checkOut}
 										/>
 										<Route
 											path={`${process.env.PUBLIC_URL}/order-success`}
 											component={orderSuccess}
-										/>
-
-										<Route
-											path={`${process.env.PUBLIC_URL}/sales/orders`}
-											component={aboutUs}
 										/>
 
 										{/*Routes For Extra Pages*/}
