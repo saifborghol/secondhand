@@ -16,6 +16,10 @@ const annonceSchema = Schema({
 		required: true,
 	},
 
+	tel:{
+		type: Number
+	},
+
 	location: {
 		type: String,
 		required: true,

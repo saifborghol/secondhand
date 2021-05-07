@@ -147,7 +147,7 @@ class editAnnonce extends Component {
         console.log("response", res);
         // this.pushAnnonceUser(this.state.user_id, res.data.data._id);
         // this.pushAnnonceSubCat(this.state.subCat_id, res.data.data._id);
-        this.props.history.push("/");
+        this.props.history.push(`/product/${id}`);
         toast.success("Annonce modifiée");
       });
     }

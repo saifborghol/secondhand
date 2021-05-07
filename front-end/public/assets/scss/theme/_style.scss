@@ -49,6 +49,16 @@
     1.General CSS start
 ==========================*/
 
+#removeFromCart{
+  cursor: pointer;
+}
+
+#removeFromCart:hover{
+  color: #000000;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
 p.alice-carousel__next-btn-item,
 p.alice-carousel__prev-btn-item {
   font-weight: 700;
@@ -566,8 +576,8 @@ del {
       display: none;
     }
     .cart-qty-cls {
-      top: -60%;
-      right: -15px;
+      top: 10%;
+  right: -18px;
     }
   }
 }

@@ -18,6 +18,7 @@ module.exports = {
 			user_id: req.body.user_id,
 			description: req.body.description,
 			price: req.body.price,
+			tel: req.body.tel,
 			location: req.body.location,
 			subCat_id: req.body.subCat_id,
 		};

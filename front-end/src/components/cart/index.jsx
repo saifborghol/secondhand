@@ -106,14 +106,14 @@ function cartComponent() {
 
                           <td>
                             <a
-                              className="icon"
                               onClick={() => {
                                 dispatch(removeByIDfromcart(item._id));
                                 toast.warn("Article supprimé du panier");
                               }}
                             >
-                              <i className="fa fa-times" style={{cursor: 'pointer'}}/>
+                              <i id='removeFromCart' className="fa fa-times"/>
                             </a>
+                            
                           </td>
                           
                         </tr>

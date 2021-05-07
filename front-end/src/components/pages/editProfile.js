@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
+
 import Breadcrumb from '../common/breadcrumb';
 
 import { FaEdit } from 'react-icons/fa';
@@ -129,6 +132,7 @@ class editProfile extends Component {
 
 					if (res.data.statut === 200) {
 						this.props.history.push(`/user/${this.state.User._id}`);
+						toast.success('Mot de passe modifié')
 					} else if (res.data.statut === 500) {
 						console.log('mot de passe incorrect!');
 						this.setState({
@@ -174,6 +178,7 @@ class editProfile extends Component {
 						});
 					} else {
 						this.props.history.push(`/user/${this.state.User._id}`);
+						toast.success('Profil modifié')
 					}
 				});
 			}
@@ -204,6 +209,18 @@ class editProfile extends Component {
 		this.setState({ image: file });
 		this.setState({ file: URL.createObjectURL(evt.target.files[0]) });
 	};
+
+	handleKeyPress = (event) => {
+		if (event.key === "Enter") {
+		  this.handleSubmit();
+		}
+	  };
+
+	handleKeyPressPASS = (event) => {
+		if (event.key === "Enter") {
+		  this.handleSubmitPass();
+		}
+	  };
 
 	render() {
 		return (
@@ -275,6 +292,7 @@ class editProfile extends Component {
 										<div className="col-md-6">
 											<label>Nom</label>
 											<input
+												onKeyPress={this.handleKeyPress}
 												defaultValue={this.state.name}
 												name="name"
 												type="text"
@@ -298,6 +316,7 @@ class editProfile extends Component {
 										<div className="col-md-6">
 											<label htmlFor="review">Prénom</label>
 											<input
+											onKeyPress={this.handleKeyPress}
 												defaultValue={this.state.surName}
 												name="surName"
 												type="text"
@@ -324,6 +343,7 @@ class editProfile extends Component {
 										<div className="col-md-6">
 											<label htmlFor="email">Email</label>
 											<input
+											onKeyPress={this.handleKeyPress}
 												value={this.state.User.email}
 												disabled
 												name="email"
@@ -346,6 +366,7 @@ class editProfile extends Component {
 											<label htmlFor="review">Numéro de téléphone</label>
 
 											<input
+											onKeyPress={this.handleKeyPress}
 												defaultValue={this.state.tel}
 												name="tel"
 												maxLength='8'
@@ -389,6 +410,7 @@ class editProfile extends Component {
 										<div className="col-md-6">
 											<label>Ancien mot de passe</label>
 											<input
+											onKeyPress={this.handleKeyPressPASS}
 												name="oldPass"
 												type="password"
 												className="form-control"
@@ -412,6 +434,7 @@ class editProfile extends Component {
 										<div className="col-md-6">
 											<label htmlFor="password">Nouveau mot de passe</label>
 											<input
+											onKeyPress={this.handleKeyPressPASS}
 												name="newPass"
 												type="password"
 												className="form-control"
@@ -430,6 +453,7 @@ class editProfile extends Component {
 												valider le nouveau mot de passe
 											</label>
 											<input
+											onKeyPress={this.handleKeyPressPASS}
 												name="newPass2"
 												type="password"
 												className="form-control"

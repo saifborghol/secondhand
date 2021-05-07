@@ -16,6 +16,7 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { IoMdTime } from "react-icons/io";
 import { AiFillTag } from "react-icons/ai";
+import { AiTwotonePhone } from "react-icons/ai";
 
 import AnnonceController from "../../services/controllers/annonceController";
 import UserController from "../../services/controllers/userControllers";
@@ -163,7 +164,7 @@ export default function NoSideBar() {
                                   Annonce.subCat_id._id,
                                   Annonce._id
                                 );
-                                history.push("/");
+                                window.location.href=("/");
                                 toast.error("Annonce supprimée");
                               }
                             }}
@@ -244,11 +245,22 @@ export default function NoSideBar() {
                     </div>
 
                     <div className="date">
+                      <AiTwotonePhone size='14px'/>
+                      <p
+                        style={{ marginLeft: "5px"}}
+                        
+                      >
+                        {Annonce.tel}
+                      </p>
+                    </div>
+
+                    <div className="date">
                       <IoMdTime />
                       <p style={{ color: "grey", marginLeft: "5px" }}>
                         Publié le: {Annonce.date}
                       </p>
                     </div>
+                    
 
                     {Annonce.user_id._id === localStorage.getItem("userId") ? (
                       <></>

@@ -24,7 +24,7 @@ const CartHeader = ({ item, total, symbol, removeFromCart }) => (
 		</div>
 		{/*<span>{cart}</span>*/}
 		<div className="close-circle">
-			<a href={null} onClick={removeFromCart}>
+			<a onClick={removeFromCart}>
 				<i className="fa fa-times" aria-hidden="true" />
 			</a>
 		</div>

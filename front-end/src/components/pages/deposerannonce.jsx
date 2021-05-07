@@ -144,6 +144,7 @@ class Deposer extends Component {
     formData.append("user_id", this.state.user_id);
     formData.append("description", this.state.description);
     formData.append("price", this.state.price);
+    formData.append("tel", this.state.tel);
     formData.append("location", this.state.location);
     formData.append("subCat_id", this.state.subCat_id);
 
