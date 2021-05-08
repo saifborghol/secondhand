@@ -1,257 +1,366 @@
-import React, {Component} from 'react';
-import {Helmet} from 'react-helmet'
-import { connect } from 'react-redux'
-import {Link, Redirect } from 'react-router-dom'
-import PaypalExpressBtn from 'react-paypal-express-checkout';
-import SimpleReactValidator from 'simple-react-validator';
+import React, { Component, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import PaypalExpressBtn from "react-paypal-express-checkout";
+import SimpleReactValidator from "simple-react-validator";
 
 import Breadcrumb from "../common/breadcrumb";
-import {removeFromWishlist} from '../../actions'
-import {getCartTotal} from "../../services";
+import { removeFromWishlist } from "../../actions";
+import { getCartTotal } from "../../services";
 
-class checkOut extends Component {
+import { selectProducts } from "../../Features/cart/cartSlice";
 
-    constructor (props) {
-        super (props)
+const Validator = new SimpleReactValidator();
 
-        this.state = {
-            payment:'stripe',
-            first_name:'',
-            last_name:'',
-            phone:'',
-            email:'',
-            country:'',
-            address:'',
-            city:'',
-            state:'',
-            pincode:'',
-            create_account: ''
-        }
-        this.validator = new SimpleReactValidator();
+export default function checkOut() {
+  const products = useSelector(selectProducts);
+
+  const [Total, setTotal] = useState(0);
+  const [Payment, setPayment] = useState("stripe");
+  const [First_name, setTFirst_name] = useState("");
+  const [Last_name, setTLast_name] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Address, setAddress] = useState("");
+  const [City, setCity] = useState("");
+  const [PinCode, setPinCode] = useState("");
+
+  const history = useHistory();
+
+  useEffect(() => {
+    let sum = 0;
+
+    for (const article of products) {
+      sum += article.price;
     }
 
-    setStateFromInput = (event) => {
-        var obj = {};
-        obj[event.target.name] = event.target.value;
-        this.setState(obj);
+    setTotal(sum);
+  }, []);
 
-      }
+  const setStateFromInput = (event) => {
+    var obj = {};
+    obj[event.target.name] = event.target.value;
+    this.setState(obj);
+  };
 
-      setStateFromCheckbox = (event) => {
-          var obj = {};
-          obj[event.target.name] = event.target.checked;
-          this.setState(obj);
+  const checkhandle = (value) => {
+    setPayment(value);
+  };
 
-          if(!this.validator.fieldValid(event.target.name))
-          {
-              this.validator.showMessages();
-          }
-        }
+  // StripeClick = () => {
 
-    checkhandle(value) {
-        this.setState({
-            payment: value
-        })
-    }
+  //     if (Validator.allValid()) {
+  //         alert('You submitted the form and stuff!');
 
-    // StripeClick = () => {
+  //         var handler = (window).StripeCheckout.configure({
+  //             key: 'pk_test_glxk17KhP7poKIawsaSgKtsL',
+  //             locale: 'auto',
+  //             token: (token: any) => {
+  //                 console.log(token)
+  //                   this.props.history.push({
+  //                       pathname: '/order-success',
+  //                           state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
+  //                   })
+  //             }
+  //           });
+  //           handler.open({
+  //             name: 'Multikart',
+  //             description: 'Online Fashion Store',
+  //             amount: this.amount * 100
+  //           })
+  //     } else {
+  //       Validator.showMessages();
+  //       // rerender to show messages for the first time
+  //       this.forceUpdate();
+  //     }
+  // }
 
-    //     if (this.validator.allValid()) {
-    //         alert('You submitted the form and stuff!');
+  // const {cartItems, symbol, total} = this.props;
 
-    //         var handler = (window).StripeCheckout.configure({
-    //             key: 'pk_test_glxk17KhP7poKIawsaSgKtsL',
-    //             locale: 'auto',
-    //             token: (token: any) => {
-    //                 console.log(token)
-    //                   this.props.history.push({
-    //                       pathname: '/order-success',
-    //                           state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
-    //                   })
-    //             }
-    //           });
-    //           handler.open({
-    //             name: 'Multikart',
-    //             description: 'Online Fashion Store',
-    //             amount: this.amount * 100
-    //           })
-    //     } else {
-    //       this.validator.showMessages();
-    //       // rerender to show messages for the first time
-    //       this.forceUpdate();
-    //     }
-    // }
+  // Paypal Integration
+  const onSuccess = (payment) => {
+    console.log("Le paiement a été effectué!", payment);
+    history.push({
+      pathname: "/order-success",
+      state: { payment: payment, items: products, orderTotal: Total },
+    });
+  };
 
-    render (){
-        // const {cartItems, symbol, total} = this.props;
-        const cartItems= [];
-        const symbol= 0;
-        const total= 0;
+  const onCancel = (data) => {
+    console.log("Le paiement a été annulé!", data);
+  };
 
-        // Paypal Integration
-        const onSuccess = (payment) => {
-            console.log("The payment was succeeded!", payment);
-            this.props.history.push({
-                pathname: '/order-success',
-                    state: { payment: payment, items: cartItems, orderTotal: total, symbol: symbol }
-            })
+  const onError = (err) => {
+    console.log("Error!", err);
+  };
 
-        }
+  const client = {
+    sandbox:
+      "AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_",
+    production:
+      "AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_",
+  };
 
-        const onCancel = (data) => {
-            console.log('The payment was cancelled!', data);
-        }
+  return (
+    <div>
+      {/*SEO Support*/}
+      <Helmet>
+        <title>secondhand | Achat et vente en ligne</title>
+      </Helmet>
+      {/*SEO Support End */}
 
-        const onError = (err) => {
-            console.log("Error!", err);
-        }
+      <Breadcrumb title={"Checkout"} />
 
-        const client = {
-            sandbox:    'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
-            production: 'AZ4S98zFa01vym7NVeo_qthZyOnBhtNvQDsjhaZSMH-2_Y9IAJFbSD3HPueErYqN8Sa8WYRbjP7wWtd_',
-        }
-
-
-        return (
-            <div>
-
-                {/*SEO Support*/}
-                <Helmet>
-					<title>secondhand | Achat et vente en ligne</title>
-				</Helmet>
-                {/*SEO Support End */}
-
-                <Breadcrumb  title={'Checkout'}/>
-
-                <section className="section-b-space">
-                    <div className="container padding-cls">
-                        <div className="checkout-page">
-                            <div className="checkout-form">
-                                <form>
-                                    <div className="checkout row">
-                                        <div className="col-lg-6 col-sm-12 col-xs-12">
-                                            <div className="checkout-title">
-                                                <h3>Billing Details</h3>
-                                            </div>
-                                            <div className="row check-out">
-                                                <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                    <div className="field-label">First Name</div>
-                                                    <input type="text" name="first_name" value={this.state.first_name} onChange={this.setStateFromInput} />
-                                                    {this.validator.message('first_name', this.state.first_name, 'required|alpha')}
-                                                </div>
-                                                <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                    <div className="field-label">Last Name</div>
-                                                    <input type="text" name="last_name" value={this.state.last_name} onChange={this.setStateFromInput} />
-                                                    {this.validator.message('last_name', this.state.last_name, 'required|alpha')}
-                                                </div>
-                                                <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                    <div className="field-label">Phone</div>
-                                                    <input type="text" name="phone"  value={this.state.phone} onChange={this.setStateFromInput} />
-                                                    {this.validator.message('phone', this.state.phone, 'required|phone')}
-                                                </div>
-                                                <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                                                    <div className="field-label">Email Address</div>
-                                                    <input type="text" name="email" value={this.state.email} onChange={this.setStateFromInput} />
-                                                    {this.validator.message('email', this.state.email, 'required|email')}
-                                                </div>
-                                                <div className="form-group col-md-12 col-sm-12 col-xs-12">
+      <section className="section-b-space">
+        <div className="container padding-cls">
+          <div className="checkout-page">
+            <div className="checkout-form">
+              <form>
+                <div className="checkout row">
+                  <div className="col-lg-6 col-sm-12 col-xs-12">
+                    <div className="checkout-title">
+                      <h3>Détails de facturation</h3>
+                    </div>
+                    <div className="row check-out">
+                      <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div className="field-label">Prénom</div>
+                        <input
+                          type="text"
+                          name="first_name"
+                          value={First_name}
+                          onChange={setStateFromInput}
+                        />
+                        {Validator.message(
+                          "first_name",
+                          First_name,
+                          "required|alpha"
+                        )}
+                      </div>
+                      <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div className="field-label">Nom</div>
+                        <input
+                          type="text"
+                          name="last_name"
+                          value={Last_name}
+                          onChange={setStateFromInput}
+                        />
+                        {Validator.message(
+                          "last_name",
+                          Last_name,
+                          "required|alpha"
+                        )}
+                      </div>
+                      <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div className="field-label">Téléphone</div>
+                        <input
+                          type="text"
+                          name="phone"
+                          value={Phone}
+                          onChange={setStateFromInput}
+                        />
+                        {Validator.message("phone", Phone, "required|phone")}
+                      </div>
+                      <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div className="field-label">Email</div>
+                        <input
+                          type="text"
+                          name="email"
+                          value={Email}
+                          onChange={setStateFromInput}
+                        />
+                        {Validator.message("email", Email, "required|email")}
+                      </div>
+                      {/* <div className="form-group col-md-12 col-sm-12 col-xs-12">
                                                     <div className="field-label">Country</div>
-                                                    <select name="country" value={this.state.country} onChange={this.setStateFromInput}>
+                                                    <select name="country" value={this.state.country} onChange={setStateFromInput}>
                                                         <option>India</option>
                                                         <option>South Africa</option>
                                                         <option>United State</option>
                                                         <option>Australia</option>
                                                     </select>
-                                                    {this.validator.message('country', this.state.country, 'required')}
-                                                </div>
-                                                <div className="form-group col-md-12 col-sm-12 col-xs-12">
-                                                    <div className="field-label">Address</div>
-                                                    <input type="text" name="address" value={this.state.address} onChange={this.setStateFromInput} placeholder="Street address" />
-                                                    {this.validator.message('address', this.state.address, 'required|min:20|max:120')}
-                                                </div>
-                                                <div className="form-group col-md-12 col-sm-12 col-xs-12">
-                                                    <div className="field-label">Town/City</div>
-                                                    <input type="text" name="city" value={this.state.city} onChange={this.setStateFromInput} />
-                                                    {this.validator.message('city', this.state.city, 'required|alpha')}
-                                                </div>
-                                                <div className="form-group col-md-12 col-sm-6 col-xs-12">
+                                                    {Validator.message('country', this.state.country, 'required')}
+                                                </div> */}
+                      <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                        <div className="field-label">Adresse</div>
+                        <input
+                          type="text"
+                          name="address"
+                          value={Address}
+                          onChange={setStateFromInput}
+                          //   placeholder="Street address"
+                        />
+                        {Validator.message(
+                          "address",
+                          Address,
+                          "required|min:20|max:120"
+                        )}
+                      </div>
+                      <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                        <div className="field-label">Ville</div>
+                        <input
+                          type="text"
+                          name="city"
+                          value={City}
+                          onChange={setStateFromInput}
+                        />
+                        {Validator.message("city", City, "required|alpha")}
+                      </div>
+                      {/* <div className="form-group col-md-12 col-sm-6 col-xs-12">
                                                     <div className="field-label">State / County</div>
-                                                    <input type="text" name="state" value={this.state.state} onChange={this.setStateFromInput} />
-                                                    {this.validator.message('state', this.state.state, 'required|alpha')}
-                                                </div>
-                                                <div className="form-group col-md-12 col-sm-6 col-xs-12">
-                                                    <div className="field-label">Postal Code</div>
-                                                    <input type="text" name="pincode" value={this.state.spincode} onChange={this.setStateFromInput} />
-                                                    {this.validator.message('pincode', this.state.pincode, 'required|integer')}
-                                                </div>
-                                                <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <input type="checkbox" name="create_account" id="account-option"  checked={this.state.create_account} onChange={this.setStateFromCheckbox}/>
+                                                    <input type="text" name="state" value={this.state.state} onChange={setStateFromInput} />
+                                                    {Validator.message('state', this.state.state, 'required|alpha')}
+                                                </div> */}
+                      <div className="form-group col-md-12 col-sm-6 col-xs-12">
+                        <div className="field-label">Code postal</div>
+                        <input
+                          type="text"
+                          name="pincode"
+                          value={PinCode}
+                          onChange={setStateFromInput}
+                        />
+                        {Validator.message(
+                          "pincode",
+                          PinCode,
+                          "required|integer"
+                        )}
+                      </div>
+                      {/* <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <input type="checkbox" name="create_account" id="account-option"  checked={this.state.create_account} onChange={setStateFromCheckbox}/>
                                                     &ensp; <label htmlFor="account-option">Create An Account?</label>
-                                                    {this.validator.message('checkbox', this.state.create_account, 'create_account')}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6 col-sm-12 col-xs-12">
-                                            <div className="checkout-details">
-                                                <div className="order-box">
-                                                    <div className="title-box">
-                                                        <div>Product <span> Total</span></div>
-                                                    </div>
-                                                    <ul className="qty">
-                                                        {cartItems.map((item, index) => {
-                                                            return <li key={index}>{item.name} × {item.qty} <span>{symbol} {item.sum}</span></li> })
-                                                        }
-                                                    </ul>
-                                                    <ul className="sub-total">
-                                                        <li>Subtotal <span className="count">{symbol}{total}</span></li>
-                                                        <li>Shipping <div className="shipping">
-                                                            <div className="shopping-option">
-                                                                <input type="checkbox" name="free-shipping" id="free-shipping" />
-                                                                    <label htmlFor="free-shipping">Free Shipping</label>
-                                                            </div>
-                                                            <div className="shopping-option">
-                                                                <input type="checkbox" name="local-pickup" id="local-pickup" />
-                                                                    <label htmlFor="local-pickup">Local Pickup</label>
-                                                            </div>
-                                                        </div>
-                                                        </li>
-                                                    </ul>
+                                                    {Validator.message('checkbox', this.state.create_account, 'create_account')}
+                                                </div> */}
+                    </div>
+                  </div>
+                  <div className="col-lg-6 col-sm-12 col-xs-12">
+                    <div className="checkout-details">
+                      <div className="order-box">
+                        <div className="title-box">
+                          <div>
+                            Produit <span> Total</span>
+                          </div>
+                        </div>
+                        <ul className="qty">
+                          {products.map((item, index) => {
+                            return (
+                              <li key={index}>
+                                {item.title} <span>{item.price} DT</span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                        <ul className="sub-total">
+                          <li>
+                            Subtotal <span className="count">{Total} DT</span>
+                          </li>
+                          <li>
+                            Livraison{" "}
+                            <div className="shipping">
+                              <div className="shopping-option">
+                                <input
+                                  type="radio"
+                                  name="shippingType"
+                                  id="free-shipping"
+                                />
+                                <label htmlFor="free-shipping">
+                                  Livraison (+7DT)
+                                </label>
+                              </div>
+                              <div className="shopping-option">
+                                <input
+                                  type="radio"
+                                  name="shippingType"
+                                  id="local-pickup"
+                                  checked
+                                />
+                                <label htmlFor="local-pickup">
+                                  Collecte locale
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
 
-                                                    <ul className="total">
-                                                        <li>Total <span className="count">{symbol}{total}</span></li>
-                                                    </ul>
-                                                </div>
+                        <ul className="total">
+                          <li>
+                            Total <span className="count">{Total} DT</span>
+                          </li>
+                        </ul>
+                      </div>
 
-                                                <div className="payment-box">
-                                                    <div className="upper-box">
-                                                        <div className="payment-options">
-                                                            <ul>
-                                                                <li>
-                                                                    <div className="radio-option stripe">
-                                                                        <input type="radio" name="payment-group" id="payment-2" defaultChecked={true} onClick={() => this.checkhandle('stripe')} />
-                                                                        <label htmlFor="payment-2">Stripe</label>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div className="radio-option paypal">
-                                                                        <input type="radio" name="payment-group" id="payment-1" onClick={() => this.checkhandle('paypal')} />
-                                                                            <label htmlFor="payment-1">PayPal<span className="image"><img src={`${process.env.PUBLIC_URL}/assets/images/paypal.png`} alt=""/></span></label>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    {/* {(total !== 0)?
-                                                    <div className="text-right">
-                                                        {(this.state.payment === 'stripe')? <button type="button" className="btn-solid btn" onClick={() => this.StripeClick()} >Place Order</button>:
-                                                         <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
-                                                    </div>
-                                                    : ''} */}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row section-t-space">
+                      <div className="payment-box">
+                        <div className="upper-box">
+                          <div className="payment-options">
+                            <ul>
+                              <li>
+                                <div className="radio-option stripe">
+                                  <input
+                                    type="radio"
+                                    name="payment-group"
+                                    id="payment-2"
+                                    defaultChecked={true}
+                                    onClick={() => this.checkhandle("stripe")}
+                                  />
+                                  <label htmlFor="payment-2">D17</label>
+                                </div>
+                              </li>
+                              <li>
+                                <div className="radio-option paypal">
+                                  <input
+                                    type="radio"
+                                    name="payment-group"
+                                    id="payment-1"
+                                    onClick={() => this.checkhandle("paypal")}
+                                  />
+                                  <label htmlFor="payment-1">
+                                    PayPal
+                                    <span className="image">
+                                      <img
+                                        src={`${
+                                          process.env.PUBLIC_URL
+                                        }/assets/images/paypal.png`}
+                                        alt=""
+                                      />
+                                    </span>
+                                  </label>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        {Total !== 0 ? (
+                          <div className="text-right">
+                            {Payment === "stripe" ? (
+                              <button
+                                type="button"
+                                className="btn-solid btn"
+                                onClick={() => this.StripeClick()}
+                              >
+                                Passer la commande
+                              </button>
+                            ) : (
+                              <PaypalExpressBtn
+                                env={"sandbox"}
+                                client={client}
+                                currency={"USD"}
+                                total={Total}
+                                onError={onError}
+                                onSuccess={onSuccess}
+                                onCancel={onCancel}
+                              />
+                            )}
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className="row section-t-space">
                                         <div className="col-lg-6">
                                             <div className="stripe-section">
                                                 <h5>stripe js example</h5>
@@ -301,19 +410,12 @@ class checkOut extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                                */}
+              </form>
             </div>
-        )
-    }
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
-const mapStateToProps = (state) => ({
-    cartItems: state.cartList.cart,
-    symbol: state.data.symbol,
-    total: getCartTotal(state.cartList.cart)
-})
-
-export default checkOut

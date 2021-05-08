@@ -103,7 +103,6 @@ function cartComponent() {
                               {item.price} DT
                             </h3>
                           </td>
-
                           <td>
                             <a
                               onClick={() => {
