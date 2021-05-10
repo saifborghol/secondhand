@@ -23,4 +23,6 @@ route.post('/refresh', middleware.validateUser, userController.refreshToken);
 route.put('/pullAnnonce/:id', userController.pullAnnonce);
 route.put('/pushAnnonce/:id', userController.pushAnnonce);
 
+route.put('/pushOrder/:id', userController.pushOrder);
+
 module.exports = route;

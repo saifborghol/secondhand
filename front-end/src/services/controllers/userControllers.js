@@ -127,4 +127,14 @@ export default class userControllers {
 				return err;
 			});
 	}
+	pushOrder(id, data) {
+		return axios
+			.put(constant.PUSHORDER_URL + id, data)
+			.then(res => {
+				return res;
+			})
+			.catch(err => {
+				return err;
+			});
+	}
 }

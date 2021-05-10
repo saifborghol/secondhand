@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { array } = require('../middleware/multer');
 const Schema = mongoose.Schema;
 
 const annonceSchema = Schema({

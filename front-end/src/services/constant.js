@@ -15,6 +15,9 @@ export const resetpwd_user_url = BASE_URL + '/user/resetpassword';
 export const PUSHANNONCE_URL = BASE_URL + '/user/pushAnnonce/';
 export const PULLANNONCE_URL = BASE_URL + '/user/pullAnnonce/';
 
+export const PUSHORDER_URL = BASE_URL + '/user/pushOrder/';
+
+
 //////////////////////////cat + subcat/////////////////////////////
 
 export const GETALL_CATEGORY_URL = BASE_URL + '/category/getAll';
@@ -34,6 +37,18 @@ export const GET_ANNONCE_URL = BASE_URL + '/annonce/getAnnonce/';
 export const GETALL_ANNONCE_URL = BASE_URL + '/annonce/getAll';
 
 export const UPDATE_ANNONCE_URL = BASE_URL + '/annonce/updateAnnonce/';
+
+//////////////////////////order/////////////////////////////
+
+
+export const ADD_ORDER_URL = BASE_URL + '/order/addOrder';
+export const DELETE_ORDER_URL = BASE_URL + '/order/deleteOrder/';
+
+
+export const GET_ORDER_URL = BASE_URL + '/order/getOrder/';
+export const GETALL_ORDER_URL = BASE_URL + '/order/getAll';
+
+export const UPDATE_ORDER_URL = BASE_URL + '/order/updateOrder/';
 
 
 

@@ -77,7 +77,7 @@ module.exports = {
     },
 
     getOrder: function (req, res) {
-        orderModel.findById( {_id: req.params.id} ).populate('prod_id').exec(function (err, Orders) {
+        orderModel.findById( {_id: req.params.id} ).populate('annonces').exec(function (err, Orders) {
             if (err) {
                 res.status(500), json({
                     msg: "erreur",
@@ -95,7 +95,7 @@ module.exports = {
     },
 
     getAllOrders: function (req, res) {
-        orderModel.find({}).populate('prod_id').exec(function (err, Orders) {
+        orderModel.find({}).populate('annonces').exec(function (err, Orders) {
             if (err) {
                 res.status(500), json({
                     msg: "erreur",

@@ -169,6 +169,10 @@ module.exports = {
 		userModel
 			.findById({ _id: req.params.id })
 			.populate('annonce')
+			.populate({
+				path: 'order',
+				populate: { path: 'annonces' }
+			 })
 			.exec(function (err, users) {
 				if (err) {
 					res.status(500).json({
@@ -190,6 +194,10 @@ module.exports = {
 		userModel
 			.find({})
 			.populate('annonce')
+			.populate({
+				path: 'order',
+				populate: { path: 'annonces' }
+			 })
 			.exec(function (err, users) {
 				if (err) {
 					res.status(500),
@@ -458,6 +466,29 @@ module.exports = {
 						msg: 'Pull annonce',
 						status: 200,
 						data: annonce,
+					});
+				}
+			}
+		);
+	},
+
+	pushOrder: function (req, res) {
+		userModel.updateOne(
+			{ _id: req.params.id },
+			{ $push: { order: req.body.order } },
+			function (err, order) {
+				if (err) {
+					res.status(500),
+						json({
+							msg: 'erreur',
+							status: 500,
+							data: null,
+						});
+				} else {
+					res.status(200).json({
+						msg: 'Push order',
+						status: 200,
+						data: order,
 					});
 				}
 			}

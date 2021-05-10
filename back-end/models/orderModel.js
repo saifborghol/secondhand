@@ -3,18 +3,15 @@ const Schema = mongoose.Schema
 
 
 const orderSchema = Schema({
-    date:{
-        type: Date,
-        required: true
-    },
+    date: { type: String, default: new Date().toLocaleDateString() },
     price:{
         type: Number,
         required: true
     },
-    prod_id:[
+    annonces:[
         {
         type: Schema.Types.ObjectId,
-        ref: 'productModel'
+        ref: 'annonceModel'
         }
     ]
 })

@@ -95,7 +95,7 @@
     "resolve": "1.8.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
-    "simple-react-validator": "^1.2.4",
+    "simple-react-validator": "^1.6.0",
     "slick-carousel": "^1.8.1",
     "smartmenus": "^1.1.0",
     "style-loader": "0.23.0",

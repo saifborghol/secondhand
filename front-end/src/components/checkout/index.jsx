@@ -12,17 +12,24 @@ import Breadcrumb from "../common/breadcrumb";
 import { removeFromWishlist } from "../../actions";
 import { getCartTotal } from "../../services";
 
+import UserController from "../../services/controllers/userControllers";
+import OrderController from "../../services/controllers/orderController";
+
 import { selectProducts } from "../../Features/cart/cartSlice";
 
-const Validator = new SimpleReactValidator();
+const userController = new UserController();
+const orderController = new OrderController();
+
+const Validator = new SimpleReactValidator({ locale: "fr" });
 
 export default function checkOut() {
+  const forceUpdate = React.useReducer((bool) => !bool)[1];
   const products = useSelector(selectProducts);
 
   const [Total, setTotal] = useState(0);
   const [Payment, setPayment] = useState("stripe");
-  const [First_name, setTFirst_name] = useState("");
-  const [Last_name, setTLast_name] = useState("");
+  const [First_name, setFirst_name] = useState("");
+  const [Last_name, setLast_name] = useState("");
   const [Phone, setPhone] = useState("");
   const [Email, setEmail] = useState("");
   const [Address, setAddress] = useState("");
@@ -51,35 +58,50 @@ export default function checkOut() {
     setPayment(value);
   };
 
-  // StripeClick = () => {
+  const pushOrder = (id, data) => {
+    let data1 = { order: data };
+    userController.pushOrder(id, data1).then((res) => {
+      console.log("pushOrder", res);
+    });
+  };
 
-  //     if (Validator.allValid()) {
-  //         alert('You submitted the form and stuff!');
+  const testSubmit = () => {
+    const Data = {
+      price: Total,
+      annonces: products,
+    };
+    orderController.addOrder(Data).then((res) => {
+      console.log("addOrder", res);
+      pushOrder(localStorage.getItem("userId"), res.data.data._id);
+    });
+  };
 
-  //         var handler = (window).StripeCheckout.configure({
-  //             key: 'pk_test_glxk17KhP7poKIawsaSgKtsL',
-  //             locale: 'auto',
-  //             token: (token: any) => {
-  //                 console.log(token)
-  //                   this.props.history.push({
-  //                       pathname: '/order-success',
-  //                           state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
-  //                   })
-  //             }
-  //           });
-  //           handler.open({
-  //             name: 'Multikart',
-  //             description: 'Online Fashion Store',
-  //             amount: this.amount * 100
-  //           })
-  //     } else {
-  //       Validator.showMessages();
-  //       // rerender to show messages for the first time
-  //       this.forceUpdate();
-  //     }
-  // }
+  const StripeClick = () => {
+    if (Validator.allValid()) {
+      alert("You submitted the form and stuff!");
 
-  // const {cartItems, symbol, total} = this.props;
+      var handler = window.StripeCheckout.configure({
+        key: "pk_test_glxk17KhP7poKIawsaSgKtsL",
+        locale: "auto",
+        token: (token) => {
+          console.log(token);
+          this.props.history.push({
+            pathname: "/order-success",
+            state: { payment: token, items: products, orderTotal: Total },
+          });
+        },
+      });
+      handler.open({
+        name: "Multikart",
+        description: "Online Fashion Store",
+        amount: this.amount * 100,
+      });
+    } else {
+      Validator.showMessages();
+      // rerender to show messages for the first time
+      forceUpdate();
+    }
+  };
 
   // Paypal Integration
   const onSuccess = (payment) => {
@@ -132,7 +154,7 @@ export default function checkOut() {
                           type="text"
                           name="first_name"
                           value={First_name}
-                          onChange={setStateFromInput}
+                          onChange={(e) => setFirst_name(e.target.value)}
                         />
                         {Validator.message(
                           "first_name",
@@ -146,7 +168,7 @@ export default function checkOut() {
                           type="text"
                           name="last_name"
                           value={Last_name}
-                          onChange={setStateFromInput}
+                          onChange={(e) => setLast_name(e.target.value)}
                         />
                         {Validator.message(
                           "last_name",
@@ -160,7 +182,7 @@ export default function checkOut() {
                           type="text"
                           name="phone"
                           value={Phone}
-                          onChange={setStateFromInput}
+                          onChange={(e) => setPhone(e.target.value)}
                         />
                         {Validator.message("phone", Phone, "required|phone")}
                       </div>
@@ -170,7 +192,7 @@ export default function checkOut() {
                           type="text"
                           name="email"
                           value={Email}
-                          onChange={setStateFromInput}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                         {Validator.message("email", Email, "required|email")}
                       </div>
@@ -190,7 +212,8 @@ export default function checkOut() {
                           type="text"
                           name="address"
                           value={Address}
-                          onChange={setStateFromInput}
+                          onChange={(e) => setAddress(e.target.value)}
+
                           //   placeholder="Street address"
                         />
                         {Validator.message(
@@ -205,7 +228,7 @@ export default function checkOut() {
                           type="text"
                           name="city"
                           value={City}
-                          onChange={setStateFromInput}
+                          onChange={(e) => setCity(e.target.value)}
                         />
                         {Validator.message("city", City, "required|alpha")}
                       </div>
@@ -220,7 +243,7 @@ export default function checkOut() {
                           type="text"
                           name="pincode"
                           value={PinCode}
-                          onChange={setStateFromInput}
+                          onChange={(e) => setPinCode(e.target.value)}
                         />
                         {Validator.message(
                           "pincode",
@@ -302,7 +325,7 @@ export default function checkOut() {
                                     name="payment-group"
                                     id="payment-2"
                                     defaultChecked={true}
-                                    onClick={() => this.checkhandle("stripe")}
+                                    onClick={() => checkhandle("stripe")}
                                   />
                                   <label htmlFor="payment-2">D17</label>
                                 </div>
@@ -313,7 +336,7 @@ export default function checkOut() {
                                     type="radio"
                                     name="payment-group"
                                     id="payment-1"
-                                    onClick={() => this.checkhandle("paypal")}
+                                    onClick={() => checkhandle("paypal")}
                                   />
                                   <label htmlFor="payment-1">
                                     PayPal
@@ -334,13 +357,22 @@ export default function checkOut() {
                         {Total !== 0 ? (
                           <div className="text-right">
                             {Payment === "stripe" ? (
-                              <button
-                                type="button"
-                                className="btn-solid btn"
-                                onClick={() => this.StripeClick()}
-                              >
-                                Passer la commande
-                              </button>
+                              <>
+                                <button
+                                  type="button"
+                                  className="btn-solid btn"
+                                  onClick={() => StripeClick()}
+                                >
+                                  Passer la commande
+                                </button>
+                                <button
+                                  type="button"
+                                  className="btn-solid btn"
+                                  onClick={() => testSubmit()}
+                                >
+                                  Test ajout commande
+                                </button>
+                              </>
                             ) : (
                               <PaypalExpressBtn
                                 env={"sandbox"}
