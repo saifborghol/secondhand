@@ -55,16 +55,6 @@ class CollectionLeftSidebar extends Component {
     });
   }
 
-  LayoutViewClicked(colums) {
-    this.setState({
-      layoutColumns: colums,
-    });
-  }
-
-  openFilter = () => {
-    document.querySelector(".collection-filter").style = "left: -15px";
-  };
-
   userClick = (id) => {
     const { history } = this.props;
     history.push(`/user/${id}`);
@@ -124,16 +114,7 @@ class CollectionLeftSidebar extends Component {
           <div className="collection-wrapper">
             <div className="container">
               <div className="row">
-                {/* <div className="col-sm-3 collection-filter">
-									<StickyBox offsetTop={20} offsetBottom={20}>
-										<div>
-											<Filter />
-											{/* <NewProduct/> }
-										</div>
-									</StickyBox>
-									{/*side-bar banner end here}
-								</div>
-								 */}
+          
                 <div className="collection-content col">
                   <div className="page-main-content ">
                     <div className="">

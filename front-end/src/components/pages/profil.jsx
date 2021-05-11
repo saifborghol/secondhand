@@ -5,6 +5,7 @@ import compose from "recompose/compose";
 import { Helmet } from "react-helmet";
 import Breadcrumb from "../common/breadcrumb";
 import NewProduct from "../common/new-product";
+import Select from "@material-ui/core/Select";
 
 import StickyBox from "react-sticky-box";
 import Card from "react-bootstrap/Card";
@@ -43,8 +44,6 @@ class Profil extends Component {
       layoutColumns: colums,
     });
   }
-
-
 
   getUser(id) {
     this.userController.getUser(id).then((res) => {
@@ -124,11 +123,89 @@ class Profil extends Component {
                               </h3>
                             </div>
                           </div>
+
                           <div className="collection-product-wrapper">
-                            
-                            <h2 style={{ fontWeight: "700", marginTop: '80px'}}>
+                            <h2
+                              style={{ fontWeight: "700", marginTop: "80px" }}
+                            >
                               Annonces ({this.state.User.annonce.length})
                             </h2>
+                            <div
+                              style={{
+                                marginBottom: "30px",
+                                marginTop: "40px",
+                              }}
+                            >
+                              <Select
+                                style={{
+                                  marginRight: "20px",
+                                  marginBottom: "20px",
+                                }}
+                                defaultValue="Newest"
+                                native
+                                onChange={(e) => {
+                                  this.setState({ sortType: e.target.value });
+                                  this.sort(
+                                    this.state.filteredData,
+                                    e.target.value
+                                  );
+                                }}
+                              >
+                                <option value="Newest">
+                                  Articles les plus récents
+                                </option>
+                                <option value="HighToLow">
+                                  Prix: décroissant
+                                </option>
+                                <option value="LowToHigh">
+                                  Prix: croissant
+                                </option>
+
+                                <option value="AscOrder">
+                                  Trier par Nom: A à Z
+                                </option>
+                                <option value="DescOrder">
+                                  Trier par Nom: Z à A
+                                </option>
+                              </Select>
+
+                              <Select
+                                defaultValue="all"
+                                native
+                                onChange={(e) => {
+                                  this.filterGov(e.target.value);
+                                }}
+                              >
+                                <option disabled>Filtre par gouvernorat</option>
+
+                                <option value="all">Tout</option>
+                                <option>Ariana</option>
+                                <option>Ben arous</option>
+                                <option>Bizerte</option>
+                                <option>Béja</option>
+                                <option>Gabès</option>
+                                <option>Gafsa</option>
+                                <option>Jendouba</option>
+                                <option>Kairouan</option>
+                                <option>Kasserine</option>
+                                <option>Kébili</option>
+                                <option>La manouba</option>
+                                <option>Le kef</option>
+                                <option>Mahdia</option>
+                                <option>Monastir</option>
+                                <option>Médenine</option>
+                                <option>Nabeul</option>
+                                <option>Sfax</option>
+                                <option>Sidi bouzid</option>
+                                <option>Siliana</option>
+                                <option>Sousse</option>
+                                <option>Tataouine</option>
+                                <option>Tozeur</option>
+                                <option>Tunis</option>
+                                <option>Zaghouan</option>
+                              </Select>
+                            </div>
+
                             <div id="card-container">
                               {this.state.User.annonce.map((annonce) => {
                                 return (
