@@ -25,10 +25,11 @@ class CollectionLeftSidebar extends Component {
       SubCat: {},
       filteredData: [],
       layoutColumns: 3,
+      sortType: "Newest",
     };
     this.SubCategoryController = new SubCategoryController();
-    this.filterGov = this.filterGov.bind(this);
-    this.sort = this.sort.bind(this);
+    // this.filterGov = this.filterGov.bind(this);
+    // this.sort = this.sort.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +41,7 @@ class CollectionLeftSidebar extends Component {
         SubCat: res.data.data,
         filteredData: res.data.data.annonce,
       });
-
+      this.sort(this.state.filteredData, this.state.sortType);
       // console.log('inital tab:', res.data.data.annonce);
       console.log("filtered:", this.state.filteredData);
     });
@@ -76,9 +77,14 @@ class CollectionLeftSidebar extends Component {
 
   filterGov(gov) {
     if (gov === "all") {
-      this.setState({ filteredData: this.state.SubCat.annonce });
+      let arr = [...this.state.SubCat.annonce];
+      this.sort(arr, this.state.sortType);
+      this.setState({ filteredData: arr });
+      // console.log('arrray',arr);
     } else {
       let arr = [...this.state.SubCat.annonce];
+      this.sort(arr, this.state.sortType);
+
       let arraa = arr.filter((annonce) => annonce.location === gov);
       this.setState({
         filteredData: arraa,
@@ -86,37 +92,18 @@ class CollectionLeftSidebar extends Component {
     }
   }
 
-  sort(type) {
+  sort(array, type) {
     if (type === "AscOrder") {
-      this.sortAsc(this.state.filteredData, this.state.SubCat.annonce.title);
+      array.sort((a, b) => (a.title > b.title ? 1 : -1));
     } else if (type === "DescOrder") {
-      this.sortDesc(this.state.filteredData, this.state.SubCat.annonce.title);
+      array.sort((a, b) => (a.title < b.title ? 1 : -1));
+    } else if (type === "LowToHigh") {
+      array.sort((a, b) => (a.price > b.price ? 1 : -1));
+    } else if (type === "HighToLow") {
+      array.sort((a, b) => (a.price < b.price ? 1 : -1));
+    } else if (type === "Newest") {
+      array.sort((a, b) => (a.date < b.date ? 1 : -1));
     }
-    console.log("sorted", this.state.filteredData);
-  }
-
-  sortAsc(arr, field) {
-    return arr.sort(function(a, b) {
-      if (a[field] > b[field]) {
-        return 1;
-      }
-      if (b[field] > a[field]) {
-        return -1;
-      }
-      return 0;
-    });
-  }
-
-  sortDesc(arr, field) {
-    return arr.sort(function(a, b) {
-      if (a[field] > b[field]) {
-        return -1;
-      }
-      if (b[field] > a[field]) {
-        return 1;
-      }
-      return 0;
-    });
   }
 
   render() {
@@ -180,11 +167,18 @@ class CollectionLeftSidebar extends Component {
 
                           <div style={{ marginBottom: "50px" }}>
                             <Select
-                              style={{ marginRight: "40px" }}
+                              style={{
+                                marginRight: "20px",
+                                marginBottom: "20px",
+                              }}
                               defaultValue="Newest"
                               native
                               onChange={(e) => {
-                                this.sort(e.target.value);
+                                this.setState({ sortType: e.target.value });
+                                this.sort(
+                                  this.state.filteredData,
+                                  e.target.value
+                                );
                               }}
                             >
                               <option value="Newest">
