@@ -248,7 +248,7 @@ class editProfile extends Component {
 								<img src={avatar} alt="avatar" className="girl" />
 							)}
 
-							<div class="image-upload">
+							<div className="image-upload">
 								<label for="file-input">
 									<FaEdit
 										size="20"

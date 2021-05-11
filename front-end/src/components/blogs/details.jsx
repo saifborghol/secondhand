@@ -28,8 +28,8 @@ class BlogDetails extends Component {
                                     <li><i className="fa fa-heart"></i> 5 Hits</li>
                                     <li><i className="fa fa-comments"></i> 10 Comment</li>
                                 </ul>
-                                <div class="row">
-                                    <div class="col-sm-4">
+                                <div className="row">
+                                    <div className="col-sm-4">
                                         <p>Fusce scelerisque augue a viverra semper. Etiam nisi nibh, vestibulum quis augue id,
                                             imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue
                                             nec justo viverra laoreet. Nunc efficitur, arcu ac cursus gravida, lorem elit
@@ -40,7 +40,7 @@ class BlogDetails extends Component {
                                             magna. Sed pulvinar tortor et euismod blandit. Proin accumsan orci ac nunc fermentum
                                             vehicula.</p>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div className="col-sm-4">
                                         <p>Fusce scelerisque augue a viverra semper. Etiam nisi nibh, vestibulum quis augue id,
                                             imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue
                                             nec justo viverra laoreet. Nunc efficitur, arcu ac cursus gravida, lorem elit
@@ -51,7 +51,7 @@ class BlogDetails extends Component {
                                             magna. Sed pulvinar tortor et euismod blandit. Proin accumsan orci ac nunc fermentum
                                             vehicula.</p>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div className="col-sm-4">
                                         <p>Fusce scelerisque augue a viverra semper. Etiam nisi nibh, vestibulum quis augue id,
                                             imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue
                                             nec justo viverra laoreet. Nunc efficitur, arcu ac cursus gravida, lorem elit

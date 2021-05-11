@@ -64,25 +64,25 @@ class Fashion extends Component {
 				<div className="container">
 					<section className="service border-section small-section ">
 						<div className="row">
-							<div className="col-md-4 service-block">
+							<div className="col-md-6 service-block">
 								<div className="media">
 									<div dangerouslySetInnerHTML={{ __html: svgFreeShipping }} />
 									<div className="media-body">
-										<h4>free shipping</h4>
-										<p>free shipping world wide</p>
+										<h4>livraison gratuite</h4>
+										<p>livraison gratuite sur toute la tunisie</p>
 									</div>
 								</div>
 							</div>
-							<div className="col-md-4 service-block">
+							<div className="col-md-6 service-block">
 								<div className="media">
 									<div dangerouslySetInnerHTML={{ __html: svgservice }} />
 									<div className="media-body">
-										<h4>24 X 7 service</h4>
-										<p>online service for new customer</p>
+										<h4>service 24 X 7</h4>
+										<p>service en ligne pour les nouveaux clients</p>
 									</div>
 								</div>
 							</div>
-							<div className="col-md-4 service-block">
+							{/* <div className="col-md-4 service-block">
 								<div className="media">
 									<div dangerouslySetInnerHTML={{ __html: svgoffer }} />
 									<div className="media-body">
@@ -90,7 +90,7 @@ class Fashion extends Component {
 										<p>new online special festival offer</p>
 									</div>
 								</div>
-							</div>
+							</div> */}
 						</div>
 					</section>
 				</div>

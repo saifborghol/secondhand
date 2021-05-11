@@ -21,8 +21,9 @@ class Profil extends Component {
     super(props);
 
     this.state = {
-      layoutColumns: 3,
       User: {},
+      PROD: [],
+      sortType: "Newest",
     };
     this.userController = new userController();
   }
@@ -39,16 +40,10 @@ class Profil extends Component {
     }
   }
 
-  LayoutViewClicked(colums) {
-    this.setState({
-      layoutColumns: colums,
-    });
-  }
-
   getUser(id) {
     this.userController.getUser(id).then((res) => {
-      this.setState({ User: res.data.data });
-      // this.setState({ Annonce: res.data.data.annonce });
+     this.sort(res.data.data.annonce,this.state.sortType)
+      this.setState({ User: res.data.data, PROD: res.data.data.annonce});
     });
   }
 
@@ -62,8 +57,22 @@ class Profil extends Component {
     history.push(`/product/${id}`);
   };
 
+  sort(array, type) {
+    if (type === "AscOrder") {
+      array.sort((a, b) => (a.title > b.title ? 1 : -1));
+    } else if (type === "DescOrder") {
+      array.sort((a, b) => (a.title < b.title ? 1 : -1));
+    } else if (type === "LowToHigh") {
+      array.sort((a, b) => (a.price > b.price ? 1 : -1));
+    } else if (type === "HighToLow") {
+      array.sort((a, b) => (a.price < b.price ? 1 : -1));
+    } else if (type === "Newest") {
+      array.sort((a, b) => (a.date < b.date ? 1 : -1));
+    }
+  }
+
   render() {
-    if (!this.state.User.annonce) {
+    if (!this.state.PROD) {
       return <span />;
     }
     return (
@@ -128,7 +137,7 @@ class Profil extends Component {
                             <h2
                               style={{ fontWeight: "700", marginTop: "80px" }}
                             >
-                              Annonces ({this.state.User.annonce.length})
+                              Annonces ({this.state.PROD.length})
                             </h2>
                             <div
                               style={{
@@ -146,7 +155,7 @@ class Profil extends Component {
                                 onChange={(e) => {
                                   this.setState({ sortType: e.target.value });
                                   this.sort(
-                                    this.state.filteredData,
+                                    this.state.PROD,
                                     e.target.value
                                   );
                                 }}
@@ -169,45 +178,11 @@ class Profil extends Component {
                                 </option>
                               </Select>
 
-                              <Select
-                                defaultValue="all"
-                                native
-                                onChange={(e) => {
-                                  this.filterGov(e.target.value);
-                                }}
-                              >
-                                <option disabled>Filtre par gouvernorat</option>
-
-                                <option value="all">Tout</option>
-                                <option>Ariana</option>
-                                <option>Ben arous</option>
-                                <option>Bizerte</option>
-                                <option>Béja</option>
-                                <option>Gabès</option>
-                                <option>Gafsa</option>
-                                <option>Jendouba</option>
-                                <option>Kairouan</option>
-                                <option>Kasserine</option>
-                                <option>Kébili</option>
-                                <option>La manouba</option>
-                                <option>Le kef</option>
-                                <option>Mahdia</option>
-                                <option>Monastir</option>
-                                <option>Médenine</option>
-                                <option>Nabeul</option>
-                                <option>Sfax</option>
-                                <option>Sidi bouzid</option>
-                                <option>Siliana</option>
-                                <option>Sousse</option>
-                                <option>Tataouine</option>
-                                <option>Tozeur</option>
-                                <option>Tunis</option>
-                                <option>Zaghouan</option>
-                              </Select>
+                             
                             </div>
 
                             <div id="card-container">
-                              {this.state.User.annonce.map((annonce) => {
+                              {this.state.PROD.map((annonce) => {
                                 return (
                                   <Card id="card-style">
                                     <Card.Img
@@ -260,6 +235,7 @@ class Profil extends Component {
                                 );
                               })}
                             </div>
+                          
                           </div>
                         </div>
                       </div>

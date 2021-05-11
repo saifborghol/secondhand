@@ -84,7 +84,7 @@ class FooterOne extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col offset-xl-1">
+                            {/* <div className="col offset-xl-1">
                                 <div className="sub-title">
                                     <div className="footer-title">
                                         <h4>mon compte</h4>
@@ -98,8 +98,8 @@ class FooterOne extends Component {
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col">
+                            </div> */}
+                            <div className="col offset-xl-1">
                                 <div className="sub-title">
                                     <div className="footer-title">
                                         <h4>pourquoi nous choisir</h4>

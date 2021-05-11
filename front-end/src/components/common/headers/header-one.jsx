@@ -147,8 +147,8 @@ class HeaderOne extends Component {
                     </div>
 
                     {/* search bar */}
-                    <div class="wrap">
-                      <div class="search">
+                    <div className="wrap">
+                      <div className="search">
                         <input
                           onKeyPress={this.handleKeyPress}
                           type="text"
@@ -171,7 +171,7 @@ class HeaderOne extends Component {
                             }
                           }}
                         >
-                          <i class="fa fa-search" />
+                          <i className="fa fa-search" />
                         </button>
                       </div>
                     </div>
