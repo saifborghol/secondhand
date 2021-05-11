@@ -87,7 +87,7 @@ class FooterOne extends Component {
                             <div className="col offset-xl-1">
                                 <div className="sub-title">
                                     <div className="footer-title">
-                                        <h4>my account</h4>
+                                        <h4>mon compte</h4>
                                     </div>
                                     <div className="footer-contant">
                                         <ul>
@@ -102,14 +102,14 @@ class FooterOne extends Component {
                             <div className="col">
                                 <div className="sub-title">
                                     <div className="footer-title">
-                                        <h4>why we choose</h4>
+                                        <h4>pourquoi nous choisir</h4>
                                     </div>
                                     <div className="footer-contant">
                                         <ul>
-                                            <li><a href="#">shipping & return</a></li>
-                                            <li><a href="#">secure shopping</a></li>
-                                            <li><a href="#">gallary</a></li>
-                                            <li><a href="#">affiliates</a></li>
+                                            <li><a href="#">livraison & retour</a></li>
+                                            <li><a href="#">shopping sécurisée</a></li>
+                                            <li><a href="#">gallerie</a></li>
+                                            <li><a href="#">affiliés</a></li>
                                             <li><a href="#">contacts</a></li>
                                         </ul>
                                     </div>
@@ -118,7 +118,7 @@ class FooterOne extends Component {
                             <div className="col">
                                 <div className="sub-title">
                                     <div className="footer-title">
-                                        <h4>store information</h4>
+                                        <h4>informations du boutique</h4>
                                     </div>
                                     <div className="footer-contant">
                                         <ul className="contact-list">

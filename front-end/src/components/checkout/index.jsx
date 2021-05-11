@@ -6,7 +6,9 @@ import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import PaypalExpressBtn from "react-paypal-express-checkout";
+
 import SimpleReactValidator from "simple-react-validator";
+import "simple-react-validator/dist/locale/fr";
 
 import Breadcrumb from "../common/breadcrumb";
 import { removeFromWishlist } from "../../actions";
@@ -20,7 +22,24 @@ import { selectProducts } from "../../Features/cart/cartSlice";
 const userController = new UserController();
 const orderController = new OrderController();
 
-const Validator = new SimpleReactValidator({ locale: "fr" });
+const Validator = new SimpleReactValidator({
+  locale: "fr",
+  validators: {
+    tel: {
+      // name the rule
+      message: "Le :attribute doit être un numéro valide.",
+      rule: (val, params, validator) => {
+        return (
+          validator.helpers.testRegex(val, /^[0-9]{8}$/) &&
+          params.indexOf(val) === -1
+        );
+      },
+      messageReplace: (message, params) =>
+        message.replace(":values", this.helpers.toSentence(params)), // optional
+      required: true, // optional
+    },
+  },
+});
 
 export default function checkOut() {
   const forceUpdate = React.useReducer((bool) => !bool)[1];
@@ -48,12 +67,6 @@ export default function checkOut() {
     setTotal(sum);
   }, []);
 
-  const setStateFromInput = (event) => {
-    var obj = {};
-    obj[event.target.name] = event.target.value;
-    this.setState(obj);
-  };
-
   const checkhandle = (value) => {
     setPayment(value);
   };
@@ -78,24 +91,27 @@ export default function checkOut() {
 
   const StripeClick = () => {
     if (Validator.allValid()) {
-      alert("You submitted the form and stuff!");
+      // alert("You submitted the form and stuff!");
 
       var handler = window.StripeCheckout.configure({
         key: "pk_test_glxk17KhP7poKIawsaSgKtsL",
         locale: "auto",
         token: (token) => {
           console.log(token);
-          this.props.history.push({
+          history.push({
             pathname: "/order-success",
             state: { payment: token, items: products, orderTotal: Total },
           });
         },
       });
       handler.open({
-        name: "Multikart",
-        description: "Online Fashion Store",
-        amount: this.amount * 100,
+        name: "secondhand",
+        description: "Achat et vente en ligne",
+        amount: Total * 100,
+        currency: "dnt",
       });
+      localStorage.setItem("orderAdress", Address);
+      testSubmit();
     } else {
       Validator.showMessages();
       // rerender to show messages for the first time
@@ -110,6 +126,7 @@ export default function checkOut() {
       pathname: "/order-success",
       state: { payment: payment, items: products, orderTotal: Total },
     });
+    testSubmit();
   };
 
   const onCancel = (data) => {
@@ -152,12 +169,12 @@ export default function checkOut() {
                         <div className="field-label">Prénom</div>
                         <input
                           type="text"
-                          name="first_name"
+                          name="prénom"
                           value={First_name}
                           onChange={(e) => setFirst_name(e.target.value)}
                         />
                         {Validator.message(
-                          "first_name",
+                          "prénom",
                           First_name,
                           "required|alpha"
                         )}
@@ -166,25 +183,22 @@ export default function checkOut() {
                         <div className="field-label">Nom</div>
                         <input
                           type="text"
-                          name="last_name"
+                          name="nom"
                           value={Last_name}
                           onChange={(e) => setLast_name(e.target.value)}
                         />
-                        {Validator.message(
-                          "last_name",
-                          Last_name,
-                          "required|alpha"
-                        )}
+                        {Validator.message("nom", Last_name, "required|alpha")}
                       </div>
                       <div className="form-group col-md-6 col-sm-6 col-xs-12">
                         <div className="field-label">Téléphone</div>
                         <input
                           type="text"
-                          name="phone"
+                          name="téléphone"
                           value={Phone}
                           onChange={(e) => setPhone(e.target.value)}
                         />
-                        {Validator.message("phone", Phone, "required|phone")}
+                        {/* {Validator.message("téléphone", Phone, "required")} */}
+                        {Validator.message("téléphone", Phone, "required|tel")}
                       </div>
                       <div className="form-group col-md-6 col-sm-6 col-xs-12">
                         <div className="field-label">Email</div>
@@ -210,14 +224,14 @@ export default function checkOut() {
                         <div className="field-label">Adresse</div>
                         <input
                           type="text"
-                          name="address"
+                          name="addresse"
                           value={Address}
                           onChange={(e) => setAddress(e.target.value)}
 
                           //   placeholder="Street address"
                         />
                         {Validator.message(
-                          "address",
+                          "addresse",
                           Address,
                           "required|min:20|max:120"
                         )}
@@ -226,11 +240,11 @@ export default function checkOut() {
                         <div className="field-label">Ville</div>
                         <input
                           type="text"
-                          name="city"
+                          name="ville"
                           value={City}
                           onChange={(e) => setCity(e.target.value)}
                         />
-                        {Validator.message("city", City, "required|alpha")}
+                        {Validator.message("ville", City, "required|alpha")}
                       </div>
                       {/* <div className="form-group col-md-12 col-sm-6 col-xs-12">
                                                     <div className="field-label">State / County</div>
@@ -241,12 +255,12 @@ export default function checkOut() {
                         <div className="field-label">Code postal</div>
                         <input
                           type="text"
-                          name="pincode"
+                          name="code postal"
                           value={PinCode}
                           onChange={(e) => setPinCode(e.target.value)}
                         />
                         {Validator.message(
-                          "pincode",
+                          "code postal",
                           PinCode,
                           "required|integer"
                         )}
@@ -276,14 +290,18 @@ export default function checkOut() {
                           })}
                         </ul>
                         <ul className="sub-total">
-                          <li>
+                          {/* <li>
                             Subtotal <span className="count">{Total} DT</span>
-                          </li>
+                          </li> */}
                           <li>
                             Livraison{" "}
                             <div className="shipping">
                               <div className="shopping-option">
                                 <input
+                                  onChange={(e) =>{
+                                  localStorage.setItem('shipping','true')
+                                  setTotal(Total + 7)}
+                                  }
                                   type="radio"
                                   name="shippingType"
                                   id="free-shipping"
@@ -294,10 +312,15 @@ export default function checkOut() {
                               </div>
                               <div className="shopping-option">
                                 <input
+                                  onChange={(e) => {
+                                  localStorage.setItem('shipping','false')
+
+                                    setTotal(Total - 7)}
+                                  }
                                   type="radio"
                                   name="shippingType"
                                   id="local-pickup"
-                                  checked
+                                  defaultChecked
                                 />
                                 <label htmlFor="local-pickup">
                                   Collecte locale
@@ -357,22 +380,13 @@ export default function checkOut() {
                         {Total !== 0 ? (
                           <div className="text-right">
                             {Payment === "stripe" ? (
-                              <>
-                                <button
-                                  type="button"
-                                  className="btn-solid btn"
-                                  onClick={() => StripeClick()}
-                                >
-                                  Passer la commande
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn-solid btn"
-                                  onClick={() => testSubmit()}
-                                >
-                                  Test ajout commande
-                                </button>
-                              </>
+                              <button
+                                type="button"
+                                className="btn-solid btn"
+                                onClick={() => StripeClick()}
+                              >
+                                Passer la commande
+                              </button>
                             ) : (
                               <PaypalExpressBtn
                                 env={"sandbox"}

@@ -9545,7 +9545,7 @@ footer {
       }
       .field-label {
         line-height: 24px;
-        text-transform: capitalize;
+        // text-transform: capitalize;
         color: #333333;
         margin-bottom: 10px;
         font-weight: 700;
@@ -9965,7 +9965,7 @@ footer {
   }
   p {
     font-size: 18px;
-    text-transform: capitalize;
+    text-transform: none;
   }
 }
 .order-success-sec {
@@ -9997,7 +9997,7 @@ footer {
   h2,
   h3 {
     color: $black;
-    text-transform: capitalize;
+    // text-transform: capitalize;
   }
 }
 .product-order {
@@ -10014,14 +10014,18 @@ footer {
     .order_detail {
       display: flex;
       align-items: center;
+      justify-content: center;
       h4 {
-        margin-bottom: 5px;
-        text-transform: capitalize;
+        font-size: 18px;
+        margin-bottom: -20px;
+        text-transform: none;
         font-weight: 700;
       }
       h5 {
+        font-size: 16px;
         text-transform: capitalize;
         margin-bottom: 0;
+        font-weight: 500;
       }
     }
   }
