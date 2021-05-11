@@ -248,6 +248,7 @@ class SpecialProducts extends Component {
                       {annonce.date}
                     </Card.Text>
                   </div>
+               
                 </Card.Body>
               </Card>
             );

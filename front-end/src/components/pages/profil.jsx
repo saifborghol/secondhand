@@ -11,6 +11,7 @@ import StickyBox from "react-sticky-box";
 import Card from "react-bootstrap/Card";
 
 import { FaEdit } from "react-icons/fa";
+import { IoMdTime } from "react-icons/io";
 
 import avatar from "../../assets/images/default-avatar.png";
 
@@ -42,8 +43,8 @@ class Profil extends Component {
 
   getUser(id) {
     this.userController.getUser(id).then((res) => {
-     this.sort(res.data.data.annonce,this.state.sortType)
-      this.setState({ User: res.data.data, PROD: res.data.data.annonce});
+      this.sort(res.data.data.annonce, this.state.sortType);
+      this.setState({ User: res.data.data, PROD: res.data.data.annonce });
     });
   }
 
@@ -154,10 +155,7 @@ class Profil extends Component {
                                 native
                                 onChange={(e) => {
                                   this.setState({ sortType: e.target.value });
-                                  this.sort(
-                                    this.state.PROD,
-                                    e.target.value
-                                  );
+                                  this.sort(this.state.PROD, e.target.value);
                                 }}
                               >
                                 <option value="Newest">
@@ -177,8 +175,6 @@ class Profil extends Component {
                                   Trier par Nom: Z à A
                                 </option>
                               </Select>
-
-                             
                             </div>
 
                             <div id="card-container">
@@ -222,20 +218,29 @@ class Profil extends Component {
                                         {annonce.price} DT
                                       </Card.Title>
 
-                                      <Card.Text
+                                      <div
                                         style={{
-                                          fontSize: "14px",
-                                          marginTop: "-10px",
+                                          display: "flex",
+                                          alignItems: "center",
+                                          marginTop: "-7px",
+                                          marginBottom: "10px",
                                         }}
                                       >
-                                        {annonce.date}
-                                      </Card.Text>
+                                        <IoMdTime />
+                                        <Card.Text
+                                          style={{
+                                            fontSize: "14px",
+                                            marginLeft: "2px",
+                                          }}
+                                        >
+                                          {annonce.date}
+                                        </Card.Text>
+                                      </div>
                                     </Card.Body>
                                   </Card>
                                 );
                               })}
                             </div>
-                          
                           </div>
                         </div>
                       </div>
