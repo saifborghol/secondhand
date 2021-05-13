@@ -101,6 +101,12 @@ class AuthForm extends React.Component {
 		return buttonText;
 	}
 
+	handleKeyPress = (event) => {
+		if (event.key === "Enter") {
+		  this.handleSubmit();
+		}
+	  };
+
 	render() {
 		const {
 			showLogo,
@@ -124,6 +130,8 @@ class AuthForm extends React.Component {
 				<FormGroup>
 					<Label for={usernameLabel}>{usernameLabel}</Label>
 					<Input
+                          onKeyPress={this.handleKeyPress}
+
 						onChange={e => this.setState({ name: e.target.value })}
 					/>
 					<Label style={{ color: 'red', fontSize: '14px' }}>
@@ -133,6 +141,8 @@ class AuthForm extends React.Component {
 				<FormGroup>
 					<Label for={passwordLabel}>{passwordLabel}</Label>
 					<Input
+                          onKeyPress={this.handleKeyPress}
+
 						type="password"
 						onChange={e =>
 							this.setState({ password: e.target.value })

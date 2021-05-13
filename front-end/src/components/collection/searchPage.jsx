@@ -137,6 +137,7 @@ class searchPage extends Component {
                             )}
 
                             <div>
+                              {this.state.filteredData.length!==0 ? 
                               <div
                                 style={{
                                   marginBottom: "30px",
@@ -214,7 +215,9 @@ class searchPage extends Component {
                                   <option>Zaghouan</option>
                                 </Select>
                               </div>
-
+                              : <></>
+                                }
+                              
                               <div id="card-container">
                                 {this.state.filteredData.map((annonce) => {
                                   return (

@@ -58,12 +58,7 @@ export default class ListUsers extends Component {
 									<Row>
 										<Col>
 											<Card body>
-												<Table
-													{...{
-														[tableType ||
-														'default']: true,
-													}}
-												>
+												<Table>
 													<thead>
 														<tr>
 															<th>Nom</th>
