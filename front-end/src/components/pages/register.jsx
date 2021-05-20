@@ -12,6 +12,7 @@ class Register extends Component {
       surName: "",
       email: "",
       password: "",
+      tel: "",
       error: {},
     };
     this.UserController = new UserController();
@@ -33,6 +34,11 @@ class Register extends Component {
     if (this.state.surName === "" || !isNaN(this.state.surName)) {
       isError = true;
       errors.surNameErr = "Veuillez vérifier votre nom";
+    }
+
+    if (this.state.tel === "" || this.state.tel.length !== 8) {
+      isError = true;
+      errors.telErr = "Veuillez vérifier votre numéro de téléphone";
     }
 
     const regex3 = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -61,6 +67,7 @@ class Register extends Component {
         surName: this.state.surName,
         email: this.state.email,
         password: this.state.password,
+        tel: this.state.tel,
       };
 
       if (!err) {
@@ -69,7 +76,17 @@ class Register extends Component {
 
           if (res.data.statut === 200) {
             this.props.history.push("/login");
-          } else if (res.data.statut === 500) {
+          } 
+          else if (res.data.message.errors.tel) {
+            console.log("Phone exists!");
+            this.setState({
+              error: {
+                ...this.state.error,
+                telErr: "Ce numéro déja existe",
+              },
+            });
+          }
+          else{
             console.log("Email exists!");
             this.setState({
               error: {
@@ -93,7 +110,7 @@ class Register extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         <Breadcrumb title={"Créer un compte"} />
@@ -103,11 +120,11 @@ class Register extends Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                <h3>create account</h3>
+                <h3>Créer un compte</h3>
                 <div className="theme-card">
                   <form className="theme-form">
                     <div className="form-row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <label>Nom</label>
                         <input
                           onKeyPress={this.handleKeyPress}
@@ -115,7 +132,7 @@ class Register extends Component {
                           type="text"
                           className="form-control"
                           id="fname"
-                          placeholder="First Name"
+                          placeholder="Votre nom"
                           onChange={(e) => {
                             this.setState({ name: e.target.value });
                           }}
@@ -130,7 +147,7 @@ class Register extends Component {
                           {this.state.error.NameErr}
                         </label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <label htmlFor="review">Prénom</label>
                         <input
                           onKeyPress={this.handleKeyPress}
@@ -138,7 +155,7 @@ class Register extends Component {
                           type="text"
                           className="form-control"
                           id="lname"
-                          placeholder="Last Name"
+                          placeholder="Votre prénom"
                           onChange={(e) => {
                             this.setState({ surName: e.target.value });
                           }}
@@ -154,9 +171,10 @@ class Register extends Component {
                           {this.state.error.surNameErr}
                         </label>
                       </div>
+                      
                     </div>
                     <div className="form-row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <label htmlFor="email">Email</label>
                         <input
                           onKeyPress={this.handleKeyPress}
@@ -164,7 +182,7 @@ class Register extends Component {
                           type="text"
                           className="form-control"
                           id="email"
-                          placeholder="Email"
+                          placeholder="Votre email"
                           onChange={(e) => {
                             this.setState({ email: e.target.value });
                           }}
@@ -179,7 +197,37 @@ class Register extends Component {
                           {this.state.error.emailErr}
                         </label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-4">
+                        <label htmlFor="review">Numéro de téléphone</label>
+
+                        <input
+                          onKeyPress={this.handleKeyPress}
+                          name="tel"
+                          type="number"
+                          className="form-control"
+                          id="tel"
+                          placeholder="Votre numéro de téléphone"
+                          onChange={(e) => {
+                            this.setState({ tel: e.target.value });
+                          }}
+                        />
+                        <label
+                          style={{
+                            paddingBottom: "20px",
+                            fontSize: 12,
+                            color: "red",
+                          }}
+                        >
+                          {this.state.error.telErr}
+                        </label>
+                      </div>
+                      
+                      
+                      
+                    </div>
+                    <div className="form-row">
+                    
+                    <div className="col-md-4">
                         <label htmlFor="review">Mot de passe</label>
 
                         <input
@@ -188,7 +236,7 @@ class Register extends Component {
                           type="password"
                           className="form-control"
                           id="review"
-                          placeholder="Enter your password"
+                          placeholder="Votre mot de passe"
                           onChange={(e) => {
                             this.setState({ password: e.target.value });
                           }}
@@ -203,13 +251,14 @@ class Register extends Component {
                           {this.state.error.passwordErr}
                         </label>
                       </div>
-                      <a
+                      </div>
+
+                    <a
                         className="btn btn-solid"
                         onClick={() => this.handleSubmit()}
                       >
-                        create Account
+                        S'inscrire
                       </a>
-                    </div>
                   </form>
                 </div>
               </div>

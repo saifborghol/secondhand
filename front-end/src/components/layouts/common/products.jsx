@@ -26,8 +26,10 @@ class SpecialProducts extends Component {
 
   componentDidMount() {
     this.AnnonceController.getAll().then((res) => {
-      this.setState({ PROD: res.data.data, filteredData: res.data.data });
-      console.log("PRODUCT_DATA", this.state.PROD);
+      this.setState({ PROD: res.data.data});
+      this.sort(this.state.PROD, this.state.sortType);
+      this.setState({ filteredData: this.state.PROD});
+
     });
   }
 
@@ -50,7 +52,6 @@ class SpecialProducts extends Component {
     } else {
       let arr = [...this.state.PROD];
       this.sort(arr, this.state.sortType);
-
       let arraa = arr.filter((annonce) => annonce.location === gov);
       this.setState({
         filteredData: arraa,
@@ -248,7 +249,6 @@ class SpecialProducts extends Component {
                       {annonce.date}
                     </Card.Text>
                   </div>
-               
                 </Card.Body>
               </Card>
             );

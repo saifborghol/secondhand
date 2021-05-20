@@ -24,7 +24,6 @@ class CollectionLeftSidebar extends Component {
     this.state = {
       SubCat: {},
       filteredData: [],
-      layoutColumns: 3,
       sortType: "Newest",
     };
     this.SubCategoryController = new SubCategoryController();

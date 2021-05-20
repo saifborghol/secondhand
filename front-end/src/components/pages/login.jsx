@@ -168,11 +168,12 @@ class Login extends Component {
               <div className="col-lg-6 right-login">
                 <h3>Nouveau utilisateur</h3>
                 <div className="theme-card authentication-right">
-                  <h6 className="title-font">Create A Account</h6>
+                  <h6 className="title-font">Créer un compte</h6>
                   <p>
-                    Sign up for a free account at our store. Registration is
-                    quick and easy. It allows you to be able to order from our
-                    shop. To start shopping click register.
+                    Inscrivez-vous pour un compte gratuit dans notre site.
+                    L'inscription est simple et rapide. 
+                    Pour commencer vos
+                    achats, cliquez sur S'inscrire.
                   </p>
                   <Link to="/register">
                     <a className="btn btn-solid">Créer un compte</a>

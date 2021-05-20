@@ -39,6 +39,8 @@ class searchPage extends Component {
       console.log("ress", res);
       console.log("TEXT", this.state.searchText);
       this.setState({ annonce: res.data.data });
+      this.sort(this.state.annonce, this.state.sortType);
+
       this.filterAnnonces();
     });
 
@@ -50,7 +52,7 @@ class searchPage extends Component {
     let arraa = arr.filter((annonce) =>
       annonce.title.toLowerCase().includes(this.state.searchText.toLowerCase())
     );
-    this.setState({ filteredData: arraa });
+    this.setState({ filteredData: arraa, annonce: arraa });
   }
 
   annonceClick = (id) => {
@@ -133,11 +135,6 @@ class searchPage extends Component {
                                 <h3>Nous n'avons pas trouvé aucun article</h3>
                               </div>
                             ) : (
-                              <></>
-                            )}
-
-                            <div>
-                              {this.state.filteredData.length!==0 ? 
                               <div
                                 style={{
                                   marginBottom: "30px",
@@ -215,9 +212,9 @@ class searchPage extends Component {
                                   <option>Zaghouan</option>
                                 </Select>
                               </div>
-                              : <></>
-                                }
-                              
+                            )}
+
+                            <div>
                               <div id="card-container">
                                 {this.state.filteredData.map((annonce) => {
                                   return (

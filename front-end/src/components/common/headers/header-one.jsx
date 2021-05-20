@@ -111,8 +111,8 @@ class HeaderOne extends Component {
   };
 
   handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      this.searchClick();
+    if (event.key === "Enter" && this.state.searchText !== "") {
+      this.searchClick(this.state.searchText);
     }
   };
 

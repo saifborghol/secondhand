@@ -224,14 +224,14 @@ export default function checkOut() {
                         <div className="field-label">Adresse</div>
                         <input
                           type="text"
-                          name="addresse"
+                          name="adresse"
                           value={Address}
                           onChange={(e) => setAddress(e.target.value)}
 
                           //   placeholder="Street address"
                         />
                         {Validator.message(
-                          "addresse",
+                          "adresse",
                           Address,
                           "required|min:20|max:120"
                         )}
@@ -388,15 +388,23 @@ export default function checkOut() {
                                 Passer la commande
                               </button>
                             ) : (
+
+                              <div>
+                            {Validator.allValid() ? (
                               <PaypalExpressBtn
                                 env={"sandbox"}
                                 client={client}
-                                currency={"USD"}
+                                currency={"TND"}
                                 total={Total}
                                 onError={onError}
                                 onSuccess={onSuccess}
                                 onCancel={onCancel}
-                              />
+                              /> ) :
+                               (
+                                <></>
+                              )}
+                              </div>
+                              
                             )}
                           </div>
                         ) : (

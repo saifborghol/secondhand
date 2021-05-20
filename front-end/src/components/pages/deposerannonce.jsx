@@ -103,14 +103,8 @@ class Deposer extends Component {
       isError = true;
       errors.priceErr = "Veuillez entrer le prix";
     }
-    if (
-      isNaN(this.state.tel) ||
-      this.state.tel.length < 8 ||
-      this.state.tel.length > 8
-    ) {
-      isError = true;
-      errors.telErr = "Veuillez vérifier votre numéro";
-    }
+
+   
 
     if (this.state.subCat_id === "") {
       isError = true;
@@ -244,56 +238,7 @@ class Deposer extends Component {
                           }}
                         />
                       </div>
-                      <div className="col-md-6">
-                        <label htmlFor="review">Numéro de téléphone</label>
-                        <input
-                          defaultValue={this.state.tel}
-                          name="tel"
-                          maxLength={8}
-                          type="tel"
-                          className="form-control"
-                          id="lname"
-                          placeholder="Votre numéro"
-                          onChange={(e) => {
-                            this.setState({ tel: e.target.value });
-                          }}
-                        />
-                        <label
-                          style={{
-                            paddingBottom: "20px",
-                            fontSize: 12,
-                            color: "red",
-                            marginTop: -20,
-                          }}
-                        >
-                          {this.state.error.telErr}
-                        </label>
-                      </div>
-                    </div>
 
-                    <div className="form-row">
-                      <div className="col-md-6" style={{ textAlign: "center" }}>
-                        <ImageUploader
-                          withIcon={true}
-                          withPreview
-                          buttonText="Choisir vos images (5 maximum)"
-                          onChange={this.onDrop}
-                          imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-                          maxFileSize={5242880}
-                          withLabel={false}
-                          fileSizeError="La taille des fichiers est trop large"
-                          fileTypeError="Le type de fichiers n'est pas supporté"
-                        />
-                        <label
-                          style={{
-                            paddingBottom: "20px",
-                            fontSize: 12,
-                            color: "red",
-                          }}
-                        >
-                          {this.state.error.picErr}
-                        </label>
-                      </div>
                       <div className="col-md-6">
                         <label htmlFor="review">Emplacement</label>
                         <br />
@@ -390,6 +335,35 @@ class Deposer extends Component {
                         <br /> <br /> <br />
                         <br />
                       </div>
+                    
+
+                    </div>
+
+                    <div className="form-row">
+                      <div className="col-md-6" style={{ textAlign: "center" }}>
+                        <ImageUploader
+                          withIcon={true}
+                          withPreview
+                          buttonText="Choisir vos images (5 maximum)"
+                          onChange={this.onDrop}
+                          imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                          maxFileSize={5242880}
+                          withLabel={false}
+                          fileSizeError="La taille des fichiers est trop large"
+                          fileTypeError="Le type de fichiers n'est pas supporté"
+                        />
+                        <label
+                          style={{
+                            paddingBottom: "20px",
+                            fontSize: 12,
+                            color: "red",
+                          }}
+                        >
+                          {this.state.error.picErr}
+                        </label>
+                      </div>
+
+                      
                     </div>
                     <a
                       className="btn btn-solid"

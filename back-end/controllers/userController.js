@@ -13,9 +13,10 @@ module.exports = {
 			surName: req.body.surName,
 			email: req.body.email,
 			password: req.body.password,
+			tel: req.body.tel,
 		};
 		console.log('nneww', newUser);
-		userModel.create(newUser, function (err, user) {
+		userModel.create(req.body, function (err, user) {
 			if (err)
 				res.json({
 					message: err,

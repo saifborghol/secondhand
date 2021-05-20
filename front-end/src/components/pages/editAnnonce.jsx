@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.min.css';
+import "react-toastify/dist/ReactToastify.min.css";
 
 import Select from "@material-ui/core/Select";
 
@@ -155,6 +155,12 @@ class editAnnonce extends Component {
     // // window.location.href = '/';
   }
 
+  handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      this.handleSubmit();
+    }
+  };
+
   render() {
     return (
       <div>
@@ -172,6 +178,7 @@ class editAnnonce extends Component {
                       <div className="col-md-6">
                         <label>Titre</label>
                         <input
+                          onKeyPress={this.handleKeyPress}
                           defaultValue={this.state.title}
                           name="name"
                           type="text"
@@ -196,6 +203,8 @@ class editAnnonce extends Component {
                       <div className="col-md-6">
                         <label htmlFor="review">Prix</label>
                         <input
+                          onKeyPress={this.handleKeyPress}
+
                           defaultValue={this.state.price}
                           name="price"
                           type="number"
@@ -244,6 +253,8 @@ class editAnnonce extends Component {
                       <div className="col-md-6">
                         <label htmlFor="review">Numéro de téléphone</label>
                         <input
+                          onKeyPress={this.handleKeyPress}
+
                           defaultValue={this.state.tel}
                           name="tel"
                           maxLength={8}
