@@ -14,6 +14,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^5.11.17",
@@ -21,6 +22,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.18",
+    "nodemailer-handlebars": "^1.0.1",
     "nodemon": "^2.0.7",
     "rand-token": "^1.0.1"
   }

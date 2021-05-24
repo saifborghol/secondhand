@@ -33,10 +33,7 @@ class orderSuccess extends Component {
                     Le paiement a été traité avec succès et votre commande est
                     passée.
                   </p>
-                  <p>
-                    ID de Transaction:{" "}
-                    {payment.paymentID ? payment.paymentID : payment.id}
-                  </p>
+                  
                 </div>
               </div>
             </div>

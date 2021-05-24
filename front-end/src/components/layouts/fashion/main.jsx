@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 import SpecialProducts from '../common/products';
 
-
 import {
 	svgFreeShipping,
 	svgservice,
@@ -37,22 +36,28 @@ class Fashion extends Component {
 											<div className="slider-contain">
 												<div>
 													<h4>Bienvenue à Secondhand</h4>
-													<Link
-														to={`${
-															process.env.PUBLIC_URL
-														}/no-sidebar/collection`}
-														className="btn btn-solid"
-													>
-														Commencer à vendre
-													</Link>
+													{!localStorage.getItem('userId') ? (
+														<Link
+															to={`${process.env.PUBLIC_URL}/login`}
+															className="btn btn-solid"
+														>
+															Commencer à vendre
+														</Link>
+													) : (
+														<Link
+															to={`${process.env.PUBLIC_URL}`}
+															className="btn btn-solid"
+														>
+															Commencer à vendre
+														</Link>
+													)}
 												</div>
 											</div>
-										</div>
+										</div>*
 									</div>
 								</div>
 							</div>
 						</div>
-						
 					</Slider>
 				</section>
 
