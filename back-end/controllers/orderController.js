@@ -30,6 +30,8 @@ const handlebarOptions = {
 
 transporter.use('compile', hbs(handlebarOptions));
 
+const shipping = 'true';
+
 module.exports = {
 	createOrder: function (req, res) {
 		orderModel.create(req.body, function (err, Order) {
@@ -51,180 +53,177 @@ module.exports = {
 					{
 						from: 'azizmdk@outlook.com',
 						to: Order.email,
-						subject: 'Commande traité avec succés',
+						subject: 'Reçu de commande secondhand',
 						html: `<!DOCTYPE html>
-                        <html lang="en">
-                            <head>
-                                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <link rel="icon" href="images/favicon/1.png" type="image/x-icon">
-                                <link rel="shortcut icon" href="images/favicon/1.png" type="image/x-icon">
-                                <title></title>
-                                <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+                        <html>
                         
-                                <style type="text/css">
-                                    body{
-                                        text-align: center;
-                                        margin: 0 auto;
-                                        width: 650px;
-                                        font-family: 'Open Sans', sans-serif;
-                                        background-color: #e2e2e2;		      	
-                                        display: block;
-                                    }
-                                    ul{
-                                        margin:0;
-                                        padding: 0;
-                                    }
-                                    li{
-                                        display: inline-block;
-                                        text-decoration: unset;
-                                    }
-                                    a{
-                                        text-decoration: none;
-                                    }
-                                    p{
-                                        margin: 15px 0;
+                        <head>
+                            <title></title>
+                            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                            <style type="text/css">
+                                body,
+                                table,
+                                td,
+                                a {
+                                    -webkit-text-size-adjust: 100%;
+                                    -ms-text-size-adjust: 100%;
+                                }
+                        
+                                table,
+                                td {
+                                    mso-table-lspace: 0pt;
+                                    mso-table-rspace: 0pt;
+                                }
+                        
+                                img {
+                                    -ms-interpolation-mode: bicubic;
+                                }
+                        
+                                img {
+                                    border: 0;
+                                    height: auto;
+                                    line-height: 100%;
+                                    outline: none;
+                                    text-decoration: none;
+                                }
+                        
+                                table {
+                                    border-collapse: collapse !important;
+                                }
+                        
+                                body {
+                                    height: 100% !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                    width: 100% !important;
+                                }
+                        
+                                a[x-apple-data-detectors] {
+                                    color: inherit !important;
+                                    text-decoration: none !important;
+                                    font-size: inherit !important;
+                                    font-family: inherit !important;
+                                    font-weight: inherit !important;
+                                    line-height: inherit !important;
+                                }
+                        
+                                @media screen and (max-width: 480px) {
+                                    .mobile-hide {
+                                        display: none !important;
                                     }
                         
-                                    h5{
-                                        color:#444;
-                                        text-align:left;
-                                        font-weight:400;
+                                    .mobile-center {
+                                        text-align: center !important;
                                     }
-                                    .text-center{
-                                        text-align: center
-                                    }
-                                    .main-bg-light{
-                                        background-color: #fafafa;
-                                    }
-                                    .title{
-                                        color: #444444;
-                                        font-size: 22px;
-                                        font-weight: bold;
-                                        margin-top: 10px;
-                                        margin-bottom: 10px;
-                                        padding-bottom: 0;
-                                        text-transform: uppercase;
-                                        display: inline-block;
-                                        line-height: 1;
-                                    }
-                                    table{
-                                        margin-top:30px
-                                    }
-                                    table.top-0{
-                                        margin-top:0;
-                                    }
-                                    table.order-detail , .order-detail th , .order-detail td {
-                                        border: 1px solid #ddd;
-                                        border-collapse: collapse;
-                                    }
-                                    .order-detail th{
-                                        font-size:16px;
-                                        padding:15px;
-                                        text-align:center;
-                                    }
-                                    .footer-social-icon tr td img{
-                                        margin-left:5px;
-                                        margin-right:5px;
-                                    }
-                                </style>
-                            </head>
-                            <body style="margin: 20px;">
-                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="padding: 0 30px;background-color: #fff; -webkit-box-shadow: 0px 0px 14px -4px rgba(0, 0, 0, 0.2705882353);box-shadow: 0px 0px 14px -4px rgba(0, 0, 0, 0.2705882353);width: 100%;">
-                                    <tbody>
-                                    
-                                        <tr>
-                                            <td>
-                                                <table align="center" border="0" cellpadding="0" cellspacing="0" >
+                                }
+                        
+                                div[style*="margin: 16px 0;"] {
+                                    margin: 0 !important;
+                                }
+                            </style>
+                        
+                        <body style="margin: 0 !important; padding: 0 !important; background-color: #eeeeee;" bgcolor="#eeeeee">
+                            <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Open Sans, Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+                                For what reason would it be advisable for me to think about business content? That might be little bit risky to have crew member like them.
+                            </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center" style="background-color: #eeeeee;" bgcolor="#eeeeee">
+                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                            <tr>
+                                                <td align="center" valign="top" style="font-size:0; padding: 35px;" bgcolor="#03b0b9">
+                                                    <div style="display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
+                                                            <tr>
+                                                                <td align="center" valign="top" style="font-family: Comfortaa, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
+                                                                    <h1 style="font-size: 36px; font-weight: 800; letter-spacing: 2px; margin: 0; color: #ffffff;">secondhand</h1>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
                                                     
-                                                    <tr>
-                                                        <td>
-                                                            <h2 class="title">Merci pour votre achat</h2>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                    <tr>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" style="padding: 35px 35px 20px 35px; background-color: #ffffff;" bgcolor="#ffffff">
+                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                                        <tr>
+                                                            <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;"> <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" /><br>
+                                                                <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0 0 24px 0;"> Merci pour votre commande! </h2>
+                                                            </td>
+                                                        </tr>
                                                         
-                                                        <td>
-                                                            <div style="border-top:1px solid #777;height:1px;margin-top: 30px;">
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                </table>
-                                                <table border="0" cellpadding="0" cellspacing="0" >
-                                                    <tr>
-                                                        <td>
-                                                            <h3>Détails de votre commande </h3>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <table align="center" style="margin-top: 20px;" class="order-detail" border="0" cellpadding="0" cellspacing="0">
-                                                    <tr align="left">
-                                                        <th>PRODUIT</th>
-                                                        <th style="padding-left: 15px;">DESCRIPTION</th>
-                                                        <th>PRIX</th>
-                                                    </tr>
-                                                    <script>
-                                                Order.annonces.map(
-                                                        ann => {
-                                                            return (
-                                                    <tr>                                
-                                                        <td valign="top" style="padding-left: 20px;">
-                                                            <h5 style="margin-top: 10px;">{ann.title}</h5>
-                                                        </td>
-                                                        
-                                                        <td valign="top" style="padding-left: 15px; padding-right: 10px">
-                                                            <h5 style="font-size: 14px; color:#444;margin-top:10px; margin-bottom:10px"><b>{ann.price} TND</b></h5>                  
-                                                        </td>
-                                                    </tr>
-                                                            )})
-                                                    
-                                                    </script>
-                                                    
-                                                    <tr>
-                                                        <td colspan="2" style="font-size: 13px;color: #000000; padding-left: 20px;text-align:left;border-right: unset;margin-top:10px;margin-bottom:10px;">PRIX TOTAL :</td>
-                                                            <td colspan="3" class="price" style="text-align: center;font-size: 13px;color: #000000;border-left: unset;margin-top:10px;margin-bottom:10px;"><b>${Order.price} TND</b></td>
-                                                    </tr>
-                                                </table>
-                                                                              
-                                                <p></p>
-                                               
-                                            </td>
-                                        </tr>
-                                    </tbody>            
-                                </table>
-                                <table class="main-bg-light text-center top-0"  align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td style="padding: 30px;">
-                                                            <div>
-                                                                <h4 class="title" style="margin:0;text-align: center;">Suivez-nous</h4>
-                                                            </div>
-                                                            
-                                                            <div style="border-top: 1px solid #ddd; margin: 20px auto 0;"></div>
-                                                            <table  border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 20px auto 0;" >
-                                                                <tr>
-                                                                    <td>
-                                                                        <a href="#" style="font-size:13px">Vous souhaitez modifier la façon dont vous recevez ces e-mails?</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <p style="font-size:13px; margin:0;">2021 - 22 Copy Right by secondhand</p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <a href="#" style="font-size:13px; margin:0;text-decoration: underline;">Se désabonner</a>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                        <tr>
+                                                            <td align="left" style="padding-top: 20px;">
+                                                                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                    <tr>
+                                                                        <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"> Détails de commande # </td>
+                                                                        <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> Articles achetés (${Order.annonces.length}) </td>
+                                                                    </tr>
+                                                                    
+                                                                    
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" style="padding-top: 20px;">
+                                                                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;"> TOTAL </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;"> ${Order.price} TND</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" height="100%" valign="top" width="100%" style="padding: 0 35px 35px 35px; background-color: #ffffff;" bgcolor="#ffffff">
+                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px;">
+                                                        <tr>
+                                                            <td align="center" valign="top" style="font-size:0;">
+                                                                <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
+                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
+                                                                        <tr>
+                                                                            <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
+                                                                                <p style="font-weight: 800;">Adresse de livraison</p>
+                                                                                <p>${Order.adresse}</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                           
+                                            <tr>
+                                                <td align="center" style="padding: 35px; background-color: #ffffff;" bgcolor="#ffffff">
+                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                                       
+                                                        <tr>
+                                                            <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px;">
+                                                                <p style="font-size: 14px; font-weight: 400; line-height: 20px; color: #777777;"> Si vous ne l'avez pas créé un compte en utilisant cette adresse e-mail, s'il vous plaît ignorer cet e-mail ou vous <a href="#" target="_blank" style="color: #777777;">désabonner</a>. </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </body>
                         
-                            </body>
-                        </html>`,
+                        </html>`
 					},
 					function (error, info) {
 						if (error) {

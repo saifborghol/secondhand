@@ -12,6 +12,7 @@ import { getAllProducts } from './actions';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import LoggedRoute from './components/LoggedRoute';
+import PaymentRoute from './components/PaymentRoute';
 
 //profile
 
@@ -137,7 +138,7 @@ class Root extends React.Component {
 											path={`${process.env.PUBLIC_URL}/checkout`}
 											component={checkOut}
 										/>
-										<Route
+										<PaymentRoute
 											path={`${process.env.PUBLIC_URL}/order-success`}
 											component={orderSuccess}
 										/>

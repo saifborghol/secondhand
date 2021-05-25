@@ -82,15 +82,17 @@ class orderSuccess extends Component {
                   <div className="total-sec">
                     <ul>
                       {/* <li>subtotal <span>{orderTotal}</span></li> */}
-                      {localStorage.getItem('shipping') === 'true' ?
+                      
                       <li>
-                        livraison <span>7 DT</span>
-                      </li> :
-                       <></>
+                        livraison 
+                        {localStorage.getItem('shipping') === 'true' ?
+                        <span>7.00 DT</span> : 
+                        <span>0.00 DT</span>
                       }
-                      <li>
-                        taxes <span>0 DT</span>
                       </li>
+                       <></>
+                      
+                      
                     </ul>
                   </div>
                   <div className="final-total">

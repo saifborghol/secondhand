@@ -12,6 +12,10 @@ const orderSchema = Schema({
         type: String,
         required: true
     },
+    adresse:{
+        type: String,
+        required: true
+    },
     annonces:[
         {
         type: Schema.Types.ObjectId,
