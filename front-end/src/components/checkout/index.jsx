@@ -79,16 +79,10 @@ export default function checkOut() {
   };
 
   const testSubmit = () => {
-    const Data = {
-      email: Email,
-      adresse: Address,
-      price: Total,
-      annonces: products,
-    };
-    orderController.addOrder(Data).then((res) => {
-      console.log("addOrder", res);
-      pushOrder(localStorage.getItem("userId"), res.data.data._id);
-    });
+    localStorage.setItem("ORDER_email", Email);
+    localStorage.setItem("ORDER_address", Address);
+    localStorage.setItem("ORDER_total", Total);
+    localStorage.setItem("ORDER_products", JSON.stringify(products));
   };
 
   const StripeClick = () => {
@@ -114,7 +108,7 @@ export default function checkOut() {
         currency: "TND",
       });
       localStorage.setItem("orderAdress", Address);
-      if (window.location.pathname == "order-success") testSubmit();
+      testSubmit();
     } else {
       Validator.showMessages();
       // rerender to show messages for the first time

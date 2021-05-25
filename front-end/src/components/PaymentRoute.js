@@ -6,7 +6,7 @@ const PaymentRoute = ({ component: Component, ...rest }) => {
 		<Route
 			{...rest}
 			render={props => {
-				if (localStorage.getItem('payment')) {
+				if (localStorage.getItem('payment') === 'true') {
 					return <Component {...props} />;
 				} else {
 					return <Redirect to="/" />;

@@ -1,9 +1,40 @@
 import React, { Component } from "react";
 
+import UserController from "../../services/controllers/userControllers";
+import OrderController from "../../services/controllers/orderController";
+
+const userController = new UserController();
+const orderController = new OrderController();
+
 class orderSuccess extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    var details = JSON.parse(localStorage.getItem("ORDER_products"));
+    const Data = {
+      price: localStorage.getItem("ORDER_total"),
+      email: localStorage.getItem("ORDER_email"),
+      adresse: localStorage.getItem("ORDER_address"),
+      annonces: details,
+    };
+    orderController.addOrder(Data).then((res) => {
+      console.log("addOrder", res);
+      this.pushOrder(localStorage.getItem("userId"), res.data.data._id);
+    });
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem("payment", false);
+  }
+
+  pushOrder = (id, data) => {
+    let data1 = { order: data };
+    userController.pushOrder(id, data1).then((res) => {
+      console.log("pushOrder", res);
+    });
+  };
 
   render() {
     const { payment, items, orderTotal } = this.props.location.state;
@@ -33,7 +64,6 @@ class orderSuccess extends Component {
                     Le paiement a été traité avec succès et votre commande est
                     passée.
                   </p>
-                  
                 </div>
               </div>
             </div>
@@ -82,17 +112,16 @@ class orderSuccess extends Component {
                   <div className="total-sec">
                     <ul>
                       {/* <li>subtotal <span>{orderTotal}</span></li> */}
-                      
+
                       <li>
-                        livraison 
-                        {localStorage.getItem('shipping') === 'true' ?
-                        <span>7.00 DT</span> : 
-                        <span>0.00 DT</span>
-                      }
+                        livraison
+                        {localStorage.getItem("shipping") === "true" ? (
+                          <span>7 DT</span>
+                        ) : (
+                          <span>0 DT</span>
+                        )}
                       </li>
-                       <></>
-                      
-                      
+                      <></>
                     </ul>
                   </div>
                   <div className="final-total">
@@ -122,7 +151,7 @@ class orderSuccess extends Component {
                   <div className="col-sm-6">
                     <h4>Adresse de livraison</h4>
                     <ul className="order-detail">
-                      <li>{localStorage.getItem('orderAdress')}</li>
+                      <li>{localStorage.getItem("orderAdress")}</li>
                     </ul>
                   </div>
 
