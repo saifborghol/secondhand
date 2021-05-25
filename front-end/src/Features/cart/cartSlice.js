@@ -19,12 +19,14 @@ const cartSlice = createSlice({
 			  state.products.splice(index, 1);
 			//   console.log(list);
 		},
+		reset: () => initialState
 	},
 	extraReducers: {},
 });
 
 export const { addproducttocart } = cartSlice.actions;
 export const { removeByIDfromcart } = cartSlice.actions;
+export const { reset } = cartSlice.actions;
 
 export const selectProducts = (state) => state.cart.products;
 

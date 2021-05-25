@@ -3,11 +3,6 @@ const route = require('express').Router();
 const hbs = require('nodemailer-handlebars');
 
 var nodemailer = require('nodemailer');
-var fs = require('fs');
-
-require.extensions['.hbs'] = function (module, filename) {
-	module.exports = fs.readFileSync(filename, 'utf8');
-};
 
 var transporter = nodemailer.createTransport({
 	service: 'outlook',
@@ -17,24 +12,11 @@ var transporter = nodemailer.createTransport({
 	},
 });
 
-const handlebarOptions = {
-	viewEngine: {
-		extName: 'hbs',
-		defaultLayout: false,
-		layoutsDir: './views/',
-		//   defaultLayout: 'email.body.hbs',
-	},
-	viewPath: './views/',
-	extName: '.hbs',
-};
-
-transporter.use('compile', hbs(handlebarOptions));
-
-const shipping = 'true';
+var testBlock = ''
 
 module.exports = {
 	createOrder: function (req, res) {
-		orderModel.create(req.body, function (err, Order) {
+        orderModel.create(req.body , function (err, Order) {
 			console.log('cest bon');
 			if (err) {
 				console.log(err);
@@ -49,6 +31,7 @@ module.exports = {
 					statuts: 200,
 					data: Order,
 				});
+                
 				transporter.sendMail(
 					{
 						from: 'azizmdk@outlook.com',
@@ -164,6 +147,9 @@ module.exports = {
                                                                     </tr>
                                                                     <tr>
                                                                         <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> Articles achetés (${Order.annonces.length}) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <h1> ${testBlock} </h1>
                                                                     </tr>
                                                                     
                                                                     

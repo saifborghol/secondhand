@@ -101,7 +101,11 @@ class HeaderOne extends Component {
     let data = { refreshToken: localStorage.getItem("refreshToken") };
     const { history } = this.props;
     this.userController.logoutUser(data);
+
+    var cart = localStorage.getItem('persist:root');
     localStorage.clear();
+    localStorage.setItem('persist:root',cart);
+
     history.push("/login");
   };
 

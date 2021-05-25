@@ -47,7 +47,7 @@ export default function NoSideBar() {
 
   const deleteAnnonce = (id) => {
     annonceController.deleteAnnonce(id).then((res) => {
-      console.log("resDeleteUser", res);
+      console.log("resDeleteAnnonce", res);
     });
   };
 
