@@ -49,14 +49,14 @@
     1.General CSS start
 ==========================*/
 
-#removeFromCart{
+#removeFromCart {
   cursor: pointer;
 }
 
-#removeFromCart:hover{
+#removeFromCart:hover {
   color: #000000;
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 p.alice-carousel__next-btn-item,
@@ -296,7 +296,20 @@ p.alice-carousel__prev-btn-item:hover {
 }
 
 #card-container {
-  margin: 20px 30px;
+  margin: 20px 200px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 768px) {
+    flex-flow: column;
+  }
+}
+
+#card-container-profile {
+  margin: 20px;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
@@ -319,8 +332,6 @@ p.alice-carousel__prev-btn-item:hover {
 #card-style:hover {
   box-shadow: none;
 }
-
-
 
 body {
   font-family: $font_0, $font_1;
@@ -579,7 +590,7 @@ del {
     }
     .cart-qty-cls {
       top: 10%;
-  right: -18px;
+      right: -18px;
     }
   }
 }
@@ -9546,8 +9557,7 @@ footer {
         margin-top: 30px;
       }
       .field-label {
-        line-height: 24px;
-        // text-transform: capitalize;
+        line-height: 24px; // text-transform: capitalize;
         color: #333333;
         margin-bottom: 10px;
         font-weight: 700;

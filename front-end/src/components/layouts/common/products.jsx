@@ -26,10 +26,9 @@ class SpecialProducts extends Component {
 
   componentDidMount() {
     this.AnnonceController.getAll().then((res) => {
-      this.setState({ PROD: res.data.data});
+      this.setState({ PROD: res.data.data });
       this.sort(this.state.PROD, this.state.sortType);
-      this.setState({ filteredData: this.state.PROD});
-
+      this.setState({ filteredData: this.state.PROD });
     });
   }
 

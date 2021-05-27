@@ -13,9 +13,9 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<HeaderOne logoName={'logo.svg'} />
+				<HeaderOne logoName={'logo.png'} />
 				{this.props.children}
-				<FooterOne logoName={'logo.svg'} />
+				<FooterOne logoName={'logo.png'} />
 				<ToastContainer />
 
 				{/* <ThemeSettings /> */}
