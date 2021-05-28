@@ -40,7 +40,7 @@ class editAnnonce extends Component {
     if (localStorage.getItem("userId")) {
       this.setState({ user_id: localStorage.getItem("userId") });
       console.log("user id:", localStorage.getItem("userId"));
-      this.getUser(localStorage.getItem("userId"));
+      // this.getUser(localStorage.getItem("userId"));
     }
 
     this.AnnonceController.getAnnonce(this.props.match.params.id).then(
@@ -49,6 +49,7 @@ class editAnnonce extends Component {
         this.setState({ title: res.data.data.title });
         this.setState({ description: res.data.data.description });
         this.setState({ price: res.data.data.price });
+        this.setState({ tel: res.data.data.tel });
         this.setState({ subCat_id: res.data.data.subCat_id.title });
         this.setState({ location: res.data.data.location });
       }
@@ -69,11 +70,11 @@ class editAnnonce extends Component {
     });
   }
 
-  getUser(id) {
-    this.UserController.getUser(id).then((res) => {
-      this.setState({ tel: res.data.data.tel });
-    });
-  }
+  // getUser(id) {
+  //   this.UserController.getUser(id).then((res) => {
+  //     this.setState({ tel: res.data.data.tel });
+  //   });
+  // }
 
   getAllCategories() {
     this.CategoryController.getAllCategory().then((res) => {
