@@ -34,7 +34,7 @@ module.exports = {
                 
 				transporter.sendMail(
 					{
-						from: 'azizmdk@outlook.com',
+						from: 'help.secondhand@gmail.com',
 						to: Order.email,
 						subject: 'Reçu de commande secondhand',
 						html: `<!DOCTYPE html>

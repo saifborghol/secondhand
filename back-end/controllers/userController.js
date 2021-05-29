@@ -325,7 +325,7 @@ module.exports = {
 			});
 			console.log(token);
 			var data = {
-				from: 'azizmdk@outlook.com',
+				from: 'help.secondhand@gmail.com',
 				to: Email,
 				subject: 'Reset Password',
 				text: `http://localhost:3000/reset-password/${token}`,
@@ -336,10 +336,10 @@ module.exports = {
 				{ resetLink: token },
 				(err, info) => {
 					var transporter4 = nodemailer.createTransport({
-						service: 'outlook',
+						service: 'gmail',
 						auth: {
-							user: 'azizmdk@outlook.com',
-							pass: 'pass',
+							user: 'help.secondhand@gmail.com',
+							pass: 'secondhand007',
 						},
 					});
 					transporter4.sendMail(data, function (error, info) {
