@@ -227,8 +227,8 @@ module.exports = {
 		var transporter = nodemailer.createTransport({
 			service: 'outlook',
 			auth: {
-				user: 'azizmdk@outlook.com',
-				pass: 'pass',
+				user: 'help.secondhand@gmail.com',
+				pass: 'secondhand123',
 			},
 		});
 		transporter.sendMail(data, function (error, info) {
