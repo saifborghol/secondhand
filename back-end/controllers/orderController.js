@@ -5,7 +5,7 @@ const hbs = require('nodemailer-handlebars');
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-	service: 'outlook',
+	service: 'gmail',
 	auth: {
 		user: 'help.secondhand@gmail.com',
 		pass: 'secondhand007',
