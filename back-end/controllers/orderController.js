@@ -8,7 +8,7 @@ var transporter = nodemailer.createTransport({
 	service: 'outlook',
 	auth: {
 		user: 'help.secondhand@gmail.com',
-		pass: 'secondhand123',
+		pass: 'secondhand007',
 	},
 });
 

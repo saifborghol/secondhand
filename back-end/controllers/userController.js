@@ -228,7 +228,7 @@ module.exports = {
 			service: 'outlook',
 			auth: {
 				user: 'help.secondhand@gmail.com',
-				pass: 'secondhand123',
+				pass: 'secondhand007',
 			},
 		});
 		transporter.sendMail(data, function (error, info) {
