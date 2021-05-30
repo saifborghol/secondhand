@@ -56,11 +56,11 @@ export default class UpdateCategory extends Component {
 
 	render() {
 		return (
-			<Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
+			<Page>
 				<Row>
 					<Col xl={8} lg={12} md={12}>
 						<Card>
-							<CardHeader>Form Grid</CardHeader>
+							<CardHeader>Modifier catégorie</CardHeader>
 							<CardBody>
 								<Form>
 									<FormGroup row>
@@ -72,7 +72,7 @@ export default class UpdateCategory extends Component {
 												type="text"
 												name="name"
 												value={this.state.title}
-												placeholder="Title here"
+												placeholder="Titre"
 												onChange={event =>
 													this.setState({
 														title:
@@ -91,7 +91,7 @@ export default class UpdateCategory extends Component {
 												type="textarea"
 												name="email"
 												value={this.state.description}
-												placeholder="Description here"
+												placeholder="Description (optionnel)"
 												onChange={event =>
 													this.setState({
 														description:
@@ -108,7 +108,7 @@ export default class UpdateCategory extends Component {
 													this.handleSubmit(event);
 												}}
 											>
-												Submit
+												Modifier
 											</Button>
 										</Col>
 									</FormGroup>

@@ -120,9 +120,7 @@ module.exports = {
                                                     <div style="display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;">
                                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                             <tr>
-                                                                <td align="center" valign="top" style="font-family: Comfortaa, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
-                                                                    <h1 style="font-size: 36px; font-weight: 800; letter-spacing: 2px; margin: 0; color: #ffffff;">secondhand</h1>
-                                                                </td>
+                                                            <td align="center"> <img src="https://i.ibb.co/b3RGM44/mail-logo.png" style="display: block; border: 0px;" />
                                                             </tr>
                                                         </table>
                                                     </div>

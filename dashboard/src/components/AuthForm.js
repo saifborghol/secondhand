@@ -91,7 +91,7 @@ class AuthForm extends React.Component {
 		const { buttonText } = this.props;
 
 		if (!buttonText && this.isLogin) {
-			return 'Login';
+			return 'Se connecter';
 		}
 
 		if (!buttonText && this.isSignup) {

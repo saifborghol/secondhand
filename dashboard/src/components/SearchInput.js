@@ -12,7 +12,7 @@ const SearchInput = () => {
       <Input
         type="search"
         className="cr-search-form__input"
-        placeholder="Search..."
+        placeholder="Recherche"
       />
     </Form>
   );

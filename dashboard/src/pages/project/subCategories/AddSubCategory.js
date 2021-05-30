@@ -61,10 +61,11 @@ export default class AddSubCategory extends Component {
 
 	render() {
 		return (
-			<Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
+			<Page >
 				<Row>
 					<Col xl={8} lg={12} md={12}>
 						<Card>
+						<CardHeader>Ajouter une sous-catégorie</CardHeader>
 							<CardBody>
 								<Form>
 									<FormGroup row>
@@ -102,7 +103,7 @@ export default class AddSubCategory extends Component {
 											<Input
 												type="text"
 												name="name"
-												placeholder="Title here"
+												placeholder="Titre"
 												onChange={event =>
 													this.setState({
 														title:
@@ -120,7 +121,7 @@ export default class AddSubCategory extends Component {
 											<Input
 												type="textarea"
 												name="email"
-												placeholder="Description here"
+												placeholder="Description (optionnel)"
 												onChange={event =>
 													this.setState({
 														description:
@@ -137,7 +138,7 @@ export default class AddSubCategory extends Component {
 													this.handleSubmit(event);
 												}}
 											>
-												Submit
+												Ajouter
 											</Button>
 										</Col>
 									</FormGroup>

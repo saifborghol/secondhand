@@ -165,7 +165,7 @@ class Header extends React.Component {
 											action
 											className="border-light"
 										>
-											<MdExitToApp /> Logout
+											<MdExitToApp /> Se déconnecter
 										</ListGroupItem>
 									</ListGroup>
 								</UserCard>

@@ -148,10 +148,12 @@ export default class ListCategories extends Component {
 																				}}
 																			>
 																				<button
-																					onClick={() =>
+																					onClick={() =>{
+																						console.log("caaaaaaaaat",cat._id)
 																						this.updateCategory(
 																							cat._id,
 																						)
+																					}
 																					}
 																					style={{
 																						backgroundColor:
@@ -216,7 +218,7 @@ export default class ListCategories extends Component {
 																								<button
 																									onClick={() =>
 																										this.updateSubCategory(
-																											subcat._id,
+																											subcat.title,
 																										)
 																									}
 																									style={{

@@ -1,4 +1,4 @@
-import logo from 'assets/img/logo/logo.png';
+import logo from 'assets/img/logo/logo2.png';
 import sidebarBgImage from 'assets/img/sidebar/sidebar-4.jpg';
 import SourceLink from 'components/SourceLink';
 import React from 'react';
