@@ -1,4 +1,4 @@
-import logo from 'assets/img/logo/logo2.svg';
+import logo from 'assets/img/logo/logo.png';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
